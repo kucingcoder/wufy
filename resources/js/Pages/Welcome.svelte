@@ -113,6 +113,28 @@
         if (name.includes('server')) return '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>';
         return '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>';
     };
+
+    // Scroll Reveal Action
+    const scrollReveal = (node, options = {}) => {
+        const { threshold = 0.1, rootMargin = '0px 0px -50px 0px' } = options;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    node.classList.add('revealed');
+                    observer.unobserve(node);
+                }
+            });
+        }, { threshold, rootMargin });
+
+        observer.observe(node);
+
+        return {
+            destroy() {
+                observer.unobserve(node);
+            }
+        };
+    };
 </script>
 
 <svelte:head>
@@ -202,7 +224,7 @@
         <button 
             onclick={() => isMenuOpen = !isMenuOpen}
             class="w-14 h-14 flex flex-col items-center justify-center gap-1.5 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-2xl shadow-2xl transition-all active:scale-95"
-            aria-label="Toggle Menu"
+            aria-label={isMenuOpen ? "Tutup Menu" : "Buka Menu"}
         >
             <span class="w-7 h-0.5 bg-white transition-all duration-300 {isMenuOpen ? 'rotate-45 translate-y-2' : ''}"></span>
             <span class="w-7 h-0.5 bg-white transition-all duration-300 {isMenuOpen ? 'opacity-0' : ''}"></span>
@@ -221,6 +243,7 @@
                 <button 
                     onclick={() => isMenuOpen = false}
                     class="text-slate-400 hover:text-white transition-colors group"
+                    aria-label="Tutup Menu"
                 >
                     <div class="w-14 h-14 rounded-2xl border border-slate-800 flex items-center justify-center group-hover:border-slate-600 bg-slate-900/50">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -261,7 +284,7 @@
             
             <!-- Mobile: TOP / Desktop: RIGHT (Profile & HUD) -->
             <div class="order-1 lg:order-2 flex flex-col items-center lg:items-end gap-8">
-                <div class="relative group">
+                <div use:scrollReveal={{ threshold: 0.1 }} class="relative group reveal">
                     <!-- Outer Glow & HUD Markers -->
                     <div class="absolute -inset-8 bg-sky-500/10 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     
@@ -288,7 +311,7 @@
                     </div>
                 </div>
                 
-                <div class="flex gap-4">
+                <div use:scrollReveal={{ threshold: 0.1, delay: 200 }} class="flex gap-4 reveal">
                     {#if profile?.links}
                         {#each profile.links as link}
                             <a 
@@ -309,19 +332,19 @@
             <!-- Mobile: BOTTOM / Desktop: LEFT (Info) -->
             <div class="order-2 lg:order-1 text-center lg:text-left">
                 
-                <h1 class="text-5xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-6 text-white">
+                <h1 use:scrollReveal class="text-5xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-6 text-white reveal">
                     {profile?.full_name || 'Your Name'}
                 </h1>
                 
-                <h2 class="text-2xl lg:text-3xl font-medium text-slate-400 mb-8 font-['Space_Grotesk']">
+                <h2 use:scrollReveal={{ delay: 100 }} class="text-2xl lg:text-3xl font-medium text-slate-400 mb-8 font-['Space_Grotesk'] reveal">
                     {profile?.job_title || 'Gelar Profesional'}
                 </h2>
                 
-                <p class="text-lg lg:text-xl text-slate-400 max-w-xl mb-2 leading-relaxed font-light">
+                <p use:scrollReveal={{ delay: 200 }} class="text-lg lg:text-xl text-slate-400 max-w-xl mb-2 leading-relaxed font-light reveal">
                     {profile?.description || 'Membangun solusi digital inovatif dengan fokus pada teknologi modern dan pengalaman pengguna yang luar biasa.'}
                 </p>
 
-                <div class="flex flex-col gap-6 items-center lg:items-start">
+                <div use:scrollReveal={{ delay: 300 }} class="flex flex-col gap-6 items-center lg:items-start reveal">
                     <div class="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center lg:justify-start">
                         <div class="flex items-center gap-2 text-slate-200">
                             <svg class="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -372,13 +395,13 @@
     <section id="vision" class="py-32 bg-slate-900/30">
         <div class="container mx-auto px-6">
             <!-- Section Title -->
-            <div class="text-center mb-20">
+            <div use:scrollReveal class="text-center mb-20 reveal">
                 <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-4">Visi & <span class="text-sky-500">Misi</span></h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
             </div>
 
             <!-- Vision Card -->
-            <div class="max-w-5xl mx-auto mb-24 relative group">
+            <div use:scrollReveal class="max-w-5xl mx-auto mb-24 relative group reveal">
                 <div class="relative p-10 lg:p-20 bg-slate-900 border border-slate-800 rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-500 hover:border-sky-500/30">
                     <!-- Subtle Background Glow -->
                     <div class="absolute -top-24 -left-24 w-64 h-64 bg-sky-500/5 blur-[80px] rounded-full group-hover:bg-sky-500/10 transition-all duration-700"></div>
@@ -400,7 +423,7 @@
 
             {#if visionMission?.missions && Array.isArray(visionMission.missions)}
                 <!-- Missions Title -->
-                <div class="mb-12 mt-20 relative z-10">
+                <div use:scrollReveal class="mb-12 mt-20 relative z-10 reveal">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 bg-sky-500/10 rounded-2xl flex items-center justify-center text-sky-400 border border-sky-500/20">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
@@ -412,7 +435,7 @@
                 <!-- Missions Grid -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {#each visionMission.missions as mission, i}
-                        <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-sky-500/50 transition-all group hover:-translate-y-2 duration-500 shadow-2xl relative overflow-hidden">
+                        <div use:scrollReveal={{ delay: i * 100 }} class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-sky-500/50 transition-all group hover:-translate-y-2 duration-500 shadow-2xl relative overflow-hidden reveal">
                             <!-- Background Accent -->
                             <div class="absolute -right-4 -top-4 w-16 h-16 bg-sky-500/5 rounded-full blur-xl group-hover:bg-sky-500/10 transition-all"></div>
                             
@@ -435,7 +458,7 @@
     <section id="services" class="py-32 relative">
         <div class="container mx-auto px-6">
             <!-- Section Title -->
-            <div class="text-center mb-20">
+            <div use:scrollReveal class="text-center mb-20 reveal">
                 <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-4">Melayani <span class="text-sky-500">Kebutuhan Digital</span> Anda</h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
                 <p class="mt-8 text-slate-400 max-w-2xl mx-auto">Transformasi kebutuhan digital menjadi solusi yang efisien, mudah digunakan, dan handal</p>
@@ -443,8 +466,8 @@
 
             <div class="max-w-6xl mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    {#each services as service}
-                        <div class="group relative bg-slate-900 border border-slate-800 p-8 lg:p-10 rounded-[2.5rem] transition-all duration-500 hover:border-sky-500/30 shadow-2xl overflow-hidden flex flex-col">
+                    {#each services as service, i}
+                        <div use:scrollReveal={{ delay: i * 100 }} class="group relative bg-slate-900 border border-slate-800 p-8 lg:p-10 rounded-[2.5rem] transition-all duration-500 hover:border-sky-500/30 shadow-2xl overflow-hidden flex flex-col reveal">
                             <!-- Header Area -->
                             <div class="mb-8">
                                 <div class="w-14 h-14 bg-sky-500/10 rounded-2xl flex items-center justify-center text-sky-400 mb-6 group-hover:scale-110 transition-all duration-500 border border-sky-500/10 group-hover:border-sky-500/40 shadow-inner">
@@ -488,7 +511,7 @@
 
         <div class="container mx-auto px-6">
             <!-- Section Header -->
-            <div class="text-center mb-24 relative z-10">
+            <div use:scrollReveal class="text-center mb-24 relative z-10 reveal">
                 <div class="flex items-center justify-center gap-3 mb-6">
                     <div class="w-12 h-[1px] bg-sky-500/50"></div>
                     <span class="text-sky-500 text-xs font-black uppercase tracking-[0.3em]">Portofolio Expo</span>                    <div class="w-12 h-[1px] bg-sky-500/50"></div>
@@ -516,7 +539,7 @@
             <!-- Projects Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 relative z-10">
                 {#each paginatedProjects as project, i}
-                    <a href="/project/{project.slug}" class="group relative flex flex-col bg-slate-900 border border-slate-800 rounded-3xl hover:border-sky-500/50 transition-all duration-500 shadow-xl overflow-hidden">
+                    <a use:scrollReveal={{ delay: (i % 3) * 100 }} href="/project/{project.slug}" class="group relative flex flex-col bg-slate-900 border border-slate-800 rounded-3xl hover:border-sky-500/50 transition-all duration-500 shadow-xl overflow-hidden reveal">
                         <!-- Thumbnail Container -->
                         <div class="relative aspect-[4/3] overflow-hidden">
                             {#if project.thumbnail}
@@ -583,6 +606,7 @@
                             scrollTo('projects');
                         }}
                         class="w-14 h-14 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-sky-400 hover:border-sky-500/50 disabled:opacity-20 disabled:pointer-events-none transition-all shadow-xl"
+                        aria-label="Halaman sebelumnya"
                     >
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                     </button>
@@ -595,6 +619,7 @@
                                     scrollTo('projects');
                                 }}
                                 class="w-12 h-12 rounded-xl font-black text-xs transition-all {currentPage === i + 1 ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20 scale-110' : 'bg-slate-900 border border-slate-800 text-slate-500 hover:text-white hover:border-slate-600'}"
+                                aria-label="Halaman {i + 1}"
                             >
                                 {i + 1}
                             </button>
@@ -608,6 +633,7 @@
                             scrollTo('projects');
                         }}
                         class="w-14 h-14 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-sky-400 hover:border-sky-500/50 disabled:opacity-20 disabled:pointer-events-none transition-all shadow-xl"
+                        aria-label="Halaman berikutnya"
                     >
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                     </button>
@@ -619,14 +645,14 @@
     <!-- Kemampuan Section -->
     <section id="skills" class="py-32 relative">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-24">
+            <div use:scrollReveal class="text-center mb-24 reveal">
                 <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-4">Bidang <span class="text-sky-500">Keahlian</span></h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
-                {#each ['teknologi', 'minat', 'bahasa'] as cat}
-                    <div class="flex flex-col">
+                {#each ['teknologi', 'minat', 'bahasa'] as cat, catIndex}
+                    <div use:scrollReveal={{ delay: catIndex * 150 }} class="flex flex-col reveal">
                         <!-- Category Header -->
                         <div class="flex items-center gap-4 mb-10 pb-6 border-b border-slate-800/50">
                             <div class="w-14 h-14 rounded-2xl bg-sky-500/10 flex items-center justify-center text-3xl shadow-inner border border-sky-500/10">
@@ -640,8 +666,8 @@
                         <!-- Skills List (Cards) -->
                         <div class="space-y-6">
                             {#if categorizedSkills[cat]}
-                                {#each categorizedSkills[cat] as skill}
-                                    <div class="group relative p-6 rounded-[2rem] bg-slate-900/50 border border-slate-800 hover:border-sky-500/30 transition-all duration-500 shadow-xl overflow-hidden hover:-translate-y-1">
+                                {#each categorizedSkills[cat] as skill, i}
+                                    <div use:scrollReveal={{ delay: (catIndex * 150) + (i * 100) }} class="group relative p-6 rounded-[2rem] bg-slate-900/50 border border-slate-800 hover:border-sky-500/30 transition-all duration-500 shadow-xl overflow-hidden hover:-translate-y-1 reveal">
                                         <!-- Animated Background Accent -->
                                         <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-sky-500/5 rounded-full blur-2xl group-hover:bg-sky-500/10 transition-all duration-700"></div>
                                         
@@ -682,7 +708,7 @@
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sky-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-5xl lg:text-7xl font-black mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center">
+            <h2 use:scrollReveal class="text-5xl lg:text-7xl font-black mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center reveal">
                 <span class="text-sky-500 text-2xl font-mono mb-4 tracking-[0.3em] uppercase opacity-50">Jenjang Karir</span>
                 Pengalaman <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">Profesional</span>
             </h2>
@@ -705,7 +731,7 @@
 
                             <!-- Content Card Area -->
                             <div class="w-full lg:w-[45%] pl-20 lg:pl-0">
-                                <div class="group relative p-8 rounded-[2.5rem] bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-sky-500/30 transition-all duration-500 hover:-translate-y-2">
+                                <div use:scrollReveal={{ threshold: 0.2 }} class="group relative p-8 rounded-[2.5rem] bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-sky-500/30 transition-all duration-500 hover:-translate-y-2 reveal">
                                     <!-- Date Badge -->
                                     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-black uppercase tracking-widest mb-6">
                                         <span class="relative flex h-2 w-2">
@@ -750,7 +776,7 @@
         <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-indigo-500/5 to-transparent pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-5xl lg:text-7xl font-black mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center">
+            <h2 use:scrollReveal class="text-5xl lg:text-7xl font-black mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center reveal">
                 Perjalanan <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">Pendidikan</span>
             </h2>
             
@@ -771,7 +797,7 @@
 
                             <!-- Content Card -->
                             <div class="w-full lg:w-[45%] pl-20 lg:pl-0">
-                                <div class="group relative p-8 rounded-[2.5rem] bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 hover:border-indigo-500/30 transition-all duration-500">
+                                <div use:scrollReveal={{ threshold: 0.2 }} class="group relative p-8 rounded-[2.5rem] bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 hover:border-indigo-500/30 transition-all duration-500 reveal">
                                     <!-- Graduation Year -->
                                     <div class="inline-block px-4 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-black mb-6">
                                         🎓 Lulus: {edu.graduation_date}
@@ -821,7 +847,7 @@
         <div class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-sky-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-24">
+            <div use:scrollReveal class="text-center mb-24 reveal">
                 <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-4">
                     Pelatihan & <span class="text-sky-500">Sertifikasi</span>
                 </h2>
@@ -829,8 +855,8 @@
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                {#each certificates as cert}
-                    <div class="group relative p-10 rounded-[2rem] bg-slate-900/40 backdrop-blur-md border border-slate-800/50 hover:border-sky-500/30 transition-all duration-700 flex flex-col h-full overflow-hidden">
+                {#each certificates as cert, i}
+                    <div use:scrollReveal={{ delay: (i % 3) * 100 }} class="group relative p-10 rounded-[2rem] bg-slate-900/40 backdrop-blur-md border border-slate-800/50 hover:border-sky-500/30 transition-all duration-700 flex flex-col h-full overflow-hidden reveal">
                         <!-- Left Accent Line (Professional Look) -->
                         <div class="absolute left-0 top-10 bottom-10 w-[2px] bg-sky-500/30 group-hover:bg-sky-500 transition-colors duration-700"></div>
 
@@ -883,7 +909,7 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-8 pt-20 border-t border-slate-900">
                 <!-- Brand Info -->
-                <div class="max-w-sm space-y-8">
+                <div use:scrollReveal class="max-w-sm space-y-8 reveal">
                     <div class="flex items-center gap-3">
                         <img src="/icon.webp" alt="Logo" class="w-12 h-12 rounded-xl shadow-lg shadow-sky-500/10" />
                         <span class="text-2xl font-black tracking-tighter text-white uppercase">{profile?.full_name || 'Wufy Portfolio'}</span>
@@ -904,7 +930,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="min-w-[280px]">
+                <div use:scrollReveal={{ delay: 100 }} class="min-w-[280px] reveal">
                     <h4 class="text-white font-black uppercase tracking-widest text-sm mb-8">Navigasi</h4>
                     <ul class="grid grid-cols-2 gap-y-4 gap-x-12">
                         {#each [
@@ -931,7 +957,7 @@
                 </div>
 
                 <!-- Contact Info -->
-                <div class="min-w-[240px]">
+                <div use:scrollReveal={{ delay: 200 }} class="min-w-[240px] reveal">
                     <h4 class="text-white font-black uppercase tracking-widest text-sm mb-8">Kontak</h4>
                     <div class="space-y-6">
                         <div class="flex items-start gap-3">
@@ -962,7 +988,7 @@
             </div>
 
             <!-- Bottom Copyright Bar -->
-            <div class="mt-32 pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div use:scrollReveal class="mt-32 pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6 reveal">
                 <p class="text-slate-500 text-xs font-medium tracking-wide">
                     &copy; {new Date().getFullYear()} <span class="text-slate-300 font-bold">{profile?.full_name || 'Wufy Portfolio'}</span>. All rights reserved.
                 </p>
@@ -1023,14 +1049,6 @@
         animation: scan-slow 8s linear infinite;
     }
 
-    .clip-octagon {
-        clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
-    }
-
-    .clip-octagon-wide {
-        clip-path: polygon(5% 0%, 95% 0%, 100% 20%, 100% 80%, 95% 100%, 5% 100%, 0% 80%, 0% 20%);
-    }
-
     .clip-hexagon {
         clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     }
@@ -1062,4 +1080,21 @@
     .animate-pulse {
         animation: pulse 15s infinite ease-in-out;
     }
+
+    /* Scroll Reveal Styles */
+    :global(.reveal) {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        will-change: opacity, transform;
+    }
+
+    :global(.revealed) {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+
+    /* Staggered delays using CSS variables if needed, 
+       but we handle them via JS options in the action for simplicity. 
+       If we want to pass delay to the action, we can set it as an inline style. */
 </style>

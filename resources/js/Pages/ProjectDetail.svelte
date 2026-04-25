@@ -203,6 +203,11 @@
             onmousemove={handleMouseMove}
             onmouseup={handleMouseUp}
             onmouseleave={handleMouseUp}
+            role="button"
+            tabindex="0"
+            aria-label="Close viewer"
+            onclick={(e) => { if (e.target === e.currentTarget) closeViewer(); }}
+            onkeydown={(e) => { if (e.key === 'Escape') closeViewer(); }}
         >
             <!-- Controls -->
             <div class="absolute top-6 right-6 flex items-center gap-3 z-[110]">
@@ -243,6 +248,7 @@
             <div 
                 class="relative w-full h-full flex items-center justify-center {zoomScale > 1 ? 'cursor-grab active:cursor-grabbing' : ''}"
                 onmousedown={handleMouseDown}
+                role="presentation"
             >
                 <img 
                     src={selectedImage} 
