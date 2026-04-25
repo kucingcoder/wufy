@@ -35,6 +35,12 @@
 
     let totalPages = $derived(Math.ceil(filteredProjects.length / itemsPerPage));
 
+    // WhatsApp Number Normalization
+    let formattedPhone = $derived(
+        (profile?.phone || '').replace(/[^0-9]/g, '').replace(/^0/, '62')
+    );
+
+
     onMount(() => {
         mounted = true;
         
@@ -330,12 +336,28 @@
                         </div>
                     </div>
 
-                    {#if profile?.cv_path}
-                        <a href="/storage/{profile.cv_path}" target="_blank" class="flex items-center gap-3 bg-sky-500 text-white px-8 py-4 rounded-2xl font-bold hover:bg-sky-400 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-sky-500/25 group">
-                            <span>Unduh CV</span>
-                            <svg class="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        </a>
-                    {/if}
+                    <div class="flex flex-wrap items-center gap-4 justify-center lg:justify-start">
+                        {#if profile?.cv_path}
+                            <a href="/storage/{profile.cv_path}" target="_blank" class="flex items-center gap-3 bg-slate-100 text-slate-900 px-8 py-4 rounded-2xl font-bold hover:bg-white hover:scale-105 active:scale-95 transition-all shadow-xl group">
+                                <span>Unduh CV</span>
+                                <svg class="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            </a>
+                        {/if}
+
+                        {#if profile?.phone}
+                            <a 
+                                href="https://wa.me/{formattedPhone}" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="flex items-center gap-3 bg-green-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-500 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-green-600/20 group"
+                            >
+                                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.887 11.887-2.01 0-3.987-.512-5.744-1.488l-6.141 1.712zm6.352-3.804c1.644.975 3.266 1.489 4.981 1.489 5.399 0 9.794-4.396 9.794-9.795 0-5.398-4.396-9.793-9.794-9.793-2.615 0-5.074 1.018-6.921 2.865s-2.864 4.305-2.864 6.92c0 1.761.533 3.436 1.543 4.887l-1.011 3.693 3.791-1.055c1.479.805 3.13 1.258 4.793 1.258zm11.314-7.462c-.302-.151-1.782-.879-2.059-.979-.277-.101-.48-.151-.68.151-.2.302-.779.979-.955 1.181-.177.201-.353.226-.654.076-.301-.151-1.272-.469-2.421-1.494-.894-.797-1.497-1.782-1.672-2.083-.177-.302-.019-.465.132-.615.136-.134.302-.352.453-.529.151-.176.201-.302.302-.503.101-.201.05-.378-.026-.529-.076-.151-.68-1.637-.931-2.242-.244-.589-.493-.509-.68-.518-.176-.008-.378-.01-.58-.01-.201 0-.529.076-.805.378-.277.301-1.056 1.031-1.056 2.515 0 1.484 1.08 2.919 1.231 3.12.151.201 2.126 3.246 5.148 4.549.719.31 1.28.496 1.718.636.721.23 1.378.197 1.896.12.577-.085 1.782-.729 2.034-1.433.251-.704.251-1.307.176-1.433-.076-.126-.277-.202-.579-.353z"/>
+                                </svg>
+                                <span>Hubungi</span>
+                            </a>
+                        {/if}
+                    </div>
                 </div>
             </div>
 
@@ -947,6 +969,8 @@
             </div>
         </div>
     </footer>
+
+
 </div>
 
 <style>
