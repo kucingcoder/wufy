@@ -8,6 +8,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
 
@@ -58,6 +59,18 @@ class ProjectForm
                             ->label('Tahun')
                             ->numeric()
                             ->length(4),
+                        Toggle::make('is_opensource')
+                            ->label('Open Source?')
+                            ->live()
+                            ->inline(false),
+                        TextInput::make('github_link')
+                            ->label('GitHub Repository Link')
+                            ->url()
+                            ->required(fn (callable $get) => $get('is_opensource'))
+                            ->visible(fn (callable $get) => $get('is_opensource'))
+                            ->placeholder('https://github.com/username/repo')
+                            ->prefix('github.com/')
+                            ->columnSpanFull(),
                     ]),
                 Textarea::make('short_description')
                     ->label('Deskripsi Singkat')
