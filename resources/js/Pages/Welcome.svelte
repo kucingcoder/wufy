@@ -933,10 +933,10 @@
                             <div class="flex flex-wrap gap-2">
                                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-sky-500/5 border border-sky-500/10 text-[10px] font-black text-sky-500/80 uppercase tracking-widest">
                                     <span class="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span>
-                                    {cert.level}
+                                    {cert.level === 'dasar' ? 'Dasar' : cert.level}
                                 </div>
                                 <div class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[10px] font-black text-slate-500 uppercase tracking-widest">
-                                    {cert.category}
+                                    {cert.category === 'kursus' ? 'Kursus' : (cert.category === 'kompetensi' ? 'Kompetensi' : cert.category)}
                                 </div>
                             </div>
                         </div>
@@ -949,6 +949,13 @@
                                     {cert.start_date} — {cert.end_date || 'Seumur Hidup'}
                                 </p>
                             </div>
+
+                            {#if cert.verification_url}
+                                <a href={cert.verification_url} target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-sky-500 hover:text-sky-400 transition-colors group/link">
+                                    <span class="text-[10px] font-black uppercase tracking-wider">Verifikasi</span>
+                                    <svg class="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                            {/if}
                         </div>
 
                         <!-- Professional Hover Background -->

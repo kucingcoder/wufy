@@ -22,7 +22,8 @@ class CertificateFactory extends Factory
             'issuer' => $this->faker->company(),
 
             'category' => $this->faker->randomElement(['kursus', 'kompetensi']),
-            'level' => $this->faker->randomElement(['pemula', 'menengah', 'tingkat lanjut', 'mahir', 'pakar']),
+            'level' => $this->faker->randomElement(['dasar', 'menengah', 'tingkat lanjut', 'mahir', 'pakar']),
+            'verification_url' => $this->faker->optional()->url(),
             'start_date' => $this->faker->monthName() . ' ' . ($this->faker->year() - 1),
             'end_date' => $this->faker->monthName() . ' ' . $this->faker->year(),
         ];

@@ -31,13 +31,18 @@ class CertificateForm
                 Select::make('level')
                     ->label('Tingkat / Level')
                     ->options([
-                        'pemula' => 'Pemula',
+                        'dasar' => 'Dasar',
                         'menengah' => 'Menengah',
                         'tingkat lanjut' => 'Tingkat Lanjut',
                         'mahir' => 'Mahir',
                         'pakar' => 'Pakar',
                     ])
                     ->required(),
+                TextInput::make('verification_url')
+                    ->label('Link Verifikasi')
+                    ->url()
+                    ->placeholder('https://...')
+                    ->maxLength(255),
                 TextInput::make('start_date')
                     ->label('Mulai Berlaku')
                     ->placeholder('Bulan/Tahun')
