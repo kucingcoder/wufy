@@ -1031,7 +1031,7 @@
                             </div>
                             <div>
                                 <p class="text-sky-500 text-[10px] font-semibold uppercase tracking-[0.2em] mb-1">Lokasi</p>
-                                <p class="text-white text-lg font-medium tracking-tight">{profile?.city}, {profile?.province}</p>
+                                <p class="text-white text-base font-medium tracking-tight">{profile?.city}, {profile?.province}</p>
                             </div>
                         </div>
 
@@ -1041,7 +1041,7 @@
                             </div>
                             <div>
                                 <p class="text-sky-500 text-[10px] font-semibold uppercase tracking-[0.2em] mb-1">Telepon</p>
-                                <p class="text-white text-lg font-medium tracking-tight">{profile?.phone}</p>
+                                <p class="text-white text-base font-medium tracking-tight">{profile?.phone}</p>
                             </div>
                         </div>
 
@@ -1051,7 +1051,7 @@
                             </div>
                             <div>
                                 <p class="text-sky-500 text-[10px] font-semibold uppercase tracking-[0.2em] mb-1">Email</p>
-                                <p class="text-white text-lg font-medium tracking-tight">{profile?.email}</p>
+                                <p class="text-white text-base font-medium tracking-tight">{profile?.email}</p>
                             </div>
                         </div>
                     </div>
