@@ -405,7 +405,7 @@
                     {profile?.job_title || 'Gelar Profesional'}
                 </h2>
                 
-                <p use:scrollReveal={{ delay: 200 }} class="text-lg lg:text-xl text-slate-400 max-w-xl mb-2 leading-relaxed font-light reveal">
+                <p use:scrollReveal={{ delay: 200 }} class="text-lg lg:text-xl text-slate-400 max-w-2xl mb-2 leading-relaxed font-light reveal">
                     {profile?.description || 'Membangun solusi digital inovatif dengan fokus pada teknologi modern dan pengalaman pengguna yang luar biasa.'}
                 </p>
 
