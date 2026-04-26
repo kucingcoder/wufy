@@ -15,6 +15,7 @@
     } = $props();
 
     let mounted = $state(false);
+    let isLoading = $state(true);
     let activeSection = $state('home');
     let searchQuery = $state('');
     let currentPage = $state(1);
@@ -43,6 +44,11 @@
 
     onMount(() => {
         mounted = true;
+        
+        // Simulate initial loading sequence
+        setTimeout(() => {
+            isLoading = false;
+        }, 1500);
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -184,6 +190,65 @@
     </script>
 </svelte:head>
 
+<!-- Futuristic Preloader -->
+{#if isLoading}
+    <div 
+        transition:fade={{ duration: 800 }}
+        class="fixed inset-0 z-[100] bg-[#020617] flex flex-col items-center justify-center overflow-hidden"
+    >
+        <!-- Background HUD Elements -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sky-500/10 rounded-full blur-[120px] animate-pulse"></div>
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMTQ4LCAxNjMsIDE4NCwgMC4wNSkiIHN0cm9rZS13aWR0aD0iMC41Ij48cGF0aCBkPSJNMCA0MGg0MFYwSDB6Ii8+PC9nPjwvc3ZnPg==')] bg-repeat opacity-20"></div>
+        </div>
+
+        <!-- Central Animation -->
+        <div class="relative flex flex-col items-center">
+            <!-- Rotating Rings -->
+            <div class="relative w-32 h-32 mb-12">
+                <div class="absolute inset-0 border-2 border-sky-500/10 rounded-full"></div>
+                <div class="absolute inset-0 border-t-2 border-sky-500 rounded-full animate-spin"></div>
+                <div class="absolute inset-4 border-b-2 border-indigo-500 rounded-full animate-spin-reverse opacity-50"></div>
+                
+                <!-- Inner Core -->
+                <div class="absolute inset-10 bg-gradient-to-br from-sky-400 to-indigo-600 rounded-full shadow-[0_0_30px_rgba(14,165,233,0.5)] animate-pulse flex items-center justify-center">
+                    <div class="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Loading Text -->
+            <div class="text-center relative">
+                <div class="text-sky-500 font-mono text-xs tracking-[0.5em] mb-3 uppercase animate-pulse">
+                    System Initializing
+                </div>
+                <div class="h-1 w-48 bg-slate-800 rounded-full overflow-hidden relative">
+                    <div class="absolute inset-y-0 left-0 bg-sky-500 rounded-full animate-progress-loading"></div>
+                </div>
+                
+                <!-- Scanning Bar -->
+                <div class="absolute -inset-x-20 -inset-y-10 border border-sky-500/5 rounded-3xl pointer-events-none">
+                    <div class="absolute inset-x-0 h-[1px] bg-sky-500/20 top-0 animate-scan"></div>
+                </div>
+            </div>
+            
+            <div class="mt-8 flex gap-3">
+                {#each Array(3) as _, i}
+                    <div class="w-1.5 h-1.5 bg-sky-500/30 rounded-full animate-bounce" style="animation-delay: {i * 0.2}s"></div>
+                {/each}
+            </div>
+        </div>
+        
+        <!-- Bottom Stats -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-8 text-[10px] font-mono text-slate-600 tracking-widest uppercase">
+            <span>Core: Active</span>
+            <span class="w-1 h-1 bg-slate-800 rounded-full"></span>
+            <span>Uplink: Secure</span>
+            <span class="w-1 h-1 bg-slate-800 rounded-full"></span>
+            <span>Protocols: Ready</span>
+        </div>
+    </div>
+{/if}
+
 <div class="bg-[#020617] text-slate-100 font-['Plus_Jakarta_Sans'] selection:bg-sky-500/30 overflow-x-hidden min-h-screen">
     
     <!-- Background System -->
@@ -223,12 +288,12 @@
     <div class="fixed top-6 right-6 z-[60] md:hidden">
         <button 
             onclick={() => isMenuOpen = !isMenuOpen}
-            class="w-14 h-14 flex flex-col items-center justify-center gap-1.5 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-2xl shadow-2xl transition-all active:scale-95"
+            class="w-9 h-9 flex flex-col items-center justify-center gap-1 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-lg shadow-2xl transition-all active:scale-95"
             aria-label={isMenuOpen ? "Tutup Menu" : "Buka Menu"}
         >
-            <span class="w-7 h-0.5 bg-white transition-all duration-300 {isMenuOpen ? 'rotate-45 translate-y-2' : ''}"></span>
-            <span class="w-7 h-0.5 bg-white transition-all duration-300 {isMenuOpen ? 'opacity-0' : ''}"></span>
-            <span class="w-7 h-0.5 bg-white transition-all duration-300 {isMenuOpen ? '-rotate-45 -translate-y-2' : ''}"></span>
+            <span class="w-4 h-0.5 bg-white transition-all duration-300 {isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}"></span>
+            <span class="w-4 h-0.5 bg-white transition-all duration-300 {isMenuOpen ? 'opacity-0' : ''}"></span>
+            <span class="w-4 h-0.5 bg-white transition-all duration-300 {isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}"></span>
         </button>
     </div>
 
@@ -245,8 +310,8 @@
                     class="text-slate-400 hover:text-white transition-colors group"
                     aria-label="Tutup Menu"
                 >
-                    <div class="w-14 h-14 rounded-2xl border border-slate-800 flex items-center justify-center group-hover:border-slate-600 bg-slate-900/50">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    <div class="w-9 h-9 rounded-lg border border-slate-800 flex items-center justify-center group-hover:border-slate-600 bg-slate-900/50">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </div>
                 </button>
             </div>
@@ -1047,6 +1112,25 @@
 
     .animate-scan-slow {
         animation: scan-slow 8s linear infinite;
+    }
+
+    @keyframes spin-reverse {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(-360deg); }
+    }
+    
+    .animate-spin-reverse {
+        animation: spin-reverse 2s linear infinite;
+    }
+
+    @keyframes progress-loading {
+        0% { width: 0; left: 0; }
+        50% { width: 100%; left: 0; }
+        100% { width: 0; left: 100%; }
+    }
+
+    .animate-progress-loading {
+        animation: progress-loading 2s ease-in-out infinite;
     }
 
     .clip-hexagon {
