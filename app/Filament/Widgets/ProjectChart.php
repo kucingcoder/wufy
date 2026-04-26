@@ -7,6 +7,8 @@ use Filament\Widgets\ChartWidget;
 
 class ProjectChart extends ChartWidget
 {
+    protected static ?int $sort = 2;
+
     protected ?string $heading = 'Pertumbuhan Proyek (Tahun Ini)';
 
     protected function getData(): array

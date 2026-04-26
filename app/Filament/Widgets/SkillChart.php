@@ -7,6 +7,8 @@ use Filament\Widgets\ChartWidget;
 
 class SkillChart extends ChartWidget
 {
+    protected static ?int $sort = 3;
+
     protected ?string $heading = 'Distribusi Kemampuan Berdasarkan Kategori';
     protected ?string $maxHeight = '300px';
 
