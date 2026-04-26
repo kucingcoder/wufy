@@ -345,7 +345,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 px-6 lg:px-24">
-        <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        <div class="container mx-auto grid lg:grid-cols-[1.8fr_1fr] gap-16 items-center">
             
             <!-- Mobile: TOP / Desktop: RIGHT (Profile & HUD) -->
             <div class="order-1 lg:order-2 flex flex-col items-center lg:items-end gap-8">
@@ -405,7 +405,7 @@
                     {profile?.job_title || 'Gelar Profesional'}
                 </h2>
                 
-                <p use:scrollReveal={{ delay: 200 }} class="text-lg lg:text-xl text-slate-400 max-w-2xl mb-2 leading-relaxed font-light reveal">
+                <p use:scrollReveal={{ delay: 200 }} class="text-lg lg:text-xl text-slate-400 mb-2 leading-relaxed font-light reveal">
                     {profile?.description || 'Membangun solusi digital inovatif dengan fokus pada teknologi modern dan pengalaman pengguna yang luar biasa.'}
                 </p>
 
