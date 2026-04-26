@@ -31,3 +31,9 @@ Route::get('/project/{project}', function (Project $project) {
         'project' => $project->load('galleries'),
     ]);
 });
+
+Route::get('/robots.txt', function () {
+    $url = config('app.url');
+    return response("User-agent: *\nAllow: /\n\nSitemap: {$url}/sitemap.xml", 200)
+        ->header('Content-Type', 'text/plain');
+});
