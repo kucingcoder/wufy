@@ -461,7 +461,7 @@
         <div class="container mx-auto px-6">
             <!-- Section Title -->
             <div use:scrollReveal class="text-center mb-20 reveal">
-                <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-4">Visi & <span class="text-sky-500">Misi</span></h2>
+                <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-4">Visi & <span class="text-sky-500">Misi</span></h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
             </div>
 
@@ -479,7 +479,7 @@
                             <span class="text-sky-500 font-bold uppercase tracking-[0.2em] text-xs">Visi</span>
                         </div>
 
-                        <p class="text-3xl lg:text-5xl font-black leading-tight text-white tracking-tight group-hover:text-sky-50 transition-colors duration-500">
+                        <p class="text-3xl lg:text-5xl font-bold leading-tight text-white tracking-tight group-hover:text-sky-50 transition-colors duration-500">
                             {visionMission?.vision || 'Menyediakan layanan berkualitas tinggi dengan solusi inovatif.'}
                         </p>
                     </div>
@@ -493,7 +493,7 @@
                         <div class="w-12 h-12 bg-sky-500/10 rounded-2xl flex items-center justify-center text-sky-400 border border-sky-500/20">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
-                        <h3 class="text-3xl font-black text-white tracking-tight uppercase">Misi</h3>
+                        <h3 class="text-3xl font-bold text-white tracking-tight uppercase">Misi</h3>
                     </div>
                 </div>
 
@@ -524,7 +524,7 @@
         <div class="container mx-auto px-6">
             <!-- Section Title -->
             <div use:scrollReveal class="text-center mb-20 reveal">
-                <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-4">Melayani <span class="text-sky-500">Kebutuhan Digital</span> Anda</h2>
+                <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-4">Melayani <span class="text-sky-500">Kebutuhan Digital</span> Anda</h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
                 <p class="mt-8 text-slate-400 max-w-2xl mx-auto">Transformasi kebutuhan digital menjadi solusi yang efisien, mudah digunakan, dan handal</p>
             </div>
@@ -538,7 +538,7 @@
                                 <div class="w-14 h-14 bg-sky-500/10 rounded-2xl flex items-center justify-center text-sky-400 mb-6 group-hover:scale-110 transition-all duration-500 border border-sky-500/10 group-hover:border-sky-500/40 shadow-inner">
                                     {@html getServiceIcon(service.icon)}
                                 </div>
-                                <h3 class="text-2xl lg:text-3xl font-black text-white group-hover:text-sky-400 transition-colors tracking-tighter mb-3">
+                                <h3 class="text-2xl lg:text-3xl font-bold text-white group-hover:text-sky-400 transition-colors tracking-tighter mb-3">
                                     {service.title}
                                 </h3>
                                 <div class="h-1 w-10 bg-sky-500/20 rounded-full group-hover:w-20 group-hover:bg-sky-500 transition-all duration-500"></div>
@@ -581,7 +581,7 @@
                     <div class="w-12 h-[1px] bg-sky-500/50"></div>
                     <span class="text-sky-500 text-xs font-black uppercase tracking-[0.3em]">Portofolio Expo</span>                    <div class="w-12 h-[1px] bg-sky-500/50"></div>
                 </div>
-                <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-6 text-white">{projects.length} Solusi <span class="text-sky-500">Telah Dibuat</span></h2>
+                <h2 class="text-5xl lg:text-7xl font-bold tracking-tighter mb-6 text-white">{projects.length} Solusi <span class="text-sky-500">Telah Dibuat</span></h2>
                 <div class="w-32 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_25px_rgba(14,165,233,0.6)]"></div>
                 
                 <!-- Search Box (Futuristic) -->
@@ -711,7 +711,7 @@
     <section id="skills" class="py-32 relative">
         <div class="container mx-auto px-6">
             <div use:scrollReveal class="text-center mb-24 reveal">
-                <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-4">Bidang <span class="text-sky-500">Keahlian</span></h2>
+                <h2 class="text-5xl lg:text-7xl font-bold tracking-tighter mb-4">Bidang <span class="text-sky-500">Keahlian</span></h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
             </div>
 
@@ -724,7 +724,7 @@
                                 {cat === 'bahasa' ? '🌐' : cat === 'teknologi' ? '⚡' : '✨'}
                             </div>
                             <div>
-                                <h3 class="text-2xl font-black text-white tracking-tight">{getCategoryLabel(cat)}</h3>
+                                <h3 class="text-2xl font-bold text-white tracking-tight">{getCategoryLabel(cat)}</h3>
                             </div>
                         </div>
 
@@ -745,7 +745,7 @@
                                                         <span class="text-xl">✨</span>
                                                     {/if}
                                                 </div>
-                                                <h4 class="text-lg font-black text-white group-hover:text-sky-400 transition-colors duration-300 tracking-tight">
+                                                <h4 class="text-lg font-bold text-white group-hover:text-sky-400 transition-colors duration-300 tracking-tight">
                                                     {skill.title}
                                                 </h4>
                                             </div>
@@ -773,7 +773,7 @@
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sky-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <h2 use:scrollReveal class="text-5xl lg:text-7xl font-black mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center reveal">
+            <h2 use:scrollReveal class="text-5xl lg:text-7xl font-bold mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center reveal">
                 <span class="text-sky-500 text-2xl font-mono mb-4 tracking-[0.3em] uppercase opacity-50">Jenjang Karir</span>
                 Pengalaman <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">Profesional</span>
             </h2>
@@ -806,7 +806,7 @@
                                         {exp.start_date} — {exp.end_date || 'Sekarang'}
                                     </div>
 
-                                    <h3 class="text-3xl font-black mb-3 text-white group-hover:text-sky-400 transition-colors leading-tight">{exp.position}</h3>
+                                    <h3 class="text-3xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors leading-tight">{exp.position}</h3>
                                     
                                     <div class="flex flex-wrap items-center gap-3 text-slate-400 mb-6">
                                         <div class="flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-950 border border-slate-800">
@@ -841,7 +841,7 @@
         <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-indigo-500/5 to-transparent pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <h2 use:scrollReveal class="text-5xl lg:text-7xl font-black mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center reveal">
+            <h2 use:scrollReveal class="text-5xl lg:text-7xl font-bold mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center reveal">
                 Perjalanan <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">Pendidikan</span>
             </h2>
             
