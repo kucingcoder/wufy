@@ -218,7 +218,7 @@
 
             <!-- Loading Text -->
             <div class="text-center relative">
-                <div class="text-sky-500 font-mono text-xs tracking-[0.5em] mb-3 uppercase animate-pulse">
+                <div class="text-sky-400 font-mono text-xs tracking-[0.5em] mb-3 uppercase animate-neon-pulse text-neon-sky">
                     System Initializing
                 </div>
                 <div class="h-1 w-48 bg-slate-800 rounded-full overflow-hidden relative">
@@ -1104,9 +1104,24 @@
         background: #334155;
     }
 
+    .text-neon-sky {
+        text-shadow: 0 0 10px rgba(56, 189, 248, 0.8),
+                     0 0 20px rgba(56, 189, 248, 0.4),
+                     0 0 30px rgba(56, 189, 248, 0.2);
+    }
+
     @keyframes progress {
         from { width: 0; }
         to { width: 85%; }
+    }
+
+    @keyframes neon-pulse {
+        0%, 100% { opacity: 1; text-shadow: 0 0 10px rgba(56, 189, 248, 0.8), 0 0 20px rgba(56, 189, 248, 0.4), 0 0 30px rgba(56, 189, 248, 0.2); }
+        50% { opacity: 0.7; text-shadow: 0 0 5px rgba(56, 189, 248, 0.5), 0 0 10px rgba(56, 189, 248, 0.2); }
+    }
+
+    .animate-neon-pulse {
+        animation: neon-pulse 2s ease-in-out infinite;
     }
 
     @keyframes scan {
