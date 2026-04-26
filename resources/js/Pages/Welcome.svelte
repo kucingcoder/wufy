@@ -316,7 +316,7 @@
                 </button>
             </div>
 
-            <div class="flex flex-col items-center justify-center flex-1 gap-10 pb-20">
+            <div class="flex flex-col items-center justify-center flex-1 gap-6 pb-20">
                 {#each [
                     { id: 'home', label: 'beranda' },
                     { id: 'vision', label: 'Visi/Misi' },
@@ -334,7 +334,7 @@
                             scrollTo(item.id);
                             isMenuOpen = false;
                         }}
-                        class="text-4xl lg:text-5xl font-black tracking-tighter transition-all {activeSection === item.id ? 'text-sky-500' : 'text-slate-500 hover:text-white'}"
+                        class="text-2xl font-black tracking-tighter transition-all {activeSection === item.id ? 'text-sky-500' : 'text-slate-500 hover:text-white'}"
                     >
                         {item.label}
                     </button>
