@@ -51,15 +51,41 @@ Wufy Portfolio adalah sistem portofolio personal premium yang dirancang dengan e
    php artisan storage:link
    ```
 
-6. **Jalankan Aplikasi**:
-   Gunakan Octane untuk performa terbaik:
+6. **Permissions**:
+   Pastikan direktori berikut memiliki izin akses tulis yang benar agar aplikasi dapat berjalan lancar:
+   ```bash
+   sudo chmod -R 775 storage bootstrap/cache public
+   sudo chown -R $USER:www-data storage bootstrap/cache public
+   ```
+
+7. **Jalankan Aplikasi**:
+   Gunakan Octane (FrankenPHP) untuk performa terbaik:
    ```bash
    php artisan octane:start --watch
    ```
-   Dan jalankan Vite di terminal terpisah:
+   Dan jalankan Vite di terminal terpisah untuk *assets*:
    ```bash
    npm run dev
    ```
+
+## 🌐 Deployment
+
+### 1. VPS (Rekomendasi)
+Gunakan **Laravel Octane** dengan **FrankenPHP** untuk performa maksimal.
+- Jalankan `php artisan octane:install`.
+- Gunakan **Process Manager** seperti **Supervisor** atau **Systemd** untuk menjaga aplikasi tetap berjalan.
+- Gunakan Reverse Proxy seperti **Nginx** atau **Caddy** jika diperlukan.
+
+### 2. Shared Hosting (cPanel)
+Untuk hosting tradisional tanpa akses terminal/proses jangka panjang:
+1.  **Upload**: Unggah seluruh file ke direktori di luar `public_html`.
+2.  **Public Files**: Pindahkan isi folder `public` ke dalam `public_html`.
+3.  **Path Adjustment**: Sesuaikan path di `public_html/index.php` untuk mengarah ke lokasi `vendor/autoload.php` dan `bootstrap/app.php` yang baru.
+4.  **Symlink**: Buat symlink untuk storage melalui terminal cPanel:
+    ```bash
+    ln -s /home/user/wufy/storage/app/public /home/user/public_html/storage
+    ```
+5.  **Optimasi**: Karena Octane tidak bisa berjalan di shared hosting biasa, aplikasi akan berjalan via PHP-FPM standar secara otomatis.
 
 ## 🔐 Akun Admin Default
 
