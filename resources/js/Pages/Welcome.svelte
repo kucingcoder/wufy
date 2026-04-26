@@ -547,7 +547,7 @@
                             <!-- Investment Info -->
                             <div class="mb-8">
                                 <p class="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mb-1">Investment Range</p>
-                                <p class="text-xl font-black text-white tracking-tight">
+                                <p class="text-2xl lg:text-3xl font-black text-sky-400 tracking-tight">
                                     {service.price_range}
                                 </p>
                             </div>
