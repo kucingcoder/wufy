@@ -16,13 +16,13 @@ use App\Models\Certificate;
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'profile' => Profile::first(),
-        'education' => Education::orderBy('graduation_date', 'desc')->get(),
-        'experiences' => Experience::orderBy('start_date', 'desc')->get(),
+        'education' => Education::orderBy('sort')->get(),
+        'experiences' => Experience::orderBy('sort')->get(),
         'projects' => Project::with('galleries')->latest()->get(),
         'skills' => Skill::orderBy('sort')->get(),
         'services' => Service::orderBy('sort')->get(),
         'visionMission' => VisionMission::first(),
-        'certificates' => Certificate::latest()->get(),
+        'certificates' => Certificate::orderBy('sort')->get(),
     ]);
 });
 

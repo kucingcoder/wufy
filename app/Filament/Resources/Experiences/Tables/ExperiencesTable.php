@@ -13,6 +13,8 @@ class ExperiencesTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->reorderable('sort')
+            ->defaultSort('sort')
             ->columns([
                 TextColumn::make('company')
                     ->label('Perusahaan')

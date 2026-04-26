@@ -13,6 +13,8 @@ class EducationTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->reorderable('sort')
+            ->defaultSort('sort')
             ->columns([
                 TextColumn::make('institution')
                     ->label('Institusi')
