@@ -552,10 +552,10 @@
                                 </p>
                             </div>
 
-                            <!-- Description Area (Handles paragraphs & points) -->
+                            <!-- Description Area (Handles HTML content from RichEditor) -->
                             <div class="flex-1">
-                                <div class="text-base text-slate-400 leading-relaxed font-light group-hover:text-slate-300 transition-colors whitespace-pre-line">
-                                    {service.description}
+                                <div class="text-base text-slate-400 leading-relaxed font-light group-hover:text-slate-300 transition-colors prose prose-invert prose-sky max-w-none prose-p:leading-relaxed prose-li:my-1">
+                                    {@html service.description}
                                 </div>
                             </div>
 
