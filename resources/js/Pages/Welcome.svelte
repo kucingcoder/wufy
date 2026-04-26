@@ -397,7 +397,7 @@
             <!-- Mobile: BOTTOM / Desktop: LEFT (Info) -->
             <div class="order-2 lg:order-1 text-center lg:text-left">
                 
-                <h1 use:scrollReveal class="text-5xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-6 text-white reveal">
+                <h1 use:scrollReveal class="text-4xl lg:text-6xl font-black tracking-tighter leading-[0.9] mb-6 text-white reveal">
                     {profile?.full_name || 'Your Name'}
                 </h1>
                 
