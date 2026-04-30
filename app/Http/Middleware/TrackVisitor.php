@@ -16,6 +16,9 @@ class TrackVisitor
     public function handle(Request $request, Closure $next): Response
     {
         try {
+            $referer = $request->headers->get('referer');
+            $refererHost = $referer ? parse_url($referer, PHP_URL_HOST) : 'Direct';
+
             \App\Models\Visitor::firstOrCreate(
                 [
                     'ip_address' => $request->ip(),
@@ -23,6 +26,7 @@ class TrackVisitor
                 ],
                 [
                     'user_agent' => $request->userAgent(),
+                    'referer' => $refererHost,
                 ]
             );
         } catch (\Exception $e) {
