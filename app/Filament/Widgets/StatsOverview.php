@@ -18,6 +18,10 @@ class StatsOverview extends BaseWidget
     protected function getStats(): array
     {
         return [
+            Stat::make('Pengunjung Hari Ini', \App\Models\Visitor::whereDate('date', today())->count())
+                ->description('Total pengunjung unik hari ini')
+                ->descriptionIcon('heroicon-m-users')
+                ->color('teal'),
             Stat::make('Total Proyek', Project::count())
                 ->description('Proyek yang telah diselesaikan')
                 ->descriptionIcon('heroicon-m-folder-open')
@@ -33,7 +37,7 @@ class StatsOverview extends BaseWidget
             Stat::make('Pengalaman', Experience::count())
                 ->description('Riwayat Karir/Organisasi')
                 ->descriptionIcon('heroicon-m-briefcase')
-                ->color('primary'),
+                ->color('warning'),
             Stat::make('Pendidikan', Education::count())
                 ->description('Riwayat Pendidikan')
                 ->descriptionIcon('heroicon-m-academic-cap')
