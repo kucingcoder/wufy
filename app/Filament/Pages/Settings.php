@@ -17,7 +17,7 @@ class Settings extends Page
     protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-cog-6-tooth';
     protected static ?string $title = 'Pengaturan Akun';
     protected static ?string $navigationLabel = 'Pengaturan';
-    protected static ?int $navigationSort = 100;
+    protected static ?int $navigationSort = 9;
 
     public ?array $data = [];
 

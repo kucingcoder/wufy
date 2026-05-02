@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('ip_address');
             $table->text('user_agent')->nullable();
+            $table->string('referer')->nullable();
             $table->date('date');
             $table->timestamps();
             

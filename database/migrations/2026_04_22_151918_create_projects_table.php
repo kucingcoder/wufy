@@ -14,8 +14,15 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('thumbnail')->nullable();
+            $table->string('month');
+            $table->string('year');
             $table->text('short_description');
             $table->longText('blog_content')->nullable();
+            $table->boolean('is_opensource')->default(false);
+            $table->string('github_link')->nullable();
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

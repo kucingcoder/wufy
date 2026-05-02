@@ -23,6 +23,7 @@ class ExperienceResource extends Resource
     protected static ?string $modelLabel = 'Pengalaman';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBriefcase;
+    protected static ?int $navigationSort = 6;
 
     public static function form(Schema $schema): Schema
     {

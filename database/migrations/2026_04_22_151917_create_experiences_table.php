@@ -16,10 +16,11 @@ return new class extends Migration
             $table->string('company');
             $table->string('position');
             $table->string('location_text');
-            $table->text('google_map_url')->nullable();
             $table->string('start_date'); // Month/Year
             $table->string('end_date')->nullable(); // Month/Year or "Present"
             $table->string('status'); // full-time, intern, etc.
+            $table->text('description')->nullable();
+            $table->integer('sort')->default(0);
             $table->timestamps();
         });
     }

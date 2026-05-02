@@ -18,11 +18,12 @@ class EducationResource extends Resource
 {
     protected static ?string $model = Education::class;
 
-    protected static ?string $navigationLabel = 'Pendidikan';
-    protected static ?string $pluralLabel = 'Daftar Pendidikan';
-    protected static ?string $modelLabel = 'Pendidikan';
+    protected static ?string $navigationLabel = 'Edukasi';
+    protected static ?string $pluralLabel = 'Edukasi';
+    protected static ?string $modelLabel = 'Edukasi';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAcademicCap;
+    protected static ?int $navigationSort = 7;
 
     public static function form(Schema $schema): Schema
     {

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('logo_path')->nullable();
             $table->string('category'); // language, category, interest
             $table->text('description')->nullable();
+            $table->integer('sort')->default(0);
             $table->timestamps();
         });
     }

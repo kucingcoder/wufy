@@ -18,11 +18,12 @@ class SkillResource extends Resource
 {
     protected static ?string $model = Skill::class;
 
-    protected static ?string $navigationLabel = 'Kemampuan';
-    protected static ?string $pluralLabel = 'Kemampuan';
-    protected static ?string $modelLabel = 'Kemampuan';
+    protected static ?string $navigationLabel = 'Keahlian';
+    protected static ?string $pluralLabel = 'Keahlian';
+    protected static ?string $modelLabel = 'Keahlian';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedLightBulb;
+    protected static ?int $navigationSort = 5;
 
     public static function form(Schema $schema): Schema
     {

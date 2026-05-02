@@ -72,6 +72,11 @@ class ProjectForm
                             ->prefix('github.com/')
                             ->columnSpanFull(),
                     ]),
+                TextInput::make('link')
+                    ->label('Link Website / Lainnya (Opsional)')
+                    ->url()
+                    ->placeholder('https://example.com')
+                    ->columnSpanFull(),
                 Textarea::make('short_description')
                     ->label('Deskripsi Singkat')
                     ->required()

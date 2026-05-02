@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('price_range'); // e.g. "Rp 1jt - 5jt"
             $table->text('description')->nullable();
+            $table->integer('sort')->default(0);
             $table->timestamps();
         });
     }

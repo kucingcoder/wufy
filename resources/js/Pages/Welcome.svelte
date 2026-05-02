@@ -15,7 +15,6 @@
     } = $props();
 
     let mounted = $state(false);
-    let isLoading = $state(true);
     let activeSection = $state('home');
     let searchQuery = $state('');
     let currentPage = $state(1);
@@ -44,11 +43,6 @@
 
     onMount(() => {
         mounted = true;
-        
-        // Simulate initial loading sequence
-        setTimeout(() => {
-            isLoading = false;
-        }, 1500);
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -190,64 +184,7 @@
     </script>
 </svelte:head>
 
-<!-- Futuristic Preloader -->
-{#if isLoading}
-    <div 
-        transition:fade={{ duration: 800 }}
-        class="fixed inset-0 z-[100] bg-[#020617] flex flex-col items-center justify-center overflow-hidden"
-    >
-        <!-- Background HUD Elements -->
-        <div class="absolute inset-0 opacity-20 pointer-events-none">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sky-500/10 rounded-full blur-[120px] animate-pulse"></div>
-            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMTQ4LCAxNjMsIDE4NCwgMC4wNSkiIHN0cm9rZS13aWR0aD0iMC41Ij48cGF0aCBkPSJNMCA0MGg0MFYwSDB6Ii8+PC9nPjwvc3ZnPg==')] bg-repeat opacity-20"></div>
-        </div>
 
-        <!-- Central Animation -->
-        <div class="relative flex flex-col items-center">
-            <!-- Rotating Rings -->
-            <div class="relative w-32 h-32 mb-12">
-                <div class="absolute inset-0 border-2 border-sky-500/10 rounded-full"></div>
-                <div class="absolute inset-0 border-t-2 border-sky-500 rounded-full animate-spin"></div>
-                <div class="absolute inset-4 border-b-2 border-indigo-500 rounded-full animate-spin-reverse opacity-50"></div>
-                
-                <!-- Inner Core -->
-                <div class="absolute inset-10 bg-gradient-to-br from-sky-400 to-indigo-600 rounded-full shadow-[0_0_30px_rgba(14,165,233,0.5)] animate-pulse flex items-center justify-center">
-                    <div class="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-            </div>
-
-            <!-- Loading Text -->
-            <div class="text-center relative">
-                <div class="text-sky-400 font-mono text-xs tracking-[0.5em] mb-3 uppercase animate-neon-pulse text-neon-sky">
-                    System Initializing
-                </div>
-                <div class="h-1 w-48 bg-slate-800 rounded-full overflow-hidden relative">
-                    <div class="absolute inset-y-0 left-0 bg-sky-500 rounded-full animate-progress-loading"></div>
-                </div>
-                
-                <!-- Scanning Bar -->
-                <div class="absolute -inset-x-20 -inset-y-10 border border-sky-500/5 rounded-3xl pointer-events-none">
-                    <div class="absolute inset-x-0 h-[1px] bg-sky-500/20 top-0 animate-scan"></div>
-                </div>
-            </div>
-            
-            <div class="mt-8 flex gap-3">
-                {#each Array(3) as _, i}
-                    <div class="w-1.5 h-1.5 bg-sky-500/30 rounded-full animate-bounce" style="animation-delay: {i * 0.2}s"></div>
-                {/each}
-            </div>
-        </div>
-        
-        <!-- Bottom Stats -->
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-8 text-[10px] font-mono text-slate-600 tracking-widest uppercase">
-            <span>Core: Active</span>
-            <span class="w-1 h-1 bg-slate-800 rounded-full"></span>
-            <span>Uplink: Secure</span>
-            <span class="w-1 h-1 bg-slate-800 rounded-full"></span>
-            <span>Protocols: Ready</span>
-        </div>
-    </div>
-{/if}
 
 <div class="bg-[#020617] text-slate-100 font-['Plus_Jakarta_Sans'] selection:bg-sky-500/30 overflow-x-hidden min-h-screen">
     
@@ -272,10 +209,10 @@
 
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex justify-center pointer-events-none">
         <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800/50 px-4 py-2 rounded-full flex items-center gap-1 shadow-2xl pointer-events-auto">
-            <button onclick={() => scrollTo('home')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'home' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">beranda</button>
+            <button onclick={() => scrollTo('home')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'home' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Beranda</button>
             <button onclick={() => scrollTo('vision')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'vision' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Visi/Misi</button>
             <button onclick={() => scrollTo('services')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'services' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Jasa</button>
-            <button onclick={() => scrollTo('projects')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'projects' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Projek</button>
+            <button onclick={() => scrollTo('projects')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'projects' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Proyek</button>
             <button onclick={() => scrollTo('skills')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'skills' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Keahlian</button>
             <button onclick={() => scrollTo('experience')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'experience' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Pengalaman</button>
             <button onclick={() => scrollTo('education')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'education' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Edukasi</button>
@@ -318,10 +255,10 @@
 
             <div class="flex flex-col items-center justify-center flex-1 gap-6 pb-20">
                 {#each [
-                    { id: 'home', label: 'beranda' },
+                    { id: 'home', label: 'Beranda' },
                     { id: 'vision', label: 'Visi/Misi' },
                     { id: 'services', label: 'Jasa' },
-                    { id: 'projects', label: 'Projek' },
+                    { id: 'projects', label: 'Proyek' },
                     { id: 'skills', label: 'Keahlian' },
                     { id: 'experience', label: 'Pengalaman' },
                     { id: 'education', label: 'edukasi' },
@@ -457,33 +394,19 @@
     </section>
 
     <!-- Vision Mission Section -->
-    <section id="vision" class="py-32 bg-slate-900/30">
+    <section id="vision" class="py-24 bg-slate-900/30">
         <div class="container mx-auto px-6">
             <!-- Section Title -->
-            <div use:scrollReveal class="text-center mb-20 reveal">
-                <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-4">Visi & <span class="text-sky-500">Misi</span></h2>
-                <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
+            <div use:scrollReveal class="text-center mb-16 reveal">
+                <h2 class="text-3xl lg:text-5xl font-bold tracking-tight mb-4">Visi & <span class="text-sky-500">Misi</span></h2>
+                <div class="w-16 h-1 bg-sky-500 mx-auto rounded-full shadow-[0_0_15px_rgba(14,165,233,0.4)]"></div>
             </div>
 
-            <!-- Vision Card -->
-            <div use:scrollReveal class="max-w-5xl mx-auto mb-24 relative group reveal">
-                <div class="relative p-10 lg:p-20 bg-slate-900 border border-slate-800 rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-500 hover:border-sky-500/30">
-                    <!-- Subtle Background Glow -->
-                    <div class="absolute -top-24 -left-24 w-64 h-64 bg-sky-500/5 blur-[80px] rounded-full group-hover:bg-sky-500/10 transition-all duration-700"></div>
-
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-4 mb-12">
-                            <div class="w-12 h-12 bg-sky-500/10 rounded-xl flex items-center justify-center text-sky-400">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                            </div>
-                            <span class="text-sky-500 font-bold uppercase tracking-[0.2em] text-xs">Visi</span>
-                        </div>
-
-                        <p class="text-3xl lg:text-5xl font-bold leading-tight text-white tracking-tight group-hover:text-sky-50 transition-colors duration-500">
-                            {visionMission?.vision || 'Menyediakan layanan berkualitas tinggi dengan solusi inovatif.'}
-                        </p>
-                    </div>
-                </div>
+            <!-- Vision Display (Simplified) -->
+            <div use:scrollReveal class="max-w-4xl mx-auto text-center mb-20 reveal">
+                <p class="text-2xl lg:text-4xl font-medium leading-relaxed text-slate-200 italic tracking-tight">
+                    "{visionMission?.vision || 'Menyediakan layanan berkualitas tinggi dengan solusi inovatif.'}"
+                </p>
             </div>
 
             {#if visionMission?.missions && Array.isArray(visionMission.missions)}
@@ -552,11 +475,11 @@
                                 </p>
                             </div>
 
-                            <!-- Description Area (Handles HTML content from RichEditor) -->
+                            <!-- Description Area -->
                             <div class="flex-1">
-                                <div class="text-base text-slate-400 leading-relaxed font-light group-hover:text-slate-300 transition-colors prose prose-invert prose-sky max-w-none prose-p:leading-relaxed prose-li:my-1">
-                                    {@html service.description}
-                                </div>
+                                <p class="text-base text-slate-400 leading-relaxed font-light group-hover:text-slate-300 transition-colors whitespace-pre-line">
+                                    {service.description}
+                                </p>
                             </div>
 
                             <!-- Decorative Elements -->
@@ -642,12 +565,12 @@
                             <h3 class="text-xl font-bold mb-4 text-white group-hover:text-sky-400 transition-colors tracking-tight line-clamp-1">
                                 {project.title}
                             </h3>
-                            <p class="text-slate-400 text-sm font-light leading-relaxed mb-8 line-clamp-2 flex-1 group-hover:text-slate-300 transition-colors">
+                            <p class="text-slate-400 text-sm font-light leading-relaxed mb-0 line-clamp-2 group-hover:text-slate-300 transition-colors">
                                 {project.short_description}
                             </p>
-
+                            
                             <!-- Action Link (Text Only) -->
-                            <div class="flex items-center gap-2 text-sky-500 font-bold group-hover:gap-4 transition-all mt-auto group-hover:text-sky-400">
+                            <div class="flex items-center gap-2 text-sky-500 font-bold group-hover:gap-4 transition-all group-hover:text-sky-400">
                                 <span>baca lebih lanjut</span>
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </div>
@@ -1009,7 +932,7 @@
                             { id: 'home', label: 'Beranda' },
                             { id: 'vision', label: 'Visi/Misi' },
                             { id: 'services', label: 'Jasa' },
-                            { id: 'projects', label: 'Projek' },
+                            { id: 'projects', label: 'Proyek' },
                             { id: 'skills', label: 'Keahlian' },
                             { id: 'experience', label: 'Pengalaman' },
                             { id: 'education', label: 'Edukasi' },
@@ -1104,61 +1027,11 @@
         background: #334155;
     }
 
-    .text-neon-sky {
-        text-shadow: 0 0 10px rgba(56, 189, 248, 0.8),
-                     0 0 20px rgba(56, 189, 248, 0.4),
-                     0 0 30px rgba(56, 189, 248, 0.2);
-    }
+
 
     @keyframes progress {
         from { width: 0; }
         to { width: 85%; }
-    }
-
-    @keyframes neon-pulse {
-        0%, 100% { opacity: 1; text-shadow: 0 0 10px rgba(56, 189, 248, 0.8), 0 0 20px rgba(56, 189, 248, 0.4), 0 0 30px rgba(56, 189, 248, 0.2); }
-        50% { opacity: 0.7; text-shadow: 0 0 5px rgba(56, 189, 248, 0.5), 0 0 10px rgba(56, 189, 248, 0.2); }
-    }
-
-    .animate-neon-pulse {
-        animation: neon-pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes scan {
-        0% { transform: translateY(-100%); }
-        100% { transform: translateY(400%); }
-    }
-
-    @keyframes scan-slow {
-        0% { transform: translateY(-150%); }
-        100% { transform: translateY(300%); }
-    }
-
-    .animate-scan {
-        animation: scan 4s linear infinite;
-    }
-
-    .animate-scan-slow {
-        animation: scan-slow 8s linear infinite;
-    }
-
-    @keyframes spin-reverse {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(-360deg); }
-    }
-    
-    .animate-spin-reverse {
-        animation: spin-reverse 2s linear infinite;
-    }
-
-    @keyframes progress-loading {
-        0% { width: 0; left: 0; }
-        50% { width: 100%; left: 0; }
-        100% { width: 0; left: 100%; }
-    }
-
-    .animate-progress-loading {
-        animation: progress-loading 2s ease-in-out infinite;
     }
 
     .clip-hexagon {

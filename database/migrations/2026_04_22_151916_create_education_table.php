@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('degree')->nullable();
             $table->string('graduation_date'); // Month and Year
             $table->string('location_text');
-            $table->text('google_map_url')->nullable();
+            $table->string('gpa')->nullable();
+            $table->integer('sort')->default(0);
             $table->timestamps();
         });
     }

@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Certificate::factory(5)->create();
         \App\Models\Skill::factory(10)->create();
         
-        \App\Models\Project::factory(5)->create()->each(function ($project) {
+        \App\Models\Project::factory(18)->create()->each(function ($project) {
             \App\Models\ProjectGallery::factory(3)->create([
                 'project_id' => $project->id,
             ]);

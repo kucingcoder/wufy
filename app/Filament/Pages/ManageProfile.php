@@ -24,7 +24,7 @@ class ManageProfile extends Page implements HasSchemas
     protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-user';
     protected static ?string $title = 'Data Pribadi';
     protected static ?string $navigationLabel = 'Data Pribadi';
-    protected static ?int $navigationSort = -1;
+    protected static ?int $navigationSort = 1;
 
     public ?array $data = [];
 

@@ -4,7 +4,7 @@ namespace App\Filament\Resources\Services\Schemas;
 
 use Guava\IconPicker\Forms\Components\IconPicker;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
 class ServiceForm
@@ -29,9 +29,10 @@ class ServiceForm
                     ->label('Range Harga')
                     ->placeholder('contoh: Rp 1jt - 5jt')
                     ->required(),
-                RichEditor::make('description')
+                Textarea::make('description')
                     ->label('Deskripsi')
-                    ->required(),
+                    ->required()
+                    ->rows(5),
             ]);
     }
 }
