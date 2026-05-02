@@ -11,7 +11,8 @@
         skills = [], 
         services = [], 
         visionMission,
-        certificates = []
+        certificates = [],
+        cv_exists = false
     } = $props();
 
     let mounted = $state(false);
@@ -362,7 +363,7 @@
                     </div>
 
                     <div class="flex flex-wrap items-center gap-4 justify-center lg:justify-start">
-                        {#if profile?.cv_path}
+                        {#if cv_exists}
                             <a href="/storage/{profile.cv_path}" target="_blank" class="flex items-center gap-3 bg-slate-100 text-slate-900 px-8 py-4 rounded-2xl font-bold hover:bg-white hover:scale-105 active:scale-95 transition-all shadow-xl group">
                                 <span>Unduh CV</span>
                                 <svg class="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>

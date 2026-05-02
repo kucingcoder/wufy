@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\Project;
+use App\Models\Profile;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 
@@ -56,6 +58,14 @@ class GenerateSitemapCommand extends Command
                 ->setPriority(0.8)
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY));
         });
+
+        // Add CV Link if exists
+        $profile = Profile::first();
+        if ($profile && $profile->cv_path && Storage::disk('public')->exists($profile->cv_path)) {
+            $sitemap->add(Url::create("/storage/{$profile->cv_path}")
+                ->setPriority(0.7)
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY));
+        }
 
         $sitemap->writeToFile(public_path('sitemap.xml'));
 

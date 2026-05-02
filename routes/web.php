@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Profile;
 use App\Models\Education;
@@ -14,8 +15,10 @@ use App\Models\VisionMission;
 use App\Models\Certificate;
 
 Route::get('/', function () {
+    $profile = Profile::first();
     return Inertia::render('Welcome', [
-        'profile' => Profile::first(),
+        'profile' => $profile,
+        'cv_exists' => $profile && $profile->cv_path && Storage::disk('public')->exists($profile->cv_path),
         'education' => Education::orderBy('sort')->get(),
         'experiences' => Experience::orderBy('sort')->get(),
         'projects' => Project::with('galleries')->latest()->get(),
