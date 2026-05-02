@@ -1,101 +1,128 @@
-# Wufy Portfolio 🚀
+# Wufy Portfolio v1.0 🚀
 
-Wufy Portfolio adalah sistem portofolio personal premium yang dirancang dengan estetika tinggi dan performa luar biasa. Dibangun menggunakan teknologi modern untuk memberikan kesan profesional dan futuristik bagi penggunanya.
+Wufy Portfolio adalah sistem portofolio personal premium yang menggabungkan estetika futuristik dengan teknologi backend yang sangat efisien. Dirancang untuk developer, desainer, atau profesional kreatif yang ingin tampil menonjol dengan antarmuka HUD (Heads-Up Display) yang modern.
 
-## ✨ Fitur Utama
+---
 
-- **Premium Landing Page**: Desain HUD (Heads-Up Display) modern dengan efek cahaya (*glow*) dan animasi halus.
-- **Management Panel**: Panel administrasi lengkap bertenaga **Filament PHP** untuk mengelola profil, pendidikan, pengalaman, keahlian, jasa, dan sertifikat.
-- **Dynamic SEO & AI-Friendly**: Dilengkapi dengan Meta Tags dinamis dan JSON-LD (Structured Data) agar mudah terindeks oleh Google dan dapat diekstraksi secara akurat oleh AI.
-- **Automatic Slugs**: Pembuatan slug URL otomatis untuk projek, meningkatkan performa SEO.
-- **Advanced Image Viewer**: Galeri projek dengan fitur Zoom In/Out, Panning (geser), dan tampilan layar penuh.
-- **Custom Error Pages**: Halaman 404 dan 500 yang kustom dan selaras dengan tema utama.
-- **Indonesian Language Support**: Seluruh antarmuka manajemen menggunakan Bahasa Indonesia.
+## ✨ Tentang Projek Ini
 
-## 🛠️ Tech Stack
+Wufy bukan sekadar template portofolio biasa. Ini adalah aplikasi web lengkap yang dibangun dengan arsitektur modern (Monolith-Inertia) yang memisahkan logika backend dari tampilan frontend tanpa mengorbankan kecepatan pengembangan.
 
-- **Backend**: [Laravel 13](https://laravel.com) + [FrankenPHP / Octane](https://laravel.com/docs/octane)
-- **Frontend**: [Inertia.js](https://inertiajs.com) + [Svelte 5](https://svelte.dev)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com)
-- **Admin Panel**: [Filament PHP](https://filamentphp.com)
-- **Icons**: [Heroicons](https://heroicons.com) & [Simple Icons](https://simpleicons.org)
+### 🌟 Kelebihan Utama:
+- **Estetika HUD Modern**: Menggunakan desain bertema gelap dengan aksen cahaya neon (Sky Blue & Indigo) yang memberikan kesan "High-Tech".
+- **Instant Interaction**: Dibangun dengan **Svelte 5** (State-of-the-art reactivity) untuk transisi antar halaman yang sangat mulus tanpa refresh.
+- **Manajemen Konten Tanpa Kode**: Panel admin **Filament v3** yang intuitif, memungkinkan Anda mengubah seluruh isi website tanpa menyentuh kode.
+- **SEO Optimized**: Mendukung SSR (Server-Side Rendering) via Inertia, Meta Tags dinamis, dan skema JSON-LD untuk peringkat pencarian yang lebih baik.
 
-## 🚀 Instalasi Cepat
+### 🛠️ Fitur - Fitur:
+- **Daftar Projek dengan Pagination**: Mendukung hingga puluhan projek tanpa memperlambat halaman.
+- **Pencarian Projek Real-time**: Cari portofolio Anda secara instan.
+- **Manajemen Edukasi & Pengalaman**: Tampilan kronologis yang rapi.
+- **Keahlian & Jasa**: Klasifikasi keahlian berdasarkan kategori dan penawaran jasa dengan harga transparan.
+- **Visi & Misi**: Tampilan kutipan minimalis yang elegan.
+- **Statistik Pengunjung**: Dashboard admin untuk memantau trafik pengunjung unik dan sumber referal.
+- **Dark Mode Native**: Desain yang nyaman di mata sejak awal.
 
-1. **Clone repositori**:
+---
+
+## 💻 Panduan Menjalankan di Lokal (Developer)
+
+Ikuti langkah berikut untuk menyiapkan lingkungan pengembangan:
+
+### Persyaratan:
+- PHP >= 8.3
+- Node.js >= 22
+- Composer
+- Database (MySQL/PostgreSQL/SQLite)
+
+### Langkah Instalasi:
+1. **Clone & Install**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/kucingcoder/wufy.git
    cd wufy
-   ```
-
-2. **Instal dependensi**:
-   ```bash
    composer install
    npm install
    ```
-
-3. **Konfigurasi Environment**:
+2. **Environment**:
    ```bash
    cp .env.example .env
    php artisan key:generate
    ```
-
-4. **Setup Database**:
-   Sesuaikan konfigurasi database di `.env`, lalu jalankan:
+3. **Database Setup**:
+   Buat database baru, sesuaikan `.env`, lalu jalankan:
    ```bash
    php artisan migrate:fresh --seed
    ```
-
-5. **Link Storage**:
+   *(Ini akan membuat data dummy dan akun admin otomatis)*
+4. **Storage Link**:
    ```bash
    php artisan storage:link
    ```
+5. **Jalankan Server**:
+   Buka dua terminal:
+   - Terminal 1 (Backend): `php artisan serve` (atau `php artisan octane:start` jika menggunakan FrankenPHP)
+   - Terminal 2 (Frontend): `npm run dev`
 
-6. **Permissions**:
-   Pastikan direktori berikut memiliki izin akses tulis yang benar agar aplikasi dapat berjalan lancar:
-   ```bash
-   sudo chmod -R 775 storage bootstrap/cache public
-   sudo chown -R $USER:www-data storage bootstrap/cache public
-   ```
+---
 
-7. **Jalankan Aplikasi**:
-   Gunakan Octane (FrankenPHP) untuk performa terbaik:
-   ```bash
-   php artisan octane:start --watch
-   ```
-   Dan jalankan Vite di terminal terpisah untuk *assets*:
-   ```bash
-   npm run dev
-   ```
+## 🌐 Cara Deploy ke cPanel Shared Hosting (Untuk Pemula)
 
-## 🌐 Deployment
+Shared hosting biasanya tidak mendukung perintah terminal yang kompleks, jadi ikuti langkah "Manual" ini:
 
-### 1. VPS (Rekomendasi)
-Gunakan **Laravel Octane** dengan **FrankenPHP** untuk performa maksimal.
-- Jalankan `php artisan octane:install`.
-- Gunakan **Process Manager** seperti **Supervisor** atau **Systemd** untuk menjaga aplikasi tetap berjalan.
-- Gunakan Reverse Proxy seperti **Nginx** atau **Caddy** jika diperlukan.
+1. **Persiapan di Lokal**:
+   - Jalankan `npm run build` di komputer Anda.
+   - Kompres seluruh folder projek Anda menjadi file `.zip` (Kecuali folder `node_modules` dan `storage/framework/cache`).
+2. **Upload ke cPanel**:
+   - Masuk ke **File Manager**.
+   - Upload file `.zip` ke direktori root (di atas `public_html`, misal: `/home/username/wufy_source`).
+   - Ekstrak file tersebut.
+3. **Pengaturan Folder Public**:
+   - Masuk ke folder `/home/username/wufy_source/public`.
+   - Pindahkan seluruh isinya ke folder `public_html`.
+4. **Konfigurasi `index.php`**:
+   - Edit file `public_html/index.php`.
+   - Cari baris `require __DIR__.'/../vendor/autoload.php';` dan `bootstrap/app.php`.
+   - Ubah path-nya agar mengarah ke folder sumber Anda, misal:
+     ```php
+     require __DIR__.'/../wufy_source/vendor/autoload.php';
+     $app = require_once __DIR__.'/../wufy_source/bootstrap/app.php';
+     ```
+5. **Setup Database**:
+   - Buat database, user, dan password di menu **MySQL Databases** cPanel.
+   - Edit file `.env` di folder sumber (`wufy_source`) dan masukkan detail database tersebut.
+   - Ubah `APP_ENV=production` dan `APP_DEBUG=false`.
+6. **Symlink Storage (Penting)**:
+   - Agar foto projek muncul, buat symlink. Jika tidak ada akses SSH, buat file PHP baru (misal `link.php`) di `public_html` berisi:
+     ```php
+     <?php symlink('/home/username/wufy_source/storage/app/public', '/home/username/public_html/storage'); ?>
+     ```
+   - Akses `namadomain.com/link.php` sekali, lalu hapus file tersebut.
 
-### 2. Shared Hosting (cPanel)
-Untuk hosting tradisional tanpa akses terminal/proses jangka panjang:
-1.  **Upload**: Unggah seluruh file ke direktori di luar `public_html`.
-2.  **Public Files**: Pindahkan isi folder `public` ke dalam `public_html`.
-3.  **Path Adjustment**: Sesuaikan path di `public_html/index.php` untuk mengarah ke lokasi `vendor/autoload.php` dan `bootstrap/app.php` yang baru.
-4.  **Symlink**: Buat symlink untuk storage melalui terminal cPanel:
-    ```bash
-    ln -s /home/user/wufy/storage/app/public /home/user/public_html/storage
-    ```
-5.  **Optimasi**: Karena Octane tidak bisa berjalan di shared hosting biasa, aplikasi akan berjalan via PHP-FPM standar secara otomatis.
+---
 
-## 🔐 Akun Admin Default
+## 📚 Dokumentasi Developer Tingkat Lanjut
 
-- **URL**: `/admin`
+### Struktur Direktori Penting:
+- **`app/Filament/Resources`**: Tempat konfigurasi dashboard admin. Anda bisa mengubah form input, tabel, dan urutan menu di sini.
+- **`app/Models`**: Definisi struktur tabel database (Project, Skill, Experience, dll).
+- **`resources/js/Pages`**: Komponen utama Svelte. `Welcome.svelte` adalah halaman landing utama.
+- **`resources/js/Components`**: Komponen UI kecil yang bisa digunakan berulang kali.
+- **`database/migrations`**: Definisi skema database yang sudah dikonsolidasi (Clean Migrations).
+
+### Data Flow (Inertia.js):
+Aplikasi ini tidak menggunakan API tradisional (REST/GraphQL). Controller di Laravel mengirim data langsung ke Svelte sebagai `props`. 
+- Jika ingin menambah data ke landing page, edit `app/Http/Controllers/WelcomeController.php`.
+- Data tersebut akan tersedia di `Welcome.svelte` dalam variabel `$props()`.
+
+### Kustomisasi Desain:
+- Warna utama dikontrol melalui utility class Tailwind di `Welcome.svelte`.
+- Gunakan variabel CSS di bagian `<style>` Svelte untuk mengubah efek glow atau animasi khusus.
+
+---
+
+## 🔐 Akses Admin Default
+- **URL**: `yourdomain.com/admin`
 - **Email**: `admin@admin.com`
 - **Password**: `admin`
 
-## 📄 Lisensi
-
-Proyek ini dibangun untuk tujuan portofolio personal. Seluruh kode sumber berada di bawah lisensi [MIT](LICENSE).
-
 ---
-*Dibuat dengan ❤️ oleh Wufy.*
