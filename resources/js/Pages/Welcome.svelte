@@ -140,7 +140,7 @@
 <svelte:head>
     <title>{profile?.full_name || 'Portfolio'} - {profile?.job_title || 'Expert'}</title>
     <meta name="description" content={profile?.description || 'Portofolio profesional yang menampilkan proyek inovatif dan solusi digital kreatif.'}>
-    <meta name="keywords" content="{skills?.map(s => s.name).join(', ')}, {services?.map(s => s.title).join(', ')}, portfolio, digital solutions, {profile?.full_name}">
+    <meta name="keywords" content="{[...(skills?.map(s => s.title) || []), ...(services?.map(s => s.title) || []), 'portfolio', 'digital solutions', profile?.full_name].filter(Boolean).join(', ')}">
     <meta name="author" content={profile?.full_name}>
     <link rel="icon" type="image/webp" href="/icon.webp">
 
