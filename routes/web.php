@@ -40,3 +40,26 @@ Route::get('/robots.txt', function () {
     return response("User-agent: *\nAllow: /\n\nSitemap: {$url}/sitemap.xml", 200)
         ->header('Content-Type', 'text/plain');
 });
+
+Route::get('/sitemap.xml', function () {
+    $projects = Project::all();
+    $now = now()->toAtomString();
+    $url = config('app.url');
+
+    $sitemap = '<?xml version="1.0" encoding="UTF-8"?>';
+    $sitemap .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+    // Home page
+    $sitemap .= "<url><loc>{$url}/</loc><lastmod>{$now}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>";
+
+    // Projects
+    foreach ($projects as $project) {
+        $lastmod = $project->updated_at ? $project->updated_at->toAtomString() : $now;
+        $sitemap .= "<url><loc>{$url}/project/{$project->slug}</loc><lastmod>{$lastmod}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>";
+    }
+
+    $sitemap .= '</urlset>';
+
+    return response($sitemap, 200)
+        ->header('Content-Type', 'application/xml');
+});
