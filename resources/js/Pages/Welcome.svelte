@@ -159,6 +159,10 @@
     <meta property="twitter:description" content={profile?.description}>
     <meta property="twitter:image" content={profile?.avatar ? `/storage/${profile.avatar}` : '/icon.webp'}>
 
+    {#if profile?.avatar}
+        <link rel="preload" as="image" href="/storage/{profile.avatar}" fetchpriority="high">
+    {/if}
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -299,7 +303,13 @@
                         <!-- Image Container -->
                         <div class="relative w-full h-full overflow-hidden rounded-2xl bg-slate-950">
                             {#if profile?.avatar}
-                                <img src="/storage/{profile.avatar}" alt={profile.full_name} class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
+                                <img 
+                                    src="/storage/{profile.avatar}" 
+                                    alt={profile.full_name} 
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" 
+                                    fetchpriority="high"
+                                    loading="eager"
+                                />
                             {:else}
                                 <div class="w-full h-full flex items-center justify-center text-6xl opacity-20">👤</div>
                             {/if}
