@@ -639,7 +639,7 @@
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+            <div class="flex flex-col gap-16 lg:gap-24">
                 {#each ['teknologi', 'minat', 'bahasa'] as cat, catIndex}
                     <div use:scrollReveal={{ delay: catIndex * 150 }} class="flex flex-col reveal">
                         <!-- Category Header -->
@@ -652,9 +652,9 @@
                             </div>
                         </div>
 
-                        <!-- Skills List (Cards) -->
-                        <div class="space-y-6">
-                            {#if categorizedSkills[cat]}
+                        <!-- Skills List (Grid) -->
+                        {#if categorizedSkills[cat]}
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {#each categorizedSkills[cat] as skill, i}
                                     <div use:scrollReveal={{ delay: (catIndex * 150) + (i * 100) }} class="group relative p-6 rounded-[2rem] bg-slate-900/50 border border-slate-800 hover:border-sky-500/30 transition-all duration-500 shadow-xl overflow-hidden hover:-translate-y-1 reveal">
                                         <!-- Animated Background Accent -->
@@ -679,12 +679,12 @@
                                         </div>
                                     </div>
                                 {/each}
-                            {:else}
-                                <div class="p-8 rounded-[2rem] border border-slate-800 border-dashed text-center">
-                                    <p class="text-slate-600 text-sm italic">Belum ada data</p>
-                                </div>
-                            {/if}
-                        </div>
+                            </div>
+                        {:else}
+                            <div class="p-8 rounded-[2rem] border border-slate-800 border-dashed text-center">
+                                <p class="text-slate-600 text-sm italic">Belum ada data</p>
+                            </div>
+                        {/if}
                     </div>
                 {/each}
             </div>
