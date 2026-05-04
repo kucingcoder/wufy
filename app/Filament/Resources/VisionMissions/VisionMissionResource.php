@@ -34,6 +34,27 @@ class VisionMissionResource extends Resource
         return VisionMissionsTable::configure($table);
     }
 
+    public static function getNavigationUrl(): string
+    {
+        $record = VisionMission::first();
+
+        if ($record) {
+            return static::getUrl('edit', ['record' => $record]);
+        }
+
+        return static::getUrl('create');
+    }
+
+    public static function canCreate(): bool
+    {
+        return VisionMission::count() === 0;
+    }
+
+    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        return false;
+    }
+
     public static function getPages(): array
     {
         return [

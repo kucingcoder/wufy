@@ -23,6 +23,7 @@ class VisionMissionForm
                         TextInput::make('mission')
                             ->required(),
                     )
+                    ->maxItems(3)
                     ->required(),
             ]);
     }
