@@ -22,14 +22,6 @@
                     >
                         Lihat Sitemap
                     </x-filament::button>
-
-                    <x-filament::button 
-                        wire:click="generateSitemap"
-                        icon="heroicon-m-globe-alt"
-                        color="primary"
-                    >
-                        Generate Sitemap
-                    </x-filament::button>
                 </div>
             </div>
 

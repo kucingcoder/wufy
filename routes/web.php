@@ -43,6 +43,7 @@ Route::get('/robots.txt', function () {
 
 Route::get('/sitemap.xml', function () {
     $projects = Project::all();
+    $profile = Profile::first();
     $now = now()->toAtomString();
     $url = config('app.url');
 
@@ -52,10 +53,23 @@ Route::get('/sitemap.xml', function () {
     // Home page
     $sitemap .= "<url><loc>{$url}/</loc><lastmod>{$now}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>";
 
+    // Sections (Deep links)
+    $sections = [
+        'vision', 'services', 'projects', 'skills', 'experience', 'education', 'certificates', 'contact'
+    ];
+    foreach ($sections as $section) {
+        $sitemap .= "<url><loc>{$url}/#{$section}</loc><lastmod>{$now}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>";
+    }
+
     // Projects
     foreach ($projects as $project) {
         $lastmod = $project->updated_at ? $project->updated_at->toAtomString() : $now;
         $sitemap .= "<url><loc>{$url}/project/{$project->slug}</loc><lastmod>{$lastmod}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>";
+    }
+
+    // CV Link
+    if ($profile && $profile->cv_path && Storage::disk('public')->exists($profile->cv_path)) {
+        $sitemap .= "<url><loc>{$url}/storage/{$profile->cv_path}</loc><lastmod>{$now}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>";
     }
 
     $sitemap .= '</urlset>';

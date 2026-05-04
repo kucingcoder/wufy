@@ -3,7 +3,7 @@
 namespace App\Filament\Widgets;
 
 use Filament\Widgets\Widget;
-use Illuminate\Support\Facades\Artisan;
+
 use Filament\Notifications\Notification;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -59,22 +59,5 @@ class SitemapWidget extends Widget implements HasForms
         }
     }
 
-    public function generateSitemap()
-    {
-        try {
-            Artisan::call('sitemap:generate');
-            
-            Notification::make()
-                ->title('Sitemap Berhasil Dibuat')
-                ->body('Sitemap telah berhasil diperbarui.')
-                ->success()
-                ->send();
-        } catch (\Exception $e) {
-            Notification::make()
-                ->title('Gagal Membuat Sitemap')
-                ->body('Terjadi kesalahan: ' . $e->getMessage())
-                ->danger()
-                ->send();
-        }
-    }
+
 }
