@@ -105,15 +105,7 @@
         return icons.default;
     };
 
-    const getServiceIcon = (iconName) => {
-        const name = iconName?.toLowerCase() || '';
-        if (name.includes('desktop') || name.includes('computer')) return '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>';
-        if (name.includes('mobile') || name.includes('phone')) return '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>';
-        if (name.includes('paint') || name.includes('design')) return '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>';
-        if (name.includes('code') || name.includes('dev')) return '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>';
-        if (name.includes('server')) return '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>';
-        return '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>';
-    };
+
 
     // Scroll Reveal Action
     const scrollReveal = (node, options = {}) => {
@@ -469,9 +461,7 @@
                         <div use:scrollReveal={{ delay: i * 100 }} class="group relative bg-slate-900 border border-slate-800 p-8 lg:p-10 rounded-[2.5rem] transition-all duration-500 hover:border-sky-500/30 shadow-2xl overflow-hidden flex flex-col reveal">
                             <!-- Header Area -->
                             <div class="mb-8">
-                                <div class="w-14 h-14 bg-sky-500/10 rounded-2xl flex items-center justify-center text-sky-400 mb-6 group-hover:scale-110 transition-all duration-500 border border-sky-500/10 group-hover:border-sky-500/40 shadow-inner">
-                                    {@html getServiceIcon(service.icon)}
-                                </div>
+
                                 <h3 class="text-2xl lg:text-3xl font-bold text-white group-hover:text-sky-400 transition-colors tracking-tighter mb-3">
                                     {service.title}
                                 </h3>

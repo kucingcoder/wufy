@@ -20,8 +20,7 @@ class ServicesTable
                     ->sortable(),
                 TextColumn::make('price_range')
                     ->label('Range Harga'),
-                TextColumn::make('icon')
-                    ->label('Icon'),
+
             ])
             ->reorderable('sort')
             ->filters([
