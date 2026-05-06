@@ -187,20 +187,22 @@
                         {#each project.galleries as gallery}
                             <button 
                                 onclick={() => openViewer(`/storage/${gallery.image_path}`)}
-                                class="group relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 text-left outline-none aspect-video"
+                                class="group flex flex-col gap-3 text-left outline-none"
                             >
-                                <img src="/storage/{gallery.image_path}" alt={gallery.title || project.title} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-                                {#if gallery.title}
-                                    <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent">
-                                        <span class="text-sm font-bold text-white tracking-tight">{gallery.title}</span>
-                                    </div>
-                                {/if}
-                                <!-- Zoom Icon Overlay -->
-                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-sky-500/10 pointer-events-none">
-                                    <div class="w-12 h-12 rounded-full bg-sky-500 text-white flex items-center justify-center shadow-lg">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                                <div class="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 aspect-video w-full">
+                                    <img src="/storage/{gallery.image_path}" alt={gallery.title || project.title} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                                    <!-- Zoom Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-sky-500/10 pointer-events-none">
+                                        <div class="w-12 h-12 rounded-full bg-sky-500 text-white flex items-center justify-center shadow-lg">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                                        </div>
                                     </div>
                                 </div>
+                                {#if gallery.title}
+                                    <div class="px-2">
+                                        <span class="text-sm font-medium text-slate-300 group-hover:text-white transition-colors tracking-tight">{gallery.title}</span>
+                                    </div>
+                                {/if}
                             </button>
                         {/each}
                     </div>
