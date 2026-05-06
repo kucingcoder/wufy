@@ -673,7 +673,7 @@
                                                     {skill.title}
                                                 </h4>
                                             </div>
-                                            <p class="text-sm text-slate-400 leading-relaxed font-light line-clamp-3 group-hover:text-slate-300 transition-colors duration-500">
+                                            <p class="text-sm text-slate-400 leading-relaxed font-light md:line-clamp-3 group-hover:text-slate-300 transition-colors duration-500">
                                                 {skill.description || 'Keahlian profesional dalam bidang ini untuk mendukung solusi digital.'}
                                             </p>
                                         </div>
