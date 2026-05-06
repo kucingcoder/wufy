@@ -187,9 +187,9 @@
                         {#each project.galleries as gallery}
                             <button 
                                 onclick={() => openViewer(`/storage/${gallery.image_path}`)}
-                                class="group relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 text-left outline-none"
+                                class="group relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 text-left outline-none aspect-video"
                             >
-                                <img src="/storage/{gallery.image_path}" alt={gallery.title || project.title} class="w-full h-auto hover:scale-105 transition-transform duration-700" />
+                                <img src="/storage/{gallery.image_path}" alt={gallery.title || project.title} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
                                 {#if gallery.title}
                                     <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent">
                                         <span class="text-sm font-bold text-white tracking-tight">{gallery.title}</span>
