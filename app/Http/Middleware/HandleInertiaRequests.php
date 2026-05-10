@@ -39,7 +39,7 @@ class HandleInertiaRequests extends Middleware
         $profile = Profile::first();
         return [
             ...parent::share($request),
-            'app_url' => url('/'),
+            'app_url' => env('APP_URL'),
             'author_name' => $profile?->full_name ?? 'Admin',
         ];
     }
