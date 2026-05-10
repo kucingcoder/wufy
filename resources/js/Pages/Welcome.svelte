@@ -12,8 +12,11 @@
         services = [], 
         visionMission,
         certificates = [],
-        cv_exists = false
+        cv_exists = false,
+        app_url
     } = $props();
+
+    const baseUrl = $derived(app_url?.replace(/\/$/, '') || '');
 
     let mounted = $state(false);
     let activeSection = $state('home');
@@ -105,6 +108,23 @@
         return icons.default;
     };
 
+    const jsonLd = $derived(JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": profile?.full_name,
+        "jobTitle": profile?.job_title,
+        "url": `${baseUrl}/`,
+        "image": profile?.avatar ? `${baseUrl}/storage/${profile.avatar}` : `${baseUrl}/icon.webp`,
+        "sameAs": profile?.links?.map(l => l.link) || [],
+        "description": profile?.description,
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": profile?.city,
+            "addressRegion": profile?.province,
+            "addressCountry": "ID"
+        }
+    }));
+
 
 
     // Scroll Reveal Action
@@ -139,17 +159,17 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wufy.test/">
+    <meta property="og:url" content={`${baseUrl}/`}>
     <meta property="og:title" content="{profile?.full_name} - {profile?.job_title}">
     <meta property="og:description" content={profile?.description}>
-    <meta property="og:image" content={profile?.avatar ? `/storage/${profile.avatar}` : '/icon.webp'}>
+    <meta property="og:image" content={profile?.avatar ? `${baseUrl}/storage/${profile.avatar}` : `${baseUrl}/icon.webp`}>
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://wufy.test/">
+    <meta property="twitter:url" content={`${baseUrl}/`}>
     <meta property="twitter:title" content="{profile?.full_name} - {profile?.job_title}">
     <meta property="twitter:description" content={profile?.description}>
-    <meta property="twitter:image" content={profile?.avatar ? `/storage/${profile.avatar}` : '/icon.webp'}>
+    <meta property="twitter:image" content={profile?.avatar ? `${baseUrl}/storage/${profile.avatar}` : `${baseUrl}/icon.webp`}>
 
     {#if profile?.avatar}
         <link rel="preload" as="image" href="/storage/{profile.avatar}" fetchpriority="high">
@@ -162,22 +182,7 @@
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-        {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": profile?.full_name,
-            "jobTitle": profile?.job_title,
-            "url": "https://wufy.test/",
-            "image": profile?.avatar ? `https://wufy.test/storage/${profile.avatar}` : "https://wufy.test/icon.webp",
-            "sameAs": profile?.links?.map(l => l.link) || [],
-            "description": profile?.description,
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": profile?.city,
-                "addressRegion": profile?.province,
-                "addressCountry": "ID"
-            }
-        })}
+        {@html jsonLd}
     </script>
 </svelte:head>
 

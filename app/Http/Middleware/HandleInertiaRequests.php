@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use App\Models\Profile;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -35,9 +36,11 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $profile = Profile::first();
         return [
             ...parent::share($request),
-            //
+            'app_url' => config('app.url'),
+            'author_name' => $profile?->full_name ?? 'Admin',
         ];
     }
 }

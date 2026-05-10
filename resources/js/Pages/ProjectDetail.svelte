@@ -2,7 +2,8 @@
     import { onMount } from 'svelte';
     import { fade, fly } from 'svelte/transition';
 
-    let { project } = $props();
+    let { project, app_url, author_name } = $props();
+    const baseUrl = $derived(app_url?.replace(/\/$/, '') || '');
     let mounted = $state(false);
 
     // Image Viewer State
@@ -52,6 +53,20 @@
         isDragging = false;
     };
 
+    const jsonLd = $derived(JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": project.title,
+        "description": project.short_description,
+        "image": project.thumbnail ? `${baseUrl}/storage/${project.thumbnail}` : `${baseUrl}/icon.webp`,
+        "url": `${baseUrl}/project/${project.slug}`,
+        "datePublished": project.created_at,
+        "author": {
+            "@type": "Person",
+            "name": author_name
+        }
+    }));
+
 </script>
 
 <svelte:head>
@@ -61,17 +76,17 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://wufy.test/project/{project.slug}">
+    <meta property="og:url" content={`${baseUrl}/project/${project.slug}`}>
     <meta property="og:title" content="{project.title} - Case Study">
     <meta property="og:description" content={project.short_description}>
-    <meta property="og:image" content={project.thumbnail ? `/storage/${project.thumbnail}` : '/icon.webp'}>
+    <meta property="og:image" content={project.thumbnail ? `${baseUrl}/storage/${project.thumbnail}` : `${baseUrl}/icon.webp`}>
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://wufy.test/project/{project.slug}">
+    <meta property="twitter:url" content={`${baseUrl}/project/${project.slug}`}>
     <meta property="twitter:title" content="{project.title} - Case Study">
     <meta property="twitter:description" content={project.short_description}>
-    <meta property="twitter:image" content={project.thumbnail ? `/storage/${project.thumbnail}` : '/icon.webp'}>
+    <meta property="twitter:image" content={project.thumbnail ? `${baseUrl}/storage/${project.thumbnail}` : `${baseUrl}/icon.webp`}>
 
     <link rel="icon" type="image/webp" href="/icon.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,19 +95,7 @@
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-        {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": project.title,
-            "description": project.short_description,
-            "image": project.thumbnail ? `https://wufy.test/storage/${project.thumbnail}` : "https://wufy.test/icon.webp",
-            "url": `https://wufy.test/project/${project.slug}`,
-            "datePublished": project.created_at,
-            "author": {
-                "@type": "Person",
-                "name": "Admin Wufy"
-            }
-        })}
+        {@html jsonLd}
     </script>
 </svelte:head>
 
