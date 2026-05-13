@@ -211,9 +211,9 @@
         <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800/50 px-4 py-2 rounded-full flex items-center gap-1 shadow-2xl pointer-events-auto">
             <button onclick={() => scrollTo('home')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'home' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Beranda</button>
             <button onclick={() => scrollTo('vision')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'vision' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Visi/Misi</button>
-            <button onclick={() => scrollTo('services')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'services' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Jasa</button>
             <button onclick={() => scrollTo('projects')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'projects' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Proyek</button>
             <button onclick={() => scrollTo('skills')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'skills' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Keahlian</button>
+            <button onclick={() => scrollTo('services')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'services' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Jasa</button>
             <button onclick={() => scrollTo('experience')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'experience' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Pengalaman</button>
             <button onclick={() => scrollTo('education')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'education' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Edukasi</button>
             <button onclick={() => scrollTo('certificates')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'certificates' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Sertifikat</button>
@@ -257,9 +257,9 @@
                 {#each [
                     { id: 'home', label: 'Beranda' },
                     { id: 'vision', label: 'Visi/Misi' },
-                    { id: 'services', label: 'Jasa' },
                     { id: 'projects', label: 'Proyek' },
                     { id: 'skills', label: 'Keahlian' },
+                    { id: 'services', label: 'Jasa' },
                     { id: 'experience', label: 'Pengalaman' },
                     { id: 'education', label: 'edukasi' },
                     { id: 'certificates', label: 'sertifikat' },
@@ -445,54 +445,6 @@
                     {/each}
                 </div>
             {/if}
-        </div>
-    </section>
-
-    <!-- Jasa Section -->
-    <section id="services" class="py-32 relative">
-        <div class="container mx-auto px-6">
-            <!-- Section Title -->
-            <div use:scrollReveal class="text-center mb-20 reveal">
-                <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-4">Melayani <span class="text-sky-500">Kebutuhan Digital</span> Anda</h2>
-                <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
-                <p class="mt-8 text-slate-400 max-w-2xl mx-auto">Transformasi kebutuhan digital menjadi solusi yang efisien, mudah digunakan, dan handal</p>
-            </div>
-
-            <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    {#each services as service, i}
-                        <div use:scrollReveal={{ delay: i * 100 }} class="group relative bg-slate-900 border border-slate-800 p-8 lg:p-10 rounded-[2.5rem] transition-all duration-500 hover:border-sky-500/30 shadow-2xl overflow-hidden flex flex-col reveal">
-                            <!-- Header Area -->
-                            <div class="mb-8">
-
-                                <h3 class="text-2xl lg:text-3xl font-bold text-white group-hover:text-sky-400 transition-colors tracking-tighter mb-3">
-                                    {service.title}
-                                </h3>
-                                <div class="h-1 w-10 bg-sky-500/20 rounded-full group-hover:w-20 group-hover:bg-sky-500 transition-all duration-500"></div>
-                            </div>
-
-                            <!-- Investment Info -->
-                            <div class="mb-8">
-                                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mb-1">Investment Range</p>
-                                <p class="text-2xl lg:text-3xl font-black text-sky-400 tracking-tight">
-                                    {service.price_range}
-                                </p>
-                            </div>
-
-                            <!-- Description Area -->
-                            <div class="flex-1">
-                                <p class="text-base text-slate-400 leading-relaxed font-light group-hover:text-slate-300 transition-colors whitespace-pre-line">
-                                    {service.description}
-                                </p>
-                            </div>
-
-                            <!-- Decorative Elements -->
-                            <div class="absolute -right-20 -top-20 w-64 h-64 bg-sky-500/5 blur-[100px] rounded-full pointer-events-none group-hover:bg-sky-500/10 transition-all duration-1000"></div>
-                            <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-sky-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                        </div>
-                    {/each}
-                </div>
-            </div>
         </div>
     </section>
 
@@ -690,6 +642,54 @@
                         {/if}
                     </div>
                 {/each}
+            </div>
+        </div>
+    </section>
+
+    <!-- Jasa Section -->
+    <section id="services" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <!-- Section Title -->
+            <div use:scrollReveal class="text-center mb-20 reveal">
+                <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-4">Melayani <span class="text-sky-500">Kebutuhan Digital</span> Anda</h2>
+                <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
+                <p class="mt-8 text-slate-400 max-w-2xl mx-auto">Transformasi kebutuhan digital menjadi solusi yang efisien, mudah digunakan, dan handal</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    {#each services as service, i}
+                        <div use:scrollReveal={{ delay: i * 100 }} class="group relative bg-slate-900 border border-slate-800 p-8 lg:p-10 rounded-[2.5rem] transition-all duration-500 hover:border-sky-500/30 shadow-2xl overflow-hidden flex flex-col reveal">
+                            <!-- Header Area -->
+                            <div class="mb-8">
+
+                                <h3 class="text-2xl lg:text-3xl font-bold text-white group-hover:text-sky-400 transition-colors tracking-tighter mb-3">
+                                    {service.title}
+                                </h3>
+                                <div class="h-1 w-10 bg-sky-500/20 rounded-full group-hover:w-20 group-hover:bg-sky-500 transition-all duration-500"></div>
+                            </div>
+
+                            <!-- Investment Info -->
+                            <div class="mb-8">
+                                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mb-1">Investment Range</p>
+                                <p class="text-2xl lg:text-3xl font-black text-sky-400 tracking-tight">
+                                    {service.price_range}
+                                </p>
+                            </div>
+
+                            <!-- Description Area -->
+                            <div class="flex-1">
+                                <p class="text-base text-slate-400 leading-relaxed font-light group-hover:text-slate-300 transition-colors whitespace-pre-line">
+                                    {service.description}
+                                </p>
+                            </div>
+
+                            <!-- Decorative Elements -->
+                            <div class="absolute -right-20 -top-20 w-64 h-64 bg-sky-500/5 blur-[100px] rounded-full pointer-events-none group-hover:bg-sky-500/10 transition-all duration-1000"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-sky-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        </div>
+                    {/each}
+                </div>
             </div>
         </div>
     </section>
