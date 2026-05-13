@@ -25,6 +25,8 @@ class EducationTable
                     ->label('Gelar'),
                 TextColumn::make('graduation_date')
                     ->label('Tahun Lulus'),
+                \Filament\Tables\Columns\ToggleColumn::make('is_current')
+                    ->label('Dalam masa studi'),
             ])
             ->filters([
                 //

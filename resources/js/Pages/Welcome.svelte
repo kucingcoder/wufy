@@ -13,7 +13,8 @@
         visionMission,
         certificates = [],
         cv_exists = false,
-        app_url
+        app_url,
+        auth
     } = $props();
 
     const baseUrl = $derived(app_url?.replace(/\/$/, '') || '');
@@ -220,6 +221,14 @@
             <button onclick={() => scrollTo('contact')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'contact' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Kontak</button>
         </div>
     </nav>
+    
+    {#if auth?.user}
+        <div class="fixed top-6 right-6 z-50 hidden md:flex">
+            <a href="/admin" class="bg-sky-500/10 backdrop-blur-md border border-sky-500/50 px-6 py-2.5 rounded-full text-xs font-bold tracking-widest text-sky-400 hover:text-white hover:bg-sky-500 hover:border-sky-400 transition-all shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:shadow-[0_0_30px_rgba(14,165,233,0.6)] pointer-events-auto">
+                Admin
+            </a>
+        </div>
+    {/if}
 
     <!-- Mobile Menu Toggle (Top Right) -->
     <div class="fixed top-6 right-6 z-[60] md:hidden">
@@ -238,22 +247,10 @@
     {#if isMenuOpen}
         <div 
             transition:fade={{ duration: 300 }}
-            class="fixed inset-0 z-[55] bg-slate-950/95 backdrop-blur-2xl md:hidden flex flex-col"
+            class="fixed inset-0 z-[55] bg-slate-950/95 backdrop-blur-2xl md:hidden flex flex-col overflow-y-auto"
         >
-            <!-- Close Button Header -->
-            <div class="flex justify-end p-8">
-                <button 
-                    onclick={() => isMenuOpen = false}
-                    class="text-slate-400 hover:text-white transition-colors group"
-                    aria-label="Tutup Menu"
-                >
-                    <div class="w-9 h-9 rounded-lg border border-slate-800 flex items-center justify-center group-hover:border-slate-600 bg-slate-900/50">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                    </div>
-                </button>
-            </div>
+            <div class="flex flex-col items-center justify-start flex-1 gap-6 pb-20 pt-24">
 
-            <div class="flex flex-col items-center justify-center flex-1 gap-6 pb-20">
                 {#each [
                     { id: 'home', label: 'Beranda' },
                     { id: 'vision', label: 'Visi/Misi' },
@@ -276,6 +273,16 @@
                         {item.label}
                     </button>
                 {/each}
+
+                {#if auth?.user}
+                    <div class="w-12 h-px bg-slate-800 mt-4"></div>
+                    <a 
+                        href="/admin"
+                        class="text-2xl font-black tracking-tighter text-sky-500 hover:text-white transition-all mt-4"
+                    >
+                        Admin
+                    </a>
+                {/if}
             </div>
         </div>
     {/if}
@@ -792,7 +799,11 @@
                                 <div use:scrollReveal={{ threshold: 0.2 }} class="group relative p-8 rounded-[2.5rem] bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 hover:border-indigo-500/30 transition-all duration-500 reveal">
                                     <!-- Graduation Year -->
                                     <div class="inline-block px-4 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-black mb-6">
-                                        🎓 Lulus: {edu.graduation_date}
+                                        {#if edu.is_current}
+                                            📖 Dalam masa studi
+                                        {:else}
+                                            🎓 Lulus: {edu.graduation_date}
+                                        {/if}
                                     </div>
 
                                     <h3 class="text-3xl font-black mb-3 text-white group-hover:text-indigo-400 transition-colors tracking-tight">{edu.major}</h3>
@@ -813,7 +824,7 @@
                                         
                                         {#if edu.gpa}
                                             <div class="flex flex-col items-end">
-                                                <span class="text-[10px] text-slate-500 uppercase font-black tracking-tighter">Grade Point</span>
+                                                <span class="text-[10px] text-slate-500 uppercase font-black tracking-tighter">IPK</span>
                                                 <span class="text-xl font-black text-indigo-400">{edu.gpa}</span>
                                             </div>
                                         {/if}

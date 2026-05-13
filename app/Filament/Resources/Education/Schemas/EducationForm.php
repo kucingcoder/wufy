@@ -29,8 +29,13 @@ class EducationForm
                 TextInput::make('graduation_date')
                     ->label('Bulan & Tahun Lulus')
                     ->placeholder('Contoh: Juni 2024')
-                    ->required()
+                    ->hidden(fn (callable $get) => $get('is_current'))
+                    ->required(fn (callable $get) => ! $get('is_current'))
                     ->maxLength(255),
+                \Filament\Forms\Components\Toggle::make('is_current')
+                    ->label('Dalam masa studi')
+                    ->default(false)
+                    ->live(),
                 TextInput::make('location_text')
                     ->label('Lokasi (Teks)')
                     ->required()

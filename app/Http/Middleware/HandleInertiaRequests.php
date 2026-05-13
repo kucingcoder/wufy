@@ -41,6 +41,9 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'app_url' => env('APP_URL'),
             'author_name' => $profile?->full_name ?? 'Admin',
+            'auth' => [
+                'user' => $request->user(),
+            ],
         ];
     }
 }
