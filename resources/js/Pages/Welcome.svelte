@@ -370,7 +370,7 @@
 
                         <div class="flex items-center gap-2 text-sky-400 text-xs font-bold uppercase tracking-widest">
                             <span class="w-2 h-2 rounded-full bg-sky-500 animate-ping"></span>
-                            Terbuka untuk pengadaan
+                            Terbuka untuk pekerjaan
                         </div>
                     </div>
 
