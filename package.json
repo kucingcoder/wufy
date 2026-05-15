@@ -18,6 +18,7 @@
         "@inertiajs/svelte": "^3.0.3",
         "@sveltejs/vite-plugin-svelte": "^7.0.0",
         "axios": "^1.15.2",
+        "photoswipe": "^5.4.4",
         "svelte": "^5.55.4"
     }
 }

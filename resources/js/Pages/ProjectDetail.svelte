@@ -1,57 +1,62 @@
 <script>
-    import { onMount } from 'svelte';
-    import { fade, fly } from 'svelte/transition';
+    import { onMount, onDestroy } from 'svelte';
+    import { fade } from 'svelte/transition';
+    import PhotoSwipeLightbox from 'photoswipe/lightbox';
+    import 'photoswipe/style.css';
 
     let { project, app_url, author_name } = $props();
     const baseUrl = $derived(app_url?.replace(/\/$/, '') || '');
     let mounted = $state(false);
-
-    // Image Viewer State
-    let selectedImage = $state(null);
-    let zoomScale = $state(1);
-    let isDragging = $state(false);
-    let position = $state({ x: 0, y: 0 });
-    let startPos = { x: 0, y: 0 };
+    let lightbox = null;
 
     onMount(() => {
         mounted = true;
+        
+        lightbox = new PhotoSwipeLightbox({
+            gallery: '#project-gallery',
+            children: 'a',
+            pswpModule: () => import('photoswipe'),
+            // Add some padding for the UI
+            padding: { top: 20, bottom: 20, left: 20, right: 20 },
+        });
+
+        // Handle images without dimensions
+        lightbox.addFilter('itemData', (itemData, index) => {
+            if (!itemData.width || !itemData.height) {
+                // We'll update these once the image loads
+                // For now, use a default aspect ratio
+                itemData.width = 1920;
+                itemData.height = 1080;
+            }
+            return itemData;
+        });
+
+        lightbox.on('contentLoad', (e) => {
+            const { content } = e;
+            if (content.type === 'image') {
+                const img = new Image();
+                img.src = content.data.src;
+                img.onload = () => {
+                    if (content.data.width !== img.width || content.data.height !== img.height) {
+                        content.data.width = img.width;
+                        content.data.height = img.height;
+                        if (lightbox.pswp) {
+                            lightbox.pswp.refreshLazy(e.index);
+                        }
+                    }
+                };
+            }
+        });
+
+        lightbox.init();
     });
 
-    const openViewer = (image) => {
-        selectedImage = image;
-        zoomScale = 1;
-        position = { x: 0, y: 0 };
-        document.body.style.overflow = 'hidden';
-    };
-
-    const closeViewer = () => {
-        selectedImage = null;
-        document.body.style.overflow = 'auto';
-    };
-
-    const handleZoom = (delta) => {
-        zoomScale = Math.max(0.5, Math.min(5, zoomScale + delta));
-    };
-
-    const handleMouseDown = (e) => {
-        if (zoomScale > 1) {
-            isDragging = true;
-            startPos = { x: e.clientX - position.x, y: e.clientY - position.y };
+    onDestroy(() => {
+        if (lightbox) {
+            lightbox.destroy();
+            lightbox = null;
         }
-    };
-
-    const handleMouseMove = (e) => {
-        if (isDragging) {
-            position = {
-                x: e.clientX - startPos.x,
-                y: e.clientY - startPos.y
-            };
-        }
-    };
-
-    const handleMouseUp = () => {
-        isDragging = false;
-    };
+    });
 
     const jsonLd = $derived(JSON.stringify({
         "@context": "https://schema.org",
@@ -102,6 +107,7 @@
     <!-- Background Gradient -->
     <div class="fixed inset-0 pointer-events-none z-0">
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-600/10 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/5 blur-[120px] rounded-full"></div>
     </div>
 
     <!-- Header / Back Button -->
@@ -185,28 +191,42 @@
             <!-- Gallery Section -->
             {#if project.galleries && project.galleries.length > 0}
                 <div class="mt-40">
-                    <h2 class="text-4xl lg:text-6xl font-black mb-16 tracking-tight">Project <span class="text-sky-500">Gallery</span></h2>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="flex items-end justify-between mb-16">
+                        <div>
+                            <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-4">Project <span class="text-sky-500">Gallery</span></h2>
+                            <div class="h-1.5 w-20 bg-sky-500 rounded-full shadow-[0_0_15px_rgba(14,165,233,0.5)]"></div>
+                        </div>
+                        <p class="text-slate-500 font-bold uppercase tracking-widest text-xs hidden sm:block">Click to expand</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="project-gallery">
                         {#each project.galleries as gallery}
-                            <button 
-                                onclick={() => openViewer(`/storage/${gallery.image_path}`)}
-                                class="group flex flex-col gap-3 text-left outline-none"
+                            <a 
+                                href="/storage/{gallery.image_path}" 
+                                target="_blank"
+                                class="group flex flex-col gap-4 text-left outline-none"
+                                data-pswp-width="1920"
+                                data-pswp-height="1080"
                             >
-                                <div class="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 aspect-video w-full">
-                                    <img src="/storage/{gallery.image_path}" alt={gallery.title || project.title} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-                                    <!-- Zoom Icon Overlay -->
-                                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-sky-500/10 pointer-events-none">
-                                        <div class="w-12 h-12 rounded-full bg-sky-500 text-white flex items-center justify-center shadow-lg">
+                                <div class="relative rounded-[2rem] overflow-hidden bg-slate-900 border border-slate-800 aspect-video w-full shadow-xl transition-all duration-500 group-hover:shadow-sky-500/10 group-hover:-translate-y-1">
+                                    <img src="/storage/{gallery.image_path}" alt={gallery.title || project.title} class="w-full h-full object-cover transition-transform duration-[1s] ease-out group-hover:scale-110" />
+                                    
+                                    <!-- Premium Overlay -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                                    
+                                    <!-- Zoom Icon -->
+                                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100">
+                                        <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center shadow-2xl">
                                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
                                         </div>
                                     </div>
                                 </div>
                                 {#if gallery.title}
                                     <div class="px-2">
-                                        <span class="text-sm font-medium text-slate-300 group-hover:text-white transition-colors tracking-tight">{gallery.title}</span>
+                                        <span class="text-sm font-bold text-slate-400 group-hover:text-sky-400 transition-colors tracking-tight line-clamp-1">{gallery.title}</span>
                                     </div>
                                 {/if}
-                            </button>
+                            </a>
                         {/each}
                     </div>
                 </div>
@@ -215,76 +235,6 @@
         </article>
     </main>
 
-    <!-- Image Viewer Modal -->
-    {#if selectedImage}
-        <div 
-            transition:fade={{ duration: 200 }}
-            class="fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-xl flex items-center justify-center overflow-hidden touch-none"
-            onmousemove={handleMouseMove}
-            onmouseup={handleMouseUp}
-            onmouseleave={handleMouseUp}
-            role="button"
-            tabindex="0"
-            aria-label="Close viewer"
-            onclick={(e) => { if (e.target === e.currentTarget) closeViewer(); }}
-            onkeydown={(e) => { if (e.key === 'Escape') closeViewer(); }}
-        >
-            <!-- Controls -->
-            <div class="absolute top-6 right-6 flex items-center gap-3 z-[110]">
-                <div class="flex items-center gap-1 bg-slate-900/80 border border-slate-800 rounded-2xl p-1.5 shadow-2xl">
-                    <button 
-                        onclick={() => handleZoom(0.2)}
-                        class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-800 text-white transition-colors"
-                        title="Zoom In"
-                    >
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                    </button>
-                    <button 
-                        onclick={() => handleZoom(-0.2)}
-                        class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-800 text-white transition-colors"
-                        title="Zoom Out"
-                    >
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>
-                    </button>
-                    <button 
-                        onclick={() => { zoomScale = 1; position = { x: 0, y: 0 }; }}
-                        class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-800 text-white transition-colors"
-                        title="Reset"
-                    >
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-                    </button>
-                </div>
-
-                <button 
-                    onclick={closeViewer}
-                    class="w-12 h-12 flex items-center justify-center rounded-2xl bg-red-500/10 border border-red-500/20 text-red-500 hover:bg-red-500 hover:text-white transition-all shadow-2xl"
-                    title="Close"
-                >
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-
-            <!-- Image Container -->
-            <div 
-                class="relative w-full h-full flex items-center justify-center {zoomScale > 1 ? 'cursor-grab active:cursor-grabbing' : ''}"
-                onmousedown={handleMouseDown}
-                role="presentation"
-            >
-                <img 
-                    src={selectedImage} 
-                    alt="Preview" 
-                    class="max-w-[90%] max-h-[90%] object-contain select-none transition-transform duration-200 ease-out"
-                    style="transform: translate({position.x}px, {position.y}px) scale({zoomScale})"
-                    draggable="false"
-                />
-            </div>
-
-            <!-- Zoom Indicator -->
-            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-slate-900/50 backdrop-blur-md border border-white/10 text-xs font-black tracking-widest text-white/50 uppercase">
-                Zoom: {Math.round(zoomScale * 100)}%
-            </div>
-        </div>
-    {/if}
 </div>
 
 <style>
@@ -311,5 +261,32 @@
         border-radius: 2rem;
         border: 1px solid rgba(255,255,255,0.1);
         margin: 3rem 0;
+    }
+
+    /* PhotoSwipe Customization */
+    :global(.pswp) {
+        --pswp-bg: rgba(2, 6, 23, 0.98);
+        --pswp-placeholder-bg: #0f172a;
+        --pswp-root-z-index: 1000;
+    }
+
+    :global(.pswp__img) {
+        border-radius: 1.5rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    :global(.pswp__button) {
+        background: rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 12px !important;
+        margin: 10px !important;
+        transition: all 0.3s !important;
+    }
+
+    :global(.pswp__button:hover) {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-color: rgba(14, 165, 233, 0.5) !important;
+        color: #0ea5e9 !important;
     }
 </style>
