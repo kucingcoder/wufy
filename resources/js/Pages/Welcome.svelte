@@ -337,9 +337,26 @@
                     </div>
                 </div>
                 
-                <p use:scrollReveal={{ delay: 200 }} class="text-base sm:text-lg lg:text-xl text-slate-400 leading-relaxed font-light reveal max-w-2xl mx-auto lg:mx-0 text-justify lg:text-left">
-                    {profile?.description || 'Membangun solusi digital inovatif dengan fokus pada teknologi modern dan pengalaman pengguna yang luar biasa.'}
-                </p>
+                <div class="space-y-3">
+                    <p use:scrollReveal={{ delay: 200 }} class="text-base sm:text-lg lg:text-xl text-slate-400 leading-relaxed font-light reveal max-w-2xl mx-auto lg:mx-0 text-justify lg:text-left">
+                        {profile?.description || 'Membangun solusi digital inovatif dengan fokus pada teknologi modern dan pengalaman pengguna yang luar biasa.'}
+                    </p>
+
+                    <div use:scrollReveal={{ delay: 250 }} class="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center lg:justify-start reveal">
+                        <div class="flex items-center gap-2 text-slate-200 bg-slate-900/50 px-4 py-2 rounded-full border border-slate-800/50">
+                            <svg class="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span class="font-medium text-sm">{profile?.city}, {profile?.province}</span>
+                        </div>
+                        
+                        <div class="flex items-center gap-2 text-sky-400 text-[10px] font-black uppercase tracking-[0.2em] bg-sky-500/5 px-4 py-2 rounded-full border border-sky-500/10">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-500 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                            </span>
+                            Terbuka untuk pekerjaan
+                        </div>
+                    </div>
+                </div>
 
                 <div use:scrollReveal={{ delay: 300 }} class="flex flex-col gap-8 items-center lg:items-start reveal">
                     <!-- Social Links (Mobile) -->
@@ -359,21 +376,6 @@
                                 </a>
                             {/each}
                         {/if}
-                    </div>
-
-                    <div class="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center lg:justify-start">
-                        <div class="flex items-center gap-2 text-slate-200 bg-slate-900/50 px-4 py-2 rounded-full border border-slate-800/50">
-                            <svg class="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            <span class="font-medium text-sm">{profile?.city}, {profile?.province}</span>
-                        </div>
-                        
-                        <div class="flex items-center gap-2 text-sky-400 text-[10px] font-black uppercase tracking-[0.2em] bg-sky-500/5 px-4 py-2 rounded-full border border-sky-500/10">
-                            <span class="relative flex h-2 w-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-500 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
-                            </span>
-                            Terbuka untuk pekerjaan
-                        </div>
                     </div>
 
                     <div class="flex flex-wrap items-center gap-4 justify-center lg:justify-start">
