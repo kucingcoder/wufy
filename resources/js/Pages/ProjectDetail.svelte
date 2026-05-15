@@ -20,17 +20,6 @@
             padding: { top: 20, bottom: 20, left: 20, right: 20 },
         });
 
-        // Handle images without dimensions
-        lightbox.addFilter('itemData', (itemData, index) => {
-            if (!itemData.width || !itemData.height) {
-                // We'll update these once the image loads
-                // For now, use a default aspect ratio
-                itemData.width = 1920;
-                itemData.height = 1080;
-            }
-            return itemData;
-        });
-
         lightbox.on('contentLoad', (e) => {
             const { content } = e;
             if (content.type === 'image') {
@@ -205,11 +194,20 @@
                                 href="/storage/{gallery.image_path}" 
                                 target="_blank"
                                 class="group flex flex-col gap-4 text-left outline-none"
-                                data-pswp-width="1920"
-                                data-pswp-height="1080"
                             >
-                                <div class="relative rounded-[2rem] overflow-hidden bg-slate-900 border border-slate-800 aspect-video w-full shadow-xl transition-all duration-500 group-hover:shadow-sky-500/10 group-hover:-translate-y-1">
-                                    <img src="/storage/{gallery.image_path}" alt={gallery.title || project.title} class="w-full h-full object-cover transition-transform duration-[1s] ease-out group-hover:scale-110" />
+                                <div class="relative overflow-hidden bg-slate-900 border border-slate-800 w-full shadow-xl transition-all duration-500 group-hover:shadow-sky-500/10 group-hover:-translate-y-1">
+                                    <img 
+                                        src="/storage/{gallery.image_path}" 
+                                        alt={gallery.title || project.title} 
+                                        class="w-full h-auto transition-transform duration-[1s] ease-out group-hover:scale-110" 
+                                        onload={(e) => {
+                                            const a = e.currentTarget.closest('a');
+                                            if (a) {
+                                                a.dataset.pswpWidth = e.currentTarget.naturalWidth;
+                                                a.dataset.pswpHeight = e.currentTarget.naturalHeight;
+                                            }
+                                        }}
+                                    />
                                     
                                     <!-- Premium Overlay -->
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
@@ -271,7 +269,6 @@
     }
 
     :global(.pswp__img) {
-        border-radius: 1.5rem;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
 
