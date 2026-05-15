@@ -337,7 +337,7 @@
                     </div>
                 </div>
                 
-                <p use:scrollReveal={{ delay: 200 }} class="text-base sm:text-lg lg:text-xl text-slate-400 leading-relaxed font-light reveal max-w-2xl mx-auto lg:mx-0">
+                <p use:scrollReveal={{ delay: 200 }} class="text-base sm:text-lg lg:text-xl text-slate-400 leading-relaxed font-light reveal max-w-2xl mx-auto lg:mx-0 text-justify lg:text-left">
                     {profile?.description || 'Membangun solusi digital inovatif dengan fokus pada teknologi modern dan pengalaman pengguna yang luar biasa.'}
                 </p>
 
