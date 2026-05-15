@@ -258,8 +258,8 @@
                     { id: 'skills', label: 'Keahlian' },
                     { id: 'services', label: 'Jasa' },
                     { id: 'experience', label: 'Pengalaman' },
-                    { id: 'education', label: 'edukasi' },
-                    { id: 'certificates', label: 'sertifikat' },
+                    { id: 'education', label: 'Edukasi' },
+                    { id: 'certificates', label: 'Sertifikat' },
                     { id: 'contact', label: 'Kontak' }
                 ] as item, i}
                     <button 
@@ -658,7 +658,7 @@
         <div class="container mx-auto px-6">
             <!-- Section Title -->
             <div use:scrollReveal class="text-center mb-20 reveal">
-                <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-4">Melayani <span class="text-sky-500">Kebutuhan Digital</span> Anda</h2>
+                <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-4">Melayani <span class="text-sky-500">Kebutuhan Digital</span></h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
                 <p class="mt-8 text-slate-400 max-w-2xl mx-auto">Transformasi kebutuhan digital menjadi solusi yang efisien, mudah digunakan, dan handal</p>
             </div>
@@ -852,7 +852,7 @@
         <div class="container mx-auto px-6 relative z-10">
             <div use:scrollReveal class="text-center mb-24 reveal">
                 <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-4">
-                    Pelatihan & <span class="text-sky-500">Sertifikasi</span>
+                    Sertifikasi <span class="text-sky-500">Keahlian</span>
                 </h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
             </div>
