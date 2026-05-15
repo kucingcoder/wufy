@@ -288,95 +288,97 @@
     {/if}
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 px-6 lg:px-24">
-        <div class="container mx-auto grid lg:grid-cols-[1.8fr_1fr] gap-16 items-center">
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-32 pb-12 px-6 lg:px-24">
+        <div class="container mx-auto flex flex-col lg:grid lg:grid-cols-[1.8fr_1fr] gap-12 lg:gap-16 items-center">
             
-            <!-- Mobile: TOP / Desktop: RIGHT (Profile & HUD) -->
-            <div class="order-1 lg:order-2 flex flex-col items-center lg:items-end gap-8">
-                <div use:scrollReveal={{ threshold: 0.1 }} class="relative group reveal">
-                    <!-- Outer Glow & HUD Markers -->
-                    <div class="absolute -inset-8 bg-sky-500/10 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <!-- Info (Text) - Priority on Mobile -->
+            <div class="order-1 lg:order-1 text-center lg:text-left space-y-6 lg:space-y-8">
+                <div>
+                    <h1 use:scrollReveal class="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-4 text-white reveal">
+                        {profile?.full_name || 'Your Name'}
+                    </h1>
                     
-                    <!-- Main Frame -->
-                    <div class="relative w-64 h-64 lg:w-80 lg:h-80 bg-slate-900 border border-slate-800 p-3 rounded-3xl group-hover:border-sky-500/30 transition-all duration-500 shadow-2xl">
-                        <!-- Inner Glow -->
-                        <div class="absolute inset-0 bg-sky-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <h2 use:scrollReveal={{ delay: 100 }} class="text-xl sm:text-2xl lg:text-3xl font-medium text-sky-400/80 font-['Space_Grotesk'] tracking-wide reveal">
+                        {profile?.job_title || 'Gelar Profesional'}
+                    </h2>
+                </div>
+
+                <!-- Profile Photo - Integrated in Mobile Flow -->
+                <div class="lg:hidden flex justify-center py-4">
+                    <div use:scrollReveal={{ threshold: 0.1 }} class="relative group reveal">
+                        <!-- Premium Outer Glow -->
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-sky-500/20 to-indigo-500/20 blur-2xl rounded-full opacity-60"></div>
                         
-                        <!-- Image Container -->
-                        <div class="relative w-full h-full overflow-hidden rounded-2xl bg-slate-950">
-                            {#if profile?.avatar}
-                                <img 
-                                    src="/storage/{profile.avatar}" 
-                                    alt={profile.full_name} 
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" 
-                                    fetchpriority="high"
-                                    loading="eager"
-                                />
-                            {:else}
-                                <div class="w-full h-full flex items-center justify-center text-6xl opacity-20">👤</div>
-                            {/if}
+                        <!-- Floating Decorative Badges -->
+                        <div class="absolute -top-2 -right-2 z-10 w-10 h-10 bg-slate-900 border border-slate-700 rounded-xl flex items-center justify-center shadow-xl animate-bounce" style="animation-duration: 3s;">
+                            <span class="text-lg">🚀</span>
+                        </div>
+                        
+                        <!-- Frame with Gradient Border -->
+                        <div class="relative w-56 h-56 bg-slate-900 p-1.5 rounded-[2.5rem] shadow-2xl overflow-hidden">
+                            <!-- Gradient Border Effect -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-sky-500 via-indigo-500/20 to-sky-500 opacity-40 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            
+                            <!-- Image Container -->
+                            <div class="relative w-full h-full overflow-hidden rounded-[2.2rem] bg-slate-950">
+                                {#if profile?.avatar}
+                                    <img 
+                                        src="/storage/{profile.avatar}" 
+                                        alt={profile.full_name} 
+                                        class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" 
+                                        fetchpriority="high"
+                                        loading="eager"
+                                    />
+                                {:else}
+                                    <div class="w-full h-full flex items-center justify-center text-6xl opacity-20">👤</div>
+                                {/if}
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Decorative Dots -->
-                    <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5">
-                        <div class="w-1.5 h-1.5 bg-sky-500 rounded-full animate-pulse"></div>
-                        <div class="w-1.5 h-1.5 bg-sky-500/50 rounded-full animate-pulse delay-75"></div>
-                        <div class="w-1.5 h-1.5 bg-sky-500/30 rounded-full animate-pulse delay-150"></div>
-                    </div>
                 </div>
                 
-                <div use:scrollReveal={{ threshold: 0.1, delay: 200 }} class="flex gap-4 reveal">
-                    {#if profile?.links}
-                        {#each profile.links as link}
-                            <a 
-                                href={link.link} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                aria-label="Kunjungi {link.title} {profile.full_name}"
-                                class="relative w-14 h-14 bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-sky-400 hover:border-sky-500/50 transition-all clip-hexagon group/social overflow-hidden shadow-2xl"
-                            >
-                                <div class="absolute inset-0 bg-sky-500/5 opacity-0 group-hover/social:opacity-100 transition-opacity"></div>
-                                {@html getIcon(link.title)}
-                            </a>
-                        {/each}
-                    {/if}
-                </div>
-            </div>
-
-            <!-- Mobile: BOTTOM / Desktop: LEFT (Info) -->
-            <div class="order-2 lg:order-1 text-center lg:text-left">
-                
-                <h1 use:scrollReveal class="text-4xl lg:text-6xl font-black tracking-tighter leading-[0.9] mb-6 text-white reveal">
-                    {profile?.full_name || 'Your Name'}
-                </h1>
-                
-                <h2 use:scrollReveal={{ delay: 100 }} class="text-2xl lg:text-3xl font-medium text-slate-400 mb-8 font-['Space_Grotesk'] reveal">
-                    {profile?.job_title || 'Gelar Profesional'}
-                </h2>
-                
-                <p use:scrollReveal={{ delay: 200 }} class="text-lg lg:text-xl text-slate-400 mb-2 leading-relaxed font-light reveal">
+                <p use:scrollReveal={{ delay: 200 }} class="text-base sm:text-lg lg:text-xl text-slate-400 leading-relaxed font-light reveal max-w-2xl mx-auto lg:mx-0">
                     {profile?.description || 'Membangun solusi digital inovatif dengan fokus pada teknologi modern dan pengalaman pengguna yang luar biasa.'}
                 </p>
 
-                <div use:scrollReveal={{ delay: 300 }} class="flex flex-col gap-6 items-center lg:items-start reveal">
+                <div use:scrollReveal={{ delay: 300 }} class="flex flex-col gap-8 items-center lg:items-start reveal">
+                    <!-- Social Links (Mobile) -->
+                    <div class="flex gap-4 lg:hidden">
+                        {#if profile?.links}
+                            {#each profile.links as link}
+                                <a 
+                                    href={link.link} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    class="relative w-12 h-12 rounded-full bg-slate-900/50 backdrop-blur-md border border-slate-800 flex items-center justify-center text-slate-400 hover:text-sky-400 hover:border-sky-500/50 transition-all group/social shadow-xl"
+                                >
+                                    <div class="absolute inset-0 bg-sky-500/10 rounded-full opacity-0 group-hover/social:opacity-100 blur-md transition-opacity"></div>
+                                    <div class="relative z-10 group-hover/social:scale-110 transition-transform">
+                                        {@html getIcon(link.title)}
+                                    </div>
+                                </a>
+                            {/each}
+                        {/if}
+                    </div>
+
                     <div class="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center lg:justify-start">
-                        <div class="flex items-center gap-2 text-slate-200">
+                        <div class="flex items-center gap-2 text-slate-200 bg-slate-900/50 px-4 py-2 rounded-full border border-slate-800/50">
                             <svg class="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            <span class="font-medium">{profile?.city}, {profile?.province}</span>
+                            <span class="font-medium text-sm">{profile?.city}, {profile?.province}</span>
                         </div>
                         
-                        <div class="h-8 w-[1px] bg-slate-800 hidden sm:block"></div>
-
-                        <div class="flex items-center gap-2 text-sky-400 text-xs font-bold uppercase tracking-widest">
-                            <span class="w-2 h-2 rounded-full bg-sky-500 animate-ping"></span>
+                        <div class="flex items-center gap-2 text-sky-400 text-[10px] font-black uppercase tracking-[0.2em] bg-sky-500/5 px-4 py-2 rounded-full border border-sky-500/10">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-500 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                            </span>
                             Terbuka untuk pekerjaan
                         </div>
                     </div>
 
                     <div class="flex flex-wrap items-center gap-4 justify-center lg:justify-start">
                         {#if cv_exists}
-                            <a href="/storage/{profile.cv_path}" target="_blank" class="flex items-center gap-3 bg-slate-100 text-slate-900 px-8 py-4 rounded-2xl font-bold hover:bg-white hover:scale-105 active:scale-95 transition-all shadow-xl group">
+                            <a href="/storage/{profile.cv_path}" target="_blank" class="flex items-center gap-3 bg-white text-slate-950 px-8 py-4 rounded-2xl font-black hover:bg-sky-500 hover:text-white hover:scale-105 active:scale-95 transition-all shadow-xl group">
                                 <span>Unduh CV</span>
                                 <svg class="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             </a>
@@ -387,9 +389,9 @@
                                 href="https://wa.me/{formattedPhone}" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                class="flex items-center gap-3 bg-green-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-500 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-green-600/20 group"
+                                class="flex items-center gap-3 bg-slate-900 border border-slate-800 text-white px-8 py-4 rounded-2xl font-black hover:border-green-500/50 hover:bg-green-600/5 hover:scale-105 active:scale-95 transition-all shadow-xl group"
                             >
-                                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                <svg class="w-6 h-6 fill-[#25D366]" viewBox="0 0 24 24">
                                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.887 11.887-2.01 0-3.987-.512-5.744-1.488l-6.141 1.712zm6.352-3.804c1.644.975 3.266 1.489 4.981 1.489 5.399 0 9.794-4.396 9.794-9.795 0-5.398-4.396-9.793-9.794-9.793-2.615 0-5.074 1.018-6.921 2.865s-2.864 4.305-2.864 6.92c0 1.761.533 3.436 1.543 4.887l-1.011 3.693 3.791-1.055c1.479.805 3.13 1.258 4.793 1.258zm11.314-7.462c-.302-.151-1.782-.879-2.059-.979-.277-.101-.48-.151-.68.151-.2.302-.779.979-.955 1.181-.177.201-.353.226-.654.076-.301-.151-1.272-.469-2.421-1.494-.894-.797-1.497-1.782-1.672-2.083-.177-.302-.019-.465.132-.615.136-.134.302-.352.453-.529.151-.176.201-.302.302-.503.101-.201.05-.378-.026-.529-.076-.151-.68-1.637-.931-2.242-.244-.589-.493-.509-.68-.518-.176-.008-.378-.01-.58-.01-.201 0-.529.076-.805.378-.277.301-1.056 1.031-1.056 2.515 0 1.484 1.08 2.919 1.231 3.12.151.201 2.126 3.246 5.148 4.549.719.31 1.28.496 1.718.636.721.23 1.378.197 1.896.12.577-.085 1.782-.729 2.034-1.433.251-.704.251-1.307.176-1.433-.076-.126-.277-.202-.579-.353z"/>
                                 </svg>
                                 <span>Hubungi</span>
@@ -399,8 +401,77 @@
                 </div>
             </div>
 
-        </div>
+            <!-- Desktop Profile & HUD -->
+            <div class="hidden lg:order-2 lg:flex flex-col items-center lg:items-end gap-14">
+                <div use:scrollReveal={{ threshold: 0.1 }} class="relative group reveal">
+                    <!-- Futuristic Background Elements -->
+                    <div class="absolute -inset-16 bg-sky-500/5 blur-[100px] rounded-full animate-pulse"></div>
+                    
+                    <!-- Tightened Corner Lines -->
+                    <div class="absolute -top-6 -left-6 w-16 h-16 border-t-2 border-l-2 border-sky-500/40 rounded-tl-2xl group-hover:scale-105 transition-transform duration-700"></div>
+                    <div class="absolute -bottom-6 -right-6 w-16 h-16 border-b-2 border-r-2 border-sky-500/40 rounded-br-2xl group-hover:scale-105 transition-transform duration-700"></div>
+                    
+                    <!-- Corner HUD Accents (Small dots) -->
+                    <div class="absolute -top-6 -right-2 w-1 h-1 bg-sky-500/50 rounded-full"></div>
+                    <div class="absolute -bottom-2 -left-6 w-1 h-1 bg-sky-500/50 rounded-full"></div>
+                    
+                    <!-- Main Frame -->
+                    <div class="relative w-80 h-80 bg-slate-900 border border-slate-800 p-4 rounded-[3.5rem] group-hover:border-sky-500/50 transition-all duration-700 shadow-2xl">
+                        <!-- Inner Glow & HUD -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-sky-500/10 via-transparent to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <!-- Image Container -->
+                        <div class="relative w-full h-full overflow-hidden rounded-[3rem] bg-slate-950 shadow-inner">
+                            {#if profile?.avatar}
+                                <img 
+                                    src="/storage/{profile.avatar}" 
+                                    alt={profile.full_name} 
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" 
+                                    fetchpriority="high"
+                                    loading="eager"
+                                />
+                            {:else}
+                                <div class="w-full h-full flex items-center justify-center text-8xl opacity-20">👤</div>
+                            {/if}
+                            
+                            <!-- Scanner Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-b from-sky-500/20 to-transparent h-1/2 -translate-y-full group-hover:animate-scan pointer-events-none"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats / Badges -->
+                    <div class="absolute -left-16 top-1/3 bg-slate-900/80 backdrop-blur-md border border-slate-800 p-4 rounded-2xl shadow-2xl reveal group-hover:-translate-x-4 transition-transform duration-500 hidden xl:block">
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-300">Verified Expert</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desktop Social Links -->
+                <div use:scrollReveal={{ threshold: 0.1, delay: 200 }} class="flex gap-6 reveal">
+                    {#if profile?.links}
+                        {#each profile.links as link}
+                            <a 
+                                href={link.link} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                aria-label="Kunjungi {link.title} {profile.full_name}"
+                                class="relative w-14 h-14 rounded-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 flex items-center justify-center text-slate-400 hover:text-sky-400 hover:border-sky-500/50 transition-all group/social shadow-2xl overflow-hidden"
+                            >
+                                <div class="absolute inset-0 bg-sky-500/10 opacity-0 group-hover/social:opacity-100 transition-opacity"></div>
+                                <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-1 bg-sky-500 rounded-full blur-sm opacity-0 group-hover/social:opacity-100 transition-all duration-500"></div>
+                                <div class="relative z-10 group-hover/social:-translate-y-1 transition-transform duration-300">
+                                    {@html getIcon(link.title)}
+                                </div>
+                            </a>
+                        {/each}
+                    {/if}
+                </div>
+            </div>
 
+        </div>
+        
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-20 hidden lg:block">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
@@ -931,8 +1002,10 @@
                     <div class="flex items-center gap-3">
                         {#if profile?.links}
                             {#each profile.links as link}
-                                <a href={link.link} target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-sky-400 hover:border-sky-500/50 hover:bg-sky-500/5 transition-all group shadow-xl">
-                                    {@html getIcon(link.title)}
+                                <a href={link.link} target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-sky-400 hover:border-sky-500/50 hover:bg-sky-500/5 transition-all group/social shadow-xl">
+                                    <div class="group-hover/social:scale-110 transition-transform">
+                                        {@html getIcon(link.title)}
+                                    </div>
                                 </a>
                             {/each}
                         {/if}
@@ -1053,6 +1126,15 @@
         clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     }
 
+    @keyframes scan {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(200%); }
+    }
+    
+    .animate-scan {
+        animation: scan 3s linear infinite;
+    }
+
     @keyframes pulse {
         0%, 100% { opacity: 0.1; transform: scale(1); }
         50% { opacity: 0.2; transform: scale(1.1); }
@@ -1084,8 +1166,8 @@
     /* Scroll Reveal Styles */
     :global(.reveal) {
         opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        transform: translateY(20px);
+        transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         will-change: opacity, transform;
     }
 
