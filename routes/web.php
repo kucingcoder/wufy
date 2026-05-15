@@ -77,3 +77,5 @@ Route::get('/sitemap.xml', function () {
     return response($sitemap, 200)
         ->header('Content-Type', 'application/xml');
 });
+
+Route::get('/{code}', [\App\Http\Controllers\ShortLinkController::class, 'redirect'])->name('shortlink.redirect');
