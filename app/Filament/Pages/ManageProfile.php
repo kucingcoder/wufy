@@ -119,6 +119,12 @@ class ManageProfile extends Page implements HasSchemas
         $data = $this->getSchema('content')->getState();
 
         Profile::updateOrCreate(['id' => 1], $data);
+
+        // Update User name to match Profile full_name
+        $user = auth()->user();
+        if ($user && isset($data['full_name'])) {
+            $user->update(['name' => $data['full_name']]);
+        }
         
         Notification::make()
             ->success()

@@ -24,7 +24,6 @@ class Settings extends Page
     public function mount(): void
     {
         $user = auth()->user();
-        $this->data['name'] = $user->name;
         $this->data['email'] = $user->email;
     }
 
@@ -33,20 +32,6 @@ class Settings extends Page
         return $schema
             ->statePath('data')
             ->components([
-                \Filament\Schemas\Components\Section::make('Ganti Nama')
-                    ->description('Perbarui nama tampilan akun Anda.')
-                    ->schema([
-                        TextInput::make('name')
-                            ->label('Nama Lengkap')
-                            ->required()
-                            ->maxLength(255),
-                        \Filament\Schemas\Components\Actions::make([
-                            Action::make('updateName')
-                                ->label('Perbarui Nama')
-                                ->color('primary')
-                                ->action(fn () => $this->updateName()),
-                        ]),
-                    ]),
                 \Filament\Schemas\Components\Section::make('Ganti Email')
                     ->description('Perbarui alamat email yang digunakan untuk login.')
                     ->schema([
@@ -88,18 +73,6 @@ class Settings extends Page
                         ]),
                     ]),
             ]);
-    }
-
-    public function updateName(): void
-    {
-        $user = auth()->user();
-        $user->name = $this->data['name'];
-        $user->save();
-
-        Notification::make()
-            ->success()
-            ->title('Nama Berhasil Diperbarui')
-            ->send();
     }
 
     public function updateEmail(): void
