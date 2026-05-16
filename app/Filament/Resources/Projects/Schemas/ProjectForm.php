@@ -69,7 +69,6 @@ class ProjectForm
                             ->required(fn (callable $get) => $get('is_opensource'))
                             ->visible(fn (callable $get) => $get('is_opensource'))
                             ->placeholder('https://github.com/username/repo')
-                            ->prefix('github.com/')
                             ->columnSpanFull(),
                     ]),
                 TextInput::make('link')

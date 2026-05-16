@@ -565,7 +565,7 @@
                 {#each paginatedProjects as project, i}
                     <a use:scrollReveal={{ delay: (i % 3) * 100 }} href="/project/{project.slug}" class="group relative flex flex-col bg-slate-900 border border-slate-800 rounded-3xl hover:border-sky-500/50 transition-all duration-500 shadow-xl overflow-hidden reveal">
                         <!-- Thumbnail Container -->
-                        <div class="relative aspect-[4/3] overflow-hidden">
+                        <div class="relative aspect-square overflow-hidden">
                             {#if project.thumbnail}
                                 <img src="/storage/{project.thumbnail}" alt={project.title} class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" />
                             {:else}
