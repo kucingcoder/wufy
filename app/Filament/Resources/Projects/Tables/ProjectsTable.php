@@ -7,7 +7,6 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ImageColumn;
 
 class ProjectsTable
 {
@@ -15,9 +14,6 @@ class ProjectsTable
     {
         return $table
             ->columns([
-                ImageColumn::make('thumbnail')
-                    ->label('Thumbnail')
-                    ->circular(),
                 TextColumn::make('title')
                     ->label('Judul Proyek')
                     ->searchable(),
