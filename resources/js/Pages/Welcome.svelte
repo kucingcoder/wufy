@@ -554,7 +554,7 @@
                                         <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-sky-500/5 rounded-full blur-2xl group-hover:bg-sky-500/10 transition-all duration-700"></div>
                                         
                                         <div class="relative z-10">
-                                            <div class="flex items-center gap-5 mb-4">
+                                            <div class="flex items-center gap-5">
                                                 <div class="w-12 h-12 rounded-xl bg-slate-950 flex items-center justify-center p-2.5 border border-slate-800 group-hover:border-sky-500/50 transition-colors duration-500">
                                                     {#if skill.logo_path}
                                                         <img src="/storage/{skill.logo_path}" alt={skill.title} class="max-w-full max-h-full object-contain" />
