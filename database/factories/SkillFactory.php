@@ -21,7 +21,6 @@ class SkillFactory extends Factory
             'title' => $this->faker->word(),
             'logo_path' => 'dummy/skill.png',
             'category' => $this->faker->randomElement(['bahasa', 'teknologi', 'minat']),
-            'description' => $this->faker->sentence(),
         ];
     }
 }

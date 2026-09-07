@@ -32,9 +32,6 @@ class SkillForm
                         'minat' => 'Minat',
                     ])
                     ->required(),
-                Textarea::make('description')
-                    ->label('Deskripsi Singkat')
-                    ->maxLength(255),
             ]);
     }
 }

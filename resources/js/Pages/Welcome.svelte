@@ -54,7 +54,7 @@
                     activeSection = entry.target.id;
                 }
             });
-        }, { threshold: 0.3 });
+        }, { threshold: 0, rootMargin: '-40% 0px -40% 0px' });
 
         document.querySelectorAll('section[id], footer[id]').forEach((el) => {
             observer.observe(el);
@@ -656,9 +656,6 @@
                                                     {skill.title}
                                                 </h4>
                                             </div>
-                                            <p class="text-sm text-slate-400 leading-relaxed font-light md:line-clamp-3 group-hover:text-slate-300 transition-colors duration-500">
-                                                {skill.description || 'Keahlian profesional dalam bidang ini untuk mendukung solusi digital.'}
-                                            </p>
                                         </div>
                                     </div>
                                 {/each}
