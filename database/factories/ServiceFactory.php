@@ -18,7 +18,6 @@ class ServiceFactory extends Factory
     public function definition(): array
     {
         return [
-            'icon' => $this->faker->randomElement(['heroicon-o-code-bracket', 'heroicon-o-paint-brush', 'heroicon-o-device-phone-mobile', 'heroicon-o-server']),
             'title' => $this->faker->randomElement(['Web Development', 'UI/UX Design', 'Mobile Development', 'Backend API']),
             'price_range' => 'Rp ' . number_format($this->faker->numberBetween(1, 5), 0, ',', '.') . 'jt - ' . number_format($this->faker->numberBetween(6, 20), 0, ',', '.') . 'jt',
             'description' => $this->faker->sentence(10),
