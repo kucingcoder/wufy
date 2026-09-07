@@ -11,7 +11,6 @@ use App\Models\Experience;
 use App\Models\Project;
 use App\Models\Skill;
 use App\Models\Service;
-use App\Models\VisionMission;
 use App\Models\Certificate;
 
 Route::get('/', function () {
@@ -24,7 +23,6 @@ Route::get('/', function () {
         'projects' => Project::with('galleries')->orderBy('year', 'desc')->latest()->get(),
         'skills' => Skill::orderBy('sort')->get(),
         'services' => Service::orderBy('sort')->get(),
-        'visionMission' => VisionMission::first(),
         'certificates' => Certificate::orderBy('sort')->get(),
     ]);
 });
@@ -55,7 +53,7 @@ Route::get('/sitemap.xml', function () {
 
     // Sections (Deep links)
     $sections = [
-        'vision', 'services', 'projects', 'skills', 'experience', 'education', 'certificates', 'contact'
+        'services', 'projects', 'skills', 'experience', 'education', 'certificates', 'contact'
     ];
     foreach ($sections as $section) {
         $sitemap .= "<url><loc>{$url}/#{$section}</loc><lastmod>{$now}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>";

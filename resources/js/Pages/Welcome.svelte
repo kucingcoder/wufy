@@ -9,8 +9,7 @@
         experiences = [], 
         projects = [], 
         skills = [], 
-        services = [], 
-        visionMission,
+        services = [],
         certificates = [],
         cv_exists = false,
         app_url,
@@ -211,7 +210,6 @@
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex justify-center pointer-events-none">
         <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800/50 px-4 py-2 rounded-full flex items-center gap-1 shadow-2xl pointer-events-auto">
             <button onclick={() => scrollTo('home')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'home' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Beranda</button>
-            <button onclick={() => scrollTo('vision')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'vision' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Visi/Misi</button>
             <button onclick={() => scrollTo('projects')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'projects' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Proyek</button>
             <button onclick={() => scrollTo('skills')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'skills' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Keahlian</button>
             <button onclick={() => scrollTo('services')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'services' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Jasa</button>
@@ -253,7 +251,6 @@
 
                 {#each [
                     { id: 'home', label: 'Beranda' },
-                    { id: 'vision', label: 'Visi/Misi' },
                     { id: 'projects', label: 'Proyek' },
                     { id: 'skills', label: 'Keahlian' },
                     { id: 'services', label: 'Jasa' },
@@ -476,55 +473,6 @@
         
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-20 hidden lg:block">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-        </div>
-    </section>
-
-    <!-- Vision Mission Section -->
-    <section id="vision" class="py-24 bg-slate-900/30">
-        <div class="container mx-auto px-6">
-            <!-- Section Title -->
-            <div use:scrollReveal class="text-center mb-16 reveal">
-                <h2 class="text-3xl lg:text-5xl font-bold tracking-tight mb-4">Visi & <span class="text-sky-500">Misi</span></h2>
-                <div class="w-16 h-1 bg-sky-500 mx-auto rounded-full shadow-[0_0_15px_rgba(14,165,233,0.4)]"></div>
-            </div>
-
-            <!-- Vision Display (Simplified) -->
-            <div use:scrollReveal class="max-w-4xl mx-auto text-center mb-20 reveal">
-                <p class="text-2xl lg:text-4xl font-medium leading-relaxed text-slate-200 italic tracking-tight">
-                    "{visionMission?.vision || 'Menyediakan layanan berkualitas tinggi dengan solusi inovatif.'}"
-                </p>
-            </div>
-
-            {#if visionMission?.missions && Array.isArray(visionMission.missions)}
-                <!-- Missions Title -->
-                <div use:scrollReveal class="mb-12 mt-20 relative z-10 reveal">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-sky-500/10 rounded-2xl flex items-center justify-center text-sky-400 border border-sky-500/20">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <h3 class="text-3xl font-bold text-white tracking-tight uppercase">Misi</h3>
-                    </div>
-                </div>
-
-                <!-- Missions Grid -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {#each visionMission.missions as mission, i}
-                        <div use:scrollReveal={{ delay: i * 100 }} class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-sky-500/50 transition-all group hover:-translate-y-2 duration-500 shadow-2xl relative overflow-hidden reveal">
-                            <!-- Background Accent -->
-                            <div class="absolute -right-4 -top-4 w-16 h-16 bg-sky-500/5 rounded-full blur-xl group-hover:bg-sky-500/10 transition-all"></div>
-                            
-                            <div class="flex items-center gap-4 mb-6">
-                                <span class="text-sky-500 font-black text-3xl opacity-40 group-hover:opacity-100 transition-opacity">0{i+1}</span>
-                                <div class="h-[1px] flex-1 bg-slate-800"></div>
-                            </div>
-                            
-                            <p class="text-lg text-white font-medium leading-relaxed relative z-10">
-                                {mission}
-                            </p>
-                        </div>
-                    {/each}
-                </div>
-            {/if}
         </div>
     </section>
 
@@ -1020,7 +968,6 @@
                     <ul class="grid grid-cols-2 gap-y-4 gap-x-12">
                         {#each [
                             { id: 'home', label: 'Beranda' },
-                            { id: 'vision', label: 'Visi/Misi' },
                             { id: 'services', label: 'Jasa' },
                             { id: 'projects', label: 'Proyek' },
                             { id: 'skills', label: 'Keahlian' },

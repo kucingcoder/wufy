@@ -41,8 +41,7 @@ class DatabaseSeeder extends Seeder
             ]);
         });
 
-        // Services & Vision Mission
+        // Services
         \App\Models\Service::factory(4)->create();
-        \App\Models\VisionMission::factory()->create();
     }
 }
