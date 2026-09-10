@@ -60,7 +60,7 @@
             "Composer\\Config::disableProcessTimeout",
             "php artisan migrate --force",
             "npm install --ignore-scripts",
-            "npm run build",
+            "bun run build",
             "@php artisan optimize:clear"
         ],
         "dev": [
