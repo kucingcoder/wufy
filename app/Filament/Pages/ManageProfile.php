@@ -102,16 +102,13 @@ class ManageProfile extends Page implements HasSchemas
                             ->visibility('public')
                             ->columnSpanFull(),
                     ])
+                    ->footerActions([
+                        Action::make('save')
+                            ->label('Simpan Perubahan')
+                            ->action(fn () => $this->save()),
+                    ])
+                    ->footerActionsAlignment(\Filament\Support\Enums\Alignment::End)
             ]);
-    }
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            Action::make('save')
-                ->label('Simpan Perubahan')
-                ->action(fn () => $this->save()),
-        ];
     }
 
     public function save(): void
