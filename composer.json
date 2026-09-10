@@ -51,10 +51,9 @@
             "git reset --hard HEAD",
             "git pull",
             "php artisan migrate --force",
-            "npm run build",
+            "bun run build",
             "php artisan optimize:clear",
-            "chmod -R 777 storage bootstrap public",
-            "systemctl restart porsadin"
+            "chmod -R 777 storage bootstrap public"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
