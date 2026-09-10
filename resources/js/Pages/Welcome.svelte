@@ -211,8 +211,8 @@
         <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800/50 px-4 py-2 rounded-full flex items-center gap-1 shadow-2xl pointer-events-auto">
             <button onclick={() => scrollTo('home')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'home' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Beranda</button>
             <button onclick={() => scrollTo('services')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'services' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Jasa</button>
-            <button onclick={() => scrollTo('skills')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'skills' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Keahlian</button>
             <button onclick={() => scrollTo('projects')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'projects' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Proyek</button>
+            <button onclick={() => scrollTo('skills')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'skills' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Keahlian</button>
             <button onclick={() => scrollTo('experience')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'experience' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Pengalaman</button>
             <button onclick={() => scrollTo('education')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'education' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Edukasi</button>
             <button onclick={() => scrollTo('certificates')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'certificates' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Sertifikat</button>
@@ -252,8 +252,8 @@
                 {#each [
                     { id: 'home', label: 'Beranda' },
                     { id: 'services', label: 'Jasa' },
-                    { id: 'skills', label: 'Keahlian' },
                     { id: 'projects', label: 'Proyek' },
+                    { id: 'skills', label: 'Keahlian' },
                     { id: 'experience', label: 'Pengalaman' },
                     { id: 'education', label: 'Edukasi' },
                     { id: 'certificates', label: 'Sertifikat' },
@@ -524,63 +524,6 @@
         </div>
     </section>
 
-    <!-- Kemampuan Section -->
-    <section id="skills" class="py-32 relative">
-        <div class="container mx-auto px-6">
-            <div use:scrollReveal class="text-center mb-24 reveal">
-                <h2 class="text-5xl lg:text-7xl font-bold tracking-tighter mb-4">Bidang <span class="text-sky-500">Keahlian</span></h2>
-                <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
-            </div>
-
-            <div class="flex flex-col gap-16 lg:gap-24">
-                {#each ['teknologi', 'minat', 'bahasa'] as cat, catIndex}
-                    <div use:scrollReveal={{ delay: catIndex * 150 }} class="flex flex-col reveal">
-                        <!-- Category Header -->
-                        <div class="flex items-center gap-4 mb-10 pb-6 border-b border-slate-800/50">
-                            <div class="w-14 h-14 rounded-2xl bg-sky-500/10 flex items-center justify-center text-3xl shadow-inner border border-sky-500/10">
-                                {cat === 'bahasa' ? '🌐' : cat === 'teknologi' ? '⚡' : '✨'}
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-white tracking-tight">{getCategoryLabel(cat)}</h3>
-                            </div>
-                        </div>
-
-                        <!-- Skills List (Grid) -->
-                        {#if categorizedSkills[cat]}
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {#each categorizedSkills[cat] as skill, i}
-                                    <div use:scrollReveal={{ delay: (catIndex * 150) + (i * 100) }} class="group relative p-6 rounded-[2rem] bg-slate-900/50 border border-slate-800 hover:border-sky-500/30 transition-all duration-500 shadow-xl overflow-hidden hover:-translate-y-1 reveal">
-                                        <!-- Animated Background Accent -->
-                                        <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-sky-500/5 rounded-full blur-2xl group-hover:bg-sky-500/10 transition-all duration-700"></div>
-                                        
-                                        <div class="relative z-10">
-                                            <div class="flex items-center gap-5">
-                                                <div class="w-12 h-12 rounded-xl bg-slate-950 flex items-center justify-center p-2.5 border border-slate-800 group-hover:border-sky-500/50 transition-colors duration-500">
-                                                    {#if skill.logo_path}
-                                                        <img src="/storage/{skill.logo_path}" alt={skill.title} class="max-w-full max-h-full object-contain" />
-                                                    {:else}
-                                                        <span class="text-xl">✨</span>
-                                                    {/if}
-                                                </div>
-                                                <h4 class="text-lg font-bold text-white group-hover:text-sky-400 transition-colors duration-300 tracking-tight">
-                                                    {skill.title}
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {/each}
-                            </div>
-                        {:else}
-                            <div class="p-8 rounded-[2rem] border border-slate-800 border-dashed text-center">
-                                <p class="text-slate-600 text-sm italic">Belum ada data</p>
-                            </div>
-                        {/if}
-                    </div>
-                {/each}
-            </div>
-        </div>
-    </section>
-
     <!-- Projek Section -->
     <section id="projects" class="py-32 bg-slate-950/50 relative overflow-hidden">
         <!-- Decoration -->
@@ -716,6 +659,63 @@
                     </button>
                 </div>
             {/if}
+        </div>
+    </section>
+
+    <!-- Kemampuan Section -->
+    <section id="skills" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div use:scrollReveal class="text-center mb-24 reveal">
+                <h2 class="text-5xl lg:text-7xl font-bold tracking-tighter mb-4">Bidang <span class="text-sky-500">Keahlian</span></h2>
+                <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
+            </div>
+
+            <div class="flex flex-col gap-16 lg:gap-24">
+                {#each ['teknologi', 'minat', 'bahasa'] as cat, catIndex}
+                    <div use:scrollReveal={{ delay: catIndex * 150 }} class="flex flex-col reveal">
+                        <!-- Category Header -->
+                        <div class="flex items-center gap-4 mb-10 pb-6 border-b border-slate-800/50">
+                            <div class="w-14 h-14 rounded-2xl bg-sky-500/10 flex items-center justify-center text-3xl shadow-inner border border-sky-500/10">
+                                {cat === 'bahasa' ? '🌐' : cat === 'teknologi' ? '⚡' : '✨'}
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white tracking-tight">{getCategoryLabel(cat)}</h3>
+                            </div>
+                        </div>
+
+                        <!-- Skills List (Grid) -->
+                        {#if categorizedSkills[cat]}
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {#each categorizedSkills[cat] as skill, i}
+                                    <div use:scrollReveal={{ delay: (catIndex * 150) + (i * 100) }} class="group relative p-6 rounded-[2rem] bg-slate-900/50 border border-slate-800 hover:border-sky-500/30 transition-all duration-500 shadow-xl overflow-hidden hover:-translate-y-1 reveal">
+                                        <!-- Animated Background Accent -->
+                                        <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-sky-500/5 rounded-full blur-2xl group-hover:bg-sky-500/10 transition-all duration-700"></div>
+                                        
+                                        <div class="relative z-10">
+                                            <div class="flex items-center gap-5">
+                                                <div class="w-12 h-12 rounded-xl bg-slate-950 flex items-center justify-center p-2.5 border border-slate-800 group-hover:border-sky-500/50 transition-colors duration-500">
+                                                    {#if skill.logo_path}
+                                                        <img src="/storage/{skill.logo_path}" alt={skill.title} class="max-w-full max-h-full object-contain" />
+                                                    {:else}
+                                                        <span class="text-xl">✨</span>
+                                                    {/if}
+                                                </div>
+                                                <h4 class="text-lg font-bold text-white group-hover:text-sky-400 transition-colors duration-300 tracking-tight">
+                                                    {skill.title}
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {/each}
+                            </div>
+                        {:else}
+                            <div class="p-8 rounded-[2rem] border border-slate-800 border-dashed text-center">
+                                <p class="text-slate-600 text-sm italic">Belum ada data</p>
+                            </div>
+                        {/if}
+                    </div>
+                {/each}
+            </div>
         </div>
     </section>
 

@@ -47,6 +47,15 @@
             "npm install --ignore-scripts",
             "npm run build"
         ],
+        "redeploy": [
+            "git reset --hard HEAD",
+            "git pull",
+            "php artisan migrate --force",
+            "npm run build",
+            "php artisan optimize:clear",
+            "chmod -R 777 storage bootstrap public",
+            "systemctl restart porsadin"
+        ],
         "update": [
             "Composer\\Config::disableProcessTimeout",
             "php artisan migrate --force",
