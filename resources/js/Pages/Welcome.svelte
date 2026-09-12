@@ -670,7 +670,7 @@
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
             </div>
 
-            <div class="flex flex-col gap-16 lg:gap-24">
+            <div class="flex flex-col gap-16 lg:gap-24 max-w-4xl mx-auto">
                 {#each ['teknologi', 'minat', 'bahasa'] as cat, catIndex}
                     <div use:scrollReveal={{ delay: catIndex * 150 }} class="flex flex-col reveal">
                         <!-- Category Header -->
@@ -683,27 +683,22 @@
                             </div>
                         </div>
 
-                        <!-- Skills List (Grid) -->
+                        <!-- Skills List -->
                         {#if categorizedSkills[cat]}
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="flex flex-wrap gap-8 lg:gap-12 justify-center">
                                 {#each categorizedSkills[cat] as skill, i}
-                                    <div use:scrollReveal={{ delay: (catIndex * 150) + (i * 100) }} class="group relative p-6 rounded-[2rem] bg-slate-900/50 border border-slate-800 hover:border-sky-500/30 transition-all duration-500 shadow-xl overflow-hidden hover:-translate-y-1 reveal">
-                                        <!-- Animated Background Accent -->
-                                        <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-sky-500/5 rounded-full blur-2xl group-hover:bg-sky-500/10 transition-all duration-700"></div>
-                                        
-                                        <div class="relative z-10">
-                                            <div class="flex items-center gap-5">
-                                                <div class="w-12 h-12 rounded-xl bg-slate-950 flex items-center justify-center p-2.5 border border-slate-800 group-hover:border-sky-500/50 transition-colors duration-500">
-                                                    {#if skill.logo_path}
-                                                        <img src="/storage/{skill.logo_path}" alt={skill.title} class="max-w-full max-h-full object-contain" />
-                                                    {:else}
-                                                        <span class="text-xl">✨</span>
-                                                    {/if}
-                                                </div>
-                                                <h4 class="text-lg font-bold text-white group-hover:text-sky-400 transition-colors duration-300 tracking-tight">
-                                                    {skill.title}
-                                                </h4>
+                                    <div use:scrollReveal={{ delay: (catIndex * 150) + (i * 100) }} class="reveal">
+                                        <div class="group flex flex-col items-center gap-3 animate-float cursor-default" style="animation-delay: {i * 0.2}s">
+                                            <div class="w-14 h-14 flex items-center justify-center">
+                                                {#if skill.logo_path}
+                                                    <img src="/storage/{skill.logo_path}" alt={skill.title} class="max-w-full max-h-full object-contain group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(14,165,233,0.5)] transition-all duration-500" />
+                                                {:else}
+                                                    <span class="text-4xl group-hover:scale-110 transition-transform duration-500 group-hover:drop-shadow-[0_0_15px_rgba(14,165,233,0.5)]">✨</span>
+                                                {/if}
                                             </div>
+                                            <h4 class="text-sm font-medium text-slate-400 group-hover:text-sky-400 transition-colors duration-300 tracking-tight text-center">
+                                                {skill.title}
+                                            </h4>
                                         </div>
                                     </div>
                                 {/each}
@@ -1107,6 +1102,19 @@
     
     .animate-pulse {
         animation: pulse 15s infinite ease-in-out;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
     }
 
     /* Scroll Reveal Styles */
