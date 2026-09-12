@@ -557,7 +557,7 @@
             </div>
 
             <!-- Projects Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 relative z-10">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 relative z-10 max-w-5xl mx-auto">
                 {#each paginatedProjects as project, i}
                     <a use:scrollReveal={{ delay: (i % 3) * 100 }} href="/project/{project.slug}" class="group relative flex flex-col bg-slate-900 border border-slate-800 rounded-3xl hover:border-sky-500/50 transition-all duration-500 shadow-xl overflow-hidden reveal">
                         <!-- Thumbnail Container -->
@@ -870,7 +870,7 @@
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 {#each certificates as cert, i}
                     <div use:scrollReveal={{ delay: (i % 3) * 100 }} class="group relative p-10 rounded-[2rem] bg-slate-900/40 backdrop-blur-md border border-slate-800/50 hover:border-sky-500/30 transition-all duration-700 flex flex-col h-full overflow-hidden reveal">
                         <!-- Left Accent Line (Professional Look) -->
