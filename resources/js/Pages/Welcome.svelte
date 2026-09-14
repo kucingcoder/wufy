@@ -190,21 +190,17 @@
     
     <!-- Background System -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <!-- Base Gradient -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#0f172a_0%,#020617_100%)]"></div>
+        <!-- Base Dark -->
+        <div class="absolute inset-0 bg-[#020617]"></div>
         
-        <!-- Animated Blobs -->
-        <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-sky-600/15 blur-[120px] rounded-full animate-blob"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-indigo-600/10 blur-[120px] rounded-full animate-blob animation-delay-2000"></div>
-        <div class="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-blue-500/10 blur-[100px] rounded-full animate-blob animation-delay-4000"></div>
+        <!-- Playful Illustration Pattern -->
+        <div class="absolute inset-0 bg-[url('/images/bg-illustration.jpg')] bg-repeat bg-[length:600px_600px] opacity-[0.12]"></div>
         
-        <!-- Grid Pattern -->
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMTQ4LCAxNjMsIDE4NCwgMC4wNSkiIHN0cm9rZS13aWR0aD0iMC41Ij48cGF0aCBkPSJNMCA0MGg0MFYwSDB6Ii8+PC9nPjwvc3ZnPg==')] bg-repeat opacity-40"></div>
+        <!-- Animated Overlay Gradient to make it dynamic -->
+        <div class="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-indigo-500/10 mix-blend-color-dodge"></div>
         
-
-        
-        <!-- Radial Mask -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020617_80%)] opacity-50"></div>
+        <!-- Radial Mask for focus -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020617_90%)] opacity-90"></div>
     </div>
 
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex justify-center pointer-events-none">
@@ -615,7 +611,7 @@
                             <h3 class="text-xl lg:text-2xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors tracking-tight line-clamp-2">
                                 {project.title}
                             </h3>
-                            <p class="text-slate-400 text-sm font-light leading-relaxed mb-0 line-clamp-4 group-hover:text-slate-300 transition-colors">
+                            <p class="text-slate-400 text-sm font-light leading-relaxed mb-0 line-clamp-4 group-hover:text-slate-300 transition-colors text-justify">
                                 {project.short_description}
                             </p>
                             
