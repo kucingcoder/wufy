@@ -612,10 +612,10 @@
 
                         <!-- Card Content -->
                         <div class="p-6 lg:p-8 flex-1 flex flex-col">
-                            <h3 class="text-xl lg:text-2xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors tracking-tight line-clamp-1">
+                            <h3 class="text-xl lg:text-2xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors tracking-tight line-clamp-2">
                                 {project.title}
                             </h3>
-                            <p class="text-slate-400 text-sm font-light leading-relaxed mb-6 line-clamp-2 group-hover:text-slate-300 transition-colors">
+                            <p class="text-slate-400 text-sm font-light leading-relaxed mb-6 line-clamp-4 group-hover:text-slate-300 transition-colors">
                                 {project.short_description}
                             </p>
                             

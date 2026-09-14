@@ -79,6 +79,7 @@ class ProjectForm
                 Textarea::make('short_description')
                     ->label('Deskripsi Singkat')
                     ->required()
+                    ->maxLength(150)
                     ->rows(2)
                     ->columnSpanFull(),
                 RichEditor::make('blog_content')
