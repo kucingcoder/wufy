@@ -202,16 +202,16 @@
 
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex justify-center pointer-events-none">
         <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800/50 px-4 py-2 rounded-full flex items-center gap-1 shadow-2xl pointer-events-auto">
-            <button onclick={() => scrollTo('home')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'home' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Beranda</button>
+            <button onclick={() => scrollTo('home')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'home' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-200 hover:text-white hover:bg-white/5'}">Beranda</button>
             {#if !profile?.hide_services}
-            <button onclick={() => scrollTo('services')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'services' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Jasa</button>
+            <button onclick={() => scrollTo('services')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'services' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-200 hover:text-white hover:bg-white/5'}">Jasa</button>
             {/if}
-            <button onclick={() => scrollTo('projects')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'projects' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Proyek</button>
-            <button onclick={() => scrollTo('skills')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'skills' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Keahlian</button>
-            <button onclick={() => scrollTo('experience')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'experience' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Pengalaman</button>
-            <button onclick={() => scrollTo('education')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'education' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Edukasi</button>
-            <button onclick={() => scrollTo('certificates')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'certificates' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Sertifikat</button>
-            <button onclick={() => scrollTo('contact')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'contact' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Kontak</button>
+            <button onclick={() => scrollTo('projects')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'projects' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-200 hover:text-white hover:bg-white/5'}">Proyek</button>
+            <button onclick={() => scrollTo('skills')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'skills' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-200 hover:text-white hover:bg-white/5'}">Keahlian</button>
+            <button onclick={() => scrollTo('experience')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'experience' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-200 hover:text-white hover:bg-white/5'}">Pengalaman</button>
+            <button onclick={() => scrollTo('education')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'education' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-200 hover:text-white hover:bg-white/5'}">Edukasi</button>
+            <button onclick={() => scrollTo('certificates')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'certificates' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-200 hover:text-white hover:bg-white/5'}">Sertifikat</button>
+            <button onclick={() => scrollTo('contact')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'contact' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-200 hover:text-white hover:bg-white/5'}">Kontak</button>
         </div>
     </nav>
     
@@ -260,7 +260,7 @@
                             scrollTo(item.id);
                             isMenuOpen = false;
                         }}
-                        class="text-2xl font-black tracking-tighter transition-all {activeSection === item.id ? 'text-sky-500' : 'text-slate-500 hover:text-white'}"
+                        class="text-2xl font-black tracking-tighter transition-all {activeSection === item.id ? 'text-sky-500' : 'text-slate-300 hover:text-white'}"
                     >
                         {item.label}
                     </button>
@@ -330,12 +330,12 @@
                 </div>
                 
                 <div class="space-y-3">
-                    <p use:scrollReveal={{ delay: 200 }} class="text-base sm:text-lg lg:text-xl text-slate-400 leading-relaxed font-light reveal max-w-2xl mx-auto lg:mx-0 text-justify lg:text-left">
+                    <p use:scrollReveal={{ delay: 200 }} class="text-base sm:text-lg lg:text-xl text-slate-200 leading-relaxed font-light reveal max-w-2xl mx-auto lg:mx-0 text-justify lg:text-left">
                         {profile?.description || 'Membangun solusi digital inovatif dengan fokus pada teknologi modern dan pengalaman pengguna yang luar biasa.'}
                     </p>
 
                     <div use:scrollReveal={{ delay: 250 }} class="flex flex-wrap items-center gap-x-6 gap-y-4 justify-center lg:justify-start reveal">
-                        <div class="flex items-center gap-2 text-slate-400">
+                        <div class="flex items-center gap-2 text-slate-200">
                             <svg class="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                             <span class="font-medium text-sm">{profile?.city}, {profile?.province}</span>
                         </div>
@@ -359,7 +359,7 @@
                                     href={link.link} 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
-                                    class="relative w-12 h-12 rounded-full bg-slate-900/50 backdrop-blur-md border border-slate-800 flex items-center justify-center text-slate-400 hover:text-sky-400 hover:border-sky-500/50 transition-all group/social shadow-xl"
+                                    class="relative w-12 h-12 rounded-full bg-slate-900/50 backdrop-blur-md border border-slate-800 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500/50 transition-all group/social shadow-xl"
                                 >
                                     <div class="absolute inset-0 bg-sky-500/10 rounded-full opacity-0 group-hover/social:opacity-100 blur-md transition-opacity"></div>
                                     <div class="relative z-10 group-hover/social:scale-110 transition-transform">
@@ -451,7 +451,7 @@
                                 target="_blank" 
                                 rel="noopener noreferrer" 
                                 aria-label="Kunjungi {link.title} {profile.full_name}"
-                                class="relative w-14 h-14 rounded-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 flex items-center justify-center text-slate-400 hover:text-sky-400 hover:border-sky-500/50 transition-all group/social shadow-2xl overflow-hidden"
+                                class="relative w-14 h-14 rounded-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500/50 transition-all group/social shadow-2xl overflow-hidden"
                             >
                                 <div class="absolute inset-0 bg-sky-500/10 opacity-0 group-hover/social:opacity-100 transition-opacity"></div>
                                 <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-1 bg-sky-500 rounded-full blur-sm opacity-0 group-hover/social:opacity-100 transition-all duration-500"></div>
@@ -479,7 +479,7 @@
             <div use:scrollReveal class="text-center mb-20 reveal">
                 <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-4">Melayani <span class="text-sky-500">Kebutuhan Digital</span></h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
-                <p class="mt-8 text-slate-400 max-w-2xl mx-auto">Transformasi kebutuhan digital menjadi solusi yang efisien, mudah digunakan, dan handal</p>
+                <p class="mt-8 text-slate-200 max-w-2xl mx-auto">Transformasi kebutuhan digital menjadi solusi yang efisien, mudah digunakan, dan handal</p>
             </div>
 
             <div class="max-w-6xl mx-auto">
@@ -504,7 +504,7 @@
 
                             <!-- Description Area -->
                             <div class="flex-1 mb-6">
-                                <p class="text-sm text-slate-400 leading-relaxed font-light group-hover:text-slate-300 transition-colors whitespace-pre-line text-justify">
+                                <p class="text-sm text-slate-200 leading-relaxed font-light group-hover:text-slate-300 transition-colors whitespace-pre-line text-justify">
                                     {service.description}
                                 </p>
                             </div>
@@ -554,7 +554,7 @@
                 <div class="mt-12 relative max-w-xl mx-auto group">
                     <div class="absolute -inset-1 bg-gradient-to-r from-sky-500/20 to-indigo-500/20 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
                     <div class="relative flex items-center bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
-                        <div class="pl-6 text-slate-500">
+                        <div class="pl-6 text-slate-300">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </div>
                         <input 
@@ -608,7 +608,7 @@
                             <h3 class="text-xl lg:text-2xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors tracking-tight line-clamp-2">
                                 {project.title}
                             </h3>
-                            <p class="text-slate-400 text-sm font-light leading-relaxed mb-0 line-clamp-4 group-hover:text-slate-300 transition-colors text-justify">
+                            <p class="text-slate-200 text-sm font-light leading-relaxed mb-0 line-clamp-4 group-hover:text-slate-300 transition-colors text-justify">
                                 {project.short_description}
                             </p>
                             
@@ -622,7 +622,7 @@
                 {:else}
                     <div class="col-span-full text-center py-24 bg-slate-900/30 border border-slate-800 border-dashed rounded-[3rem]">
                         <div class="text-6xl mb-6 opacity-20">🔍</div>
-                        <p class="text-slate-500 text-xl font-light">Tidak ada solusi ditemukan untuk <span class="text-sky-500 font-medium">"{searchQuery}"</span></p>
+                        <p class="text-slate-300 text-xl font-light">Tidak ada solusi ditemukan untuk <span class="text-sky-500 font-medium">"{searchQuery}"</span></p>
                     </div>
                 {/each}
             </div>
@@ -636,7 +636,7 @@
                             currentPage--;
                             scrollTo('projects');
                         }}
-                        class="w-14 h-14 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-sky-400 hover:border-sky-500/50 disabled:opacity-20 disabled:pointer-events-none transition-all shadow-xl"
+                        class="w-14 h-14 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500/50 disabled:opacity-20 disabled:pointer-events-none transition-all shadow-xl"
                         aria-label="Halaman sebelumnya"
                     >
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
@@ -649,7 +649,7 @@
                                     currentPage = i + 1;
                                     scrollTo('projects');
                                 }}
-                                class="w-12 h-12 rounded-xl font-black text-xs transition-all {currentPage === i + 1 ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20 scale-110' : 'bg-slate-900 border border-slate-800 text-slate-500 hover:text-white hover:border-slate-600'}"
+                                class="w-12 h-12 rounded-xl font-black text-xs transition-all {currentPage === i + 1 ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20 scale-110' : 'bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600'}"
                                 aria-label="Halaman {i + 1}"
                             >
                                 {i + 1}
@@ -663,7 +663,7 @@
                             currentPage++;
                             scrollTo('projects');
                         }}
-                        class="w-14 h-14 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-sky-400 hover:border-sky-500/50 disabled:opacity-20 disabled:pointer-events-none transition-all shadow-xl"
+                        class="w-14 h-14 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500/50 disabled:opacity-20 disabled:pointer-events-none transition-all shadow-xl"
                         aria-label="Halaman berikutnya"
                     >
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -707,7 +707,7 @@
                                                     <span class="text-4xl group-hover:scale-110 transition-transform duration-500 group-hover:drop-shadow-[0_0_15px_rgba(14,165,233,0.5)]">✨</span>
                                                 {/if}
                                             </div>
-                                            <h4 class="text-sm font-medium text-slate-400 group-hover:text-sky-400 transition-colors duration-300 tracking-tight text-center">
+                                            <h4 class="text-sm font-medium text-slate-200 group-hover:text-sky-400 transition-colors duration-300 tracking-tight text-center">
                                                 {skill.title}
                                             </h4>
                                         </div>
@@ -766,16 +766,16 @@
 
                                     <h3 class="text-3xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors leading-tight">{exp.position}</h3>
                                     
-                                    <div class="flex flex-wrap items-center gap-3 text-slate-400 mb-6">
+                                    <div class="flex flex-wrap items-center gap-3 text-slate-200 mb-6">
                                         <div class="flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-950 border border-slate-800">
                                             <span class="text-white font-bold">{exp.company}</span>
                                         </div>
                                         <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-                                        <span class="text-sm font-medium text-slate-500 italic">{exp.location_text}</span>
-                                        <span class="px-2 py-0.5 rounded text-[10px] font-black bg-slate-800 text-slate-400 uppercase tracking-tighter border border-slate-700">{exp.status}</span>
+                                        <span class="text-sm font-medium text-slate-300 italic">{exp.location_text}</span>
+                                        <span class="px-2 py-0.5 rounded text-[10px] font-black bg-slate-800 text-slate-200 uppercase tracking-tighter border border-slate-700">{exp.status}</span>
                                     </div>
 
-                                    <p class="text-slate-400 font-light leading-relaxed whitespace-pre-line text-sm lg:text-base">
+                                    <p class="text-slate-200 font-light leading-relaxed whitespace-pre-line text-sm lg:text-base">
                                         {exp.description}
                                     </p>
 
@@ -832,7 +832,7 @@
 
                                     <h3 class="text-3xl font-black mb-3 text-white group-hover:text-indigo-400 transition-colors tracking-tight">{edu.major}</h3>
                                     
-                                    <div class="flex items-center gap-3 text-slate-400 mb-6 font-medium">
+                                    <div class="flex items-center gap-3 text-slate-200 mb-6 font-medium">
                                         <span class="text-slate-200">{edu.institution}</span>
                                         {#if edu.degree}
                                             <span class="w-1 h-1 rounded-full bg-slate-700"></span>
@@ -841,14 +841,14 @@
                                     </div>
 
                                     <div class="flex items-center justify-between pt-6 border-t border-slate-800/50">
-                                        <div class="flex items-center gap-2 text-slate-500 text-sm">
+                                        <div class="flex items-center gap-2 text-slate-300 text-sm">
                                             <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
                                             {edu.location_text}
                                         </div>
                                         
                                         {#if edu.gpa}
                                             <div class="flex flex-col items-end">
-                                                <span class="text-[10px] text-slate-500 uppercase font-black tracking-tighter">IPK</span>
+                                                <span class="text-[10px] text-slate-300 uppercase font-black tracking-tighter">IPK</span>
                                                 <span class="text-xl font-black text-indigo-400">{edu.gpa}</span>
                                             </div>
                                         {/if}
@@ -890,14 +890,14 @@
                         <!-- Content -->
                         <div class="flex-1 relative z-10 pl-4">
                             <h3 class="text-2xl font-black mb-2 text-white group-hover:text-sky-400 transition-colors leading-tight tracking-tight mt-2">{cert.title}</h3>
-                            <p class="text-slate-400 font-bold mb-8 text-sm">{cert.issuer}</p>
+                            <p class="text-slate-200 font-bold mb-8 text-sm">{cert.issuer}</p>
                             
                             <div class="flex flex-wrap gap-2">
                                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-sky-500/5 border border-sky-500/10 text-[10px] font-black text-sky-500/80 uppercase tracking-widest">
                                     <span class="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span>
                                     {cert.level === 'dasar' ? 'Dasar' : cert.level}
                                 </div>
-                                <div class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                                <div class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[10px] font-black text-slate-300 uppercase tracking-widest">
                                     {cert.category === 'kursus' ? 'Kursus' : (cert.category === 'kompetensi' ? 'Kompetensi' : cert.category)}
                                 </div>
                             </div>
@@ -907,7 +907,7 @@
                         <div class="mt-10 pt-6 border-t border-slate-800/50 pl-4 relative z-10 flex items-center justify-between">
                             <div class="flex items-center gap-2">
                                 <svg class="w-3.5 h-3.5 text-sky-500/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                <p class="text-xs text-slate-400 font-medium tracking-tight">
+                                <p class="text-xs text-slate-200 font-medium tracking-tight">
                                     {cert.start_date} — {cert.end_date || 'Seumur Hidup'}
                                 </p>
                             </div>
@@ -928,7 +928,7 @@
                         <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-slate-900 border border-slate-800 mb-6">
                             <span class="text-3xl opacity-20">📭</span>
                         </div>
-                        <p class="text-slate-500 font-medium italic">Belum ada data sertifikat yang tersedia.</p>
+                        <p class="text-slate-300 font-medium italic">Belum ada data sertifikat yang tersedia.</p>
                     </div>
                 {/each}
             </div>
@@ -948,14 +948,14 @@
                         <img src="/icon.webp" alt="Logo" class="w-12 h-12 rounded-xl shadow-lg shadow-sky-500/10" />
                         <span class="text-2xl font-black tracking-tighter text-white uppercase">{profile?.full_name || 'Wufy Portfolio'}</span>
                     </div>
-                    <p class="text-slate-400 font-light leading-relaxed text-sm">
+                    <p class="text-slate-200 font-light leading-relaxed text-sm">
                         Berfokus pada pengembangan solusi digital yang inovatif, efisien, dan berorientasi pada hasil untuk membantu bisnis Anda tumbuh lebih cepat.
                     </p>
                     <!-- Social Links -->
                     <div class="flex items-center gap-3">
                         {#if profile?.links}
                             {#each profile.links as link}
-                                <a href={link.link} target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-sky-400 hover:border-sky-500/50 hover:bg-sky-500/5 transition-all group/social shadow-xl">
+                                <a href={link.link} target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500/50 hover:bg-sky-500/5 transition-all group/social shadow-xl">
                                     <div class="group-hover/social:scale-110 transition-transform">
                                         {@html getIcon(link.title)}
                                     </div>
@@ -982,7 +982,7 @@
                             <li>
                                 <button 
                                     onclick={() => scrollTo(item.id)}
-                                    class="text-slate-400 hover:text-sky-400 transition-colors text-sm font-medium whitespace-nowrap text-left"
+                                    class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium whitespace-nowrap text-left"
                                 >
                                     {item.label}
                                 </button>
@@ -1030,7 +1030,7 @@
 
             <!-- Bottom Copyright Bar -->
             <div use:scrollReveal class="mt-32 pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6 reveal">
-                <p class="text-slate-500 text-xs font-medium tracking-wide">
+                <p class="text-slate-300 text-xs font-medium tracking-wide">
                     &copy; {new Date().getFullYear()} <span class="text-slate-300 font-bold">{profile?.full_name || 'Wufy Portfolio'}</span>. All rights reserved.
                 </p>
             </div>
