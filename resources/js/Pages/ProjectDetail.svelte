@@ -91,7 +91,7 @@
     {@html `<script type="application/ld+json">${jsonLd}<\/script>`}
 </svelte:head>
 
-<div class="bg-[#020617] text-slate-100 font-['Plus_Jakarta_Sans'] selection:bg-sky-500/30 min-h-screen overflow-x-hidden">
+<div class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 min-h-screen overflow-x-hidden">
     
     <!-- Background Gradient -->
     <div class="fixed inset-0 pointer-events-none z-0">

@@ -26,7 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 </svelte:head>
 
-<div class="bg-[#020617] text-slate-100 font-['Plus_Jakarta_Sans'] selection:bg-sky-500/30 overflow-hidden min-h-screen flex items-center justify-center p-6 relative">
+<div class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 overflow-hidden min-h-screen flex items-center justify-center p-6 relative">
     
     <!-- Background System -->
     <div class="fixed inset-0 pointer-events-none z-0">

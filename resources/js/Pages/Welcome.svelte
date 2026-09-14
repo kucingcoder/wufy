@@ -186,7 +186,7 @@
 
 
 
-<div class="bg-[#020617] text-slate-100 font-['Plus_Jakarta_Sans'] selection:bg-sky-500/30 overflow-x-hidden min-h-screen">
+<div class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 overflow-x-hidden min-h-screen">
     
     <!-- Background System -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
