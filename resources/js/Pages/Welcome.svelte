@@ -191,7 +191,7 @@
     <!-- Background System -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#020617]">
         <!-- Space Background Image -->
-        <div class="absolute inset-0 bg-[url('/images/space-bg.jpg')] bg-cover bg-center bg-no-repeat opacity-80 blur-[4px] scale-105"></div>
+        <div class="absolute inset-0 bg-[url('/images/space-bg.webp')] bg-cover bg-center bg-no-repeat blur-[2px] scale-105"></div>
         
         <!-- Subtle Overlay for text readability -->
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#020617]/20 to-[#020617]/90"></div>
