@@ -194,7 +194,7 @@
         <div class="absolute inset-0 bg-[#020617]"></div>
         
         <!-- Playful Illustration Pattern -->
-        <div class="absolute inset-0 bg-[url('/images/bg-illustration.jpg')] bg-repeat bg-[length:600px_600px] opacity-[0.12]"></div>
+        <div class="absolute inset-0 bg-[url('/images/bg-illustration.jpg')] bg-repeat bg-[length:600px_600px] opacity-40"></div>
         
         <!-- Animated Overlay Gradient to make it dynamic -->
         <div class="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-indigo-500/10 mix-blend-color-dodge"></div>
