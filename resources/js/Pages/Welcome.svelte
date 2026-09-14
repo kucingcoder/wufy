@@ -162,14 +162,14 @@
     <meta property="og:url" content={`${baseUrl}/`}>
     <meta property="og:title" content="{profile?.full_name} - {profile?.job_title}">
     <meta property="og:description" content={profile?.description}>
-    <meta property="og:image" content={profile?.avatar ? `${baseUrl}/storage/${profile.avatar}` : `${baseUrl}/icon.webp`}>
+    <meta property="og:image" content="{`${baseUrl}/icon.webp`}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content={`${baseUrl}/`}>
     <meta property="twitter:title" content="{profile?.full_name} - {profile?.job_title}">
     <meta property="twitter:description" content={profile?.description}>
-    <meta property="twitter:image" content={profile?.avatar ? `${baseUrl}/storage/${profile.avatar}` : `${baseUrl}/icon.webp`}>
+    <meta property="twitter:image" content="{`${baseUrl}/icon.webp`}">
 
     {#if profile?.avatar}
         <link rel="preload" as="image" href="/storage/{profile.avatar}" fetchpriority="high">
