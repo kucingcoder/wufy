@@ -189,23 +189,15 @@
 <div class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 overflow-x-hidden min-h-screen">
     
     <!-- Background System -->
-    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <!-- Base Dark -->
-        <div class="absolute inset-0 bg-[#020617]"></div>
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#020617]">
+        <!-- Space Background Image -->
+        <div class="absolute inset-0 bg-[url('/images/space-bg.jpg')] bg-cover bg-center bg-no-repeat opacity-80 blur-[4px] scale-105"></div>
         
-        <!-- Playful Illustration Pattern (Blurred for readability) -->
-        <div class="absolute inset-0 bg-[url('/images/bg-illustration.jpg')] bg-repeat bg-[length:600px_600px] opacity-15 blur-[2px]"></div>
-        
-        <!-- Neon Edge Blobs -->
-        <div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-sky-500/30 blur-[120px] rounded-full mix-blend-screen"></div>
-        <div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-indigo-500/30 blur-[120px] rounded-full mix-blend-screen"></div>
-        <div class="absolute top-[40%] right-[-20%] w-[40%] h-[40%] bg-purple-500/20 blur-[120px] rounded-full mix-blend-screen"></div>
-        
-        <!-- Animated Overlay Gradient to make it dynamic -->
-        <div class="absolute inset-0 bg-gradient-to-br from-sky-400/20 via-transparent to-indigo-500/20 mix-blend-color-dodge"></div>
+        <!-- Subtle Overlay for text readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#020617]/20 to-[#020617]/90"></div>
         
         <!-- Radial Mask for focus -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,#020617_100%)] opacity-50"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#020617_100%)] opacity-60"></div>
     </div>
 
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex justify-center pointer-events-none">
