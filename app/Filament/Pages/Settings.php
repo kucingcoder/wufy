@@ -24,7 +24,14 @@ class Settings extends Page
     public function mount(): void
     {
         $user = auth()->user();
+        $profile = \App\Models\Profile::first();
+
         $this->data['email'] = $user->email;
+        if ($profile) {
+            $this->data['hide_services'] = (bool) $profile->hide_services;
+            $this->data['hide_hobbies'] = (bool) $profile->hide_hobbies;
+            $this->data['hide_languages'] = (bool) $profile->hide_languages;
+        }
     }
 
     public function content(Schema $schema): Schema
@@ -32,6 +39,22 @@ class Settings extends Page
         return $schema
             ->statePath('data')
             ->components([
+                \Filament\Schemas\Components\Section::make('Tampilan Portofolio')
+                    ->description('Atur bagian mana saja yang ingin disembunyikan dari halaman depan (default: mati/tidak disembunyikan).')
+                    ->schema([
+                        \Filament\Forms\Components\Toggle::make('hide_services')
+                            ->label('Sembunyikan Jasa'),
+                        \Filament\Forms\Components\Toggle::make('hide_hobbies')
+                            ->label('Sembunyikan Minat & Hobi'),
+                        \Filament\Forms\Components\Toggle::make('hide_languages')
+                            ->label('Sembunyikan Bahasa'),
+                        \Filament\Schemas\Components\Actions::make([
+                            Action::make('updateDisplaySettings')
+                                ->label('Simpan Pengaturan Tampilan')
+                                ->color('primary')
+                                ->action(fn () => $this->updateDisplaySettings()),
+                        ]),
+                    ]),
                 \Filament\Schemas\Components\Section::make('Ganti Email')
                     ->description('Perbarui alamat email yang digunakan untuk login.')
                     ->schema([
@@ -73,6 +96,22 @@ class Settings extends Page
                         ]),
                     ]),
             ]);
+    }
+
+    public function updateDisplaySettings(): void
+    {
+        $profile = \App\Models\Profile::first();
+        if ($profile) {
+            $profile->hide_services = $this->data['hide_services'] ?? false;
+            $profile->hide_hobbies = $this->data['hide_hobbies'] ?? false;
+            $profile->hide_languages = $this->data['hide_languages'] ?? false;
+            $profile->save();
+            
+            Notification::make()
+                ->success()
+                ->title('Pengaturan Tampilan Berhasil Disimpan')
+                ->send();
+        }
     }
 
     public function updateEmail(): void

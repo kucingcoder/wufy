@@ -210,7 +210,9 @@
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex justify-center pointer-events-none">
         <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800/50 px-4 py-2 rounded-full flex items-center gap-1 shadow-2xl pointer-events-auto">
             <button onclick={() => scrollTo('home')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'home' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Beranda</button>
+            {#if !profile?.hide_services}
             <button onclick={() => scrollTo('services')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'services' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Jasa</button>
+            {/if}
             <button onclick={() => scrollTo('projects')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'projects' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Proyek</button>
             <button onclick={() => scrollTo('skills')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'skills' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Keahlian</button>
             <button onclick={() => scrollTo('experience')} class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full {activeSection === 'experience' ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}">Pengalaman</button>
@@ -258,7 +260,7 @@
                     { id: 'education', label: 'Edukasi' },
                     { id: 'certificates', label: 'Sertifikat' },
                     { id: 'contact', label: 'Kontak' }
-                ] as item, i}
+                ].filter(menu => !(menu.id === 'services' && profile?.hide_services)) as item, i}
                     <button 
                         transition:fly={{ y: 30, delay: i * 50, duration: 600 }}
                         onclick={() => {
@@ -477,6 +479,7 @@
     </section>
 
     <!-- Jasa Section -->
+    {#if !profile?.hide_services}
     <section id="services" class="py-32 relative">
         <div class="container mx-auto px-6">
             <!-- Section Title -->
@@ -537,6 +540,7 @@
             </div>
         </div>
     </section>
+    {/if}
 
     <!-- Projek Section -->
     <section id="projects" class="py-32 bg-slate-950/50 relative overflow-hidden">
@@ -685,7 +689,7 @@
             </div>
 
             <div class="flex flex-col gap-16 lg:gap-24 max-w-4xl mx-auto">
-                {#each ['teknologi', 'minat', 'bahasa'] as cat, catIndex}
+                {#each ['teknologi', 'minat', 'bahasa'].filter(c => !(c === 'minat' && profile?.hide_hobbies) && !(c === 'bahasa' && profile?.hide_languages)) as cat, catIndex}
                     <div use:scrollReveal={{ delay: catIndex * 150 }} class="flex flex-col reveal">
                         <!-- Category Header -->
                         <div class="flex items-center gap-4 mb-10 pb-6 border-b border-slate-800/50">
@@ -981,7 +985,7 @@
                             { id: 'education', label: 'Edukasi' },
                             { id: 'certificates', label: 'Sertifikat' },
                             { id: 'contact', label: 'Kontak' }
-                        ] as item}
+                        ].filter(menu => !(menu.id === 'services' && profile?.hide_services)) as item}
                             <li>
                                 <button 
                                     onclick={() => scrollTo(item.id)}
