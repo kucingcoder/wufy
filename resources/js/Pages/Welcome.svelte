@@ -615,12 +615,12 @@
                             <h3 class="text-xl lg:text-2xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors tracking-tight line-clamp-2">
                                 {project.title}
                             </h3>
-                            <p class="text-slate-400 text-sm font-light leading-relaxed mb-6 line-clamp-4 group-hover:text-slate-300 transition-colors">
+                            <p class="text-slate-400 text-sm font-light leading-relaxed mb-4 line-clamp-4 group-hover:text-slate-300 transition-colors">
                                 {project.short_description}
                             </p>
                             
                             <!-- Action Link (Text Only) -->
-                            <div class="mt-auto pt-4 border-t border-slate-800/50 flex items-center gap-2 text-sky-500 font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all group-hover:text-sky-400">
+                            <div class="pt-4 border-t border-slate-800/50 flex items-center gap-2 text-sky-500 font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all group-hover:text-sky-400">
                                 <span>Lihat Proyek</span>
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </div>
