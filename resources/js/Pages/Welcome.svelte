@@ -574,7 +574,7 @@
                         <!-- Thumbnail Container -->
                         <div class="relative aspect-video overflow-hidden">
                             {#if project.thumbnail}
-                                <img src="/storage/{project.thumbnail}" alt={project.title} class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" />
+                                <img src="/storage/{project.thumbnail}" alt={project.title} class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" loading="lazy" />
                             {:else}
                                 <div class="w-full h-full bg-slate-800 flex items-center justify-center">
                                     <span class="text-4xl opacity-10">📦</span>
@@ -702,7 +702,7 @@
                                         <div class="group flex flex-col items-center gap-3 animate-float cursor-default" style="animation-delay: {i * 0.2}s">
                                             <div class="w-14 h-14 flex items-center justify-center">
                                                 {#if skill.logo_path}
-                                                    <img src="/storage/{skill.logo_path}" alt={skill.title} class="max-w-full max-h-full object-contain group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(14,165,233,0.5)] transition-all duration-500" />
+                                                    <img src="/storage/{skill.logo_path}" alt={skill.title} class="max-w-full max-h-full object-contain group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(14,165,233,0.5)] transition-all duration-500" loading="lazy" />
                                                 {:else}
                                                     <span class="text-4xl group-hover:scale-110 transition-transform duration-500 group-hover:drop-shadow-[0_0_15px_rgba(14,165,233,0.5)]">✨</span>
                                                 {/if}
@@ -945,7 +945,7 @@
                 <!-- Brand Info -->
                 <div use:scrollReveal class="max-w-sm space-y-8 reveal">
                     <div class="flex items-center gap-3">
-                        <img src="/icon.webp" alt="Logo" class="w-12 h-12 rounded-xl shadow-lg shadow-sky-500/10" />
+                        <img src="/icon.webp" alt="Logo" class="w-12 h-12 rounded-xl shadow-lg shadow-sky-500/10" loading="lazy" />
                         <span class="text-2xl font-black tracking-tighter text-white uppercase">{profile?.full_name || 'Wufy Portfolio'}</span>
                     </div>
                     <p class="text-slate-200 font-light leading-relaxed text-sm">

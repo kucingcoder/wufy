@@ -130,7 +130,7 @@
             <div class="relative w-full aspect-[21/9] lg:aspect-[3/1] rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-slate-900 border border-slate-800 mb-16 shadow-2xl shadow-sky-900/10 group ring-1 ring-white/5">
                 {#if project.thumbnail}
                     <div class="absolute inset-0 bg-slate-950/10 group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none"></div>
-                    <img src="/storage/{project.thumbnail}" alt={project.title} class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+                    <img src="/storage/{project.thumbnail}" alt={project.title} class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-[1.5s] ease-out" loading="eager" fetchpriority="high" />
                     <div class="absolute inset-0 bg-gradient-to-t from-[#020617]/80 via-transparent to-transparent z-10 pointer-events-none"></div>
                 {:else}
                     <div class="w-full h-full bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center text-8xl opacity-20">🖼️</div>
@@ -207,6 +207,7 @@
                                                 a.dataset.pswpHeight = e.currentTarget.naturalHeight;
                                             }
                                         }}
+                                        loading="lazy"
                                     />
                                     
                                     <!-- Premium Overlay -->
