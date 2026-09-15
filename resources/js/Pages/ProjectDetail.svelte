@@ -94,7 +94,7 @@
 <div class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 min-h-screen overflow-x-hidden">
     
     <!-- Background Gradient -->
-    <div class="fixed top-0 left-0 w-full pointer-events-none z-0" style="height: 100vh; height: 100lvh; transform: translateZ(0); -webkit-transform: translateZ(0);">
+    <div class="fixed top-0 left-0 w-full pointer-events-none z-0" style="height: 100vh; height: 100lvh;">
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-600/10 blur-[120px] rounded-full"></div>
         <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/5 blur-[120px] rounded-full"></div>
     </div>

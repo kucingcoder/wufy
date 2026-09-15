@@ -29,7 +29,7 @@
 <div class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 overflow-hidden min-h-screen flex items-center justify-center p-6 relative">
     
     <!-- Background System -->
-    <div class="fixed top-0 left-0 w-full pointer-events-none z-0" style="height: 100vh; height: 100lvh; transform: translateZ(0); -webkit-transform: translateZ(0);">
+    <div class="fixed top-0 left-0 w-full pointer-events-none z-0" style="height: 100vh; height: 100lvh;">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#0f172a_0%,#020617_100%)]"></div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sky-600/10 blur-[120px] rounded-full"></div>
     </div>

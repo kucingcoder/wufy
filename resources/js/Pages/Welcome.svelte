@@ -189,7 +189,7 @@
 <div class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 overflow-x-hidden min-h-screen">
     
     <!-- Background System -->
-    <div class="fixed top-0 left-0 w-full pointer-events-none z-0 overflow-hidden bg-[#020617]" style="height: 100vh; height: 100lvh; transform: translateZ(0); -webkit-transform: translateZ(0);">
+    <div class="fixed top-0 left-0 w-full pointer-events-none z-0 overflow-hidden bg-[#020617]" style="height: 100vh; height: 100lvh;">
         <!-- Space Background Image -->
         <div class="absolute inset-0 bg-[url('/images/space-bg.webp')] bg-cover bg-center bg-no-repeat blur-[2px] scale-105"></div>
         
