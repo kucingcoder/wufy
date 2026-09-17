@@ -29,7 +29,7 @@ class VisitorRefererWidget extends TableWidget
                     ->whereMonth('date', now()->month)
                     ->whereYear('date', now()->year)
                     ->selectRaw("COALESCE(NULLIF(referer, ''), 'Direct') as source, count(*) as count")
-                    ->groupByRaw("COALESCE(NULLIF(referer, ''), 'Direct')")
+                    ->groupBy('source')
                     ->orderByDesc('count')
             )
             ->columns([
@@ -41,7 +41,7 @@ class VisitorRefererWidget extends TableWidget
                     ->color('primary'),
             ])
             ->headerActions([
-                Tables\Actions\Action::make('clearHistory')
+                \Filament\Actions\Action::make('clearHistory')
                     ->label('Hapus History')
                     ->color('danger')
                     ->icon('heroicon-o-trash')
