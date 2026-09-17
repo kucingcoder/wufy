@@ -14,9 +14,11 @@ class VisitorRefererWidget extends TableWidget
 
     protected static ?string $heading = 'Sumber Pengunjung (Bulan Ini)';
 
+    protected int | string | array $columnSpan = 'full';
+
     public function getTableRecordKey($record): string
     {
-        return (string) $record->referer;
+        return (string) $record->source;
     }
 
     public function table(Table $table): Table
@@ -26,18 +28,33 @@ class VisitorRefererWidget extends TableWidget
                 Visitor::query()
                     ->whereMonth('date', now()->month)
                     ->whereYear('date', now()->year)
-                    ->selectRaw('referer, count(*) as count')
-                    ->groupBy('referer')
+                    ->selectRaw("COALESCE(NULLIF(referer, ''), 'Direct') as source, count(*) as count")
+                    ->groupByRaw("COALESCE(NULLIF(referer, ''), 'Direct')")
                     ->orderByDesc('count')
             )
             ->columns([
-                Tables\Columns\TextColumn::make('referer')
-                    ->label('Sumber')
-                    ->placeholder('Direct'),
+                Tables\Columns\TextColumn::make('source')
+                    ->label('Sumber'),
                 Tables\Columns\TextColumn::make('count')
                     ->label('Jumlah Kunjungan')
                     ->badge()
                     ->color('primary'),
+            ])
+            ->headerActions([
+                Tables\Actions\Action::make('clearHistory')
+                    ->label('Hapus History')
+                    ->color('danger')
+                    ->icon('heroicon-o-trash')
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus History Pengunjung')
+                    ->modalDescription('Apakah Anda yakin ingin menghapus semua history pengunjung?')
+                    ->action(function () {
+                        Visitor::truncate();
+                        \Filament\Notifications\Notification::make()
+                            ->title('History pengunjung berhasil dihapus')
+                            ->success()
+                            ->send();
+                    }),
             ])
             ->paginated(false);
     }
