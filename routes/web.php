@@ -20,7 +20,7 @@ Route::get('/', function () {
         'cv_exists' => $profile && $profile->cv_path && Storage::disk('public')->exists($profile->cv_path),
         'education' => Education::orderBy('sort')->get(),
         'experiences' => Experience::orderBy('sort')->get(),
-        'projects' => Project::with('galleries')->orderBy('year', 'desc')->latest()->get(),
+        'projects' => Project::with('galleries')->orderBy('is_opensource', 'asc')->orderBy('year', 'desc')->latest()->get(),
         'skills' => Skill::orderBy('sort')->get(),
         'services' => Service::orderBy('sort')->get(),
         'certificates' => Certificate::orderBy('sort')->get(),
