@@ -10,21 +10,31 @@ Wufy adalah platform portofolio personal yang dirancang khusus untuk profesional
 
 ---
 
-## 🌟 Mengapa Memilih Wufy? (Untuk Pengguna Biasa)
+## 🌟 Mengapa Memilih Wufy? (Untuk Pengguna Awam)
 
-Wufy bukan sekadar website statis. Ini adalah sistem cerdas yang memungkinkan Anda mengelola identitas digital Anda tanpa harus menyentuh kode program.
+Wufy bukan sekadar website statis. Ini adalah sistem cerdas yang memungkinkan Anda mengelola identitas digital Anda tanpa harus menyentuh kode program sama sekali.
 
 ### 🎯 Fitur Utama:
-- **🚀 Performa Kilat**: Menggunakan teknologi Svelte 5, perpindahan halaman terasa instan tanpa loading yang membosankan.
+- **🚀 Performa Kilat**: Menggunakan teknologi Svelte 5, perpindahan halaman terasa instan tanpa waktu muat (loading) yang membosankan.
 - **📱 Responsif & Modern**: Tampilan yang menyesuaikan sempurna di HP, Tablet, maupun Laptop dengan desain "Dark Mode" yang elegan.
-- **🎨 Kelola Konten Mudah**: Ubah foto profil, daftar projek, riwayat kerja, hingga visi misi melalui panel admin yang sangat intuitif.
-- **🔗 Shortlink Generator**: Buat link pendek kustom (misal: `domain.com/cv`) langsung dari dashboard Anda.
-- **📊 Statistik Pengunjung**: Pantau berapa banyak orang yang melihat portofolio Anda setiap harinya melalui grafik yang interaktif.
-- **🔍 SEO Friendly**: Website Anda lebih mudah ditemukan di Google berkat optimasi otomatis Meta Tags dan Sitemap.
+- **🎨 Kelola Konten Mudah**: Akses CMS untuk memperbarui seluruh data portofolio Anda secara mandiri:
+  - Foto profil & informasi kontak
+  - Biodata (About)
+  - Daftar Projek (Projects)
+  - Riwayat Kerja (Experiences)
+  - Jasa / Layanan (Services)
+  - Keahlian (Skills)
+  - Minat & Hobi (Hobbies)
+  - Bahasa (Languages)
+- **⚙️ Kustomisasi Tampilan**: Ingin menyembunyikan bagian tertentu dari portofolio Anda? Anda bisa langsung mematikan/menyalakan sesi tertentu (seperti menyembunyikan Jasa, Bahasa, atau Hobi) hanya dengan satu klik *toggle* di menu Pengaturan tanpa mengubah kode.
+- **🔗 Shortlink Generator**: Buat tautan pendek khusus (misal: `domain.com/cv`) langsung dari dasbor Anda.
+- **📊 Statistik Pengunjung**: Pantau berapa banyak orang yang melihat portofolio Anda setiap harinya melalui grafik interaktif.
+- **🔍 SEO Friendly**: Website Anda lebih mudah ditemukan di Google berkat optimasi otomatis pada Meta Tags dan Peta Situs (Sitemap).
+- **💾 Backup & Restore Otomatis**: Amankan seluruh data (termasuk database dan gambar yang diunggah) menjadi satu file ZIP, dan pulihkan kapan saja langsung dari menu Pengaturan.
 
 ---
 
-## 🛠️ Panduan Untuk Developer
+## 🛠️ Panduan Untuk Developer & Homelab Enthusiasts
 
 Wufy menggunakan stack teknologi terbaru untuk memastikan skalabilitas dan performa terbaik.
 
@@ -37,9 +47,9 @@ Wufy menggunakan stack teknologi terbaru untuk memastikan skalabilitas dan perfo
 - **Image Viewer**: PhotoSwipe v5 (Ultra-smooth image gallery)
 - **SEO**: Spatie Sitemap & JSON-LD Schema integration
 
-### 🚀 Cara Instalasi di Lokal:
+### 🚀 Cara Instalasi di Lokal (Development):
 
-1. **Persyaratan**: PHP 8.3, Composer, Node.js 22+, MySQL.
+1. **Persyaratan**: PHP 8.3, Composer, Node.js 22+, MySQL/MariaDB.
 2. **Clone Repositori**:
    ```bash
    git clone https://github.com/kucingcoder/wufy.git
@@ -56,7 +66,7 @@ Wufy menggunakan stack teknologi terbaru untuk memastikan skalabilitas dan perfo
    php artisan key:generate
    ```
 5. **Setup Database**:
-   *(Sesuaikan DB_DATABASE di .env terlebih dahulu)*
+   *(Sesuaikan kredensial DB_DATABASE, DB_USERNAME, DB_PASSWORD di `.env` terlebih dahulu)*
    ```bash
    php artisan migrate:fresh --seed
    php artisan storage:link
@@ -69,21 +79,110 @@ Wufy menggunakan stack teknologi terbaru untuk memastikan skalabilitas dan perfo
 
 ---
 
-## 🌐 Panduan Deploy ke Hosting (Untuk Pemula)
+## 🌐 Panduan Deployment di Server (VPS / Dedicated / Homelab)
 
-Jika Anda menggunakan Shared Hosting (cPanel), ikuti langkah sederhana ini:
+Untuk men-deploy Wufy di server VPS atau mesin Homelab Anda, ikuti langkah-langkah di bawah ini. Pastikan PHP 8.3, Composer, Node.js, dan MySQL telah terinstal.
 
-1. **Build Frontend**: Jalankan `npm run build` di komputer lokal Anda.
-2. **Upload Files**: Kompres folder projek Anda (kecuali `node_modules` dan `vendor`) menjadi `.zip`, lalu upload dan ekstrak di root hosting Anda.
-3. **Konfigurasi Folder Public**:
-   - Pindahkan isi folder `public/` ke folder `public_html/`.
-   - Sesuaikan path di `public_html/index.php` agar mengarah ke folder vendor dan bootstrap yang benar.
-4. **Setup Database**: Buat database di cPanel, lalu sesuaikan file `.env`.
-5. **Symlink Storage (Penting)**: Jika foto tidak muncul, buat file `link.php` di `public_html` berisi:
-   ```php
-   <?php symlink('/home/username/wufy_source/storage/app/public', '/home/username/public_html/storage'); ?>
+1. **Siapkan Source Code**: Clone repositori ini di direktori server Anda (misal: `/var/www/wufy`).
+2. **Setup Awal**:
+   Masuk ke folder projek, lalu jalankan perintah otomatisasi bawaan Wufy:
+   ```bash
+   composer setup
    ```
-   Akses `domain.com/link.php` sekali, lalu hapus file tersebut.
+   *(Perintah ini akan menjalankan instalasi composer, menyalin .env, mengenerate app key, melakukan migrate & seed database, serta mem-build aset frontend dengan npm)*
+3. **Konfigurasi `.env`**: Edit file `.env`, atur `APP_ENV=production`, `APP_DEBUG=false`, dan sesuaikan `APP_URL` dengan domain atau IP Anda.
+4. **Link Storage**:
+   ```bash
+   php artisan storage:link
+   ```
+5. **Konfigurasi Web Server**:
+
+   <details>
+   <summary><b>🗂️ Menggunakan cPanel (Shared Hosting)</b></summary>
+   
+   Jika Anda menggunakan cPanel biasa tanpa akses terminal root:
+   1. Jalankan `npm run build` di komputer lokal Anda terlebih dahulu.
+   2. Kompres seluruh folder Wufy (kecuali `node_modules` dan `vendor`) menjadi `.zip`.
+   3. Upload dan ekstrak file `.zip` tersebut di file manager hosting Anda, sejajar dengan direktori `public_html` (misal: `/home/username/wufy`).
+   4. Pindahkan semua isi dari folder `wufy/public/` ke dalam folder `public_html/`.
+   5. Buka `public_html/index.php` dan perbarui path yang menuju ke folder `/vendor/` dan `/bootstrap/` agar mengarah ke direktori `/wufy/` Anda.
+   6. Buat database baru di MySQL Database Wizard, lalu perbarui file `.env` di folder `/wufy/`.
+   7. **(Penting)** Untuk memunculkan gambar, buat file `link.php` di dalam `public_html` yang berisi:
+      `<?php symlink('/home/username/wufy/storage/app/public', '/home/username/public_html/storage'); ?>`
+      Akses `domainanda.com/link.php` sekali di browser Anda, lalu hapus file tersebut.
+   </details>
+
+   <details>
+   <summary><b>🔥 Menggunakan Nginx (Direkomendasikan)</b></summary>
+   
+   Buat konfigurasi virtual host di `/etc/nginx/sites-available/wufy.conf`:
+   ```nginx
+   server {
+       listen 80;
+       server_name domainanda.com;
+       root /var/www/wufy/public;
+
+       add_header X-Frame-Options "SAMEORIGIN";
+       add_header X-Content-Type-Options "nosniff";
+
+       index index.php;
+
+       charset utf-8;
+
+       location / {
+           try_files $uri $uri/ /index.php?$query_string;
+       }
+
+       location = /favicon.ico { access_log off; log_not_found off; }
+       location = /robots.txt  { access_log off; log_not_found off; }
+
+       error_page 404 /index.php;
+
+       location ~ \.php$ {
+           fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+           fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+           include fastcgi_params;
+       }
+
+       location ~ /\.(?!well-known).* {
+           deny all;
+       }
+   }
+   ```
+   Aktifkan konfigurasi dan restart Nginx:
+   ```bash
+   ln -s /etc/nginx/sites-available/wufy.conf /etc/nginx/sites-enabled/
+   systemctl reload nginx
+   ```
+   </details>
+
+   <details>
+   <summary><b>🛠️ Menggunakan Apache</b></summary>
+   
+   Buat konfigurasi virtual host di `/etc/apache2/sites-available/wufy.conf`:
+   ```apache
+   <VirtualHost *:80>
+       ServerName domainanda.com
+       DocumentRoot /var/www/wufy/public
+
+       <Directory /var/www/wufy/public>
+           Options Indexes FollowSymLinks
+           AllowOverride All
+           Require all granted
+       </Directory>
+
+       ErrorLog ${APACHE_LOG_DIR}/wufy-error.log
+       CustomLog ${APACHE_LOG_DIR}/wufy-access.log combined
+   </VirtualHost>
+   ```
+   Aktifkan modul rewrite dan site, lalu restart Apache:
+   ```bash
+   a2enmod rewrite
+   a2ensite wufy.conf
+   systemctl restart apache2
+   ```
+   </details>
+
 6. **Akses Admin**:
    - URL: `domainanda.com/admin`
    - Email: `admin@admin.com`
@@ -91,12 +190,32 @@ Jika Anda menggunakan Shared Hosting (cPanel), ikuti langkah sederhana ini:
 
 ---
 
+## 🔄 Cara Melakukan Update
+
+Untuk memperbarui aplikasi saat ada versi terbaru dari repositori, Anda tidak perlu repot menjalankan perintah secara manual satu per satu. Wufy menyediakan skrip composer bawaan.
+
+Cukup jalankan perintah berikut di dalam direktori projek pada server/homelab Anda:
+```bash
+composer redeploy
+```
+
+**Apa yang dilakukan perintah ini?**
+1. Mereset kode lokal ke versi terbaru (Git).
+2. Menarik pembaruan terbaru dari repositori (`git pull`).
+3. Menjalankan migrasi database jika ada skema tabel baru (`php artisan migrate --force`).
+4. Mem-build ulang aset frontend (Svelte/Tailwind) secara otomatis menggunakan `bun run build`.
+5. Membersihkan cache Laravel (`php artisan optimize:clear`).
+6. Mengatur ulang hak akses folder (Permission) di direktori `storage`, `bootstrap`, dan `public`.
+
+---
+
 ## 📂 Struktur Projek (Advanced)
 
+- `app/Filament/Pages`: Halaman kustom admin, termasuk integrasi fitur Backup & Restore native.
 - `app/Filament/Resources`: Konfigurasi modul admin (Project, Skill, Link, dll).
 - `app/Models`: Definisi struktur data dan relasi tabel.
 - `database/migrations`: Skema database yang bersih dan terstruktur.
-- `resources/js/Pages`: Komponen utama UI menggunakan Svelte 5.
+- `resources/js/Pages`: Komponen utama UI frontend menggunakan Svelte 5.
 - `resources/js/Components`: UI primitives yang reusable.
 - `routes/web.php`: Definisi rute aplikasi.
 
