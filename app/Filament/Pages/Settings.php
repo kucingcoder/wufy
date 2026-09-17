@@ -237,10 +237,11 @@ class Settings extends Page
 
     public function restoreData(array $data): void
     {
-        $filePath = storage_path('app/' . $data['backup_file']);
+        $backupFile = is_array($data['backup_file']) ? array_values($data['backup_file'])[0] : $data['backup_file'];
+        $filePath = \Illuminate\Support\Facades\Storage::disk('local')->path($backupFile);
         $tempExtractDir = storage_path('app/temp-restore-' . now()->timestamp);
         
-        if (!File::exists($filePath)) {
+        if (!\Illuminate\Support\Facades\File::exists($filePath)) {
             Notification::make()
                 ->danger()
                 ->title('File backup tidak ditemukan')
