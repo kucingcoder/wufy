@@ -25,7 +25,7 @@ class ExperienceFactory extends Factory
 
             'start_date' => $this->faker->monthName() . ' ' . ($this->faker->year() - 2),
             'end_date' => $this->faker->randomElement([$this->faker->monthName() . ' ' . $this->faker->year(), 'Present']),
-            'status' => $this->faker->randomElement(['Tetap', 'Kontrak', 'Magang']),
+            'status' => $this->faker->randomElement(['Tetap', 'Kontrak', 'Freelance', 'Magang']),
         ];
     }
 }

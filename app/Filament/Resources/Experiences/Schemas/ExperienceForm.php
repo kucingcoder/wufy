@@ -44,6 +44,7 @@ class ExperienceForm
                     ->options([
                         'Tetap' => 'Tetap',
                         'Kontrak' => 'Kontrak',
+                        'Freelance' => 'Freelance',
                         'Magang' => 'Magang',
                     ])
                     ->required(),
