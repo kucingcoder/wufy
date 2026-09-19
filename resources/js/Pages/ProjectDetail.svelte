@@ -106,7 +106,7 @@
                 <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-sky-500/50 transition-all">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                 </div>
-                <span class="font-bold uppercase tracking-widest text-xs">Back to Home</span>
+                <span class="font-bold uppercase tracking-widest text-xs">Kembali</span>
             </a>
         </div>
     </header>
@@ -171,7 +171,7 @@
                         {#if project.blog_content}
                             {@html project.blog_content}
                         {:else}
-                            <p>No detailed description available for this project</p>
+                            <p>Tidak ada deskripsi detail untuk proyek ini</p>
                         {/if}
                     </div>
                 </div>
@@ -182,10 +182,10 @@
                 <div class="mt-40">
                     <div class="flex items-end justify-between mb-16">
                         <div>
-                            <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-4">Project <span class="text-sky-500">Gallery</span></h2>
+                            <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-4">Galeri <span class="text-sky-500">Proyek</span></h2>
                             <div class="h-1.5 w-20 bg-sky-500 rounded-full shadow-[0_0_15px_rgba(14,165,233,0.5)]"></div>
                         </div>
-                        <p class="text-slate-500 font-bold uppercase tracking-widest text-xs hidden sm:block">Click to expand</p>
+                        <p class="text-slate-500 font-bold uppercase tracking-widest text-xs hidden sm:block">Klik untuk memperbesar</p>
                     </div>
 
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="project-gallery">

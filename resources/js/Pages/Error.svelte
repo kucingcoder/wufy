@@ -4,18 +4,18 @@
     let { status } = $props();
 
     let title = $derived({
-        503: '503: Service Unavailable',
-        500: '500: Server Error',
-        404: '404: Page Not Found',
-        403: '403: Forbidden',
-    }[status] || 'Error');
+        503: '503: Layanan Tidak Tersedia',
+        500: '500: Kesalahan Server',
+        404: '404: Halaman Tidak Ditemukan',
+        403: '403: Akses Ditolak',
+    }[status] || 'Kesalahan');
 
     let description = $derived({
-        503: 'Sorry, we are doing some maintenance. Please check back soon.',
-        500: 'Whoops, something went wrong on our servers.',
-        404: 'Sorry, the page you are looking for could not be found.',
-        403: 'Sorry, you are forbidden from accessing this page.',
-    }[status] || 'An unexpected error has occurred.');
+        503: 'Maaf, kami sedang melakukan pemeliharaan. Silakan periksa kembali nanti.',
+        500: 'Ups, ada yang salah pada server kami.',
+        404: 'Maaf, halaman yang Anda cari tidak dapat ditemukan.',
+        403: 'Maaf, Anda dilarang mengakses halaman ini.',
+    }[status] || 'Terjadi kesalahan yang tidak terduga.');
 </script>
 
 <svelte:head>

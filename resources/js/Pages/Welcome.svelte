@@ -1031,7 +1031,7 @@
             <!-- Bottom Copyright Bar -->
             <div use:scrollReveal class="mt-32 pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6 reveal">
                 <p class="text-slate-300 text-xs font-medium tracking-wide">
-                    &copy; {new Date().getFullYear()} <span class="text-slate-300 font-bold">{profile?.full_name || 'Wufy Portfolio'}</span>. All rights reserved.
+                    &copy; {new Date().getFullYear()} <span class="text-slate-300 font-bold">{profile?.full_name || 'Wufy Portfolio'}</span>. Hak Cipta Dilindungi.
                 </p>
                 <div class="flex flex-wrap justify-center gap-4 text-xs font-medium text-slate-400">
                     <a href="{baseUrl}/terms" class="hover:text-sky-400 transition-colors">Syarat & Ketentuan</a>
