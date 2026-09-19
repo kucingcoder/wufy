@@ -26,11 +26,14 @@ Wufy bukan sekadar website statis. Ini adalah sistem cerdas yang memungkinkan An
   - Keahlian (Skills)
   - Minat & Hobi (Hobbies)
   - Bahasa (Languages)
+  - Halaman Kebijakan (Terms, Privacy, Refund)
 - **⚙️ Kustomisasi Tampilan**: Ingin menyembunyikan bagian tertentu dari portofolio Anda? Anda bisa langsung mematikan/menyalakan sesi tertentu (seperti menyembunyikan Jasa, Bahasa, atau Hobi) hanya dengan satu klik *toggle* di menu Pengaturan tanpa mengubah kode.
 - **🔗 Shortlink Generator**: Buat tautan pendek khusus (misal: `domain.com/cv`) langsung dari dasbor Anda.
 - **📊 Statistik Pengunjung**: Pantau berapa banyak orang yang melihat portofolio Anda setiap harinya melalui grafik interaktif.
 - **🔍 SEO Friendly**: Website Anda lebih mudah ditemukan di Google berkat optimasi otomatis pada Meta Tags dan Peta Situs (Sitemap).
 - **💾 Backup & Restore Otomatis**: Amankan seluruh data (termasuk database dan gambar yang diunggah) menjadi satu file ZIP, dan pulihkan kapan saja langsung dari menu Pengaturan.
+- **🇮🇩 Bahasa Indonesia**: Antarmuka (UI) dan pesan kesalahan telah diatur secara bawaan menggunakan bahasa Indonesia.
+- **🏷️ Branding Dinamis**: Nama brand dan judul halaman (page title) website secara otomatis menyesuaikan dengan nama lengkap profil Anda.
 
 ---
 
