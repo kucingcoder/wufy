@@ -33,6 +33,7 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Blue,
             ])
             ->brandLogo('/icon.webp')
+            ->brandName(fn () => \App\Models\Profile::first()?->full_name ?? config('app.name'))
             ->brandLogoHeight('2.5rem')
             ->favicon('/icon.webp')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
