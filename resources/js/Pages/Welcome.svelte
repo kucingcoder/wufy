@@ -991,6 +991,22 @@
                     </ul>
                 </div>
 
+                <!-- Legal Links -->
+                <div use:scrollReveal={{ delay: 150 }} class="min-w-[200px] reveal">
+                    <h4 class="text-white font-black uppercase tracking-widest text-sm mb-8">Kebijakan</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="{baseUrl}/terms" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium">Syarat & Ketentuan</a>
+                        </li>
+                        <li>
+                            <a href="{baseUrl}/privacy" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium">Kebijakan Privasi</a>
+                        </li>
+                        <li>
+                            <a href="{baseUrl}/refund" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium">Kebijakan Pengembalian Dana</a>
+                        </li>
+                    </ul>
+                </div>
+
                 <!-- Contact Info -->
                 <div use:scrollReveal={{ delay: 200 }} class="min-w-[240px] reveal">
                     <h4 class="text-white font-black uppercase tracking-widest text-sm mb-8">Kontak</h4>
@@ -1033,13 +1049,6 @@
                 <p class="text-slate-300 text-xs font-medium tracking-wide">
                     &copy; {new Date().getFullYear()} <span class="text-slate-300 font-bold">{profile?.full_name || 'Wufy Portfolio'}</span>. Hak Cipta Dilindungi.
                 </p>
-                <div class="flex flex-wrap justify-center gap-4 text-xs font-medium text-slate-400">
-                    <a href="{baseUrl}/terms" class="hover:text-sky-400 transition-colors">Syarat & Ketentuan</a>
-                    <span class="text-slate-700">&bull;</span>
-                    <a href="{baseUrl}/privacy" class="hover:text-sky-400 transition-colors">Kebijakan Privasi</a>
-                    <span class="text-slate-700">&bull;</span>
-                    <a href="{baseUrl}/refund" class="hover:text-sky-400 transition-colors">Kebijakan Pengembalian Dana</a>
-                </div>
             </div>
         </div>
     </footer>

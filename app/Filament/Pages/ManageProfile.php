@@ -102,19 +102,6 @@ class ManageProfile extends Page implements HasSchemas
                             ->disk('public')
                             ->visibility('public')
                             ->columnSpanFull(),
-                    ]),
-                \Filament\Schemas\Components\Section::make('Halaman Kebijakan (Legal)')
-                    ->description('Kelola konten untuk halaman Syarat & Ketentuan, Kebijakan Privasi, dan Kebijakan Pengembalian Dana.')
-                    ->schema([
-                        RichEditor::make('terms_and_conditions')
-                            ->label('Syarat & Ketentuan')
-                            ->columnSpanFull(),
-                        RichEditor::make('privacy_policy')
-                            ->label('Kebijakan Privasi')
-                            ->columnSpanFull(),
-                        RichEditor::make('refund_policy')
-                            ->label('Kebijakan Pengembalian Dana')
-                            ->columnSpanFull(),
                     ])
                     ->footerActions([
                         Action::make('save')
