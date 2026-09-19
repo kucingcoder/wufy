@@ -7,6 +7,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Pages\Page;
 use Filament\Schemas\Schema;
 use Filament\Actions\Action;
@@ -100,6 +101,19 @@ class ManageProfile extends Page implements HasSchemas
                             ->acceptedFileTypes(['application/pdf'])
                             ->disk('public')
                             ->visibility('public')
+                            ->columnSpanFull(),
+                    ]),
+                \Filament\Schemas\Components\Section::make('Halaman Kebijakan (Legal)')
+                    ->description('Kelola konten untuk halaman Syarat & Ketentuan, Kebijakan Privasi, dan Kebijakan Pengembalian Dana.')
+                    ->schema([
+                        RichEditor::make('terms_and_conditions')
+                            ->label('Syarat & Ketentuan')
+                            ->columnSpanFull(),
+                        RichEditor::make('privacy_policy')
+                            ->label('Kebijakan Privasi')
+                            ->columnSpanFull(),
+                        RichEditor::make('refund_policy')
+                            ->label('Kebijakan Pengembalian Dana')
                             ->columnSpanFull(),
                     ])
                     ->footerActions([

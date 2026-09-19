@@ -39,6 +39,33 @@ Route::get('/robots.txt', function () {
         ->header('Content-Type', 'text/plain');
 });
 
+Route::get('/terms', function () {
+    $profile = Profile::first();
+    return Inertia::render('Policy', [
+        'title' => 'Syarat & Ketentuan',
+        'content' => $profile ? $profile->terms_and_conditions : '',
+        'author_name' => $profile ? $profile->full_name : '',
+    ]);
+});
+
+Route::get('/privacy', function () {
+    $profile = Profile::first();
+    return Inertia::render('Policy', [
+        'title' => 'Kebijakan Privasi',
+        'content' => $profile ? $profile->privacy_policy : '',
+        'author_name' => $profile ? $profile->full_name : '',
+    ]);
+});
+
+Route::get('/refund', function () {
+    $profile = Profile::first();
+    return Inertia::render('Policy', [
+        'title' => 'Kebijakan Pengembalian Dana',
+        'content' => $profile ? $profile->refund_policy : '',
+        'author_name' => $profile ? $profile->full_name : '',
+    ]);
+});
+
 Route::get('/sitemap.xml', function () {
     $projects = Project::all();
     $profile = Profile::first();
@@ -69,6 +96,11 @@ Route::get('/sitemap.xml', function () {
     if ($profile && $profile->cv_path && Storage::disk('public')->exists($profile->cv_path)) {
         $sitemap .= "<url><loc>{$url}/storage/{$profile->cv_path}</loc><lastmod>{$now}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>";
     }
+
+    // Legal Pages
+    $sitemap .= "<url><loc>{$url}/terms</loc><lastmod>{$now}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>";
+    $sitemap .= "<url><loc>{$url}/privacy</loc><lastmod>{$now}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>";
+    $sitemap .= "<url><loc>{$url}/refund</loc><lastmod>{$now}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>";
 
     $sitemap .= '</urlset>';
 
