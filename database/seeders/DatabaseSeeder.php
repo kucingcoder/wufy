@@ -43,5 +43,7 @@ class DatabaseSeeder extends Seeder
 
         // Services
         \App\Models\Service::factory(4)->create();
+
+        $this->call(PolicyPagesSeeder::class);
     }
 }
