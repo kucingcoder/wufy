@@ -18,7 +18,12 @@ class CrmResource extends Resource
 {
     protected static ?string $model = Crm::class;
 
+    protected static ?string $navigationLabel = 'CRM';
+    protected static ?string $pluralLabel = 'CRM';
+    protected static ?string $modelLabel = 'CRM';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?int $navigationSort = 8;
 
     protected static ?string $recordTitleAttribute = 'nama_projek';
 
