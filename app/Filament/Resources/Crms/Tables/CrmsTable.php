@@ -25,6 +25,8 @@ class CrmsTable
                     ->searchable(['pic_nama', 'pic_wa']),
                 TextColumn::make('link')
                     ->label('Link')
+                    ->url(fn ($record) => $record->link)
+                    ->openUrlInNewTab()
                     ->searchable(),
                 TextColumn::make('biaya_pengembangan')
                     ->label('Pengembangan')
