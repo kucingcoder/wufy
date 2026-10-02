@@ -40,7 +40,7 @@
     },
     "scripts": {
         "setup": [
-            "composer install",
+            "COMPOSER_ALLOW_SUPERUSER=1 composer install",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan key:generate",
             "@php artisan migrate:fresh --seed --force"
@@ -48,10 +48,9 @@
         "redeploy": [
             "git reset --hard HEAD",
             "git pull",
-            "composer install --no-interaction --prefer-dist --optimize-autoloader",
+            "COMPOSER_ALLOW_SUPERUSER=1 composer install --no-interaction --prefer-dist --optimize-autoloader",
             "php artisan migrate --force",
             "php artisan optimize:clear",
-            "php artisan octane:reload",
             "chmod -R 777 storage bootstrap public"
         ],
         "dev": [
