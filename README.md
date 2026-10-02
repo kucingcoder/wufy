@@ -2,7 +2,7 @@
 > **Sistem Portofolio Premium dengan Estetika HUD Modern & Teknologi Mutakhir.**
 
 [![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
-[![Svelte](https://img.shields.io/badge/Svelte-5.0-FF3E00?style=for-the-badge&logo=svelte)](https://svelte.dev)
+[![Alpine.js](https://img.shields.io/badge/Alpine.js-3.x-8BC0D0?style=for-the-badge&logo=alpine.js)](https://alpinejs.dev/)
 [![Filament](https://img.shields.io/badge/Filament-v5-FBBF24?style=for-the-badge&logo=filament)](https://filamentphp.com)
 [![Tailwind](https://img.shields.io/badge/Tailwind-4.0-06B6D4?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com)
 
@@ -15,7 +15,7 @@ Wufy adalah platform portofolio personal yang dirancang khusus untuk profesional
 Wufy bukan sekadar website statis. Ini adalah sistem cerdas yang memungkinkan Anda mengelola identitas digital Anda tanpa harus menyentuh kode program sama sekali.
 
 ### 🎯 Fitur Utama:
-- **🚀 Performa Kilat**: Menggunakan teknologi Svelte 5, perpindahan halaman terasa instan tanpa waktu muat (loading) yang membosankan.
+- **🚀 Performa Kilat**: Menggunakan teknologi Laravel Blade dengan Alpine.js, memastikan ukuran halaman sangat ringan dan waktu muat instan tanpa Node.js/Vite.
 - **📱 Responsif & Modern**: Tampilan yang menyesuaikan sempurna di HP, Tablet, maupun Laptop dengan desain "Dark Mode" yang elegan.
 - **🎨 Kelola Konten Mudah**: Akses CMS untuk memperbarui seluruh data portofolio Anda secara mandiri:
   - Foto profil & informasi kontak
@@ -43,16 +43,15 @@ Wufy menggunakan stack teknologi terbaru untuk memastikan skalabilitas dan perfo
 
 ### 🏗️ Stack Teknologi:
 - **Core**: Laravel 13 & PHP 8.3+ (Octane Ready with FrankenPHP)
-- **Frontend**: Svelte 5 (State-of-the-art Runes reactivity)
-- **Engine**: Inertia.js (Monolith feel, SPA performance)
-- **Styling**: Tailwind CSS 4.0 (Modern utility-first CSS)
+- **Frontend**: Laravel Blade & Alpine.js (CDN, No Node.js required)
+- **Styling**: Tailwind CSS 4.0 (CDN utility-first CSS)
 - **Admin Panel**: Filament PHP v5 (Pro-grade dashboard)
 - **Image Viewer**: PhotoSwipe v5 (Ultra-smooth image gallery)
 - **SEO**: Spatie Sitemap & JSON-LD Schema integration
 
 ### 🚀 Cara Instalasi di Lokal (Development):
 
-1. **Persyaratan**: PHP 8.3, Composer, Node.js 22+, MySQL/MariaDB.
+1. **Persyaratan**: PHP 8.3, Composer, MySQL/MariaDB.
 2. **Clone Repositori**:
    ```bash
    git clone https://github.com/kucingcoder/wufy.git
@@ -61,7 +60,6 @@ Wufy menggunakan stack teknologi terbaru untuk memastikan skalabilitas dan perfo
 3. **Instalasi Dependensi**:
    ```bash
    composer install
-   npm install
    ```
 4. **Konfigurasi Environment**:
    ```bash
@@ -76,15 +74,15 @@ Wufy menggunakan stack teknologi terbaru untuk memastikan skalabilitas dan perfo
    ```
 6. **Jalankan Aplikasi**:
    ```bash
-   npm run dev
    php artisan serve
    ```
+   *(Atau `php artisan octane:start` jika menggunakan Octane)*
 
 ---
 
 ## 🌐 Panduan Deployment di Server (VPS / Dedicated / Homelab)
 
-Untuk men-deploy Wufy di server VPS atau mesin Homelab Anda, ikuti langkah-langkah di bawah ini. Pastikan PHP 8.3, Composer, Node.js, dan MySQL telah terinstal.
+Untuk men-deploy Wufy di server VPS atau mesin Homelab Anda, ikuti langkah-langkah di bawah ini. Pastikan PHP 8.3, Composer, dan MySQL telah terinstal. **(Tidak perlu Node.js atau NPM!)**
 
 1. **Siapkan Source Code**: Clone repositori ini di direktori server Anda (misal: `/var/www/wufy`).
 2. **Setup Awal**:
@@ -92,7 +90,7 @@ Untuk men-deploy Wufy di server VPS atau mesin Homelab Anda, ikuti langkah-langk
    ```bash
    composer setup
    ```
-   *(Perintah ini akan menjalankan instalasi composer, menyalin .env, mengenerate app key, melakukan migrate & seed database, serta mem-build aset frontend dengan npm)*
+   *(Perintah ini akan menjalankan instalasi composer, menyalin .env, mengenerate app key, dan melakukan migrate & seed database)*
 3. **Konfigurasi `.env`**: Edit file `.env`, atur `APP_ENV=production`, `APP_DEBUG=false`, dan sesuaikan `APP_URL` dengan domain atau IP Anda.
 4. **Link Storage**:
    ```bash
@@ -104,13 +102,12 @@ Untuk men-deploy Wufy di server VPS atau mesin Homelab Anda, ikuti langkah-langk
    <summary><b>🗂️ Menggunakan cPanel (Shared Hosting)</b></summary>
    
    Jika Anda menggunakan cPanel biasa tanpa akses terminal root:
-   1. Jalankan `npm run build` di komputer lokal Anda terlebih dahulu.
-   2. Kompres seluruh folder Wufy (kecuali `node_modules` dan `vendor`) menjadi `.zip`.
-   3. Upload dan ekstrak file `.zip` tersebut di file manager hosting Anda, sejajar dengan direktori `public_html` (misal: `/home/username/wufy`).
-   4. Pindahkan semua isi dari folder `wufy/public/` ke dalam folder `public_html/`.
-   5. Buka `public_html/index.php` dan perbarui path yang menuju ke folder `/vendor/` dan `/bootstrap/` agar mengarah ke direktori `/wufy/` Anda.
-   6. Buat database baru di MySQL Database Wizard, lalu perbarui file `.env` di folder `/wufy/`.
-   7. **(Penting)** Untuk memunculkan gambar, buat file `link.php` di dalam `public_html` yang berisi:
+   1. Kompres seluruh folder Wufy (kecuali `vendor`) menjadi `.zip` di komputer Anda.
+   2. Upload dan ekstrak file `.zip` tersebut di file manager hosting Anda, sejajar dengan direktori `public_html` (misal: `/home/username/wufy`).
+   3. Pindahkan semua isi dari folder `wufy/public/` ke dalam folder `public_html/`.
+   4. Buka `public_html/index.php` dan perbarui path yang menuju ke folder `/vendor/` dan `/bootstrap/` agar mengarah ke direktori `/wufy/` Anda.
+   5. Buat database baru di MySQL Database Wizard, lalu perbarui file `.env` di folder `/wufy/`.
+   6. **(Penting)** Untuk memunculkan gambar, buat file `link.php` di dalam `public_html` yang berisi:
       `<?php symlink('/home/username/wufy/storage/app/public', '/home/username/public_html/storage'); ?>`
       Akses `domainanda.com/link.php` sekali di browser Anda, lalu hapus file tersebut.
    </details>
@@ -197,7 +194,7 @@ Untuk men-deploy Wufy di server VPS atau mesin Homelab Anda, ikuti langkah-langk
 
 Untuk memperbarui aplikasi saat ada versi terbaru dari repositori, Anda tidak perlu repot menjalankan perintah secara manual satu per satu. Wufy menyediakan skrip composer bawaan.
 
-Cukup jalankan perintah berikut di dalam direktori projek pada server/homelab Anda:
+Cukup jalankan perintah berikut di dalam direktori projek pada server/homelab Anda (sebagai root, skrip sudah dilengkapi bypass keamanan):
 ```bash
 composer redeploy
 ```
@@ -205,10 +202,11 @@ composer redeploy
 **Apa yang dilakukan perintah ini?**
 1. Mereset kode lokal ke versi terbaru (Git).
 2. Menarik pembaruan terbaru dari repositori (`git pull`).
-3. Menjalankan migrasi database jika ada skema tabel baru (`php artisan migrate --force`).
-4. Mem-build ulang aset frontend (Svelte/Tailwind) secara otomatis menggunakan `bun run build`.
+3. Menginstal dependensi PHP secara aman sebagai superuser (`composer install`).
+4. Menjalankan migrasi database jika ada skema tabel baru (`php artisan migrate --force`).
 5. Membersihkan cache Laravel (`php artisan optimize:clear`).
-6. Mengatur ulang hak akses folder (Permission) di direktori `storage`, `bootstrap`, dan `public`.
+6. Memuat ulang worker Laravel Octane tanpa downtime (`php artisan octane:reload`).
+7. Mengatur ulang hak akses folder (Permission) di direktori `storage` dan `bootstrap/cache`.
 
 ---
 
@@ -218,9 +216,8 @@ composer redeploy
 - `app/Filament/Resources`: Konfigurasi modul admin (Project, Skill, Link, dll).
 - `app/Models`: Definisi struktur data dan relasi tabel.
 - `database/migrations`: Skema database yang bersih dan terstruktur.
-- `resources/js/Pages`: Komponen utama UI frontend menggunakan Svelte 5.
-- `resources/js/Components`: UI primitives yang reusable.
-- `routes/web.php`: Definisi rute aplikasi.
+- `resources/views`: Komponen antarmuka Blade, layout, dan halaman utama menggunakan Alpine.js.
+- `routes/web.php`: Definisi rute aplikasi dan logika fetching data frontend.
 
 ---
 
