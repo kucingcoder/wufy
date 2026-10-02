@@ -506,7 +506,7 @@
                 @endphp
                 
                 @foreach($allowedCats as $catIndex => $cat)
-                    <div class="flex flex-col reveal" data-delay="{{ $catIndex * 150 }}">
+                    <div class="flex flex-col reveal" data-delay="{{ $catIndex * 50 }}">
                         <div class="flex items-center gap-4 mb-10 pb-6">
                             <div class="w-14 h-14 rounded-2xl bg-sky-500/10 flex items-center justify-center text-3xl shadow-inner border border-sky-500/10">
                                 {{ $cat === 'bahasa' ? '🌐' : ($cat === 'teknologi' ? '⚡' : '✨') }}
@@ -519,7 +519,7 @@
                         @if(isset($skillsByCategory[$cat]))
                             <div class="flex flex-wrap gap-8 lg:gap-12 justify-center">
                                 @foreach($skillsByCategory[$cat] as $i => $skill)
-                                    <div class="reveal" data-delay="{{ ($catIndex * 150) + ($i * 100) }}">
+                                    <div class="reveal" data-delay="{{ ($catIndex * 50) + ($i * 30) }}">
                                         <div class="group flex flex-col items-center gap-3 animate-float cursor-default" style="animation-delay: {{ $i * 0.2 }}s">
                                             <div class="w-14 h-14 flex items-center justify-center">
                                                 @if($skill->logo_path)
