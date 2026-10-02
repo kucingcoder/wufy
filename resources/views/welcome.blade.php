@@ -268,7 +268,7 @@
                                 <div class="w-full h-full flex items-center justify-center text-8xl opacity-20">👤</div>
                             @endif
                             
-                            <div class="absolute inset-0 bg-gradient-to-b from-sky-500/20 to-transparent h-1/2 -translate-y-full group-hover:animate-scan pointer-events-none"></div>
+                            
                         </div>
                     </div>
                     
