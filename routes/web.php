@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Profile;
@@ -15,12 +14,12 @@ use App\Models\Certificate;
 
 Route::get('/', function () {
     $profile = Profile::first();
-    return Inertia::render('Welcome', [
+    return view('welcome', [
         'profile' => $profile,
-        'cv_exists' => $profile && $profile->cv_path && Storage::disk('public')->exists($profile->cv_path),
+        'cv_exists' => !empty($profile->cv_path),
         'education' => Education::orderBy('sort')->get(),
         'experiences' => Experience::orderBy('sort')->get(),
-        'projects' => Project::with('galleries')->orderBy('is_opensource', 'asc')->orderBy('year', 'desc')->latest()->get(),
+        'projects' => Project::select('id', 'title', 'slug', 'thumbnail', 'month', 'year', 'short_description', 'is_opensource')->orderBy('is_opensource', 'asc')->orderBy('year', 'desc')->latest()->get(),
         'skills' => Skill::orderBy('sort')->get(),
         'services' => Service::orderBy('sort')->get(),
         'certificates' => Certificate::orderBy('sort')->get(),
@@ -28,7 +27,7 @@ Route::get('/', function () {
 });
 
 Route::get('/project/{project}', function (Project $project) {
-    return Inertia::render('ProjectDetail', [
+    return view('project-detail', [
         'project' => $project->load('galleries'),
     ]);
 });
@@ -41,7 +40,7 @@ Route::get('/robots.txt', function () {
 
 Route::get('/terms', function () {
     $profile = Profile::first();
-    return Inertia::render('Policy', [
+    return view('policy', [
         'title' => 'Syarat & Ketentuan',
         'content' => $profile ? $profile->terms_and_conditions : '',
         'author_name' => $profile ? $profile->full_name : '',
@@ -50,7 +49,7 @@ Route::get('/terms', function () {
 
 Route::get('/privacy', function () {
     $profile = Profile::first();
-    return Inertia::render('Policy', [
+    return view('policy', [
         'title' => 'Kebijakan Privasi',
         'content' => $profile ? $profile->privacy_policy : '',
         'author_name' => $profile ? $profile->full_name : '',
@@ -59,7 +58,7 @@ Route::get('/privacy', function () {
 
 Route::get('/refund', function () {
     $profile = Profile::first();
-    return Inertia::render('Policy', [
+    return view('policy', [
         'title' => 'Kebijakan Pengembalian Dana',
         'content' => $profile ? $profile->refund_policy : '',
         'author_name' => $profile ? $profile->full_name : '',

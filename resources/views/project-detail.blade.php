@@ -1,0 +1,211 @@
+@extends('layouts.main')
+
+@php
+    $baseUrl = url('/');
+    $jsonLd = [
+        "@context" => "https://schema.org",
+        "@type" => "Article",
+        "headline" => $project->title,
+        "description" => $project->short_description,
+        "image" => $project->thumbnail ? url('storage/'.$project->thumbnail) : url('/icon.webp'),
+        "url" => url('/project/'.$project->slug),
+        "datePublished" => $project->created_at,
+        "author" => [
+            "@type" => "Person",
+            "name" => $profile->full_name ?? config('app.name')
+        ]
+    ];
+@endphp
+
+@section('title', $project->title . ' - Case Study')
+@section('meta_description', $project->short_description)
+@section('meta_keywords', str_replace(' ', ', ', $project->title) . ', portfolio, case study, digital solutions')
+@section('og_type', 'article')
+@section('og_title', $project->title . ' - Case Study')
+@section('og_description', $project->short_description)
+@section('og_image', $project->thumbnail ? url('storage/'.$project->thumbnail) : url('/icon.webp'))
+@section('twitter_title', $project->title . ' - Case Study')
+@section('twitter_description', $project->short_description)
+@section('twitter_image', $project->thumbnail ? url('storage/'.$project->thumbnail) : url('/icon.webp'))
+
+@section('head')
+    <script type="application/ld+json">
+        {!! json_encode($jsonLd) !!}
+    </script>
+    
+    <!-- PhotoSwipe -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.3/dist/photoswipe.css">
+    
+    <style>
+        .prose h2 {
+            font-weight: 800;
+            font-size: 2.5rem;
+            letter-spacing: -0.05em;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        .prose p { margin-bottom: 1.5rem; }
+        .prose img {
+            border-radius: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin: 3rem 0;
+        }
+        .pswp {
+            --pswp-bg: rgba(2, 6, 23, 0.98);
+            --pswp-placeholder-bg: #0f172a;
+            --pswp-root-z-index: 1000;
+        }
+        .pswp__img { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .pswp__button {
+            background: rgba(255, 255, 255, 0.05) !important;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 12px !important;
+            margin: 10px !important;
+            transition: all 0.3s !important;
+        }
+        .pswp__button:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba(14, 165, 233, 0.5) !important;
+            color: #0ea5e9 !important;
+        }
+    </style>
+@endsection
+
+@section('content')
+<div class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 min-h-screen overflow-x-hidden">
+    <!-- Header / Back Button -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/50 backdrop-blur-md border-b border-slate-800/50">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="{{ url('/') }}" class="flex items-center gap-2 text-slate-400 hover:text-sky-400 transition-colors group">
+                <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-sky-500/50 transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </div>
+                <span class="font-bold uppercase tracking-widest text-xs">Kembali</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-40 px-6 relative z-10">
+        <article class="container mx-auto max-w-5xl">
+            <!-- Hero -->
+            <div class="mb-20 text-left">
+                <h1 class="text-5xl lg:text-8xl font-black tracking-tighter mb-4 leading-none text-left">{{ $project->title }}</h1>
+                <div class="flex flex-wrap items-center gap-6">
+                    <div class="flex items-center gap-2 text-sky-500 font-black uppercase tracking-[0.3em] text-sm">
+                        <span>{{ $project->month ?? 'Januari' }}</span>
+                        <span class="w-2 h-2 rounded-full bg-slate-800"></span>
+                        <span>{{ $project->year ?? '2024' }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Image -->
+            <div class="relative w-full aspect-[21/9] lg:aspect-[3/1] rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-slate-900 border border-slate-800 mb-16 shadow-2xl shadow-sky-900/10 group ring-1 ring-white/5">
+                @if($project->thumbnail)
+                    <div class="absolute inset-0 bg-slate-950/10 group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none"></div>
+                    <img src="/storage/{{ $project->thumbnail }}" alt="{{ $project->title }}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-[1.5s] ease-out" loading="eager" fetchpriority="high" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#020617]/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+                @else
+                    <div class="w-full h-full bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center text-8xl opacity-20">🖼️</div>
+                @endif
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-4 mb-20">
+                @if($project->link)
+                    <a href="{{ $project->link }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-6 py-3 rounded-2xl bg-sky-500 text-white hover:bg-sky-400 transition-all group shadow-xl shadow-sky-500/20">
+                        <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <span class="text-sm font-bold uppercase tracking-wider">Kunjungi</span>
+                    </a>
+                @endif
+
+                @if($project->is_opensource && $project->github_link)
+                    <a href="{{ $project->github_link }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-6 py-3 rounded-2xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-sky-500/50 transition-all group shadow-xl">
+                        <svg class="w-5 h-5 text-sky-500 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        <span class="text-sm font-bold uppercase tracking-wider">Github</span>
+                    </a>
+                @endif
+            </div>
+
+            <!-- Blog Content -->
+            <div class="max-w-4xl mx-auto">
+                <div class="prose prose-invert prose-sky max-w-none">
+                    <div class="text-slate-300 leading-relaxed text-lg space-y-8">
+                        @if($project->blog_content)
+                            {!! $project->blog_content !!}
+                        @else
+                            <p>Tidak ada deskripsi detail untuk proyek ini</p>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            @if($project->galleries && count($project->galleries) > 0)
+                <div class="mt-40">
+                    <div class="flex items-end justify-between mb-16">
+                        <div>
+                            <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-4">Galeri <span class="text-sky-500">Proyek</span></h2>
+                            <div class="h-1.5 w-20 bg-sky-500 rounded-full shadow-[0_0_15px_rgba(14,165,233,0.5)]"></div>
+                        </div>
+                        <p class="text-slate-500 font-bold uppercase tracking-widest text-xs hidden sm:block">Klik untuk memperbesar</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="project-gallery">
+                        @foreach($project->galleries as $gallery)
+                            <a href="/storage/{{ $gallery->image_path }}" target="_blank" class="group flex flex-col gap-4 text-left outline-none pswp-gallery-item">
+                                <div class="relative overflow-hidden bg-slate-900 border border-slate-800 w-full shadow-xl transition-all duration-500 group-hover:shadow-sky-500/10 group-hover:-translate-y-1">
+                                    <img src="/storage/{{ $gallery->image_path }}" alt="{{ $gallery->title ?? $project->title }}" class="w-full h-auto transition-transform duration-[1s] ease-out group-hover:scale-110 gallery-img" loading="lazy" />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100">
+                                        <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center shadow-2xl">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                @if($gallery->title)
+                                    <div class="px-2">
+                                        <span class="text-sm font-bold text-slate-400 group-hover:text-sky-400 transition-colors tracking-tight line-clamp-1">{{ $gallery->title }}</span>
+                                    </div>
+                                @endif
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+        </article>
+    </main>
+</div>
+
+<script type="module">
+    import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.4.3/dist/photoswipe-lightbox.esm.min.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        // Set data-pswp-width and data-pswp-height dynamically
+        document.querySelectorAll('.gallery-img').forEach(img => {
+            img.onload = function() {
+                const a = img.closest('a.pswp-gallery-item');
+                if (a) {
+                    a.dataset.pswpWidth = this.naturalWidth;
+                    a.dataset.pswpHeight = this.naturalHeight;
+                }
+            };
+            // If already loaded from cache
+            if (img.complete) {
+                img.onload();
+            }
+        });
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: '#project-gallery',
+            children: 'a.pswp-gallery-item',
+            pswpModule: () => import('https://cdn.jsdelivr.net/npm/photoswipe@5.4.3/dist/photoswipe.esm.min.js'),
+            padding: { top: 20, bottom: 20, left: 20, right: 20 },
+        });
+
+        lightbox.init();
+    });
+</script>
+@endsection
