@@ -192,17 +192,17 @@
             <!-- Info (Text) - Priority on Mobile -->
             <div class="order-1 lg:order-1 text-center lg:text-left space-y-6 lg:space-y-8">
                 <div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-white reveal">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-white">
                         {{ $profile->full_name ?? 'Your Name' }}
                     </h1>
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-sky-500 reveal" data-delay="100">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-sky-500">
                         {{ $profile->job_title ?? 'Gelar Profesional' }}
                     </h2>
                 </div>
 
                 <!-- Profile Photo - Integrated in Mobile Flow -->
                 <div class="lg:hidden flex justify-center py-4">
-                    <div class="relative group reveal" data-delay="100">
+                    <div class="relative group">
                         <!-- Premium Outer Glow -->
                         <div class="absolute -inset-4 bg-gradient-to-tr from-sky-500/20 to-indigo-500/20 blur-2xl rounded-full opacity-60"></div>
                         
@@ -227,11 +227,11 @@
                 </div>
                 
                 <div class="space-y-6">
-                    <p class="text-base sm:text-lg lg:text-xl text-slate-200 leading-[1.8] reveal max-w-2xl mx-auto lg:mx-0 text-justify lg:text-left" data-delay="200">
+                    <p class="text-base sm:text-lg lg:text-xl text-slate-200 leading-[1.8] max-w-2xl mx-auto lg:mx-0 text-justify lg:text-left">
                         {{ $profile->description ?? 'Membangun solusi digital inovatif dengan fokus pada teknologi modern dan pengalaman pengguna yang luar biasa.' }}
                     </p>
 
-                    <div class="flex flex-wrap items-center gap-x-6 gap-y-4 justify-center lg:justify-start reveal" data-delay="250">
+                    <div class="flex flex-wrap items-center gap-x-6 gap-y-4 justify-center lg:justify-start">
                         <div class="flex items-center gap-2 text-slate-200">
                             <svg class="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                             <span class="font-bold text-sm">{{ $profile->city ?? '' }}, {{ $profile->province ?? '' }}</span>
@@ -247,7 +247,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-8 items-center lg:items-start reveal" data-delay="300">
+                <div class="flex flex-col gap-8 items-center lg:items-start">
                     <!-- Social Links (Mobile) -->
                     <div class="flex gap-4 lg:hidden">
                         @if($profile && $profile->links)
@@ -284,7 +284,7 @@
 
             <!-- Desktop Profile & HUD -->
             <div class="hidden lg:order-2 lg:flex flex-col items-center lg:items-end gap-14">
-                <div class="relative group reveal" data-delay="100">
+                <div class="relative group">
                     <div class="absolute -inset-16 bg-sky-500/5 blur-[100px] rounded-full animate-pulse"></div>
                     
                     <div class="absolute -top-6 -left-6 w-16 h-16 border-t-2 border-l-2 border-sky-500/40 rounded-tl-2xl group-hover:scale-105 transition-transform duration-700"></div>
@@ -311,7 +311,7 @@
                 </div>
                 
                 <!-- Desktop Social Links -->
-                <div class="flex gap-6 reveal" data-delay="200">
+                <div class="flex gap-6">
                     @if($profile && $profile->links)
                         @foreach($profile->links as $link)
                             <a href="{{ $link['link'] }}" target="_blank" rel="noopener noreferrer" class="relative w-14 h-14 rounded-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500/50 transition-all group/social shadow-2xl overflow-hidden">
