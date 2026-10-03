@@ -29,7 +29,7 @@ class ProjectFactory extends Factory
             'is_opensource' => $isOpenSource = $this->faker->boolean(30),
             'github_link' => $isOpenSource ? 'https://github.com/' . $this->faker->slug : null,
             'link' => $this->faker->boolean(70) ? $this->faker->url() : null,
-            'short_description' => $this->faker->paragraph(1),
+
             'blog_content' => $this->faker->paragraphs(3, true),
         ];
     }

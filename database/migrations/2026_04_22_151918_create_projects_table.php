@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('thumbnail')->nullable();
             $table->string('month');
             $table->string('year');
-            $table->text('short_description');
+
             $table->longText('blog_content')->nullable();
             $table->boolean('is_opensource')->default(false);
             $table->string('github_link')->nullable();

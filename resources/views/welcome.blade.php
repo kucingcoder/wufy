@@ -13,20 +13,54 @@
         $skillsByCategory[$cat][] = $skill;
     }
 
+    $metaDescription = strip_tags($profile->description ?? 'Portofolio profesional dan jasa pembuatan website/aplikasi.');
+    if (strlen($metaDescription) > 155) {
+        $metaDescription = substr($metaDescription, 0, 152) . '...';
+    }
+    
+    $keywordsArray = ['Portfolio', 'Jasa Web', 'Software Developer', 'Programmer', 'Aplikasi', 'Website'];
+    if ($profile) {
+        $keywordsArray[] = $profile->full_name;
+        $keywordsArray[] = $profile->job_title;
+        if ($profile->city) $keywordsArray[] = $profile->city;
+        if ($profile->seo_keywords) {
+            $customKeywords = array_map('trim', explode(',', $profile->seo_keywords));
+            $keywordsArray = array_merge($keywordsArray, $customKeywords);
+        }
+    }
+    foreach($skills as $skill) {
+        $keywordsArray[] = $skill->title;
+    }
+    $metaKeywords = implode(', ', array_filter(array_unique($keywordsArray)));
+
     $jsonLd = [
         "@context" => "https://schema.org",
-        "@type" => "Person",
-        "name" => $profile->full_name ?? '',
-        "jobTitle" => $profile->job_title ?? '',
-        "url" => url('/'),
-        "image" => $profile->avatar ? url('storage/'.$profile->avatar) : url('/icon.webp'),
-        "sameAs" => collect($profile->links ?? [])->pluck('link')->toArray(),
-        "description" => $profile->description ?? '',
-        "address" => [
-            "@type" => "PostalAddress",
-            "addressLocality" => $profile->city ?? '',
-            "addressRegion" => $profile->province ?? '',
-            "addressCountry" => "ID"
+        "@graph" => [
+            [
+                "@type" => "Person",
+                "name" => $profile->full_name ?? '',
+                "jobTitle" => $profile->job_title ?? '',
+                "url" => url('/'),
+                "image" => $profile->avatar ? url('storage/'.$profile->avatar) : url('/icon.webp'),
+                "sameAs" => collect($profile->links ?? [])->pluck('link')->toArray(),
+                "description" => $metaDescription,
+                "address" => [
+                    "@type" => "PostalAddress",
+                    "addressLocality" => $profile->city ?? '',
+                    "addressRegion" => $profile->province ?? '',
+                    "addressCountry" => "ID"
+                ]
+            ],
+            [
+                "@type" => "WebSite",
+                "url" => url('/'),
+                "name" => ($profile->full_name ?? 'Portfolio') . ' - ' . ($profile->job_title ?? 'Expert'),
+                "description" => $metaDescription,
+                "publisher" => [
+                    "@type" => "Person",
+                    "name" => $profile->full_name ?? ''
+                ]
+            ]
         ]
     ];
 
@@ -46,12 +80,13 @@
 @endphp
 
 @section('title', ($profile->full_name ?? 'Portfolio') . ' - ' . ($profile->job_title ?? 'Expert'))
-@section('meta_description', $profile->description ?? 'Portofolio profesional')
+@section('meta_description', $metaDescription)
+@section('meta_keywords', $metaKeywords)
 @section('meta_author', $profile->full_name ?? '')
 @section('og_title', ($profile->full_name ?? 'Portfolio') . ' - ' . ($profile->job_title ?? 'Expert'))
-@section('og_description', $profile->description ?? '')
+@section('og_description', $metaDescription)
 @section('twitter_title', ($profile->full_name ?? 'Portfolio') . ' - ' . ($profile->job_title ?? 'Expert'))
-@section('twitter_description', $profile->description ?? '')
+@section('twitter_description', $metaDescription)
 @if($profile && $profile->avatar)
     @section('og_image', url('storage/'.$profile->avatar))
     @section('twitter_image', url('storage/'.$profile->avatar))
@@ -182,7 +217,7 @@
                             
                             <div class="relative w-full h-full overflow-hidden rounded-[2.2rem] bg-slate-950">
                                 @if($profile && $profile->avatar)
-                                    <img src="/storage/{{ $profile->avatar }}" alt="{{ $profile->full_name ?? '' }}" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" fetchpriority="high" loading="eager" />
+                                    <img src="/storage/{{ $profile->avatar }}" alt="Foto Profil {{ $profile->full_name ?? 'Portfolio' }} - {{ $profile->job_title ?? 'Expert' }}" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" fetchpriority="high" loading="eager" />
                                 @else
                                     <div class="w-full h-full flex items-center justify-center text-6xl opacity-20">👤</div>
                                 @endif
@@ -263,7 +298,7 @@
                         
                         <div class="relative w-full h-full overflow-hidden rounded-[3rem] bg-slate-950 shadow-inner">
                             @if($profile && $profile->avatar)
-                                <img src="/storage/{{ $profile->avatar }}" alt="{{ $profile->full_name ?? '' }}" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" fetchpriority="high" loading="eager" />
+                                <img src="/storage/{{ $profile->avatar }}" alt="Foto Profil {{ $profile->full_name ?? 'Portfolio' }} - {{ $profile->job_title ?? 'Expert' }}" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" fetchpriority="high" loading="eager" />
                             @else
                                 <div class="w-full h-full flex items-center justify-center text-8xl opacity-20">👤</div>
                             @endif
@@ -375,8 +410,7 @@
                             get filteredProjects() {
                                 let q = this.searchQuery.toLowerCase();
                                 return this.projects.filter(p => 
-                                    (p.title && p.title.toLowerCase().includes(q)) || 
-                                    (p.short_description && p.short_description.toLowerCase().includes(q))
+                                    (p.title && p.title.toLowerCase().includes(q))
                                 );
                             },
                             get paginatedProjects() {
@@ -448,11 +482,10 @@
                                 </div>
 
                                 <div class="p-6 lg:p-8 flex-1 flex flex-col">
-                                    <h3 class="text-xl lg:text-2xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors tracking-tight line-clamp-2" x-text="project.title"></h3>
-                                    <p class="text-slate-200 text-sm font-light leading-relaxed mb-0 line-clamp-4 group-hover:text-slate-300 transition-colors text-justify" x-text="project.short_description"></p>
+                                    <h3 class="text-xl lg:text-2xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors tracking-tight" x-text="project.title"></h3>
                                     
-                                    <div class="flex items-center gap-2 text-sky-500 font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all group-hover:text-sky-400 mt-4">
-                                        <span>Lihat Proyek</span>
+                                    <div class="flex items-center gap-2 text-sky-500 font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all group-hover:text-sky-400 mt-auto">
+                                        <span>Lihat Detail</span>
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                                     </div>
                                 </div>
@@ -595,9 +628,6 @@
                                         @endif
                                     </div>
 
-                                    <p class="text-slate-200 font-light leading-relaxed whitespace-pre-line text-sm lg:text-base">
-                                        {{ $exp->description }}
-                                    </p>
 
                                     <div class="absolute bottom-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-sky-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                                 </div>

@@ -11,6 +11,7 @@
     <link rel="icon" type="image/webp" href="/icon.webp">
 
     <!-- Open Graph / Facebook -->
+    <link rel="canonical" href="{{ url()->current() }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/') }}">
     <meta property="og:title" content="@yield('og_title', config('app.name'))">
@@ -25,7 +26,9 @@
     <meta property="twitter:image" content="@yield('twitter_image', url('/icon.webp'))">
 
     <!-- Fonts -->
-    <!-- Google Fonts removed as requested to use Consolas globally -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
@@ -34,8 +37,8 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Consolas', 'Courier New', 'monospace'],
-                        mono: ['Consolas', 'Courier New', 'monospace'],
+                        sans: ['"JetBrains Mono"', 'Consolas', 'Courier New', 'monospace'],
+                        mono: ['"JetBrains Mono"', 'Consolas', 'Courier New', 'monospace'],
                     },
                     animation: {
                         'float': 'float 3s ease-in-out infinite',

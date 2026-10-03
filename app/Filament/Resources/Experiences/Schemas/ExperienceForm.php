@@ -21,10 +21,7 @@ class ExperienceForm
                     ->label('Posisi / Jabatan')
                     ->required()
                     ->maxLength(255),
-                Textarea::make('description')
-                    ->label('Deskripsi Pekerjaan / Tanggung Jawab')
-                    ->rows(3)
-                    ->columnSpanFull(),
+
                 TextInput::make('location_text')
                     ->label('Lokasi (Teks)')
                     ->required()

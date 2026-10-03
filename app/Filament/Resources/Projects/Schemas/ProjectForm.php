@@ -76,12 +76,7 @@ class ProjectForm
                     ->url()
                     ->placeholder('https://example.com')
                     ->columnSpanFull(),
-                Textarea::make('short_description')
-                    ->label('Deskripsi Singkat')
-                    ->required()
-                    ->maxLength(150)
-                    ->rows(2)
-                    ->columnSpanFull(),
+
                 RichEditor::make('blog_content')
                     ->label('Konten Blog / Detail Proyek')
                     ->columnSpanFull(),

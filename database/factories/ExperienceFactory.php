@@ -20,7 +20,6 @@ class ExperienceFactory extends Factory
         return [
             'company' => $this->faker->company(),
             'position' => $this->faker->jobTitle(),
-            'description' => $this->faker->paragraph(2),
             'location_text' => $this->faker->city(),
 
             'start_date' => $this->faker->monthName() . ' ' . ($this->faker->year() - 2),

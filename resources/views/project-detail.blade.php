@@ -2,11 +2,16 @@
 
 @php
     $baseUrl = url('/');
+    $metaDescription = strip_tags($project->blog_content ?? '');
+    if (strlen($metaDescription) > 155) {
+        $metaDescription = substr($metaDescription, 0, 152) . '...';
+    }
+    
     $jsonLd = [
         "@context" => "https://schema.org",
         "@type" => "Article",
         "headline" => $project->title,
-        "description" => $project->short_description,
+        "description" => $metaDescription,
         "image" => $project->thumbnail ? url('storage/'.$project->thumbnail) : url('/icon.webp'),
         "url" => url('/project/'.$project->slug),
         "datePublished" => $project->created_at,
@@ -18,14 +23,14 @@
 @endphp
 
 @section('title', $project->title . ' - Case Study')
-@section('meta_description', $project->short_description)
+@section('meta_description', $metaDescription)
 @section('meta_keywords', str_replace(' ', ', ', $project->title) . ', portfolio, case study, digital solutions')
 @section('og_type', 'article')
 @section('og_title', $project->title . ' - Case Study')
-@section('og_description', $project->short_description)
+@section('og_description', $metaDescription)
 @section('og_image', $project->thumbnail ? url('storage/'.$project->thumbnail) : url('/icon.webp'))
 @section('twitter_title', $project->title . ' - Case Study')
-@section('twitter_description', $project->short_description)
+@section('twitter_description', $metaDescription)
 @section('twitter_image', $project->thumbnail ? url('storage/'.$project->thumbnail) : url('/icon.webp'))
 
 @section('head')
@@ -131,13 +136,18 @@
 
             <!-- Blog Content -->
             <div class="max-w-4xl mx-auto">
-                <div class="prose prose-invert prose-sky max-w-none">
-                    <div class="text-slate-300 leading-relaxed text-lg space-y-8">
-                        @if($project->blog_content)
-                            {!! $project->blog_content !!}
-                        @else
-                            <p>Tidak ada deskripsi detail untuk proyek ini</p>
-                        @endif
+                <div class="bg-slate-900/95 backdrop-blur-2xl border border-slate-800 p-8 sm:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-sky-500/5 blur-[100px] rounded-full pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-500/5 blur-[100px] rounded-full pointer-events-none"></div>
+                    
+                    <div class="prose prose-invert prose-sky max-w-none relative z-10 text-justify">
+                        <div class="text-slate-200 leading-relaxed text-lg space-y-8">
+                            @if($project->blog_content)
+                                {!! $project->blog_content !!}
+                            @else
+                                <p>Tidak ada deskripsi detail untuk proyek ini</p>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

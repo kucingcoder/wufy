@@ -19,7 +19,7 @@ Route::get('/', function () {
         'cv_exists' => !empty($profile->cv_path),
         'education' => Education::orderBy('sort')->get(),
         'experiences' => Experience::orderBy('sort')->get(),
-        'projects' => Project::select('id', 'title', 'slug', 'thumbnail', 'month', 'year', 'short_description', 'is_opensource')->orderBy('is_opensource', 'asc')->orderBy('year', 'desc')->latest()->get(),
+        'projects' => Project::select('id', 'title', 'slug', 'thumbnail', 'month', 'year', 'is_opensource')->orderBy('is_opensource', 'asc')->orderBy('year', 'desc')->latest()->get(),
         'skills' => Skill::orderBy('sort')->get(),
         'services' => Service::orderBy('sort')->get(),
         'certificates' => Certificate::orderBy('sort')->get(),

@@ -21,9 +21,7 @@ class ProjectsTable
                     ->label('Slug')
                     ->fontFamily('mono')
                     ->color('gray'),
-                TextColumn::make('short_description')
-                    ->label('Deskripsi Singkat')
-                    ->limit(50),
+
                 TextColumn::make('time')
                     ->label('Waktu')
                     ->state(fn ($record) => trim(($record->month ?? '') . ' ' . ($record->year ?? '')) ?: '-')
