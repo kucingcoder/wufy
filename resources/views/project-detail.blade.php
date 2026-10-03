@@ -7,6 +7,20 @@
         $metaDescription = substr($metaDescription, 0, 152) . '...';
     }
     
+    $keywordsArray = explode(' ', $project->title);
+    $keywordsArray[] = 'Portofolio';
+    $keywordsArray[] = 'Project';
+    $keywordsArray[] = $project->title;
+    if (isset($profile)) {
+        $keywordsArray[] = $profile->full_name;
+        $keywordsArray[] = $profile->job_title;
+        if ($profile->seo_keywords) {
+            $customKeywords = array_map('trim', explode(',', $profile->seo_keywords));
+            $keywordsArray = array_merge($keywordsArray, $customKeywords);
+        }
+    }
+    $metaKeywords = implode(', ', array_filter(array_unique($keywordsArray)));
+
     $jsonLd = [
         "@context" => "https://schema.org",
         "@type" => "Article",
@@ -14,22 +28,32 @@
         "description" => $metaDescription,
         "image" => $project->thumbnail ? url('storage/'.$project->thumbnail) : url('/icon.webp'),
         "url" => url('/project/'.$project->slug),
-        "datePublished" => $project->created_at,
+        "datePublished" => $project->created_at ? $project->created_at->toIso8601String() : '',
+        "dateModified" => $project->updated_at ? $project->updated_at->toIso8601String() : '',
         "author" => [
             "@type" => "Person",
-            "name" => $profile->full_name ?? config('app.name')
+            "name" => $profile->full_name ?? config('app.name'),
+            "url" => url('/')
+        ],
+        "publisher" => [
+            "@type" => "Organization",
+            "name" => $profile->full_name ?? config('app.name'),
+            "logo" => [
+                "@type" => "ImageObject",
+                "url" => url('/icon.webp')
+            ]
         ]
     ];
 @endphp
 
-@section('title', $project->title . ' - Case Study')
+@section('title', $project->title)
 @section('meta_description', $metaDescription)
-@section('meta_keywords', str_replace(' ', ', ', $project->title) . ', portfolio, case study, digital solutions')
+@section('meta_keywords', $metaKeywords)
 @section('og_type', 'article')
-@section('og_title', $project->title . ' - Case Study')
+@section('og_title', $project->title)
 @section('og_description', $metaDescription)
 @section('og_image', $project->thumbnail ? url('storage/'.$project->thumbnail) : url('/icon.webp'))
-@section('twitter_title', $project->title . ' - Case Study')
+@section('twitter_title', $project->title)
 @section('twitter_description', $metaDescription)
 @section('twitter_image', $project->thumbnail ? url('storage/'.$project->thumbnail) : url('/icon.webp'))
 
@@ -110,7 +134,7 @@
             <div class="relative w-full aspect-[21/9] lg:aspect-[3/1] rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-slate-900 border border-slate-800 mb-16 shadow-2xl shadow-sky-900/10 group ring-1 ring-white/5">
                 @if($project->thumbnail)
                     <div class="absolute inset-0 bg-slate-950/10 group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none"></div>
-                    <img src="/storage/{{ $project->thumbnail }}" alt="{{ $project->title }}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-[1.5s] ease-out" loading="eager" fetchpriority="high" />
+                    <img src="/storage/{{ $project->thumbnail }}" alt="Tangkapan layar proyek {{ $project->title }} - Portofolio {{ $profile->full_name ?? '' }}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-[1.5s] ease-out" loading="eager" fetchpriority="high" />
                     <div class="absolute inset-0 bg-gradient-to-t from-[#020617]/80 via-transparent to-transparent z-10 pointer-events-none"></div>
                 @else
                     <div class="w-full h-full bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center text-8xl opacity-20">🖼️</div>
