@@ -227,7 +227,7 @@
                 </div>
                 
                 <div class="space-y-6">
-                    <p class="text-base sm:text-lg lg:text-xl text-slate-200 leading-[1.8] reveal max-w-2xl mx-auto lg:mx-0 text-left" data-delay="200">
+                    <p class="text-base sm:text-lg lg:text-xl text-slate-200 leading-[1.8] reveal max-w-2xl mx-auto lg:mx-0 text-justify lg:text-left" data-delay="200">
                         {{ $profile->description ?? 'Membangun solusi digital inovatif dengan fokus pada teknologi modern dan pengalaman pengguna yang luar biasa.' }}
                     </p>
 
@@ -849,7 +849,13 @@
                             </div>
                             <div>
                                 <p class="text-sky-500 text-[10px] font-semibold uppercase tracking-[0.2em] mb-1">Telepon</p>
-                                <p class="text-white text-base font-medium tracking-tight">{{ $profile->phone ?? '-' }}</p>
+                                @if($profile->phone)
+                                    <a href="https://wa.me/{{ preg_replace('/^0/', '62', preg_replace('/[^0-9]/', '', $profile->phone)) }}" target="_blank" rel="noopener noreferrer" class="text-white text-base font-medium tracking-tight hover:text-sky-400 transition-colors block">
+                                        {{ $profile->phone }}
+                                    </a>
+                                @else
+                                    <p class="text-white text-base font-medium tracking-tight">-</p>
+                                @endif
                             </div>
                         </div>
 
