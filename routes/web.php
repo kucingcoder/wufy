@@ -19,7 +19,7 @@ Route::get('/', function () {
         'cv_exists' => !empty($profile->cv_path),
         'education' => Education::orderBy('sort')->get(),
         'experiences' => Experience::orderBy('sort')->get(),
-        'projects' => Project::select('id', 'title', 'slug', 'thumbnail', 'month', 'year', 'is_opensource')->orderBy('is_opensource', 'asc')->orderBy('year', 'desc')->latest()->get(),
+        'projects' => Project::select('id', 'title', 'slug', 'thumbnail', 'month', 'year', 'is_opensource')->where('is_active', true)->orderBy('is_opensource', 'asc')->orderBy('year', 'desc')->latest()->get(),
         'skills' => Skill::orderBy('sort')->get(),
         'services' => Service::orderBy('sort')->get(),
         'certificates' => Certificate::orderBy('sort')->get(),
@@ -27,6 +27,7 @@ Route::get('/', function () {
 });
 
 Route::get('/project/{project}', function (Project $project) {
+    abort_if(!$project->is_active, 404);
     return view('project-detail', [
         'project' => $project->load('galleries'),
     ]);
@@ -66,7 +67,7 @@ Route::get('/refund', function () {
 });
 
 Route::get('/sitemap.xml', function () {
-    $projects = Project::all();
+    $projects = Project::where('is_active', true)->get();
     $profile = Profile::first();
     $now = now()->toAtomString();
     $url = request()->getSchemeAndHttpHost();

@@ -21,7 +21,8 @@ class ProjectsTable
                     ->label('Slug')
                     ->fontFamily('mono')
                     ->color('gray'),
-
+                \Filament\Tables\Columns\ToggleColumn::make('is_active')
+                    ->label('Aktif'),
                 TextColumn::make('time')
                     ->label('Waktu')
                     ->state(fn ($record) => trim(($record->month ?? '') . ' ' . ($record->year ?? '')) ?: '-')

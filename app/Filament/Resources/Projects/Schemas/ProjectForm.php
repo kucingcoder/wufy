@@ -59,6 +59,10 @@ class ProjectForm
                             ->label('Tahun')
                             ->numeric()
                             ->length(4),
+                        Toggle::make('is_active')
+                            ->label('Tampilkan Proyek')
+                            ->default(true)
+                            ->inline(false),
                         Toggle::make('is_opensource')
                             ->label('Open Source?')
                             ->live()
