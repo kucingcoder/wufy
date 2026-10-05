@@ -75,11 +75,11 @@ Artisan::command('images:resize', function () {
         $resizeImage($profile->avatar, 512, 512);
     }
 
-    // 2. Project Thumbnails (Maks 1024x1024)
+    // 2. Project Thumbnails (Maks 321x179) - Selalu 16:9
     $projects = \App\Models\Project::all();
     foreach ($projects as $project) {
         if ($project->thumbnail) {
-            $resizeImage($project->thumbnail, 1024, 1024);
+            $resizeImage($project->thumbnail, 321, 179);
         }
     }
 
@@ -88,16 +88,17 @@ Artisan::command('images:resize', function () {
         $galleries = \App\Models\ProjectGallery::all();
         foreach ($galleries as $gallery) {
             if ($gallery->image_path) {
+                // Galleries are kept larger for modal viewing, or we can make them 1024x576
                 $resizeImage($gallery->image_path, 1024, 1024);
             }
         }
     }
 
-    // 4. Skills (Maks 256x256)
+    // 4. Skills (Maks 56x56) - Mempertahankan rasio
     $skills = \App\Models\Skill::all();
     foreach ($skills as $skill) {
         if ($skill->logo_path) {
-            $resizeImage($skill->logo_path, 256, 256);
+            $resizeImage($skill->logo_path, 56, 56);
         }
     }
 

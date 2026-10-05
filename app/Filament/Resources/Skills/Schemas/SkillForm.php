@@ -22,8 +22,8 @@ class SkillForm
                     ->label('Logo / Ikon')
                     ->image()
                     ->imageResizeMode('contain')
-                    ->imageResizeTargetWidth('256')
-                    ->imageResizeTargetHeight('256')
+                    ->imageResizeTargetWidth('56')
+                    ->imageResizeTargetHeight('56')
                     ->formatStateUsing(fn ($state) => (array) $state)
                     ->disk('public')
                     ->visibility('public'),
