@@ -88,7 +88,7 @@
 <body class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 overflow-x-hidden min-h-screen">
     <!-- Background System -->
     <div class="fixed top-0 left-0 w-full pointer-events-none z-0 overflow-hidden bg-[#020617]" style="height: 100vh; height: 100lvh;">
-        <div class="absolute inset-0 bg-[url('/images/space-bg.webp')] bg-cover bg-center bg-no-repeat blur-[2px] scale-105"></div>
+        <div class="absolute inset-0 bg-[url('/images/space-bg.webp')] bg-cover bg-center bg-no-repeat scale-105"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#020617]/20 to-[#020617]/90"></div>
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#020617_100%)] opacity-60"></div>
     </div>
