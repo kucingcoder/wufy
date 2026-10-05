@@ -49,6 +49,9 @@ class ManageProfile extends Page implements HasSchemas
                             ->label('Foto Profil')
                             ->image()
                             ->avatar()
+                            ->imageResizeMode('cover')
+                            ->imageResizeTargetWidth('512')
+                            ->imageResizeTargetHeight('512')
                             ->imageEditor()
                             ->imageEditorAspectRatios([
                                 '1:1',

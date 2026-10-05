@@ -21,6 +21,9 @@ class SkillForm
                 FileUpload::make('logo_path')
                     ->label('Logo / Ikon')
                     ->image()
+                    ->imageResizeMode('contain')
+                    ->imageResizeTargetWidth('256')
+                    ->imageResizeTargetHeight('256')
                     ->formatStateUsing(fn ($state) => (array) $state)
                     ->disk('public')
                     ->visibility('public'),
