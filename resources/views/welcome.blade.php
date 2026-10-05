@@ -119,18 +119,31 @@
 <div x-data="{ 
     isMenuOpen: false,
     activeSection: 'home',
-    updateActiveSection() {
+    sectionOffsets: [],
+    calculateOffsets() {
         const sections = ['home', 'services', 'projects', 'skills', 'experience', 'education', 'certificates', 'contact'];
+        this.sectionOffsets = [];
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                this.sectionOffsets.push({ id, offset: el.offsetTop });
+            }
+        });
+    },
+    updateActiveSection() {
+        if (!this.sectionOffsets.length) return;
         let current = 'home';
-        for (let section of sections) {
-            const el = document.getElementById(section);
-            if (el && window.scrollY >= (el.offsetTop - window.innerHeight / 3)) {
-                current = section;
+        const scrollPosition = window.scrollY + window.innerHeight / 3;
+        for (let section of this.sectionOffsets) {
+            if (scrollPosition >= section.offset) {
+                current = section.id;
             }
         }
-        this.activeSection = current;
+        if (this.activeSection !== current) {
+            this.activeSection = current;
+        }
     }
-}" @scroll.window.throttle.50ms="updateActiveSection()" x-init="updateActiveSection()">
+}" @scroll.window.throttle.50ms="updateActiveSection()" @resize.window.debounce.500ms="calculateOffsets()" x-init="$nextTick(() => { calculateOffsets(); updateActiveSection(); setTimeout(() => calculateOffsets(), 1500); })">
 
     <!-- Desktop Navigation -->
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex justify-center pointer-events-none">
