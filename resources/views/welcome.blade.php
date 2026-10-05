@@ -87,10 +87,6 @@
 @section('og_description', $metaDescription)
 @section('twitter_title', ($profile->full_name ?? 'Portfolio') . ' - ' . ($profile->job_title ?? 'Expert'))
 @section('twitter_description', $metaDescription)
-@if($profile && $profile->avatar)
-    @section('og_image', url('storage/'.$profile->avatar))
-    @section('twitter_image', url('storage/'.$profile->avatar))
-@endif
 
 @section('head')
     <script type="application/ld+json">
