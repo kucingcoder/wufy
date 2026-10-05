@@ -34,34 +34,37 @@
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     </noscript>
 
-    <!-- Tailwind CSS (CDN) -->
-    <script defer src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <!-- Tailwind Config -->
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"JetBrains Mono"', 'Consolas', 'Courier New', 'monospace'],
-                        mono: ['"JetBrains Mono"', 'Consolas', 'Courier New', 'monospace'],
-                    },
-                    animation: {
-                        'float': 'float 3s ease-in-out infinite',
-                        'scan': 'scan 2s linear infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
+        window.tailwind = {
+            config: {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ['"JetBrains Mono"', 'Consolas', 'Courier New', 'monospace'],
+                            mono: ['"JetBrains Mono"', 'Consolas', 'Courier New', 'monospace'],
                         },
-                        scan: {
-                            '0%': { transform: 'translateY(-100%)' },
-                            '100%': { transform: 'translateY(100%)' },
+                        animation: {
+                            'float': 'float 3s ease-in-out infinite',
+                            'scan': 'scan 2s linear infinite',
+                        },
+                        keyframes: {
+                            float: {
+                                '0%, 100%': { transform: 'translateY(0)' },
+                                '50%': { transform: 'translateY(-10px)' },
+                            },
+                            scan: {
+                                '0%': { transform: 'translateY(-100%)' },
+                                '100%': { transform: 'translateY(100%)' },
+                            }
                         }
                     }
                 }
             }
-        }
+        };
     </script>
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     
     <style type="text/tailwindcss">
         @layer utilities {
