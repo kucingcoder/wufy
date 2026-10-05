@@ -91,9 +91,7 @@
 </head>
 <body class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 overflow-x-hidden min-h-screen">
     <!-- Background System -->
-    <div x-data 
-         x-init="$el.style.height = Math.max(window.screen.height, window.innerHeight) + 'px'; window.addEventListener('orientationchange', () => setTimeout(() => $el.style.height = Math.max(window.screen.height, window.innerHeight) + 'px', 200))"
-         class="fixed top-0 left-0 w-full h-[100lvh] h-screen pointer-events-none z-0 bg-[#020617]">
+    <div class="fixed top-0 left-0 w-full h-screen h-[100dvh] pointer-events-none z-0 bg-[#020617]">
         <div class="absolute inset-0 bg-[url('/images/space-bg.webp')] bg-cover bg-center bg-no-repeat"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#020617]/20 to-[#020617]/90"></div>
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#020617_100%)] opacity-60"></div>
