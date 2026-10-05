@@ -636,7 +636,7 @@
                                         <span class="w-1 h-1 rounded-full bg-slate-700"></span>
                                         <span class="text-sm font-medium text-slate-300 italic">{{ $exp->location_text }}</span>
                                         @if($exp->status)
-                                            <span class="px-2 py-0.5 rounded text-[10px] font-black bg-slate-800 text-slate-200 uppercase tracking-tighter border border-slate-700">{{ $exp->status }}</span>
+                                            <span class="px-2.5 py-0.5 rounded text-[10px] font-black bg-slate-800 text-slate-200 uppercase tracking-wider border border-slate-700">{{ $exp->status }}</span>
                                         @endif
                                     </div>
 
