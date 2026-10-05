@@ -135,16 +135,16 @@
     <!-- Desktop Navigation -->
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex justify-center pointer-events-none">
         <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800/50 px-4 py-2 rounded-full flex items-center gap-1 shadow-2xl pointer-events-auto">
-            <a href="#home" @click="activeSection = 'home'" :class="activeSection === 'home' ? 'bg-sky-500 text-white' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Beranda</a>
+            <a href="#home" @click="activeSection = 'home'" :class="activeSection === 'home' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Beranda</a>
             @if(!$profile || !$profile->hide_services)
-            <a href="#services" @click="activeSection = 'services'" :class="activeSection === 'services' ? 'bg-sky-500 text-white' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Jasa</a>
+            <a href="#services" @click="activeSection = 'services'" :class="activeSection === 'services' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Jasa</a>
             @endif
-            <a href="#projects" @click="activeSection = 'projects'" :class="activeSection === 'projects' ? 'bg-sky-500 text-white' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Proyek</a>
-            <a href="#skills" @click="activeSection = 'skills'" :class="activeSection === 'skills' ? 'bg-sky-500 text-white' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Keahlian</a>
-            <a href="#experience" @click="activeSection = 'experience'" :class="activeSection === 'experience' ? 'bg-sky-500 text-white' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Pengalaman</a>
-            <a href="#education" @click="activeSection = 'education'" :class="activeSection === 'education' ? 'bg-sky-500 text-white' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Edukasi</a>
-            <a href="#certificates" @click="activeSection = 'certificates'" :class="activeSection === 'certificates' ? 'bg-sky-500 text-white' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Sertifikat</a>
-            <a href="#contact" @click="activeSection = 'contact'" :class="activeSection === 'contact' ? 'bg-sky-500 text-white' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Kontak</a>
+            <a href="#projects" @click="activeSection = 'projects'" :class="activeSection === 'projects' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Proyek</a>
+            <a href="#skills" @click="activeSection = 'skills'" :class="activeSection === 'skills' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Keahlian</a>
+            <a href="#experience" @click="activeSection = 'experience'" :class="activeSection === 'experience' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Pengalaman</a>
+            <a href="#education" @click="activeSection = 'education'" :class="activeSection === 'education' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Edukasi</a>
+            <a href="#certificates" @click="activeSection = 'certificates'" :class="activeSection === 'certificates' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Sertifikat</a>
+            <a href="#contact" @click="activeSection = 'contact'" :class="activeSection === 'contact' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Kontak</a>
         </div>
     </nav>
 
@@ -186,6 +186,7 @@
     </div>
 
     <!-- Hero Section -->
+    <main>
     <section id="home" class="relative min-h-screen flex items-center justify-center pt-32 pb-12 px-6 lg:px-24">
         <div class="container mx-auto flex flex-col lg:grid lg:grid-cols-[1.8fr_1fr] gap-12 lg:gap-16 items-center">
             
@@ -252,7 +253,7 @@
                     <div class="flex gap-4 lg:hidden">
                         @if($profile && $profile->links)
                             @foreach($profile->links as $link)
-                                <a href="{{ $link['link'] }}" target="_blank" rel="noopener noreferrer" class="relative w-12 h-12 rounded-full bg-slate-900/50 backdrop-blur-md border border-slate-800 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500/50 transition-all group/social shadow-xl">
+                                <a href="{{ $link['link'] }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $link['title'] }}" class="relative w-12 h-12 rounded-full bg-slate-900/50 backdrop-blur-md border border-slate-800 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500/50 transition-all group/social shadow-xl">
                                     <div class="absolute inset-0 bg-sky-500/10 rounded-full opacity-0 group-hover/social:opacity-100 blur-md transition-opacity"></div>
                                     <div class="relative z-10 group-hover/social:scale-110 transition-transform">
                                         {!! $getIcon($link['title'], $icons) !!}
@@ -314,7 +315,7 @@
                 <div class="flex gap-6">
                     @if($profile && $profile->links)
                         @foreach($profile->links as $link)
-                            <a href="{{ $link['link'] }}" target="_blank" rel="noopener noreferrer" class="relative w-14 h-14 rounded-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500/50 transition-all group/social shadow-2xl overflow-hidden">
+                            <a href="{{ $link['link'] }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $link['title'] }}" class="relative w-14 h-14 rounded-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500/50 transition-all group/social shadow-2xl overflow-hidden">
                                 <div class="absolute inset-0 bg-sky-500/10 opacity-0 group-hover/social:opacity-100 transition-opacity"></div>
                                 <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-1 bg-sky-500 rounded-full blur-sm opacity-0 group-hover/social:opacity-100 transition-all duration-500"></div>
                                 <div class="relative z-10 group-hover/social:-translate-y-1 transition-transform duration-300">
@@ -503,19 +504,19 @@
 
                     <!-- Pagination controls -->
                     <div x-show="totalPages > 1" style="display: none;" class="flex justify-center items-center gap-2 mb-10 relative z-10">
-                        <button @click="goToPage(currentPage - 1)" :disabled="currentPage === 1" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-sky-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
+                        <button @click="goToPage(currentPage - 1)" :disabled="currentPage === 1" aria-label="Halaman Sebelumnya" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-sky-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                         </button>
                         
                         <template x-for="page in pages" :key="page">
                             <button @click="goToPage(page)" 
                                 class="w-10 h-10 flex items-center justify-center rounded-xl font-bold transition-all"
-                                :class="currentPage === page ? 'bg-sky-500 text-white shadow-[0_0_15px_rgba(14,165,233,0.4)]' : 'bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-sky-500'" 
+                                :class="currentPage === page ? 'bg-sky-500 text-slate-950 shadow-[0_0_15px_rgba(14,165,233,0.4)]' : 'bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-sky-500'" 
                                 x-text="page">
                             </button>
                         </template>
 
-                        <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-sky-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
+                        <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages" aria-label="Halaman Selanjutnya" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-sky-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </button>
                     </div>
@@ -776,6 +777,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer Section -->
     <footer id="contact" class="pt-32 pb-16 bg-slate-950/80 border-t border-slate-900/50 relative overflow-hidden">
@@ -795,7 +797,7 @@
                     <div class="flex items-center gap-3">
                         @if($profile && $profile->links)
                             @foreach($profile->links as $link)
-                                <a href="{{ $link['link'] }}" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500/50 hover:bg-sky-500/5 transition-all group/social shadow-xl">
+                                <a href="{{ $link['link'] }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $link['title'] }}" class="w-11 h-11 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500/50 hover:bg-sky-500/5 transition-all group/social shadow-xl">
                                     <div class="group-hover/social:scale-110 transition-transform">
                                         {!! $getIcon($link['title'], $icons) !!}
                                     </div>
