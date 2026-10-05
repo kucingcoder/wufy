@@ -636,7 +636,25 @@
                                         <span class="w-1 h-1 rounded-full bg-slate-700"></span>
                                         <span class="text-sm font-medium text-slate-300 italic">{{ $exp->location_text }}</span>
                                         @if($exp->status)
-                                            <span class="px-2.5 py-1 rounded-md text-[10px] font-bold bg-sky-500/10 text-sky-400 uppercase tracking-widest border border-sky-500/20">{{ $exp->status }}</span>
+                                            @php
+                                                $statusText = strtolower($exp->status);
+                                                $colorClass = 'bg-slate-500/10 text-slate-400 border-slate-500/20'; // Default
+                                                
+                                                if (str_contains($statusText, 'magang') || str_contains($statusText, 'intern')) {
+                                                    $colorClass = 'bg-amber-500/10 text-amber-400 border-amber-500/20';
+                                                } elseif (str_contains($statusText, 'freelance') || str_contains($statusText, 'lepas')) {
+                                                    $colorClass = 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
+                                                } elseif (str_contains($statusText, 'full') || str_contains($statusText, 'penuh')) {
+                                                    $colorClass = 'bg-sky-500/10 text-sky-400 border-sky-500/20';
+                                                } elseif (str_contains($statusText, 'kontrak') || str_contains($statusText, 'contract')) {
+                                                    $colorClass = 'bg-purple-500/10 text-purple-400 border-purple-500/20';
+                                                } elseif (str_contains($statusText, 'part')) {
+                                                    $colorClass = 'bg-rose-500/10 text-rose-400 border-rose-500/20';
+                                                }
+                                            @endphp
+                                            <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest border {{ $colorClass }}">
+                                                {{ $exp->status }}
+                                            </span>
                                         @endif
                                     </div>
 
