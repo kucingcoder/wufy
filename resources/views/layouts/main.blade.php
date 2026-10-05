@@ -8,11 +8,15 @@
     <meta name="description" content="@yield('meta_description', '')">
     <meta name="keywords" content="@yield('meta_keywords', '')">
     <meta name="author" content="@yield('meta_author', '')">
+    <meta name="theme-color" content="#020617">
     <link rel="icon" type="image/webp" href="/icon.webp">
+    <link rel="apple-touch-icon" href="/icon.webp">
 
     <!-- Open Graph / Facebook -->
     <link rel="canonical" href="{{ url()->current() }}">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <meta property="og:site_name" content="{{ config('app.name') }}">
     <meta property="og:url" content="{{ url('/') }}">
     <meta property="og:title" content="@yield('og_title', config('app.name'))">
     <meta property="og:description" content="@yield('og_description', '')">

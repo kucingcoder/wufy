@@ -158,7 +158,7 @@
 
     <!-- Mobile Menu Toggle -->
     <div class="fixed top-6 right-6 z-[60] md:hidden">
-        <button @click="isMenuOpen = !isMenuOpen" aria-label="Toggle Menu" class="w-9 h-9 flex flex-col items-center justify-center gap-1 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-lg shadow-2xl transition-all active:scale-95">
+        <button @click="isMenuOpen = !isMenuOpen" aria-label="Toggle Menu" aria-controls="mobile-menu" :aria-expanded="isMenuOpen.toString()" class="w-9 h-9 flex flex-col items-center justify-center gap-1 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-lg shadow-2xl transition-all active:scale-95">
             <span class="w-4 h-0.5 bg-white transition-all duration-300" :class="isMenuOpen ? 'rotate-45 translate-y-1.5' : ''"></span>
             <span class="w-4 h-0.5 bg-white transition-all duration-300" :class="isMenuOpen ? 'opacity-0' : ''"></span>
             <span class="w-4 h-0.5 bg-white transition-all duration-300" :class="isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''"></span>
@@ -166,7 +166,7 @@
     </div>
 
     <!-- Mobile Menu Overlay -->
-    <div x-show="isMenuOpen" x-transition.opacity.duration.300ms class="fixed inset-0 z-[55] bg-slate-950/95 backdrop-blur-2xl md:hidden flex flex-col overflow-y-auto" style="display: none;">
+    <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu Navigasi Mobile" x-show="isMenuOpen" x-transition.opacity.duration.300ms class="fixed inset-0 z-[55] bg-slate-950/95 backdrop-blur-2xl md:hidden flex flex-col overflow-y-auto" style="display: none;">
         <div class="flex flex-col items-center justify-start flex-1 gap-6 pb-20 pt-24">
             <a @click="isMenuOpen = false; activeSection = 'home'" href="#home" :class="activeSection === 'home' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-black tracking-tighter transition-all">Beranda</a>
             @if(!$profile || !$profile->hide_services)
@@ -445,7 +445,7 @@
                             <div class="absolute inset-y-0 left-0 flex items-center pl-6 pointer-events-none">
                                 <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </div>
-                            <input type="text" x-model="searchQuery" class="w-full bg-[#0f172a] border border-slate-700 text-slate-200 rounded-2xl py-4 pl-16 pr-6 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/50 transition-all font-mono shadow-xl text-base" placeholder="Cari solusi atau proyek..." />
+                            <input type="text" x-model="searchQuery" aria-label="Cari proyek atau solusi" class="w-full bg-[#0f172a] border border-slate-700 text-slate-200 rounded-2xl py-4 pl-16 pr-6 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/50 transition-all font-mono shadow-xl text-base" placeholder="Cari solusi atau proyek..." />
                         </div>
                     </div>
 
