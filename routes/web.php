@@ -33,7 +33,7 @@ Route::get('/project/{project}', function (Project $project) {
 });
 
 Route::get('/robots.txt', function () {
-    $url = config('app.url');
+    $url = request()->getSchemeAndHttpHost();
     return response("User-agent: *\nAllow: /\n\nSitemap: {$url}/sitemap.xml", 200)
         ->header('Content-Type', 'text/plain');
 });
@@ -69,7 +69,7 @@ Route::get('/sitemap.xml', function () {
     $projects = Project::all();
     $profile = Profile::first();
     $now = now()->toAtomString();
-    $url = config('app.url');
+    $url = request()->getSchemeAndHttpHost();
 
     $sitemap = '<?xml version="1.0" encoding="UTF-8"?>';
     $sitemap .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
