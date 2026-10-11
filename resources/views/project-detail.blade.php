@@ -103,7 +103,7 @@
 @endsection
 
 @section('content')
-<div class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 min-h-screen overflow-x-hidden">
+<div class="text-slate-100 font-sans selection:bg-sky-500/30 min-h-screen overflow-x-hidden">
     <!-- Header / Back Button -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/50 backdrop-blur-md border-b border-slate-800/50">
         <div class="container mx-auto px-6 h-20 flex items-center justify-between">

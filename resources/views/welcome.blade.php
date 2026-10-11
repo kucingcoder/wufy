@@ -561,7 +561,7 @@
                                 @endif
                             </div>
                             <div>
-                                <h3 class="text-2xl font-bold text-white tracking-tight">{{ $cat === 'teknologi' ? 'Teknologi & Alat' : ($cat === 'bahasa' ? 'Bahasa' : 'Minat & Hobi') }}</h3>
+                                <h3 class="text-2xl font-bold text-white tracking-tight">{{ $cat === 'teknologi' ? 'Teknologi' : ($cat === 'bahasa' ? 'Bahasa' : 'Minat & Hobi') }}</h3>
                             </div>
                         </div>
                         
