@@ -1,6 +1,6 @@
 /**
  * Cosmic Space Particles & Shooting Stars Animation
- * Designed to harmonize with the stylized anime/sci-fi space background (space-bg.webp)
+ * Designed to harmonize with the stylized anime/sci-fi space background (background.webp)
  * Features:
  * - Ambient zero-gravity twinkling starlight & diamond sparkles
  * - Gentle drifting cosmic stardust with depth & parallax
@@ -29,7 +29,7 @@
     const mouse = { x: -1000, y: -1000, active: false };
     let mouseTimeout = null;
 
-    // Cosmic color palette matching website's sky-blue theme and space-bg.webp
+    // Cosmic color palette matching website's sky-blue theme and background.webp
     const STAR_COLORS = [
         { r: 255, g: 255, b: 255 },  // Pure crystal white
         { r: 224, g: 242, b: 254 },  // Sky-100

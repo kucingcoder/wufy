@@ -2,7 +2,7 @@
 
 ## Identity & Mood
 - **Context:** Developer & technology specialist personal portfolio.
-- **Visual Mood:** Modern sci-fi tech personal portfolio set against an illustrated anime-space cosmos (`space-bg.webp`), accented with soft cosmic stardust, diamond star twinkles, and occasional shooting stars.
+- **Visual Mood:** Modern sci-fi tech personal portfolio set against an illustrated anime-space cosmos (`background.webp`), accented with soft cosmic stardust, diamond star twinkles, and occasional shooting stars.
 - **Dials:** ENERGY 2 / RHYTHM 2 / MOTION 2
 - **Motion Purpose:** Ambient cosmic stardust and gentle shooting stars that bring life and wonder to the illustrated outer space background, without distracting from content readability or interaction.
 
