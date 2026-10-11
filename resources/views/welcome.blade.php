@@ -203,24 +203,27 @@
 
                 <!-- Profile Photo - Integrated in Mobile Flow -->
                 <div class="lg:hidden flex justify-center py-4">
-                    <div class="relative group">
-                        <!-- Premium Outer Glow -->
-                        <div class="absolute -inset-4 bg-gradient-to-tr from-sky-500/20 to-indigo-500/20 blur-2xl rounded-full opacity-60"></div>
-                        
-                        <!-- Removed Decorative Badges (R-31) -->
-                        
-                        <!-- Frame with Gradient Border -->
-                        <div class="relative w-56 h-56 bg-slate-900 p-1.5 rounded-[2.5rem] shadow-2xl overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-sky-500 via-indigo-500/20 to-sky-500 opacity-40 group-hover:opacity-100 transition-opacity duration-700"></div>
-                            
-                            <div class="relative w-full h-full overflow-hidden rounded-[2.2rem] bg-slate-950">
+                    <div class="relative">
+                        <!-- Soft Ambient Glow (Smooth & Rounded) -->
+                        <div class="absolute -inset-3 bg-sky-500/10 blur-2xl rounded-full pointer-events-none"></div>
+
+                        <!-- Tech Frame (Relaxed & Smooth, No Sharp Corners, No Hover) -->
+                        <div class="relative w-60 h-60 sm:w-64 sm:h-64 p-2 bg-slate-900/70 border border-sky-500/20 rounded-[2.5rem] sm:rounded-[2.8rem] shadow-2xl backdrop-blur-md">
+                            <!-- Photo Viewport -->
+                            <div class="relative w-full h-full rounded-[2.1rem] sm:rounded-[2.4rem] overflow-hidden bg-slate-950 border border-slate-800/80">
                                 @if($profile && $profile->avatar)
-                                    <img src="/storage/{{ $profile->avatar }}" alt="Foto Profil {{ $profile->full_name ?? 'Portfolio' }} - {{ $profile->job_title ?? 'Expert' }}" width="224" height="224" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" fetchpriority="high" loading="eager" />
+                                    <img src="/storage/{{ $profile->avatar }}" alt="Foto Profil {{ $profile->full_name ?? 'Portfolio' }} - {{ $profile->job_title ?? 'Expert' }}" width="256" height="256" class="w-full h-full object-cover" fetchpriority="high" loading="eager" />
                                 @else
                                     <div class="w-full h-full flex items-center justify-center opacity-20 text-slate-400">
                                         <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
                                     </div>
                                 @endif
+
+                                <!-- Subtle Status Indicator (Chill & Minimal) -->
+                                <div class="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-sky-500/20 flex items-center gap-1.5 shadow-lg">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                    <span class="text-[9px] font-mono tracking-wider text-slate-300 font-medium">ONLINE</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -282,33 +285,30 @@
             </div>
 
             <!-- Desktop Profile & HUD -->
-            <div class="hidden lg:order-2 lg:flex flex-col items-center lg:items-end gap-14">
-                <div class="relative group">
-                    <div class="absolute -inset-16 bg-sky-500/5 blur-[100px] rounded-full"></div>
-                    
-                    <div class="absolute -top-6 -left-6 w-16 h-16 border-t-2 border-l-2 border-sky-500/40 rounded-tl-2xl group-hover:scale-105 transition-transform duration-700"></div>
-                    <div class="absolute -bottom-6 -right-6 w-16 h-16 border-b-2 border-r-2 border-sky-500/40 rounded-br-2xl group-hover:scale-105 transition-transform duration-700"></div>
-                    
-                    <div class="absolute -top-6 -right-2 w-1 h-1 bg-sky-500/50 rounded-full"></div>
-                    <div class="absolute -bottom-2 -left-6 w-1 h-1 bg-sky-500/50 rounded-full"></div>
-                    
-                    <div class="relative w-80 h-80 bg-slate-900 border border-slate-800 p-4 rounded-[3.5rem] group-hover:border-sky-500/50 transition-all duration-700 shadow-2xl">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-sky-500/10 via-transparent to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                        
-                        <div class="relative w-full h-full overflow-hidden rounded-[3rem] bg-slate-950 shadow-inner">
+            <div class="hidden lg:order-2 lg:flex flex-col items-center lg:items-end gap-12">
+                <div class="relative">
+                    <!-- Soft Ambient Glow (Smooth & Rounded) -->
+                    <div class="absolute -inset-4 bg-sky-500/10 blur-3xl rounded-full pointer-events-none"></div>
+
+                    <!-- Tech Frame (Relaxed & Smooth, No Sharp Corners, No Hover) -->
+                    <div class="relative w-80 h-80 p-3 bg-slate-900/70 border border-sky-500/20 rounded-[3.5rem] shadow-2xl backdrop-blur-md">
+                        <!-- Photo Viewport -->
+                        <div class="relative w-full h-full rounded-[3rem] overflow-hidden bg-slate-950 border border-slate-800/80">
                             @if($profile && $profile->avatar)
-                                <img src="/storage/{{ $profile->avatar }}" alt="Foto Profil {{ $profile->full_name ?? 'Portfolio' }} - {{ $profile->job_title ?? 'Expert' }}" width="320" height="320" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" fetchpriority="high" loading="eager" />
+                                <img src="/storage/{{ $profile->avatar }}" alt="Foto Profil {{ $profile->full_name ?? 'Portfolio' }} - {{ $profile->job_title ?? 'Expert' }}" width="320" height="320" class="w-full h-full object-cover" fetchpriority="high" loading="eager" />
                             @else
                                 <div class="w-full h-full flex items-center justify-center opacity-20 text-slate-400">
                                     <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
                                 </div>
                             @endif
-                            
-                            
+
+                            <!-- Subtle Status Indicator (Chill & Minimal) -->
+                            <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-sky-500/20 flex items-center gap-2 shadow-lg">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                <span class="text-[10px] font-mono tracking-wider text-slate-300 font-medium">ONLINE</span>
+                            </div>
                         </div>
                     </div>
-                    
-
                 </div>
                 
                 <!-- Desktop Social Links -->
