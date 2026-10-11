@@ -97,7 +97,16 @@
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#020617_100%)] opacity-60"></div>
     </div>
 
-    @yield('content')
+    <!-- Anime Blue Falling Leaves Canvas (Layer Tengah) -->
+    <canvas id="sakura-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-[1]" aria-hidden="true"></canvas>
+
+    <!-- Page Content (Layer Depan) -->
+    <div class="relative z-10">
+        @yield('content')
+    </div>
+
+    <!-- Anime Japanese Falling Sakura Script -->
+    <script src="/js/sakura-fall.js" defer></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
