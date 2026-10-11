@@ -1,233 +1,188 @@
-# 🦊 Wufy Portfolio v1.0
-> **Sistem Portofolio Premium dengan Estetika HUD Modern & Teknologi Mutakhir.**
+# 🦊 Wufy Portfolio
+
+> **Website portofolio personal bertema kosmik dan anime modern, dilengkapi panel admin mandiri untuk mengelola karya dan profil tanpa perlu coding.**
 
 [![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php)](https://php.net)
 [![Alpine.js](https://img.shields.io/badge/Alpine.js-3.x-8BC0D0?style=for-the-badge&logo=alpine.js)](https://alpinejs.dev/)
 [![Filament](https://img.shields.io/badge/Filament-v5-FBBF24?style=for-the-badge&logo=filament)](https://filamentphp.com)
 [![Tailwind](https://img.shields.io/badge/Tailwind-4.0-06B6D4?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com)
 
-Wufy adalah platform portofolio personal yang dirancang khusus untuk profesional kreatif yang menginginkan tampilan futuristik bergaya **HUD (Heads-Up Display)**. Dibangun dengan fokus pada kecepatan, SEO, dan kemudahan pengelolaan konten.
+---
+
+## 📖 Sekilas Tentang Wufy (Untuk Pengguna Awam)
+
+Wufy adalah website portofolio pribadi siap pakai yang dibuat khusus untuk developer, desainer, maupun profesional kreatif lainnya yang ingin memperkenalkan diri dan memamerkan karya di internet.
+
+Berbeda dari website portofolio biasa yang statis dan kaku, Wufy memiliki sistem pengelolaan konten di balik layar. Anda bisa mengganti foto profil, mengunggah file CV, menambah daftar projek baru, hingga memperbarui riwayat pekerjaan kapan saja langsung dari browser tanpa harus menyentuh baris kode program.
 
 ---
 
-## 🌟 Mengapa Memilih Wufy? (Untuk Pengguna Awam)
+## 🌌 Seperti Apa Tampilan Web Wufy?
 
-Wufy bukan sekadar website statis. Ini adalah sistem cerdas yang memungkinkan Anda mengelola identitas digital Anda tanpa harus menyentuh kode program sama sekali.
-
-### 🎯 Fitur Utama:
-- **🚀 Performa Kilat**: Menggunakan teknologi Laravel Blade dengan Alpine.js, memastikan ukuran halaman sangat ringan dan waktu muat instan tanpa Node.js/Vite.
-- **📱 Responsif & Modern**: Tampilan yang menyesuaikan sempurna di HP, Tablet, maupun Laptop dengan desain "Dark Mode" yang elegan.
-- **🎨 Kelola Konten Mudah**: Akses CMS untuk memperbarui seluruh data portofolio Anda secara mandiri:
-  - Foto profil & informasi kontak
-  - Biodata (About)
-  - Daftar Projek (Projects)
-  - Riwayat Kerja (Experiences)
-  - Jasa / Layanan (Services)
-  - Keahlian (Skills)
-  - Minat & Hobi (Hobbies)
-  - Bahasa (Languages)
-  - Halaman Kebijakan (Terms, Privacy, Refund)
-- **⚙️ Kustomisasi Tampilan**: Ingin menyembunyikan bagian tertentu dari portofolio Anda? Anda bisa langsung mematikan/menyalakan sesi tertentu (seperti menyembunyikan Jasa, Bahasa, atau Hobi) hanya dengan satu klik *toggle* di menu Pengaturan tanpa mengubah kode.
-- **🔗 Shortlink Generator**: Buat tautan pendek khusus (misal: `domain.com/cv`) langsung dari dasbor Anda.
-- **📊 Statistik Pengunjung**: Pantau berapa banyak orang yang melihat portofolio Anda setiap harinya melalui grafik interaktif.
-- **🔍 SEO Friendly**: Website Anda lebih mudah ditemukan di Google berkat optimasi otomatis pada Meta Tags dan Peta Situs (Sitemap).
-- **💾 Backup & Restore Otomatis**: Amankan seluruh data (termasuk database dan gambar yang diunggah) menjadi satu file ZIP, dan pulihkan kapan saja langsung dari menu Pengaturan.
-- **🇮🇩 Bahasa Indonesia**: Antarmuka (UI) dan pesan kesalahan telah diatur secara bawaan menggunakan bahasa Indonesia.
-- **🏷️ Branding Dinamis**: Nama brand dan judul halaman (page title) website secara otomatis menyesuaikan dengan nama lengkap profil Anda.
+1. **Tema Kosmik Luar Angkasa yang Elegan**
+   Website ini mengusung estetika visual anime bernuansa luar angkasa dengan warna dasar biru gelap (*deep night slate*) dan aksen biru langit.
+2. **Efek Bintang & Partikel Hidup**
+   Latar belakang dilengkapi animasi partikel debu bintang (*stardust*) dan bintang jatuh berkala yang melintas lembut. Efek ini dibuat ringan menggunakan teknologi HTML5 Canvas sehingga tidak membebani performa perangkat dan tetap ramah baterai.
+3. **Responsif di Semua Ukuran Layar**
+   Tampilan otomatis menyesuaikan secara rapi saat dibuka melalui layar smartphone, tablet, maupun layar laptop dan komputer desktop.
+4. **Galeri Foto Interaktif**
+   Setiap gambar atau tangkapan layar projek dapat diklik untuk dibuka dalam mode layar penuh (fullscreen) yang jernih dan nyaman dilihat berkat integrasi PhotoSwipe.
 
 ---
 
-## 🛠️ Panduan Untuk Developer & Homelab Enthusiasts
+## 📑 Apa Saja yang Ada di Halaman Depan?
 
-Wufy menggunakan stack teknologi terbaru untuk memastikan skalabilitas dan performa terbaik.
+Halaman utama Wufy dirancang terstruktur agar pengunjung maupun calon klien dapat mengenal Anda dengan cepat:
 
-### 🏗️ Stack Teknologi:
-- **Core**: Laravel 13 & PHP 8.3+ (Octane Ready with FrankenPHP)
-- **Frontend**: Laravel Blade & Alpine.js (CDN, No Node.js required)
-- **Styling**: Tailwind CSS 4.0 (CDN utility-first CSS)
-- **Admin Panel**: Filament PHP v5 (Pro-grade dashboard)
-- **Image Viewer**: PhotoSwipe v5 (Ultra-smooth image gallery)
-- **SEO**: Spatie Sitemap & JSON-LD Schema integration
+- **Kartu Profil & Biodata**: Menampilkan foto profil, nama lengkap, posisi pekerjaan, lokasi domisili, deskripsi perkenalan singkat, serta tautan cepat ke akun sosial media dan platform profesional (seperti GitHub, LinkedIn, dan Instagram).
+- **Layanan / Jasa**: Menjelaskan jenis layanan atau keahlian yang Anda tawarkan beserta deskripsi singkatnya.
+- **Portofolio Projek**: Katalog karya dan aplikasi yang pernah Anda buat. Bagian ini dilengkapi filter kategori (Open Source atau Komersial), tahun pembuatan, tautan ke website atau kode sumber, serta galeri gambar pendukung.
+- **Keahlian Teknis (Skills)**: Daftar kemampuan teknis dan alat (tools) yang Anda kuasai, tertata rapi berdasarkan kelompok kategori.
+- **Pengalaman Kerja (Experiences)**: Rekam jejak karier profesional, nama perusahaan, jabatan, status pekerjaan, serta periode waktu bekerja.
+- **Riwayat Pendidikan (Education)**: Riwayat jenjang pendidikan formal maupun non-formal yang pernah ditempuh.
+- **Sertifikasi & Lisensi (Certificates)**: Bukti kompetensi dan pencapaian profesional yang pernah Anda raih.
+- **Kontak & Unduh CV**: Akses langsung bagi pengunjung untuk menghubungi Anda via WhatsApp atau Email, serta tombol satu klik untuk mengunduh dokumen CV (Curriculum Vitae) berformat PDF.
+- **Halaman Legalitas**: Halaman resmi untuk Syarat & Ketentuan (`/terms`), Kebijakan Privasi (`/privacy`), dan Kebijakan Pengembalian Dana (`/refund`).
 
-### 🚀 Cara Instalasi di Lokal (Development):
+---
 
-1. **Persyaratan**: PHP 8.3, Composer, MySQL/MariaDB.
+## ✨ Fitur Unggulan untuk Pemilik Website
+
+Mengelola website portofolio kini sangat mudah:
+
+- **Kelola Konten Lewat Panel Admin**: Masuk ke halaman admin (`/admin`) untuk mengedit profil, menambah portofolio baru, mengunggah foto, atau mengganti dokumen CV semudah mengisi formulir di media sosial.
+- **Pengaturan Tampilan Fleksibel**: Anda dapat menyembunyikan bagian tertentu dari halaman depan (misalnya sesi Layanan) hanya dengan menggeser sakelar (*toggle*) di menu Pengaturan.
+- **Pembuat Tautan Pendek (Shortlink)**: Buat tautan ringkas menggunakan domain Anda sendiri (misalnya `domainanda.com/cv` atau `domainanda.com/wa`) langsung dari dasbor admin.
+- **Statistik & Analisis Pengunjung**: Pantau seberapa ramai pengunjung website Anda melalui grafik harian, grafik bulanan, serta pantauan dari mana pengunjung datang (sumber referensi).
+- **Cadangkan & Pulihkan Data Sekali Klik**: Amankan seluruh data website Anda (database dan foto-foto yang diunggah) menjadi satu file ZIP langsung dari menu Pengaturan, dan pulihkan data kapan pun dibutuhkan.
+- **Otomatis Terindeks Mesin Pencari (SEO)**: Website sudah dilengkapi peta situs otomatis (`/sitemap.xml`), robots.txt, meta tag media sosial, dan format data terstruktur Schema JSON-LD agar nama Anda mudah ditemukan di Google.
+- **Bahasa Indonesia Bawaan**: Seluruh label antarmuka halaman admin dan pesan sistem telah diatur menggunakan bahasa Indonesia.
+
+---
+
+## 🛠️ Panduan untuk Developer & Homelab
+
+Bagi Anda yang ingin menginstal, mengembangkan, atau menaruh Wufy di server sendiri:
+
+### Teknologi yang Digunakan
+- **Backend**: Laravel 13 & PHP 8.3+ (Mendukung Laravel Octane & FrankenPHP)
+- **Frontend**: Laravel Blade & Alpine.js (Melalui CDN, tanpa memerlukan kompilasi Node.js atau Vite)
+- **Styling**: Tailwind CSS 4.0
+- **Admin Panel**: Filament PHP v5
+- **Galeri Gambar**: PhotoSwipe v5
+- **SEO**: Spatie Laravel Sitemap & Schema.org JSON-LD
+
+---
+
+### Cara Menjalankan di Komputer Lokal (Development)
+
+1. **Persyaratan**:
+   - PHP versi 8.3 atau lebih baru
+   - Composer
+   - Database MySQL atau MariaDB
+
 2. **Clone Repositori**:
    ```bash
    git clone https://github.com/kucingcoder/wufy.git
    cd wufy
    ```
-3. **Instalasi Dependensi**:
+
+3. **Pasang Dependensi**:
    ```bash
    composer install
    ```
-4. **Konfigurasi Environment**:
+
+4. **Siapkan Berkas Konfigurasi (.env)**:
    ```bash
    cp .env.example .env
    php artisan key:generate
    ```
-5. **Setup Database**:
-   *(Sesuaikan kredensial DB_DATABASE, DB_USERNAME, DB_PASSWORD di `.env` terlebih dahulu)*
+
+5. **Pengaturan Database**:
+   Sesuaikan informasi database pada file `.env` (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`), kemudian jalankan:
    ```bash
    php artisan migrate:fresh --seed
    php artisan storage:link
    ```
+
 6. **Jalankan Aplikasi**:
    ```bash
    php artisan serve
    ```
-   *(Atau `php artisan octane:start` jika menggunakan Octane)*
+   Buka browser Anda dan akses alamat `http://127.0.0.1:8000`.
 
 ---
 
-## 🌐 Panduan Deployment di Server (VPS / Dedicated / Homelab)
+### Cara Pemasangan di Server (VPS / Dedicated Server)
 
-Untuk men-deploy Wufy di server VPS atau mesin Homelab Anda, ikuti langkah-langkah di bawah ini. Pastikan PHP 8.3, Composer, dan MySQL telah terinstal. **(Tidak perlu Node.js atau NPM!)**
-
-1. **Siapkan Source Code**: Clone repositori ini di direktori server Anda (misal: `/var/www/wufy`).
-2. **Setup Awal**:
-   Masuk ke folder projek, lalu jalankan perintah otomatisasi bawaan Wufy:
+1. Unduh atau clone repositori ini ke folder server Anda (contoh: `/var/www/wufy`).
+2. Masuk ke folder projek dan jalankan skrip pengaturan otomatis bawaan Wufy:
    ```bash
    composer setup
    ```
-   *(Perintah ini akan menjalankan instalasi composer, menyalin .env, mengenerate app key, dan melakukan migrate & seed database)*
-3. **Konfigurasi `.env`**: Edit file `.env`, atur `APP_ENV=production`, `APP_DEBUG=false`, dan sesuaikan `APP_URL` dengan domain atau IP Anda.
-4. **Link Storage**:
+   *(Skrip ini otomatis menginstal dependensi composer, membuat file .env, menghasilkan app key, serta menjalankan migrasi database)*.
+3. Buka file `.env` di server, atur `APP_ENV=production`, `APP_DEBUG=false`, dan sesuaikan `APP_URL` dengan domain Anda.
+4. Pastikan storage link telah aktif:
    ```bash
    php artisan storage:link
    ```
-5. **Konfigurasi Web Server**:
+5. Arahkan direktori *root* web server (Nginx, Apache, atau FrankenPHP) ke folder `public/` milik Wufy.
 
-   <details>
-   <summary><b>🗂️ Menggunakan cPanel (Shared Hosting)</b></summary>
-   
-   Jika Anda menggunakan cPanel biasa tanpa akses terminal root:
-   1. Kompres seluruh folder Wufy (kecuali `vendor`) menjadi `.zip` di komputer Anda.
-   2. Upload dan ekstrak file `.zip` tersebut di file manager hosting Anda, sejajar dengan direktori `public_html` (misal: `/home/username/wufy`).
-   3. Pindahkan semua isi dari folder `wufy/public/` ke dalam folder `public_html/`.
-   4. Buka `public_html/index.php` dan perbarui path yang menuju ke folder `/vendor/` dan `/bootstrap/` agar mengarah ke direktori `/wufy/` Anda.
-   5. Buat database baru di MySQL Database Wizard, lalu perbarui file `.env` di folder `/wufy/`.
-   6. **(Penting)** Untuk memunculkan gambar, buat file `link.php` di dalam `public_html` yang berisi:
-      `<?php symlink('/home/username/wufy/storage/app/public', '/home/username/public_html/storage'); ?>`
-      Akses `domainanda.com/link.php` sekali di browser Anda, lalu hapus file tersebut.
-   </details>
-
-   <details>
-   <summary><b>🔥 Menggunakan Nginx (Direkomendasikan)</b></summary>
-   
-   Buat konfigurasi virtual host di `/etc/nginx/sites-available/wufy.conf`:
-   ```nginx
-   server {
-       listen 80;
-       server_name domainanda.com;
-       root /var/www/wufy/public;
-
-       add_header X-Frame-Options "SAMEORIGIN";
-       add_header X-Content-Type-Options "nosniff";
-
-       index index.php;
-
-       charset utf-8;
-
-       location / {
-           try_files $uri $uri/ /index.php?$query_string;
-       }
-
-       location = /favicon.ico { access_log off; log_not_found off; }
-       location = /robots.txt  { access_log off; log_not_found off; }
-
-       error_page 404 /index.php;
-
-       location ~ \.php$ {
-           fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
-           fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-           include fastcgi_params;
-       }
-
-       location ~ /\.(?!well-known).* {
-           deny all;
-       }
-   }
-   ```
-   Aktifkan konfigurasi dan restart Nginx:
-   ```bash
-   ln -s /etc/nginx/sites-available/wufy.conf /etc/nginx/sites-enabled/
-   systemctl reload nginx
-   ```
-   </details>
-
-   <details>
-   <summary><b>🛠️ Menggunakan Apache</b></summary>
-   
-   Buat konfigurasi virtual host di `/etc/apache2/sites-available/wufy.conf`:
-   ```apache
-   <VirtualHost *:80>
-       ServerName domainanda.com
-       DocumentRoot /var/www/wufy/public
-
-       <Directory /var/www/wufy/public>
-           Options Indexes FollowSymLinks
-           AllowOverride All
-           Require all granted
-       </Directory>
-
-       ErrorLog ${APACHE_LOG_DIR}/wufy-error.log
-       CustomLog ${APACHE_LOG_DIR}/wufy-access.log combined
-   </VirtualHost>
-   ```
-   Aktifkan modul rewrite dan site, lalu restart Apache:
-   ```bash
-   a2enmod rewrite
-   a2ensite wufy.conf
-   systemctl restart apache2
-   ```
-   </details>
-
-6. **Akses Admin**:
-   - URL: `domainanda.com/admin`
-   - Email: `admin@admin.com`
-   - Password: `admin`
+#### Akun Masuk Admin Bawaan
+- **URL Admin**: `domainanda.com/admin`
+- **Email**: `admin@admin.com`
+- **Password**: `admin`
+*(Sangat disarankan segera mengganti email dan password melalui menu Pengaturan setelah pertama kali masuk)*.
 
 ---
 
-## 🔄 Cara Melakukan Update
+### Cara Memperbarui Versi Aplikasi (Update)
 
-Untuk memperbarui aplikasi saat ada versi terbaru dari repositori, Anda tidak perlu repot menjalankan perintah secara manual satu per satu. Wufy menyediakan skrip composer bawaan.
+Jika ada pembaruan kode di repositori GitHub, Anda tidak perlu menjalankan perintah secara manual satu per satu. Cukup jalankan perintah bawaan berikut di server Anda:
 
-Cukup jalankan perintah berikut di dalam direktori projek pada server/homelab Anda (sebagai root, skrip sudah dilengkapi bypass keamanan):
 ```bash
 composer redeploy
 ```
 
-**Apa yang dilakukan perintah ini?**
-1. Mereset kode lokal ke versi terbaru (Git).
-2. Menarik pembaruan terbaru dari repositori (`git pull`).
-3. Menginstal dependensi PHP secara aman sebagai superuser (`composer install`).
-4. Menjalankan migrasi database jika ada skema tabel baru (`php artisan migrate --force`).
-5. Membersihkan cache Laravel (`php artisan optimize:clear`).
-6. Memuat ulang worker Laravel Octane tanpa downtime (`php artisan octane:reload`).
-7. Mengatur ulang hak akses folder (Permission) di direktori `storage` dan `bootstrap/cache`.
+Perintah ini akan secara otomatis:
+1. Menyelaraskan kode dengan versi repositori terbaru (`git pull`).
+2. Memperbarui dependensi PHP yang diperlukan (`composer install`).
+3. Menjalankan penyesuaian skema database (`php artisan migrate`).
+4. Membersihkan cache aplikasi (`php artisan optimize:clear`).
+5. Menyesuaikan izin akses folder `storage` dan `bootstrap/cache`.
 
 ---
 
-## 📂 Struktur Projek (Advanced)
+## 📂 Struktur Folder Projek
 
-- `app/Filament/Pages`: Halaman kustom admin, termasuk integrasi fitur Backup & Restore native.
-- `app/Filament/Resources`: Konfigurasi modul admin (Project, Skill, Link, dll).
-- `app/Models`: Definisi struktur data dan relasi tabel.
-- `database/migrations`: Skema database yang bersih dan terstruktur.
-- `resources/views`: Komponen antarmuka Blade, layout, dan halaman utama menggunakan Alpine.js.
-- `routes/web.php`: Definisi rute aplikasi dan logika fetching data frontend.
+```text
+app/
+├── Filament/
+│   ├── Pages/         # Halaman admin (Kelola Profil, Kebijakan, Pengaturan)
+│   ├── Resources/     # Modul data admin (Projek, Keahlian, Pengalaman, Pendidikan, dll)
+│   └── Widgets/       # Komponen statistik dan grafik di dasbor admin
+├── Models/            # Definisi model data dan relasi database
+database/
+├── migrations/        # Struktur tabel database
+└── seeders/           # Data awal contoh portofolio
+resources/
+└── views/             # Template tampilan halaman web (Blade & Alpine.js)
+routes/
+└── web.php            # Daftar rute halaman publik dan sitemap
+```
 
 ---
 
 ## 🤝 Kontribusi
-Kami sangat terbuka bagi siapa saja yang ingin membantu mengembangkan Wufy! Silakan buat **Pull Request** atau laporkan **Issues** jika menemukan bug.
+
+Kontribusi berupa saran, pelaporan kendala (Issues), maupun pengiriman perbaikan (Pull Request) sangat terbuka untuk membantu pengembangan Wufy.
 
 ---
 
 ## 📜 Lisensi
-Projek ini berada di bawah lisensi [MIT](LICENSE).
+
+Projek ini dirilis di bawah lisensi [MIT](LICENSE).
 
 ---
-**Dibuat dengan ❤️ oleh [kucingcoder](https://github.com/kucingcoder)**
+**Dibuat oleh [kucingcoder](https://github.com/kucingcoder)**
