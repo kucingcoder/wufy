@@ -346,7 +346,7 @@
 
             <div class="max-w-6xl mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    @foreach($services as $i => $service)
+                    @forelse($services as $i => $service)
                         <div class="group relative bg-slate-900 border border-slate-800 p-6 lg:p-8 rounded-[2rem] transition-all duration-500 hover:border-sky-500/30 shadow-xl overflow-hidden flex flex-col reveal" data-delay="{{ $i * 100 }}">
                             <div>
                                 <h3 class="text-xl lg:text-2xl font-bold text-white group-hover:text-sky-400 transition-colors tracking-tighter">
@@ -379,7 +379,14 @@
                             <div class="absolute -right-20 -top-20 w-64 h-64 bg-sky-500/5 blur-[100px] rounded-full pointer-events-none group-hover:bg-sky-500/10 transition-all duration-1000"></div>
                             <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-sky-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="col-span-full py-12 px-8 rounded-[2.5rem] bg-slate-900/80 backdrop-blur-md border-2 border-dashed border-slate-500/80 text-center shadow-2xl max-w-xl mx-auto w-full">
+                            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-500/20 border border-sky-500/30 text-sky-400 mb-4 shadow-[0_0_15px_rgba(14,165,233,0.3)]">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                            </div>
+                            <p class="text-white font-bold text-base md:text-lg tracking-wide">Belum ada data layanan</p>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
@@ -495,11 +502,11 @@
                         
                         <!-- Empty State -->
                         <template x-if="filteredProjects.length === 0">
-                            <div class="col-span-full text-center py-24 bg-slate-900/30 border border-slate-800 border-dashed rounded-[3rem]">
-                                <div class="flex justify-center mb-6 opacity-20 text-slate-400">
-                                    <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            <div class="col-span-full text-center py-16 px-8 bg-slate-900/80 backdrop-blur-md border-2 border-dashed border-slate-500/80 rounded-[2.5rem] shadow-2xl max-w-xl mx-auto w-full">
+                                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-500/20 border border-sky-500/30 text-sky-400 mb-4 shadow-[0_0_15px_rgba(14,165,233,0.3)]">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 </div>
-                                <p class="text-slate-300 text-xl font-light">Tidak ada solusi ditemukan</p>
+                                <p class="text-white text-base md:text-lg font-bold tracking-wide">Tidak ada solusi ditemukan</p>
                             </div>
                         </template>
                     </div>
@@ -558,7 +565,7 @@
                             </div>
                         </div>
                         
-                        @if(isset($skillsByCategory[$cat]))
+                        @if(!empty($skillsByCategory[$cat]) && count($skillsByCategory[$cat]) > 0)
                             <div class="flex flex-wrap gap-8 lg:gap-12 justify-center">
                                 @foreach($skillsByCategory[$cat] as $i => $skill)
                                     <div class="reveal" data-delay="{{ ($catIndex * 50) + ($i * 30) }}">
@@ -578,8 +585,8 @@
                                 @endforeach
                             </div>
                         @else
-                            <div class="p-8 rounded-[2rem] border border-slate-800 border-dashed text-center">
-                                <p class="text-slate-600 text-sm italic">Belum ada data</p>
+                            <div class="py-8 px-10 rounded-[2.5rem] bg-slate-900/80 backdrop-blur-md border-2 border-dashed border-slate-500/80 text-center shadow-xl max-w-md mx-auto w-full">
+                                <p class="text-white text-base md:text-lg font-bold tracking-wide">Belum ada data</p>
                             </div>
                         @endif
                     </div>
@@ -599,71 +606,80 @@
             </h2>
             
             <div class="relative max-w-6xl mx-auto">
-                <!-- Vertical Timeline Line -->
-                <div class="absolute left-8 lg:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-sky-500/50 to-transparent lg:-translate-x-1/2">
-                    <div class="sticky top-1/2 w-1 h-20 bg-gradient-to-b from-sky-500 to-indigo-500 -ml-[1px] blur-[2px] opacity-70"></div>
-                </div>
-
-                <div class="space-y-24">
-                    @foreach($experiences as $i => $exp)
-                        <div class="relative flex flex-col lg:flex-row items-center {{ $i % 2 === 0 ? 'lg:flex-row-reverse' : '' }}">
-                            <!-- Timeline Dot -->
-                            <div class="absolute left-8 lg:left-1/2 top-0 w-6 h-6 -translate-x-1/2 z-20 flex items-center justify-center">
-                                <div class="w-full h-full rounded-full bg-slate-950 border border-slate-800 group-hover:border-sky-500 transition-colors relative">
-                                    <div class="absolute inset-1 rounded-full bg-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]"></div>
-                                </div>
-                            </div>
-
-                            <div class="w-full lg:w-[45%] pl-20 lg:pl-0">
-                                <div class="group relative p-8 rounded-[2.5rem] bg-slate-900/50 backdrop-blur-sm border border-white/10 hover:border-sky-400 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_-15px_rgba(56,189,248,0.4)] reveal">
-                                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-black uppercase tracking-widest mb-6">
-                                        <span class="relative flex h-2 w-2">
-                                            <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
-                                        </span>
-                                        {{ $exp->start_date }} — {{ $exp->end_date ?: 'Sekarang' }}
-                                    </div>
-
-                                    <h3 class="text-3xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors leading-tight">{{ $exp->position }}</h3>
-                                    
-                                    <div class="flex flex-wrap items-center gap-3 text-slate-200">
-                                        <div class="flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-950 border border-slate-800">
-                                            <span class="text-white font-bold">{{ $exp->company }}</span>
-                                        </div>
-                                        <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-                                        <span class="text-sm font-medium text-slate-300 italic">{{ $exp->location_text }}</span>
-                                        @if($exp->status)
-                                            @php
-                                                $statusText = strtolower($exp->status);
-                                                $colorClass = 'bg-slate-500/10 text-slate-400 border-slate-500/20'; // Default
-                                                
-                                                if (str_contains($statusText, 'magang') || str_contains($statusText, 'intern')) {
-                                                    $colorClass = 'bg-amber-500/10 text-amber-400 border-amber-500/20';
-                                                } elseif (str_contains($statusText, 'freelance') || str_contains($statusText, 'lepas')) {
-                                                    $colorClass = 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
-                                                } elseif (str_contains($statusText, 'full') || str_contains($statusText, 'penuh')) {
-                                                    $colorClass = 'bg-sky-500/10 text-sky-400 border-sky-500/20';
-                                                } elseif (str_contains($statusText, 'kontrak') || str_contains($statusText, 'contract')) {
-                                                    $colorClass = 'bg-purple-500/10 text-purple-400 border-purple-500/20';
-                                                } elseif (str_contains($statusText, 'part')) {
-                                                    $colorClass = 'bg-rose-500/10 text-rose-400 border-rose-500/20';
-                                                }
-                                            @endphp
-                                            <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest border {{ $colorClass }}">
-                                                {{ $exp->status }}
-                                            </span>
-                                        @endif
-                                    </div>
-
-
-                                    <div class="absolute bottom-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-sky-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                                </div>
-                            </div>
-
-                            <!-- Spacer -->
-                            <div class="hidden lg:block lg:w-[45%]"></div>
+                @if($experiences->isEmpty())
+                    <div class="py-12 px-8 rounded-[2.5rem] bg-slate-900/80 backdrop-blur-md border-2 border-dashed border-slate-500/80 text-center shadow-2xl max-w-xl mx-auto w-full">
+                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-500/20 border border-sky-500/30 text-sky-400 mb-4 shadow-[0_0_15px_rgba(14,165,233,0.3)]">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                         </div>
-                    @endforeach
-                </div>
+                        <p class="text-white font-bold text-base md:text-lg tracking-wide">Belum ada data pengalaman</p>
+                    </div>
+                @else
+                    <!-- Vertical Timeline Line -->
+                    <div class="absolute left-8 lg:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-sky-500/50 to-transparent lg:-translate-x-1/2">
+                        <div class="sticky top-1/2 w-1 h-20 bg-gradient-to-b from-sky-500 to-indigo-500 -ml-[1px] blur-[2px] opacity-70"></div>
+                    </div>
+
+                    <div class="space-y-24">
+                        @foreach($experiences as $i => $exp)
+                            <div class="relative flex flex-col lg:flex-row items-center {{ $i % 2 === 0 ? 'lg:flex-row-reverse' : '' }}">
+                                <!-- Timeline Dot -->
+                                <div class="absolute left-8 lg:left-1/2 top-0 w-6 h-6 -translate-x-1/2 z-20 flex items-center justify-center">
+                                    <div class="w-full h-full rounded-full bg-slate-950 border border-slate-800 group-hover:border-sky-500 transition-colors relative">
+                                        <div class="absolute inset-1 rounded-full bg-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]"></div>
+                                    </div>
+                                </div>
+
+                                <div class="w-full lg:w-[45%] pl-20 lg:pl-0">
+                                    <div class="group relative p-8 rounded-[2.5rem] bg-slate-900/50 backdrop-blur-sm border border-white/10 hover:border-sky-400 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_-15px_rgba(56,189,248,0.4)] reveal">
+                                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-black uppercase tracking-widest mb-6">
+                                            <span class="relative flex h-2 w-2">
+                                                <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                                            </span>
+                                            {{ $exp->start_date }} — {{ $exp->end_date ?: 'Sekarang' }}
+                                        </div>
+
+                                        <h3 class="text-3xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors leading-tight">{{ $exp->position }}</h3>
+                                        
+                                        <div class="flex flex-wrap items-center gap-3 text-slate-200">
+                                            <div class="flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-950 border border-slate-800">
+                                                <span class="text-white font-bold">{{ $exp->company }}</span>
+                                            </div>
+                                            <span class="w-1 h-1 rounded-full bg-slate-700"></span>
+                                            <span class="text-sm font-medium text-slate-300 italic">{{ $exp->location_text }}</span>
+                                            @if($exp->status)
+                                                @php
+                                                    $statusText = strtolower($exp->status);
+                                                    $colorClass = 'bg-slate-500/10 text-slate-400 border-slate-500/20'; // Default
+                                                    
+                                                    if (str_contains($statusText, 'magang') || str_contains($statusText, 'intern')) {
+                                                        $colorClass = 'bg-amber-500/10 text-amber-400 border-amber-500/20';
+                                                    } elseif (str_contains($statusText, 'freelance') || str_contains($statusText, 'lepas')) {
+                                                        $colorClass = 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
+                                                    } elseif (str_contains($statusText, 'full') || str_contains($statusText, 'penuh')) {
+                                                        $colorClass = 'bg-sky-500/10 text-sky-400 border-sky-500/20';
+                                                    } elseif (str_contains($statusText, 'kontrak') || str_contains($statusText, 'contract')) {
+                                                        $colorClass = 'bg-purple-500/10 text-purple-400 border-purple-500/20';
+                                                    } elseif (str_contains($statusText, 'part')) {
+                                                        $colorClass = 'bg-rose-500/10 text-rose-400 border-rose-500/20';
+                                                    }
+                                                @endphp
+                                                <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest border {{ $colorClass }}">
+                                                    {{ $exp->status }}
+                                                </span>
+                                            @endif
+                                        </div>
+
+
+                                        <div class="absolute bottom-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-sky-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Spacer -->
+                                <div class="hidden lg:block lg:w-[45%]"></div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
     </section>
@@ -678,63 +694,72 @@
             </h2>
             
             <div class="relative max-w-6xl mx-auto">
-                <div class="absolute left-8 lg:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-indigo-500/50 to-transparent lg:-translate-x-1/2">
-                    <div class="absolute inset-0 bg-gradient-to-b from-indigo-500/40 via-transparent to-purple-500/40"></div>
-                </div>
-
-                <div class="space-y-24">
-                    @foreach($education as $i => $edu)
-                        <div class="relative flex flex-col lg:flex-row items-center {{ $i % 2 !== 0 ? 'lg:flex-row-reverse' : '' }}">
-                            <!-- Timeline Dot -->
-                            <div class="absolute left-8 lg:left-1/2 top-0 w-6 h-6 -translate-x-1/2 z-20 flex items-center justify-center">
-                                <div class="w-full h-full rounded-full bg-slate-950 border border-slate-800 group-hover:border-indigo-500 transition-colors relative">
-                                    <div class="absolute inset-1 rounded-full bg-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
-                                </div>
-                            </div>
-
-                            <div class="w-full lg:w-[45%] pl-20 lg:pl-0">
-                                <div class="group relative p-8 rounded-[2.5rem] bg-slate-900/30 backdrop-blur-sm border border-white/10 hover:border-indigo-400 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_-15px_rgba(129,140,248,0.4)] reveal">
-                                    <div class="inline-block px-4 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-black mb-6">
-                                        @if($edu->is_current)
-                                            Dalam masa studi
-                                        @else
-                                            Lulus: {{ $edu->graduation_date }}
-                                        @endif
-                                    </div>
-
-                                    <h3 class="text-3xl font-black mb-3 text-white group-hover:text-indigo-400 transition-colors tracking-tight">{{ $edu->major }}</h3>
-                                    
-                                    <div class="flex items-center gap-3 text-slate-200 font-bold">
-                                        <span class="text-slate-200">{{ $edu->institution }}</span>
-                                        @if($edu->degree)
-                                            <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-                                            <span class="text-indigo-400 font-bold text-sm tracking-wide">{{ $edu->degree }}</span>
-                                        @endif
-                                    </div>
-
-                                    <div class="flex items-center justify-between mt-4">
-                                        <div class="flex items-center gap-2 text-slate-300 text-sm">
-                                            <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-                                            {{ $edu->location_text }}
-                                        </div>
-                                        
-                                        @if($edu->gpa)
-                                            <div class="flex items-center gap-2">
-                                                <span class="text-lg lg:text-xl text-slate-300 font-bold tracking-tight">IPK</span>
-                                                <span class="text-lg lg:text-xl font-bold text-indigo-400">{{ $edu->gpa }}</span>
-                                            </div>
-                                        @endif
-                                    </div>
-
-                                    <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-indigo-500/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Spacer -->
-                            <div class="hidden lg:block lg:w-[45%]"></div>
+                @if($education->isEmpty())
+                    <div class="py-12 px-8 rounded-[2.5rem] bg-slate-900/80 backdrop-blur-md border-2 border-dashed border-slate-500/80 text-center shadow-2xl max-w-xl mx-auto w-full">
+                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-500/20 border border-indigo-500/30 text-indigo-400 mb-4 shadow-[0_0_15px_rgba(99,102,241,0.3)]">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path></svg>
                         </div>
-                    @endforeach
-                </div>
+                        <p class="text-white font-bold text-base md:text-lg tracking-wide">Belum ada data pendidikan</p>
+                    </div>
+                @else
+                    <div class="absolute left-8 lg:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-indigo-500/50 to-transparent lg:-translate-x-1/2">
+                        <div class="absolute inset-0 bg-gradient-to-b from-indigo-500/40 via-transparent to-purple-500/40"></div>
+                    </div>
+
+                    <div class="space-y-24">
+                        @foreach($education as $i => $edu)
+                            <div class="relative flex flex-col lg:flex-row items-center {{ $i % 2 !== 0 ? 'lg:flex-row-reverse' : '' }}">
+                                <!-- Timeline Dot -->
+                                <div class="absolute left-8 lg:left-1/2 top-0 w-6 h-6 -translate-x-1/2 z-20 flex items-center justify-center">
+                                    <div class="w-full h-full rounded-full bg-slate-950 border border-slate-800 group-hover:border-indigo-500 transition-colors relative">
+                                        <div class="absolute inset-1 rounded-full bg-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
+                                    </div>
+                                </div>
+
+                                <div class="w-full lg:w-[45%] pl-20 lg:pl-0">
+                                    <div class="group relative p-8 rounded-[2.5rem] bg-slate-900/30 backdrop-blur-sm border border-white/10 hover:border-indigo-400 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_-15px_rgba(129,140,248,0.4)] reveal">
+                                        <div class="inline-block px-4 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-black mb-6">
+                                            @if($edu->is_current)
+                                                Dalam masa studi
+                                            @else
+                                                Lulus: {{ $edu->graduation_date }}
+                                            @endif
+                                        </div>
+
+                                        <h3 class="text-3xl font-black mb-3 text-white group-hover:text-indigo-400 transition-colors tracking-tight">{{ $edu->major }}</h3>
+                                        
+                                        <div class="flex items-center gap-3 text-slate-200 font-bold">
+                                            <span class="text-slate-200">{{ $edu->institution }}</span>
+                                            @if($edu->degree)
+                                                <span class="w-1 h-1 rounded-full bg-slate-700"></span>
+                                                <span class="text-indigo-400 font-bold text-sm tracking-wide">{{ $edu->degree }}</span>
+                                            @endif
+                                        </div>
+
+                                        <div class="flex items-center justify-between mt-4">
+                                            <div class="flex items-center gap-2 text-slate-300 text-sm">
+                                                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                                                {{ $edu->location_text }}
+                                            </div>
+                                            
+                                            @if($edu->gpa)
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-lg lg:text-xl text-slate-300 font-bold tracking-tight">IPK</span>
+                                                    <span class="text-lg lg:text-xl font-bold text-indigo-400">{{ $edu->gpa }}</span>
+                                                </div>
+                                            @endif
+                                        </div>
+
+                                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-indigo-500/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Spacer -->
+                                <div class="hidden lg:block lg:w-[45%]"></div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
     </section>
@@ -792,11 +817,11 @@
                         <div class="absolute inset-0 bg-gradient-to-br from-sky-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
                     </div>
                 @empty
-                    <div class="col-span-full py-20 text-center">
-                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-slate-900 border border-slate-800 mb-6 text-slate-500 opacity-20">
-                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5M10 12l2.25 1.5M14 12l-2.25 1.5"></path></svg>
+                    <div class="col-span-full py-12 px-8 rounded-[2.5rem] bg-slate-900/80 backdrop-blur-md border-2 border-dashed border-slate-500/80 text-center shadow-2xl max-w-xl mx-auto w-full">
+                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-500/20 border border-sky-500/30 text-sky-400 mb-4 shadow-[0_0_15px_rgba(14,165,233,0.3)]">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
                         </div>
-                        <p class="text-slate-300 font-medium italic">Belum ada data sertifikat yang tersedia.</p>
+                        <p class="text-white font-bold text-base md:text-lg tracking-wide">Belum ada data sertifikat yang tersedia</p>
                     </div>
                 @endforelse
             </div>

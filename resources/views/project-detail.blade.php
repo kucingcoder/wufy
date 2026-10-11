@@ -169,7 +169,7 @@
                             @if($project->blog_content)
                                 {!! $project->blog_content !!}
                             @else
-                                <p>Tidak ada deskripsi detail untuk proyek ini</p>
+                                <p class="text-white font-bold text-lg">Tidak ada deskripsi detail untuk proyek ini</p>
                             @endif
                         </div>
                     </div>
