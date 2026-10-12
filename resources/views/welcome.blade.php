@@ -601,7 +601,7 @@
 
         <div class="container mx-auto px-6 relative z-10">
             <h2 class="text-5xl lg:text-7xl font-bold mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center reveal">
-                <span class="text-sky-500 text-2xl font-mono mb-4 tracking-[0.3em] uppercase opacity-50">Jenjang Karir</span>
+                <span class="text-emerald-400 text-2xl font-mono font-bold mb-4 tracking-[0.3em] uppercase drop-shadow-[0_0_12px_rgba(52,211,153,0.8)]" style="text-shadow: 0 0 12px rgba(52, 211, 153, 0.8), 0 0 24px rgba(16, 185, 129, 0.4);">Jenjang Karir</span>
                 Pengalaman <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">Profesional</span>
             </h2>
             
@@ -624,8 +624,8 @@
                             <div class="relative flex flex-col lg:flex-row items-center {{ $i % 2 === 0 ? 'lg:flex-row-reverse' : '' }}">
                                 <!-- Timeline Dot -->
                                 <div class="absolute left-8 lg:left-1/2 top-0 w-6 h-6 -translate-x-1/2 z-20 flex items-center justify-center">
-                                    <div class="w-full h-full rounded-full bg-slate-950 border border-slate-800 group-hover:border-sky-500 transition-colors relative">
-                                        <div class="absolute inset-1 rounded-full bg-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]"></div>
+                                    <div class="w-full h-full rounded-full bg-slate-900 border-2 border-sky-400 shadow-[0_0_14px_rgba(56,189,248,0.7)] group-hover:border-sky-300 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.95)] transition-all duration-300 relative">
+                                        <div class="absolute inset-1 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.8)]"></div>
                                     </div>
                                 </div>
 
@@ -711,8 +711,8 @@
                             <div class="relative flex flex-col lg:flex-row items-center {{ $i % 2 !== 0 ? 'lg:flex-row-reverse' : '' }}">
                                 <!-- Timeline Dot -->
                                 <div class="absolute left-8 lg:left-1/2 top-0 w-6 h-6 -translate-x-1/2 z-20 flex items-center justify-center">
-                                    <div class="w-full h-full rounded-full bg-slate-950 border border-slate-800 group-hover:border-indigo-500 transition-colors relative">
-                                        <div class="absolute inset-1 rounded-full bg-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
+                                    <div class="w-full h-full rounded-full bg-slate-900 border-2 border-indigo-400 shadow-[0_0_14px_rgba(129,140,248,0.7)] group-hover:border-indigo-300 group-hover:shadow-[0_0_20px_rgba(129,140,248,0.95)] transition-all duration-300 relative">
+                                        <div class="absolute inset-1 rounded-full bg-indigo-400 shadow-[0_0_10px_rgba(129,140,248,0.8)]"></div>
                                     </div>
                                 </div>
 
