@@ -240,11 +240,12 @@
                             <span class="font-bold text-sm">{{ $profile->city ?? '' }}, {{ $profile->province ?? '' }}</span>
                         </div>
                         
-                        <div class="flex items-center gap-2 text-sky-500 text-xs font-bold uppercase tracking-widest bg-sky-500/10 px-4 py-2 rounded-full border border-sky-500/20">
+                        <div class="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-widest bg-amber-500/10 px-4 py-2 rounded-full border border-amber-400/30 shadow-[0_0_15px_rgba(245,158,11,0.25)] drop-shadow-[0_0_8px_rgba(251,191,36,0.4)]">
                             <span class="relative flex h-2 w-2">
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.9)]"></span>
                             </span>
-                            Terbuka untuk pekerjaan
+                            <span style="text-shadow: 0 0 10px rgba(251, 191, 36, 0.6), 0 0 20px rgba(245, 158, 11, 0.3);">Terbuka untuk pekerjaan</span>
                         </div>
                     </div>
                 </div>
@@ -601,7 +602,7 @@
 
         <div class="container mx-auto px-6 relative z-10">
             <h2 class="text-5xl lg:text-7xl font-bold mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center reveal">
-                <span class="text-emerald-400 text-2xl font-mono font-bold mb-4 tracking-[0.3em] uppercase drop-shadow-[0_0_12px_rgba(52,211,153,0.8)]" style="text-shadow: 0 0 12px rgba(52, 211, 153, 0.8), 0 0 24px rgba(16, 185, 129, 0.4);">Jenjang Karir</span>
+                <span class="text-amber-400 text-2xl font-mono font-bold mb-4 tracking-[0.3em] uppercase drop-shadow-[0_0_12px_rgba(251,191,36,0.8)]" style="text-shadow: 0 0 12px rgba(251, 191, 36, 0.8), 0 0 24px rgba(245, 158, 11, 0.4);">Jenjang Karir</span>
                 Pengalaman <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">Profesional</span>
             </h2>
             
