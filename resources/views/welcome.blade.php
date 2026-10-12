@@ -923,12 +923,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="mt-32 pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6 reveal">
-                <p class="text-slate-300 text-xs font-medium tracking-wide">
-                    &copy; {{ date('Y') }} <span class="text-slate-300 font-bold">{{ $profile->full_name ?? 'Portfolio' }}</span>. Hak Cipta Dilindungi.
-                </p>
-            </div>
         </div>
     </footer>
 </div>
