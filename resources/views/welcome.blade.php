@@ -831,12 +831,12 @@
     </main>
 
     <!-- Footer Section -->
-    <footer id="contact" class="pt-32 pb-16 bg-slate-950/80 border-t border-slate-900/50 relative overflow-hidden">
+    <footer id="contact" class="pt-32 pb-16 bg-slate-950/80 relative overflow-hidden">
         <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-sky-500/20 to-transparent"></div>
         <div class="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-sky-600/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-8 pt-20 border-t border-slate-900">
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-8">
                 <div class="max-w-sm space-y-8 reveal">
                     <div class="flex items-center gap-3">
                         <img src="/icon.webp" alt="Logo" class="w-12 h-12 rounded-xl shadow-lg shadow-sky-500/10" loading="lazy" />
