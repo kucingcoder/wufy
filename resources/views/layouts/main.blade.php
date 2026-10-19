@@ -70,19 +70,6 @@
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .reveal {
-                opacity: 0;
-                translate: 0 30px;
-                transition: all 0.8s ease-out;
-            }
-            .reveal.active {
-                opacity: 1;
-                translate: 0 0;
-            }
-        }
-    </style>
 
     <!-- Alpine.js (CDN) -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -108,28 +95,5 @@
     <!-- Cosmic Space Particles & Shooting Stars Script -->
     <script src="/js/space-particles.js" defer></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Apply delay if specified in data-delay
-                        const delay = entry.target.dataset.delay || 0;
-                        setTimeout(() => {
-                            entry.target.classList.add('active');
-                        }, delay);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                rootMargin: '0px 0px -50px 0px',
-                threshold: 0.1
-            });
-
-            reveals.forEach(reveal => revealObserver.observe(reveal));
-        });
-    </script>
 </body>
 </html>

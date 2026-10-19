@@ -339,7 +339,7 @@
     <!-- Jasa Section -->
     <section id="services" class="py-32 relative">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-20 reveal">
+            <div class="text-center mb-20">
                 <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-4">Melayani <span class="text-sky-500">Kebutuhan Digital</span></h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
                 <p class="mt-8 text-slate-200 max-w-2xl mx-auto">Transformasi kebutuhan digital menjadi solusi yang efisien, mudah digunakan, dan handal</p>
@@ -348,7 +348,7 @@
             <div class="max-w-6xl mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     @forelse($services as $i => $service)
-                        <div class="group relative bg-slate-900 border border-slate-800 p-6 lg:p-8 rounded-[2rem] transition-all duration-500 hover:border-sky-500/30 shadow-xl overflow-hidden flex flex-col reveal" data-delay="{{ $i * 100 }}">
+                        <div class="group relative bg-slate-900 border border-slate-800 p-6 lg:p-8 rounded-[2rem] transition-all duration-500 hover:border-sky-500/30 shadow-xl overflow-hidden flex flex-col">
                             <div>
                                 <h3 class="text-xl lg:text-2xl font-bold text-white group-hover:text-sky-400 transition-colors tracking-tighter">
                                     {{ $service->title }}
@@ -399,7 +399,7 @@
         <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-sky-600/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="container mx-auto px-6">
-            <div class="text-center mb-24 relative z-10 reveal">
+            <div class="text-center mb-24 relative z-10">
                 <div class="flex items-center justify-center gap-3 mb-6">
                     <div class="w-12 h-[1px] bg-sky-500/50"></div>
                     <span class="text-sky-500 text-xs font-black uppercase tracking-[0.3em]">Portofolio Expo</span>
@@ -449,7 +449,7 @@
                 
                     <!-- Search Bar -->
                     <div class="flex justify-center mt-12 mb-16">
-                        <div class="relative w-full max-w-2xl reveal">
+                        <div class="relative w-full max-w-2xl">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-6 pointer-events-none">
                                 <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </div>
@@ -537,7 +537,7 @@
     <!-- Skills Section -->
     <section id="skills" class="py-32 relative">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-24 reveal">
+            <div class="text-center mb-24">
                 <h2 class="text-5xl lg:text-7xl font-bold tracking-tighter mb-4 text-white">Bidang <span class="text-sky-500">Keahlian</span></h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
             </div>
@@ -550,7 +550,7 @@
                 @endphp
                 
                 @foreach($allowedCats as $catIndex => $cat)
-                    <div class="flex flex-col reveal" data-delay="{{ $catIndex * 50 }}">
+                    <div class="flex flex-col">
                         <div class="flex items-center gap-4 mb-10 pb-6">
                             <div class="w-14 h-14 rounded-2xl bg-sky-500/10 flex items-center justify-center text-sky-400 shadow-inner border border-sky-500/10">
                                 @if($cat === 'bahasa')
@@ -569,7 +569,7 @@
                         @if(!empty($skillsByCategory[$cat]) && count($skillsByCategory[$cat]) > 0)
                             <div class="flex flex-wrap gap-8 lg:gap-12 justify-center">
                                 @foreach($skillsByCategory[$cat] as $i => $skill)
-                                    <div class="reveal" data-delay="{{ ($catIndex * 50) + ($i * 30) }}">
+                                    <div>
                                         <div class="group flex flex-col items-center gap-3 cursor-default">
                                             <div class="w-14 h-14 flex items-center justify-center text-sky-400">
                                                 @if($skill->logo_path)
@@ -601,7 +601,7 @@
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sky-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-5xl lg:text-7xl font-bold mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center reveal">
+            <h2 class="text-5xl lg:text-7xl font-bold mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center">
                 <span class="text-amber-400 text-2xl font-mono font-bold mb-4 tracking-[0.3em] uppercase drop-shadow-[0_0_12px_rgba(251,191,36,0.8)]" style="text-shadow: 0 0 12px rgba(251, 191, 36, 0.8), 0 0 24px rgba(245, 158, 11, 0.4);">Jenjang Karir</span>
                 Pengalaman <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">Profesional</span>
             </h2>
@@ -631,7 +631,7 @@
                                 </div>
 
                                 <div class="w-full lg:w-[45%] pl-20 lg:pl-0">
-                                    <div class="group relative p-8 rounded-[2.5rem] bg-slate-900/50 backdrop-blur-sm border border-white/10 hover:border-sky-400 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_-15px_rgba(56,189,248,0.4)] reveal">
+                                    <div class="group relative p-8 rounded-[2.5rem] bg-slate-900/50 backdrop-blur-sm border border-white/10 hover:border-sky-400 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_-15px_rgba(56,189,248,0.4)]">
                                         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-black uppercase tracking-widest mb-6">
                                             <span class="relative flex h-2 w-2">
                                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
@@ -690,7 +690,7 @@
         <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-indigo-500/5 to-transparent pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-5xl lg:text-7xl font-bold mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center reveal">
+            <h2 class="text-5xl lg:text-7xl font-bold mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center">
                 Perjalanan <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">Pendidikan</span>
             </h2>
             
@@ -718,7 +718,7 @@
                                 </div>
 
                                 <div class="w-full lg:w-[45%] pl-20 lg:pl-0">
-                                    <div class="group relative p-8 rounded-[2.5rem] bg-slate-900/30 backdrop-blur-sm border border-white/10 hover:border-indigo-400 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_-15px_rgba(129,140,248,0.4)] reveal">
+                                    <div class="group relative p-8 rounded-[2.5rem] bg-slate-900/30 backdrop-blur-sm border border-white/10 hover:border-indigo-400 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_-15px_rgba(129,140,248,0.4)]">
                                         <div class="inline-block px-4 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-black mb-6">
                                             @if($edu->is_current)
                                                 Dalam masa studi
@@ -770,7 +770,7 @@
         <div class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-sky-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-24 reveal">
+            <div class="text-center mb-24">
                 <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-4 text-white">
                     Sertifikasi <span class="text-sky-500">Keahlian</span>
                 </h2>
@@ -779,7 +779,7 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 @forelse($certificates as $i => $cert)
-                    <div class="group relative p-10 rounded-[2rem] bg-slate-900/40 backdrop-blur-md border border-slate-800/50 hover:border-sky-500/30 transition-all duration-700 flex flex-col h-full overflow-hidden reveal" data-delay="{{ ($i % 3) * 100 }}">
+                    <div class="group relative p-10 rounded-[2rem] bg-slate-900/40 backdrop-blur-md border border-slate-800/50 hover:border-sky-500/30 transition-all duration-700 flex flex-col h-full overflow-hidden">
                         <div class="absolute left-0 top-10 bottom-10 w-[2px] bg-sky-500/30 group-hover:bg-sky-500 transition-colors duration-700"></div>
 
                         <div class="flex-1 relative z-10 pl-4">
@@ -837,7 +837,7 @@
 
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-8">
-                <div class="max-w-sm space-y-8 reveal">
+                <div class="max-w-sm space-y-8">
                     <div class="flex items-center gap-3">
                         <img src="/icon.webp" alt="Logo" class="w-12 h-12 rounded-xl shadow-lg shadow-sky-500/10" loading="lazy" />
                         <span class="text-2xl font-black tracking-tighter text-white uppercase">{{ $profile->full_name ?? 'Portfolio' }}</span>
@@ -858,7 +858,7 @@
                     </div>
                 </div>
 
-                <div class="min-w-[280px] reveal" data-delay="100">
+                <div class="min-w-[280px]">
                     <h4 class="text-white font-black uppercase tracking-widest text-sm mb-8">Navigasi</h4>
                     <ul class="grid grid-cols-2 gap-y-4 gap-x-12">
                         <li><a href="#home" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium whitespace-nowrap text-left">Beranda</a></li>
@@ -874,7 +874,7 @@
                     </ul>
                 </div>
 
-                <div class="min-w-[200px] reveal" data-delay="150">
+                <div class="min-w-[200px]">
                     <h4 class="text-white font-black uppercase tracking-widest text-sm mb-8">Kebijakan</h4>
                     <ul class="space-y-4">
                         <li><a href="{{ url('/terms') }}" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium">Syarat & Ketentuan</a></li>
@@ -883,7 +883,7 @@
                     </ul>
                 </div>
 
-                <div class="min-w-[240px] reveal" data-delay="200">
+                <div class="min-w-[240px]">
                     <h4 class="text-white font-black uppercase tracking-widest text-sm mb-8">Kontak</h4>
                     <div class="space-y-6">
                         <div class="flex items-start gap-4">
