@@ -6,22 +6,15 @@
     
     <title>@yield('title') - {{ config('app.name', 'Portfolio') }}</title>
     
-    <!-- Tailwind CSS (CDN) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Consolas', 'Courier New', 'monospace'],
-                        mono: ['Consolas', 'Courier New', 'monospace'],
-                    },
-                }
-            }
-        }
-    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="{{ tailwindcss('css/app.css') }}">
 </head>
-<body class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 overflow-hidden min-h-screen flex items-center justify-center">
+<body class="bg-[#020617] text-slate-100 font-sans antialiased selection:bg-sky-500/30 overflow-hidden min-h-screen flex items-center justify-center">
     <!-- Background System -->
     <div class="fixed top-0 left-0 w-full pointer-events-none z-0 overflow-hidden bg-[#020617]" style="height: 100vh;">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#020617]/20 to-[#020617]/90"></div>

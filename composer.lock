@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "772d9ca3eef14db148eab4a6ad7d2eb2",
+    "content-hash": "749c63307ad482ff1d7a4696a451d1bf",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -8781,6 +8781,74 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/v2.4.0"
             },
             "time": "2025-12-02T11:56:42+00:00"
+        },
+        {
+            "name": "tonysm/tailwindcss-laravel",
+            "version": "2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tonysm/tailwindcss-laravel.git",
+                "reference": "f88be2d67529ae5a5d035e8864168c4872a058f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tonysm/tailwindcss-laravel/zipball/f88be2d67529ae5a5d035e8864168c4872a058f7",
+                "reference": "f88be2d67529ae5a5d035e8864168c4872a058f7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^11.0|^12.0|^13.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^9.0|^10.0|^11.0",
+                "phpunit/phpunit": "^10.5|^11.0|^12.5.12"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tonysm\\TailwindCss\\TailwindCssServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Tonysm\\TailwindCss\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tony Messias",
+                    "email": "tonysm@hey.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package wraps up the standalone executable version of the Tailwind CSS framework.",
+            "homepage": "https://github.com/tonysm/tailwindcss-laravel",
+            "keywords": [
+                "laravel",
+                "tailwindcss"
+            ],
+            "support": {
+                "issues": "https://github.com/tonysm/tailwindcss-laravel/issues",
+                "source": "https://github.com/tonysm/tailwindcss-laravel/tree/2.3.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/tonysm",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-09-22T02:12:44+00:00"
         },
         {
             "name": "ueberdosis/tiptap-php",

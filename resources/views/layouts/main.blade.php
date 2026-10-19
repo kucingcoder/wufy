@@ -32,51 +32,21 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     </noscript>
 
-    <!-- Tailwind Config -->
-    <script>
-        window.tailwind = {
-            config: {
-                theme: {
-                    extend: {
-                        fontFamily: {
-                            sans: ['"JetBrains Mono"', 'Consolas', 'Courier New', 'monospace'],
-                            mono: ['"JetBrains Mono"', 'Consolas', 'Courier New', 'monospace'],
-                        },
-                        animation: {
-                            'float': 'float 3s ease-in-out infinite',
-                            'scan': 'scan 2s linear infinite',
-                        },
-                        keyframes: {
-                            float: {
-                                '0%, 100%': { transform: 'translateY(0)' },
-                                '50%': { transform: 'translateY(-10px)' },
-                            },
-                            scan: {
-                                '0%': { transform: 'translateY(-100%)' },
-                                '100%': { transform: 'translateY(100%)' },
-                            }
-                        }
-                    }
-                }
-            }
-        };
-    </script>
-    <!-- Tailwind CSS (CDN) -->
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="{{ tailwindcss('css/app.css') }}">
 
     <!-- Alpine.js (CDN) -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     @yield('head')
 </head>
-<body class="bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 overflow-x-hidden min-h-screen">
+<body class="bg-[#020617] text-slate-100 font-sans antialiased selection:bg-sky-500/30 overflow-x-hidden min-h-screen">
     <!-- Background System -->
     <div class="fixed top-0 left-0 w-full h-screen h-[100dvh] pointer-events-none z-0 bg-[#020617]">
         <div class="absolute inset-0 bg-[url('/images/background.webp')] bg-cover bg-center bg-no-repeat"></div>

@@ -135,22 +135,22 @@
     <!-- Desktop Navigation -->
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex justify-center pointer-events-none">
         <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800/50 px-4 py-2 rounded-full flex items-center gap-1 shadow-2xl pointer-events-auto">
-            <a href="#home" @click="activeSection = 'home'" :class="activeSection === 'home' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Beranda</a>
+            <a href="#home" @click="activeSection = 'home'" :class="activeSection === 'home' ? 'bg-sky-500 text-slate-950 font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-sm font-semibold tracking-wide transition-all rounded-full">Beranda</a>
             @if(!$profile || !$profile->hide_services)
-            <a href="#services" @click="activeSection = 'services'" :class="activeSection === 'services' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Jasa</a>
+            <a href="#services" @click="activeSection = 'services'" :class="activeSection === 'services' ? 'bg-sky-500 text-slate-950 font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-sm font-semibold tracking-wide transition-all rounded-full">Jasa</a>
             @endif
-            <a href="#projects" @click="activeSection = 'projects'" :class="activeSection === 'projects' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Proyek</a>
-            <a href="#skills" @click="activeSection = 'skills'" :class="activeSection === 'skills' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Keahlian</a>
-            <a href="#experience" @click="activeSection = 'experience'" :class="activeSection === 'experience' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Pengalaman</a>
-            <a href="#education" @click="activeSection = 'education'" :class="activeSection === 'education' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Edukasi</a>
-            <a href="#certificates" @click="activeSection = 'certificates'" :class="activeSection === 'certificates' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Sertifikat</a>
-            <a href="#contact" @click="activeSection = 'contact'" :class="activeSection === 'contact' ? 'bg-sky-500 text-slate-950' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-xs font-bold tracking-widest transition-all rounded-full">Kontak</a>
+            <a href="#projects" @click="activeSection = 'projects'" :class="activeSection === 'projects' ? 'bg-sky-500 text-slate-950 font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-sm font-semibold tracking-wide transition-all rounded-full">Proyek</a>
+            <a href="#skills" @click="activeSection = 'skills'" :class="activeSection === 'skills' ? 'bg-sky-500 text-slate-950 font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-sm font-semibold tracking-wide transition-all rounded-full">Keahlian</a>
+            <a href="#experience" @click="activeSection = 'experience'" :class="activeSection === 'experience' ? 'bg-sky-500 text-slate-950 font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-sm font-semibold tracking-wide transition-all rounded-full">Pengalaman</a>
+            <a href="#education" @click="activeSection = 'education'" :class="activeSection === 'education' ? 'bg-sky-500 text-slate-950 font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-sm font-semibold tracking-wide transition-all rounded-full">Edukasi</a>
+            <a href="#certificates" @click="activeSection = 'certificates'" :class="activeSection === 'certificates' ? 'bg-sky-500 text-slate-950 font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-sm font-semibold tracking-wide transition-all rounded-full">Sertifikat</a>
+            <a href="#contact" @click="activeSection = 'contact'" :class="activeSection === 'contact' ? 'bg-sky-500 text-slate-950 font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5'" class="px-4 py-2 text-sm font-semibold tracking-wide transition-all rounded-full">Kontak</a>
         </div>
     </nav>
 
     @auth
     <div class="fixed top-6 right-6 z-50 hidden md:flex">
-        <a href="{{ url('/admin') }}" class="bg-sky-500/10 backdrop-blur-md border border-sky-500/50 px-6 py-2.5 rounded-full text-xs font-bold tracking-widest text-sky-400 hover:text-white hover:bg-sky-500 hover:border-sky-400 transition-all shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:shadow-[0_0_30px_rgba(14,165,233,0.6)] pointer-events-auto">
+        <a href="{{ url('/admin') }}" class="bg-sky-500/10 backdrop-blur-md border border-sky-500/50 px-6 py-2.5 rounded-full text-sm font-semibold tracking-wide text-sky-400 hover:text-white hover:bg-sky-500 hover:border-sky-400 transition-all shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:shadow-[0_0_30px_rgba(14,165,233,0.6)] pointer-events-auto">
             Admin
         </a>
     </div>
@@ -158,29 +158,29 @@
 
     <!-- Mobile Menu Toggle -->
     <div class="fixed top-6 right-6 z-[60] md:hidden">
-        <button @click="isMenuOpen = !isMenuOpen" aria-label="Toggle Menu" aria-controls="mobile-menu" :aria-expanded="isMenuOpen.toString()" class="w-9 h-9 flex flex-col items-center justify-center gap-1 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-lg shadow-2xl transition-all active:scale-95">
-            <span class="w-4 h-0.5 bg-white transition-all duration-300" :class="isMenuOpen ? 'rotate-45 translate-y-1.5' : ''"></span>
-            <span class="w-4 h-0.5 bg-white transition-all duration-300" :class="isMenuOpen ? 'opacity-0' : ''"></span>
-            <span class="w-4 h-0.5 bg-white transition-all duration-300" :class="isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''"></span>
+        <button @click="isMenuOpen = !isMenuOpen" aria-label="Toggle Menu" aria-controls="mobile-menu" :aria-expanded="isMenuOpen.toString()" class="w-10 h-10 flex flex-col items-center justify-center gap-1.5 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-xl shadow-2xl transition-all active:scale-95">
+            <span class="w-5 h-0.5 bg-white transition-all duration-300" :class="isMenuOpen ? 'rotate-45 translate-y-2' : ''"></span>
+            <span class="w-5 h-0.5 bg-white transition-all duration-300" :class="isMenuOpen ? 'opacity-0' : ''"></span>
+            <span class="w-5 h-0.5 bg-white transition-all duration-300" :class="isMenuOpen ? '-rotate-45 -translate-y-2' : ''"></span>
         </button>
     </div>
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu Navigasi Mobile" x-show="isMenuOpen" x-transition.opacity.duration.300ms class="fixed inset-0 z-[55] bg-slate-950/95 backdrop-blur-2xl md:hidden flex flex-col overflow-y-auto" style="display: none;">
         <div class="flex flex-col items-center justify-start flex-1 gap-6 pb-20 pt-24">
-            <a @click="isMenuOpen = false; activeSection = 'home'" href="#home" :class="activeSection === 'home' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-black tracking-tighter transition-all">Beranda</a>
+            <a @click="isMenuOpen = false; activeSection = 'home'" href="#home" :class="activeSection === 'home' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-bold tracking-normal transition-all">Beranda</a>
             @if(!$profile || !$profile->hide_services)
-            <a @click="isMenuOpen = false; activeSection = 'services'" href="#services" :class="activeSection === 'services' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-black tracking-tighter transition-all">Jasa</a>
+            <a @click="isMenuOpen = false; activeSection = 'services'" href="#services" :class="activeSection === 'services' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-bold tracking-normal transition-all">Jasa</a>
             @endif
-            <a @click="isMenuOpen = false; activeSection = 'projects'" href="#projects" :class="activeSection === 'projects' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-black tracking-tighter transition-all">Proyek</a>
-            <a @click="isMenuOpen = false; activeSection = 'skills'" href="#skills" :class="activeSection === 'skills' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-black tracking-tighter transition-all">Keahlian</a>
-            <a @click="isMenuOpen = false; activeSection = 'experience'" href="#experience" :class="activeSection === 'experience' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-black tracking-tighter transition-all">Pengalaman</a>
-            <a @click="isMenuOpen = false; activeSection = 'education'" href="#education" :class="activeSection === 'education' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-black tracking-tighter transition-all">Edukasi</a>
-            <a @click="isMenuOpen = false; activeSection = 'certificates'" href="#certificates" :class="activeSection === 'certificates' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-black tracking-tighter transition-all">Sertifikat</a>
-            <a @click="isMenuOpen = false; activeSection = 'contact'" href="#contact" :class="activeSection === 'contact' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-black tracking-tighter transition-all">Kontak</a>
+            <a @click="isMenuOpen = false; activeSection = 'projects'" href="#projects" :class="activeSection === 'projects' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-bold tracking-normal transition-all">Proyek</a>
+            <a @click="isMenuOpen = false; activeSection = 'skills'" href="#skills" :class="activeSection === 'skills' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-bold tracking-normal transition-all">Keahlian</a>
+            <a @click="isMenuOpen = false; activeSection = 'experience'" href="#experience" :class="activeSection === 'experience' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-bold tracking-normal transition-all">Pengalaman</a>
+            <a @click="isMenuOpen = false; activeSection = 'education'" href="#education" :class="activeSection === 'education' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-bold tracking-normal transition-all">Edukasi</a>
+            <a @click="isMenuOpen = false; activeSection = 'certificates'" href="#certificates" :class="activeSection === 'certificates' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-bold tracking-normal transition-all">Sertifikat</a>
+            <a @click="isMenuOpen = false; activeSection = 'contact'" href="#contact" :class="activeSection === 'contact' ? 'text-sky-400' : 'text-slate-300 hover:text-white'" class="text-2xl font-bold tracking-normal transition-all">Kontak</a>
             @auth
             <div class="w-12 h-px bg-slate-800 mt-4"></div>
-            <a href="{{ url('/admin') }}" class="text-2xl font-black tracking-tighter text-sky-500 hover:text-white transition-all mt-4">Admin</a>
+            <a href="{{ url('/admin') }}" class="text-2xl font-bold tracking-normal text-sky-500 hover:text-white transition-all mt-4">Admin</a>
             @endauth
         </div>
     </div>
@@ -193,10 +193,10 @@
             <!-- Info (Text) - Priority on Mobile -->
             <div class="order-1 lg:order-1 text-center lg:text-left space-y-6 lg:space-y-8">
                 <div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-white">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-3 text-white tracking-tight leading-tight">
                         {{ $profile->full_name ?? 'Your Name' }}
                     </h1>
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-sky-500">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-sky-400 tracking-normal">
                         {{ $profile->job_title ?? 'Gelar Profesional' }}
                     </h2>
                 </div>
@@ -220,9 +220,9 @@
                                 @endif
 
                                 <!-- Subtle Status Indicator (Chill & Minimal) -->
-                                <div class="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-sky-500/20 flex items-center gap-1.5 shadow-lg">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                                    <span class="text-[9px] font-mono tracking-wider text-slate-300 font-medium">ONLINE</span>
+                                <div class="absolute bottom-2.5 right-2.5 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-sky-500/20 flex items-center gap-1.5 shadow-lg">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                    <span class="text-xs font-semibold tracking-wide text-slate-200">ONLINE</span>
                                 </div>
                             </div>
                         </div>
@@ -230,22 +230,22 @@
                 </div>
                 
                 <div class="space-y-6">
-                    <p class="text-base sm:text-lg lg:text-xl text-slate-200 leading-[1.8] max-w-2xl mx-auto lg:mx-0 text-justify lg:text-left">
+                    <p class="text-base sm:text-lg lg:text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0 text-center lg:text-left font-normal">
                         {{ $profile->description ?? 'Membangun solusi digital inovatif dengan fokus pada teknologi modern dan pengalaman pengguna yang luar biasa.' }}
                     </p>
 
                     <div class="flex flex-wrap items-center gap-x-6 gap-y-4 justify-center lg:justify-start">
                         <div class="flex items-center gap-2 text-slate-200">
-                            <svg class="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            <span class="font-bold text-sm">{{ $profile->city ?? '' }}, {{ $profile->province ?? '' }}</span>
+                            <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span class="font-semibold text-base text-slate-200">{{ $profile->city ?? '' }}, {{ $profile->province ?? '' }}</span>
                         </div>
                         
-                        <div class="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-widest bg-amber-500/10 px-4 py-2 rounded-full border border-amber-400/30 shadow-[0_0_15px_rgba(245,158,11,0.25)] drop-shadow-[0_0_8px_rgba(251,191,36,0.4)]">
+                        <div class="flex items-center gap-2.5 text-amber-300 text-sm font-semibold tracking-wide bg-amber-500/10 px-4 py-2 rounded-full border border-amber-400/30 shadow-[0_0_15px_rgba(245,158,11,0.25)]">
                             <span class="relative flex h-2 w-2">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.9)]"></span>
                             </span>
-                            <span style="text-shadow: 0 0 10px rgba(251, 191, 36, 0.6), 0 0 20px rgba(245, 158, 11, 0.3);">Terbuka untuk pekerjaan</span>
+                            <span class="tracking-normal">Terbuka untuk pekerjaan</span>
                         </div>
                     </div>
                 </div>
@@ -267,14 +267,14 @@
 
                     <div class="flex flex-wrap items-center gap-4 justify-center lg:justify-start">
                         @if($cv_exists)
-                            <a href="/storage/{{ $profile->cv_path }}" target="_blank" class="flex items-center gap-3 bg-white text-slate-950 px-8 py-4 rounded-2xl font-black hover:bg-sky-500 hover:text-white hover:scale-105 active:scale-95 transition-all shadow-xl group">
+                            <a href="/storage/{{ $profile->cv_path }}" target="_blank" class="flex items-center gap-3 bg-white text-slate-950 px-8 py-4 rounded-2xl font-bold text-base hover:bg-sky-400 hover:text-white hover:scale-105 active:scale-95 transition-all shadow-xl group">
                                 <span>Unduh CV</span>
                                 <svg class="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             </a>
                         @endif
 
                         @if($profile && $profile->phone)
-                            <a href="https://wa.me/{{ $formattedPhone }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 bg-slate-900 border border-slate-800 text-white px-8 py-4 rounded-2xl font-black hover:border-[#25D366] hover:bg-[#25D366] hover:text-white hover:shadow-[0_0_20px_rgba(37,211,102,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl group">
+                            <a href="https://wa.me/{{ $formattedPhone }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 bg-slate-900 border border-slate-800 text-white px-8 py-4 rounded-2xl font-bold text-base hover:border-[#25D366] hover:bg-[#25D366] hover:text-white hover:shadow-[0_0_20px_rgba(37,211,102,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl group">
                                 <svg class="w-6 h-6 fill-[#25D366] group-hover:fill-white transition-colors duration-300" viewBox="0 0 24 24">
                                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.887 11.887-2.01 0-3.987-.512-5.744-1.488l-6.141 1.712zm6.352-3.804c1.644.975 3.266 1.489 4.981 1.489 5.399 0 9.794-4.396 9.794-9.795 0-5.398-4.396-9.793-9.794-9.793-2.615 0-5.074 1.018-6.921 2.865s-2.864 4.305-2.864 6.92c0 1.761.533 3.436 1.543 4.887l-1.011 3.693 3.791-1.055c1.479.805 3.13 1.258 4.793 1.258zm11.314-7.462c-.302-.151-1.782-.879-2.059-.979-.277-.101-.48-.151-.68.151-.2.302-.779.979-.955 1.181-.177.201-.353.226-.654.076-.301-.151-1.272-.469-2.421-1.494-.894-.797-1.497-1.782-1.672-2.083-.177-.302-.019-.465.132-.615.136-.134.302-.352.453-.529.151-.176.201-.302.302-.503.101-.201.05-.378-.026-.529-.076-.151-.68-1.637-.931-2.242-.244-.589-.493-.509-.68-.518-.176-.008-.378-.01-.58-.01-.201 0-.529.076-.805.378-.277.301-1.056 1.031-1.056 2.515 0 1.484 1.08 2.919 1.231 3.12.151.201 2.126 3.246 5.148 4.549.719.31 1.28.496 1.718.636.721.23 1.378.197 1.896.12.577-.085 1.782-.729 2.034-1.433.251-.704.251-1.307.176-1.433-.076-.126-.277-.202-.579-.353z"/>
                                 </svg>
@@ -305,8 +305,8 @@
 
                             <!-- Subtle Status Indicator (Chill & Minimal) -->
                             <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-sky-500/20 flex items-center gap-2 shadow-lg">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                                <span class="text-[10px] font-mono tracking-wider text-slate-300 font-medium">ONLINE</span>
+                                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                <span class="text-xs font-semibold tracking-wide text-slate-200">ONLINE</span>
                             </div>
                         </div>
                     </div>
@@ -340,9 +340,9 @@
     <section id="services" class="py-32 relative">
         <div class="container mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-4">Melayani <span class="text-sky-500">Kebutuhan Digital</span></h2>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-white">Melayani <span class="text-sky-400">Kebutuhan Digital</span></h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
-                <p class="mt-8 text-slate-200 max-w-2xl mx-auto">Transformasi kebutuhan digital menjadi solusi yang efisien, mudah digunakan, dan handal</p>
+                <p class="mt-6 text-slate-200 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal">Transformasi kebutuhan digital menjadi solusi yang efisien, mudah digunakan, dan handal</p>
             </div>
 
             <div class="max-w-6xl mx-auto">
@@ -350,26 +350,26 @@
                     @forelse($services as $i => $service)
                         <div class="group relative bg-slate-900 border border-slate-800 p-6 lg:p-8 rounded-[2rem] transition-all duration-500 hover:border-sky-500/30 shadow-xl overflow-hidden flex flex-col">
                             <div>
-                                <h3 class="text-xl lg:text-2xl font-bold text-white group-hover:text-sky-400 transition-colors tracking-tighter">
+                                <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-sky-400 transition-colors tracking-normal">
                                     {{ $service->title }}
                                 </h3>
                                 <div class="h-1 w-10 bg-sky-500/20 rounded-full group-hover:w-20 group-hover:bg-sky-500 transition-all duration-500"></div>
                             </div>
 
-                            <div>
-                                <p class="text-lg lg:text-xl font-black text-sky-400 tracking-tight">
+                            <div class="my-3">
+                                <p class="text-lg sm:text-xl font-bold text-sky-400 tracking-normal">
                                     {{ $service->price_range }}
                                 </p>
                             </div>
 
-                            <div class="flex-1">
-                                <p class="text-sm text-slate-200 leading-relaxed font-light group-hover:text-slate-300 transition-colors whitespace-pre-line text-justify">
+                            <div class="flex-1 mb-6">
+                                <p class="text-base text-slate-200 leading-relaxed font-normal group-hover:text-slate-100 transition-colors whitespace-pre-line text-left">
                                     {{ $service->description }}
                                 </p>
                             </div>
 
                             <div class="mt-auto relative z-20">
-                                <a href="https://wa.me/{{ $formattedPhone }}?text={{ urlencode('Halo, saya mau konsultasi ' . $service->title) }}" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 bg-slate-900 border border-[#25D366]/30 text-[#25D366] px-5 py-3 rounded-xl font-bold transition-all duration-300 group/btn hover:bg-[#25D366] hover:text-white hover:border-[#25D366] hover:shadow-[0_0_20px_rgba(37,211,102,0.6)] active:scale-95">
+                                <a href="https://wa.me/{{ $formattedPhone }}?text={{ urlencode('Halo, saya mau konsultasi ' . $service->title) }}" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 bg-slate-900 border border-[#25D366]/40 text-[#25D366] px-5 py-3.5 rounded-xl font-bold text-base transition-all duration-300 group/btn hover:bg-[#25D366] hover:text-white hover:border-[#25D366] hover:shadow-[0_0_20px_rgba(37,211,102,0.6)] active:scale-95">
                                     <svg class="w-5 h-5 fill-current group-hover/btn:scale-110 transition-transform" viewBox="0 0 24 24">
                                         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.887 11.887-2.01 0-3.987-.512-5.744-1.488l-6.141 1.712zm6.352-3.804c1.644.975 3.266 1.489 4.981 1.489 5.399 0 9.794-4.396 9.794-9.795 0-5.398-4.396-9.793-9.794-9.793-2.615 0-5.074 1.018-6.921 2.865s-2.864 4.305-2.864 6.92c0 1.761.533 3.436 1.543 4.887l-1.011 3.693 3.791-1.055c1.479.805 3.13 1.258 4.793 1.258zm11.314-7.462c-.302-.151-1.782-.879-2.059-.979-.277-.101-.48-.151-.68.151-.2.302-.779.979-.955 1.181-.177.201-.353.226-.654.076-.301-.151-1.272-.469-2.421-1.494-.894-.797-1.497-1.782-1.672-2.083-.177-.302-.019-.465.132-.615.136-.134.302-.352.453-.529.151-.176.201-.302.302-.503.101-.201.05-.378-.026-.529-.076-.151-.68-1.637-.931-2.242-.244-.589-.493-.509-.68-.518-.176-.008-.378-.01-.58-.01-.201 0-.529.076-.805.378-.277.301-1.056 1.031-1.056 2.515 0 1.484 1.08 2.919 1.231 3.12.151.201 2.126 3.246 5.148 4.549.719.31 1.28.496 1.718.636.721.23 1.378.197 1.896.12.577-.085 1.782-.729 2.034-1.433.251-.704.251-1.307.176-1.433-.076-.126-.277-.202-.579-.353z"/>
                                     </svg>
@@ -402,10 +402,10 @@
             <div class="text-center mb-24 relative z-10">
                 <div class="flex items-center justify-center gap-3 mb-6">
                     <div class="w-12 h-[1px] bg-sky-500/50"></div>
-                    <span class="text-sky-500 text-xs font-black uppercase tracking-[0.3em]">Portofolio Expo</span>
+                    <span class="text-sky-400 text-xs sm:text-sm font-bold uppercase tracking-wider">Portofolio Expo</span>
                     <div class="w-12 h-[1px] bg-sky-500/50"></div>
                 </div>
-                <h2 class="text-5xl lg:text-7xl font-bold tracking-tighter mb-6 text-white">{{ count($projects) }} Solusi <span class="text-sky-500">Telah Dibuat</span></h2>
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-white">{{ count($projects) }} Solusi <span class="text-sky-400">Telah Dibuat</span></h2>
                 <div class="w-32 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_25px_rgba(14,165,233,0.6)]"></div>
                 
                 <!-- AlpineJS Search and Pagination -->
@@ -453,7 +453,7 @@
                             <div class="absolute inset-y-0 left-0 flex items-center pl-6 pointer-events-none">
                                 <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </div>
-                            <input type="text" x-model="searchQuery" aria-label="Cari proyek atau solusi" class="w-full bg-[#0f172a] border border-slate-700 text-slate-200 rounded-2xl py-4 pl-16 pr-6 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/50 transition-all font-mono shadow-xl text-base" placeholder="Cari solusi atau proyek..." />
+                            <input type="text" x-model="searchQuery" aria-label="Cari proyek atau solusi" class="w-full bg-[#0f172a] border border-slate-700 text-slate-200 rounded-2xl py-4 pl-16 pr-6 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/50 transition-all font-sans shadow-xl text-base sm:text-lg placeholder:text-slate-400" placeholder="Cari solusi atau proyek..." />
                         </div>
                     </div>
 
@@ -473,7 +473,7 @@
                                     
                                     <div class="absolute top-4 left-4 z-10">
                                         <div class="bg-slate-950/80 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-xl flex flex-col items-center">
-                                            <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest" x-text="project.month || 'Jan'"></span>
+                                            <span class="text-xs text-sky-400 font-bold uppercase tracking-wide" x-text="project.month || 'Jan'"></span>
                                             <span class="text-sm text-white font-bold" x-text="project.year || '2024'"></span>
                                         </div>
                                     </div>
@@ -482,7 +482,7 @@
                                         <div class="absolute top-4 right-4 z-10">
                                             <div class="bg-sky-500 text-white px-3 py-1.5 rounded-xl flex items-center gap-2 shadow-lg shadow-sky-500/20">
                                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                                                <span class="text-[10px] font-black uppercase tracking-wider">Open Source</span>
+                                                <span class="text-xs font-bold uppercase tracking-wide">Open Source</span>
                                             </div>
                                         </div>
                                     </template>
@@ -491,9 +491,9 @@
                                 </div>
 
                                 <div class="p-6 lg:p-8 flex-1 flex flex-col">
-                                    <h3 class="text-xl lg:text-2xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors tracking-tight" x-text="project.title"></h3>
+                                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors tracking-normal leading-snug" x-text="project.title"></h3>
                                     
-                                    <div class="flex items-center gap-2 text-sky-500 font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all group-hover:text-sky-400 mt-auto">
+                                    <div class="flex items-center gap-2 text-sky-400 font-bold text-sm tracking-wide group-hover:gap-3 transition-all mt-auto">
                                         <span>Lihat Detail</span>
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                                     </div>
@@ -538,7 +538,7 @@
     <section id="skills" class="py-32 relative">
         <div class="container mx-auto px-6">
             <div class="text-center mb-24">
-                <h2 class="text-5xl lg:text-7xl font-bold tracking-tighter mb-4 text-white">Bidang <span class="text-sky-500">Keahlian</span></h2>
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-white">Bidang <span class="text-sky-400">Keahlian</span></h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
             </div>
             
@@ -562,7 +562,7 @@
                                 @endif
                             </div>
                             <div>
-                                <h3 class="text-2xl font-bold text-white tracking-tight">{{ $cat === 'teknologi' ? 'Teknologi' : ($cat === 'bahasa' ? 'Bahasa' : 'Minat & Hobi') }}</h3>
+                                <h3 class="text-2xl font-bold text-white tracking-normal">{{ $cat === 'teknologi' ? 'Teknologi' : ($cat === 'bahasa' ? 'Bahasa' : 'Minat & Hobi') }}</h3>
                             </div>
                         </div>
                         
@@ -578,7 +578,7 @@
                                                     <svg class="w-10 h-10 group-hover:scale-110 transition-transform duration-500 group-hover:drop-shadow-[0_0_15px_rgba(14,165,233,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                                 @endif
                                             </div>
-                                            <h4 class="text-sm font-medium text-slate-200 group-hover:text-sky-400 transition-colors duration-300 tracking-tight text-center">
+                                            <h4 class="text-base font-semibold text-slate-200 group-hover:text-sky-400 transition-colors duration-300 tracking-normal text-center">
                                                 {{ $skill->title }}
                                             </h4>
                                         </div>
@@ -601,9 +601,9 @@
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sky-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-5xl lg:text-7xl font-bold mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center">
-                <span class="text-amber-400 text-2xl font-mono font-bold mb-4 tracking-[0.3em] uppercase drop-shadow-[0_0_12px_rgba(251,191,36,0.8)]" style="text-shadow: 0 0 12px rgba(251, 191, 36, 0.8), 0 0 24px rgba(245, 158, 11, 0.4);">Jenjang Karir</span>
-                Pengalaman <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">Profesional</span>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-32 tracking-tight flex flex-col items-center justify-center gap-2 text-center text-white">
+                <span class="text-amber-400 text-lg sm:text-xl font-bold mb-3 tracking-wider uppercase drop-shadow-[0_0_12px_rgba(251,191,36,0.6)]">Jenjang Karir</span>
+                Pengalaman <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">Profesional</span>
             </h2>
             
             <div class="relative max-w-6xl mx-auto">
@@ -632,21 +632,21 @@
 
                                 <div class="w-full lg:w-[45%] pl-20 lg:pl-0">
                                     <div class="group relative p-8 rounded-[2.5rem] bg-slate-900/50 backdrop-blur-sm border border-white/10 hover:border-sky-400 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_-15px_rgba(56,189,248,0.4)]">
-                                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-black uppercase tracking-widest mb-6">
+                                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs sm:text-sm font-bold tracking-wide mb-6">
                                             <span class="relative flex h-2 w-2">
                                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
                                             </span>
                                             {{ $exp->start_date }} — {{ $exp->end_date ?: 'Sekarang' }}
                                         </div>
 
-                                        <h3 class="text-3xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors leading-tight">{{ $exp->position }}</h3>
+                                        <h3 class="text-2xl sm:text-3xl font-bold mb-3 text-white group-hover:text-sky-400 transition-colors leading-snug tracking-normal">{{ $exp->position }}</h3>
                                         
                                         <div class="flex flex-wrap items-center gap-3 text-slate-200">
                                             <div class="flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-950 border border-slate-800">
-                                                <span class="text-white font-bold">{{ $exp->company }}</span>
+                                                <span class="text-white font-semibold text-base">{{ $exp->company }}</span>
                                             </div>
                                             <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-                                            <span class="text-sm font-medium text-slate-300 italic">{{ $exp->location_text }}</span>
+                                            <span class="text-sm font-normal text-slate-300">{{ $exp->location_text }}</span>
                                             @if($exp->status)
                                                 @php
                                                     $statusText = strtolower($exp->status);
@@ -664,7 +664,7 @@
                                                         $colorClass = 'bg-rose-500/10 text-rose-400 border-rose-500/20';
                                                     }
                                                 @endphp
-                                                <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest border {{ $colorClass }}">
+                                                <span class="px-3 py-1 rounded-md text-xs font-semibold tracking-wide border {{ $colorClass }}">
                                                     {{ $exp->status }}
                                                 </span>
                                             @endif
@@ -690,8 +690,8 @@
         <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-indigo-500/5 to-transparent pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-5xl lg:text-7xl font-bold mb-32 tracking-tighter flex flex-col items-center justify-center gap-2 text-center">
-                Perjalanan <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">Pendidikan</span>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-32 tracking-tight flex flex-col items-center justify-center gap-2 text-center text-white">
+                Perjalanan <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Pendidikan</span>
             </h2>
             
             <div class="relative max-w-6xl mx-auto">
@@ -719,7 +719,7 @@
 
                                 <div class="w-full lg:w-[45%] pl-20 lg:pl-0">
                                     <div class="group relative p-8 rounded-[2.5rem] bg-slate-900/30 backdrop-blur-sm border border-white/10 hover:border-indigo-400 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_-15px_rgba(129,140,248,0.4)]">
-                                        <div class="inline-block px-4 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-black mb-6">
+                                        <div class="inline-block px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs sm:text-sm font-bold tracking-wide mb-6">
                                             @if($edu->is_current)
                                                 Dalam masa studi
                                             @else
@@ -727,18 +727,18 @@
                                             @endif
                                         </div>
 
-                                        <h3 class="text-3xl font-black mb-3 text-white group-hover:text-indigo-400 transition-colors tracking-tight">{{ $edu->major }}</h3>
+                                        <h3 class="text-2xl sm:text-3xl font-bold mb-3 text-white group-hover:text-indigo-400 transition-colors tracking-normal leading-snug">{{ $edu->major }}</h3>
                                         
-                                        <div class="flex items-center gap-3 text-slate-200 font-bold">
-                                            <span class="text-slate-200">{{ $edu->institution }}</span>
+                                        <div class="flex items-center gap-3 text-slate-200">
+                                            <span class="text-slate-100 font-semibold text-base sm:text-lg">{{ $edu->institution }}</span>
                                             @if($edu->degree)
-                                                <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-                                                <span class="text-indigo-400 font-bold text-sm tracking-wide">{{ $edu->degree }}</span>
+                                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                                <span class="text-indigo-400 font-semibold text-sm sm:text-base">{{ $edu->degree }}</span>
                                             @endif
                                         </div>
 
                                         <div class="flex items-center justify-between mt-4">
-                                            <div class="flex items-center gap-2 text-slate-300 text-sm">
+                                            <div class="flex items-center gap-2 text-slate-300 text-sm sm:text-base">
                                                 <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
                                                 {{ $edu->location_text }}
                                             </div>
@@ -771,8 +771,8 @@
 
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-24">
-                <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-4 text-white">
-                    Sertifikasi <span class="text-sky-500">Keahlian</span>
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-white">
+                    Sertifikasi <span class="text-sky-400">Keahlian</span>
                 </h2>
                 <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full shadow-[0_0_20px_rgba(14,165,233,0.5)]"></div>
             </div>
@@ -783,16 +783,16 @@
                         <div class="absolute left-0 top-10 bottom-10 w-[2px] bg-sky-500/30 group-hover:bg-sky-500 transition-colors duration-700"></div>
 
                         <div class="flex-1 relative z-10 pl-4">
-                            <h3 class="text-2xl font-black mb-2 text-white group-hover:text-sky-400 transition-colors leading-tight tracking-tight mt-2">{{ $cert->title }}</h3>
-                            <p class="text-slate-200 font-bold mb-8 text-sm">{{ $cert->issuer }}</p>
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2 text-white group-hover:text-sky-400 transition-colors leading-snug tracking-normal mt-2">{{ $cert->title }}</h3>
+                            <p class="text-slate-300 font-semibold mb-6 text-sm sm:text-base">{{ $cert->issuer }}</p>
                             
                             <div class="flex flex-wrap gap-2">
-                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-sky-500/5 border border-sky-500/10 text-[10px] font-black text-sky-500/80 uppercase tracking-widest">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-xs font-semibold text-sky-400 tracking-wide">
+                                    <span class="w-2 h-2 rounded-full bg-sky-400"></span>
                                     {{ strtolower($cert->level) === 'dasar' ? 'Dasar' : $cert->level }}
                                 </div>
                                 @if($cert->category)
-                                    <div class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[10px] font-black text-slate-300 uppercase tracking-widest">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-950 border border-slate-800 text-xs font-semibold text-slate-300 tracking-wide">
                                         {{ strtolower($cert->category) === 'kursus' ? 'Kursus' : (strtolower($cert->category) === 'kompetensi' ? 'Kompetensi' : $cert->category) }}
                                     </div>
                                 @endif
@@ -801,16 +801,16 @@
 
                         <div class="mt-4 pl-4 relative z-10 flex items-center justify-between">
                             <div class="flex items-center gap-2">
-                                <svg class="w-3.5 h-3.5 text-sky-500/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                <p class="text-xs text-slate-200 font-medium tracking-tight">
+                                <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <p class="text-xs sm:text-sm text-slate-300 font-normal">
                                     {{ $cert->start_date }} — {{ $cert->end_date ?: 'Seumur Hidup' }}
                                 </p>
                             </div>
 
                             @if($cert->verification_url || $cert->credential_url)
-                                <a href="{{ $cert->verification_url ?: $cert->credential_url }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-sky-500 hover:text-sky-400 transition-colors group/link">
-                                    <span class="text-[10px] font-black uppercase tracking-wider">Verifikasi</span>
-                                    <svg class="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                <a href="{{ $cert->verification_url ?: $cert->credential_url }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-sky-400 hover:text-sky-300 transition-colors group/link">
+                                    <span class="text-xs font-bold uppercase tracking-wider">Verifikasi</span>
+                                    <svg class="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                                 </a>
                             @endif
                         </div>
@@ -840,9 +840,9 @@
                 <div class="max-w-sm space-y-8">
                     <div class="flex items-center gap-3">
                         <img src="/icon.webp" alt="Logo" class="w-12 h-12 rounded-xl shadow-lg shadow-sky-500/10" loading="lazy" />
-                        <span class="text-2xl font-black tracking-tighter text-white uppercase">{{ $profile->full_name ?? 'Portfolio' }}</span>
+                        <span class="text-xl sm:text-2xl font-bold tracking-tight text-white uppercase">{{ $profile->full_name ?? 'Portfolio' }}</span>
                     </div>
-                    <p class="text-slate-200 font-light leading-relaxed text-sm">
+                    <p class="text-slate-300 font-normal leading-relaxed text-sm sm:text-base">
                         Berfokus pada pengembangan solusi digital yang inovatif, efisien, dan berorientasi pada hasil untuk membantu bisnis Anda tumbuh lebih cepat.
                     </p>
                     <div class="flex items-center gap-3">
@@ -859,40 +859,40 @@
                 </div>
 
                 <div class="min-w-[280px]">
-                    <h4 class="text-white font-black uppercase tracking-widest text-sm mb-8">Navigasi</h4>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-6">Navigasi</h4>
                     <ul class="grid grid-cols-2 gap-y-4 gap-x-12">
-                        <li><a href="#home" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium whitespace-nowrap text-left">Beranda</a></li>
+                        <li><a href="#home" class="text-slate-300 hover:text-sky-400 transition-colors text-sm sm:text-base font-normal whitespace-nowrap text-left">Beranda</a></li>
                         @if(!$profile || !$profile->hide_services)
-                        <li><a href="#services" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium whitespace-nowrap text-left">Jasa</a></li>
+                        <li><a href="#services" class="text-slate-300 hover:text-sky-400 transition-colors text-sm sm:text-base font-normal whitespace-nowrap text-left">Jasa</a></li>
                         @endif
-                        <li><a href="#projects" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium whitespace-nowrap text-left">Proyek</a></li>
-                        <li><a href="#skills" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium whitespace-nowrap text-left">Keahlian</a></li>
-                        <li><a href="#experience" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium whitespace-nowrap text-left">Pengalaman</a></li>
-                        <li><a href="#education" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium whitespace-nowrap text-left">Edukasi</a></li>
-                        <li><a href="#certificates" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium whitespace-nowrap text-left">Sertifikat</a></li>
-                        <li><a href="#contact" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium whitespace-nowrap text-left">Kontak</a></li>
+                        <li><a href="#projects" class="text-slate-300 hover:text-sky-400 transition-colors text-sm sm:text-base font-normal whitespace-nowrap text-left">Proyek</a></li>
+                        <li><a href="#skills" class="text-slate-300 hover:text-sky-400 transition-colors text-sm sm:text-base font-normal whitespace-nowrap text-left">Keahlian</a></li>
+                        <li><a href="#experience" class="text-slate-300 hover:text-sky-400 transition-colors text-sm sm:text-base font-normal whitespace-nowrap text-left">Pengalaman</a></li>
+                        <li><a href="#education" class="text-slate-300 hover:text-sky-400 transition-colors text-sm sm:text-base font-normal whitespace-nowrap text-left">Edukasi</a></li>
+                        <li><a href="#certificates" class="text-slate-300 hover:text-sky-400 transition-colors text-sm sm:text-base font-normal whitespace-nowrap text-left">Sertifikat</a></li>
+                        <li><a href="#contact" class="text-slate-300 hover:text-sky-400 transition-colors text-sm sm:text-base font-normal whitespace-nowrap text-left">Kontak</a></li>
                     </ul>
                 </div>
 
                 <div class="min-w-[200px]">
-                    <h4 class="text-white font-black uppercase tracking-widest text-sm mb-8">Kebijakan</h4>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-6">Kebijakan</h4>
                     <ul class="space-y-4">
-                        <li><a href="{{ url('/terms') }}" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium">Syarat & Ketentuan</a></li>
-                        <li><a href="{{ url('/privacy') }}" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium">Kebijakan Privasi</a></li>
-                        <li><a href="{{ url('/refund') }}" class="text-slate-200 hover:text-sky-400 transition-colors text-sm font-medium">Kebijakan Pengembalian Dana</a></li>
+                        <li><a href="{{ url('/terms') }}" class="text-slate-300 hover:text-sky-400 transition-colors text-sm sm:text-base font-normal">Syarat & Ketentuan</a></li>
+                        <li><a href="{{ url('/privacy') }}" class="text-slate-300 hover:text-sky-400 transition-colors text-sm sm:text-base font-normal">Kebijakan Privasi</a></li>
+                        <li><a href="{{ url('/refund') }}" class="text-slate-300 hover:text-sky-400 transition-colors text-sm sm:text-base font-normal">Kebijakan Pengembalian Dana</a></li>
                     </ul>
                 </div>
 
                 <div class="min-w-[240px]">
-                    <h4 class="text-white font-black uppercase tracking-widest text-sm mb-8">Kontak</h4>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-6">Kontak</h4>
                     <div class="space-y-6">
                         <div class="flex items-start gap-4">
                             <div class="w-10 h-10 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-400 border border-sky-500/20 shrink-0">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                             </div>
                             <div>
-                                <p class="text-sky-500 text-[10px] font-semibold uppercase tracking-[0.2em] mb-1">Lokasi</p>
-                                <p class="text-white text-base font-medium tracking-tight">{{ $profile->city ?? '-' }}, {{ $profile->province ?? '-' }}</p>
+                                <p class="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-1">Lokasi</p>
+                                <p class="text-white text-base font-medium tracking-normal">{{ $profile->city ?? '-' }}, {{ $profile->province ?? '-' }}</p>
                             </div>
                         </div>
 
@@ -901,13 +901,13 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                             </div>
                             <div>
-                                <p class="text-sky-500 text-[10px] font-semibold uppercase tracking-[0.2em] mb-1">Telepon</p>
+                                <p class="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-1">Telepon</p>
                                 @if($profile->phone)
-                                    <a href="https://wa.me/{{ preg_replace('/^0/', '62', preg_replace('/[^0-9]/', '', $profile->phone)) }}" target="_blank" rel="noopener noreferrer" class="text-white text-base font-medium tracking-tight hover:text-sky-400 transition-colors block">
+                                    <a href="https://wa.me/{{ preg_replace('/^0/', '62', preg_replace('/[^0-9]/', '', $profile->phone)) }}" target="_blank" rel="noopener noreferrer" class="text-white text-base font-medium tracking-normal hover:text-sky-400 transition-colors block">
                                         {{ $profile->phone }}
                                     </a>
                                 @else
-                                    <p class="text-white text-base font-medium tracking-tight">-</p>
+                                    <p class="text-white text-base font-medium tracking-normal">-</p>
                                 @endif
                             </div>
                         </div>
@@ -917,10 +917,12 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             </div>
                             <div>
-                                <p class="text-sky-500 text-[10px] font-semibold uppercase tracking-[0.2em] mb-1">Email</p>
-                                <p class="text-white text-base font-medium tracking-tight">{{ $profile->email ?? '-' }}</p>
+                                <p class="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-1">Email</p>
+                                <p class="text-white text-base font-medium tracking-normal">{{ $profile->email ?? '-' }}</p>
                             </div>
                         </div>
+                    </div>
+                </div>
                     </div>
                 </div>
             </div>

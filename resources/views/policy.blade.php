@@ -63,11 +63,11 @@
         <!-- Navigation -->
         <nav class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-slate-950/50 backdrop-blur-md border-b border-slate-800/50 py-4">
             <div class="container mx-auto px-6 h-12 flex justify-between items-center">
-                <a href="{{ url('/') }}" class="text-xl font-bold font-heading text-slate-400 hover:text-sky-400 transition-colors group flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-sky-500/50 transition-all">
+                <a href="{{ url('/') }}" class="text-xl font-bold text-slate-300 hover:text-sky-400 transition-colors group flex items-center gap-2">
+                    <div class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-sky-500/50 transition-all">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                     </div>
-                    <span class="font-bold uppercase tracking-widest text-xs">Kembali</span>
+                    <span class="font-semibold text-sm tracking-wide">Kembali</span>
                 </a>
             </div>
         </nav>
@@ -75,7 +75,7 @@
         <main class="container mx-auto px-6 pt-32 pb-24 max-w-4xl">
             <!-- Header -->
             <div class="mb-12">
-                <h1 class="text-4xl md:text-5xl font-black tracking-tighter text-white mb-6 leading-none">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
                     {{ $title }}
                 </h1>
                 <div class="h-1.5 w-20 bg-sky-500 rounded-full shadow-[0_0_15px_rgba(14,165,233,0.5)]"></div>
@@ -86,11 +86,11 @@
                 <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-sky-500/5 blur-[100px] rounded-full pointer-events-none"></div>
                 <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-500/5 blur-[100px] rounded-full pointer-events-none"></div>
                 
-                <div class="prose prose-invert prose-sky max-w-none relative z-10 text-justify
-                    prose-headings:font-bold prose-headings:text-white
-                    prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-2 prose-h2:border-b prose-h2:border-slate-800
-                    prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-                    prose-p:text-slate-200 prose-p:leading-relaxed
+                <div class="prose prose-invert prose-sky max-w-none relative z-10 text-left
+                    prose-headings:font-bold prose-headings:text-white prose-headings:tracking-normal
+                    prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-2 prose-h2:border-b prose-h2:border-slate-800
+                    prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+                    prose-p:text-slate-200 prose-p:leading-relaxed prose-p:text-base sm:prose-p:text-lg prose-p:font-normal
                     prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-300 hover:prose-a:underline
                     prose-strong:text-white prose-strong:font-semibold
                     prose-ul:text-slate-200 prose-ol:text-slate-200

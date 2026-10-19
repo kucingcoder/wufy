@@ -29,3 +29,8 @@ Thumbs.db
 frankenphp
 frankenphp-worker.php
 /public/sitemap.xml
+
+/public/dist/
+.tailwindcss-manifest.json
+tailwindcss
+tailwindcss.exe
