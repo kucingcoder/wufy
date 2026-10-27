@@ -58,6 +58,11 @@
             "php artisan optimize:clear",
             "chmod -R 777 storage bootstrap public"
         ],
+        "patch": [
+            "COMPOSER_ALLOW_SUPERUSER=1 composer update",
+            "php artisan optimize:clear",
+            "chmod -R 777 storage bootstrap public"
+        ],
         "tailwind:download": "@php artisan tailwindcss:download",
         "tailwind:build": "@php artisan tailwindcss:build",
         "tailwind:watch": "@php artisan tailwindcss:watch",
